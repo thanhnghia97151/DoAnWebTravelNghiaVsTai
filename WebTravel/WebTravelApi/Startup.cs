@@ -17,6 +17,8 @@ namespace WebTravelApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,6 +31,14 @@ namespace WebTravelApi
 
             app.UseRouting();
             
+            // wwwroot -> image,....
+            app.UseStaticFiles();
+
+            //
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>
@@ -37,6 +47,7 @@ namespace WebTravelApi
                 //});
                 endpoints.MapControllers();
             });
+            
            
         }
     }

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e80085da-4296-420b-a199-093dd6c66a77": {
+      "ProjectGuid": "e80085da-4296-420b-a199-093dd6c66a77",
+      "DisplayName": "WebTravelApi",
+      "ColorIndex": 0
+    },
+    "cac3a5ad-7dd8-41ad-88e0-834e946c36c3": {
+      "ProjectGuid": "cac3a5ad-7dd8-41ad-88e0-834e946c36c3",
+      "DisplayName": "WebClient",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
