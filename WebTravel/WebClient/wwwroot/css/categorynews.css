@@ -1,0 +1,238 @@
+ *{margin:0px; padding:0px;}
+
+ @font-face {
+    src: url(fonts/fontawesome-webfont.ttf);
+    font-family: Roboto;
+
+ }
+ body {
+    font-family: 'Roboto'
+}
+
+.totinquantam.row {
+    margin-bottom: 6%;
+}
+
+.gachngangquantam {
+    border-bottom: 1px solid black;
+    margin-top: 0.5%;
+    width: 45%;
+}
+
+.baiviet div.gachngangtrainghiem {
+    border-bottom: 1px solid black;
+    margin-top: 1.5%;
+}
+
+
+
+.gachngangtenloai {
+    border-bottom: 1px solid black;
+    margin-top: 0.7%;
+}
+
+.gachngang {
+    border-bottom: 1px solid black;
+    margin-top: 1%;
+}
+
+.totinquantam div.quantam {
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 5%;
+}
+
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.gachduoi {
+    border-bottom: 1px solid #e166666b;
+    margin-left: 1.6%;
+    border-bottom-style: dotted;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.tongbaiviettheoloai {
+    boder: 1px solid black;
+}
+
+.tongtopbaiviet {
+    margin-bottom: 7%;
+}
+
+.tongtoptrainghiem {
+    padding-bottom: 14%;
+}
+
+.hourtinquantam span {
+    color: #916e6ecc;
+}
+
+.hourtinquantam {
+    color: #0000ffbd;
+}
+
+.titletinquantam {
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 2%;
+}
+
+.quantam {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.trainghiem {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.hourtin {
+    color: #0000ffa3;
+}
+
+.hourtin span {
+    color: #cb9292b5;
+}
+
+.noidungtin {
+    padding-bottom: 1%;
+}
+
+.titletin {
+    font-size: 21px;
+    font-weight: 500;
+    padding-bottom: 1%;
+}
+
+.gachtenloai {color: black;}
+
+.tenloai {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.goinho {
+    background-color: #60555517;
+    padding: 9px 0px;
+    margin-bottom: 50px;
+}
+
+.thongtin {
+    color: #7a5959;
+    font-size: 18px;
+}
+
+img.new {
+    width: 100%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+img.new.image360 {
+    margin-bottom: 8%;
+}
+ @media only screen and (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .category1 div.containercategory1 a {
+    text-decoration: none;
+    color: #1a5a78d9;
+}
+
+nav.navbar.navbar-default.menutop ul li a {
+    color: #000000de;
+    font-size: 15px;
+}
+
+nav.navbar.navbar-default.menutop ul li a:hover {
+    color: #555;
+}
+
+.collapse.navbar-collapse.navbar-ex1-collapse {}
+
+.menutop ul li a {
+    color: #0c0c0c;
+}
+
+.menutop ul li a {
+    color: #262020;
+    font-weight: bold;
+}
+
+
+.menutop {
+    margin-bottom: 0px;
+}
+p.tencongty {
+    color: #000000d9;
+    font-weight: 800;
+    font-size: 15px;
+}
+.row.footer1 {
+    border-top: 3px solid #a55c68;
+    padding: 17px 0px;
+    margin-top: 25px;
+    padding-top: 35px;
+}
+.khoangcachtren a {
+    font-size: 15px;
+}
+
+.khoangcachtren {
+    padding-bottom: 10px;
+}
+.dangkykinhdoanhtt1 {
+    color: black;
+    font-weight: 900;
+    font-size: 14px;
+}
+.dangkykinhdoanhtt4 {
+    color: black;
+    font-weight: 500;
+}
+.ketnoivoicungtoi p {
+    font-size: 17px;
+    font-weight: 600;
+}
+.chapnhanthanhtoan p {
+    font-size: 16px;
+    font-weight: 600;
+}
+.iconketnoi {
+    font-size: 18px;
+    margin-top: 16px;
+}
+.footer3 p {
+    font-weight: 800;
+    font-size: 14px;
+    font-family: -webkit-body;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+.gockhachhang p {
+    font-size: 18px;
+    font-weight: 500;
+}
+span.fa.fa-facebook {
+    padding: 10px 16px;
+    BACKGROUND-COLOR: #303060;
+    color: white;
+}
+span.fa.fa-twitter {
+    padding: 10px 12px;
+    background-color: #0000ff8c;
+    color: white;
+}
+span.fa.fa-youtube {
+    padding: 10px 13px;
+    background-color: #e30000;
+    color: white;
+}
+span.fa.fa-university {
+    padding: 10px 12px;
+    background-color: #efabab99;
+    color: #2e2e62d6;
+    border: 1px solid #00000003;
+    font-size: 15px;
+}

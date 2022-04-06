@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3GB7q7pq+aLs/ejxjJUJkpmtF+AGHx4p/4NdkB7URKLXsH2BzCiervb/AOe9kaagLXC9cMtHbpKz44YQvhW21g==",
+  "dgSpecHash": "rt5RCDOttPlZB9vO54DEJ5CSzT+DS7kEMUrKhT1ZJqgKeUcFhlnFyEIYGnkAVA6kiNS/u7zkgfvCcYqwg44phQ==",
   "success": true,
   "projectFilePath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.15\\microsoft.aspnetcore.authentication.google.5.0.15.nupkg.sha512",
     "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.15\\microsoft.aspnetcore.authentication.jwtbearer.5.0.15.nupkg.sha512",
     "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",

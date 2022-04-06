@@ -1,0 +1,14 @@
+*{margin:0;padding:0;}
+
+p.chitietcongty {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.khoangcach {
+    padding: 10px 0px;
+}
+
+b.titlecongty {
+    font-size: 23px;
+}

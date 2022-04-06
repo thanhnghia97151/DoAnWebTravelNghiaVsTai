@@ -57,3 +57,4 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\obj\Debug\net5.0\ref\WebTravelApi.dll
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.pdb
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.genruntimeconfig.cache
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll

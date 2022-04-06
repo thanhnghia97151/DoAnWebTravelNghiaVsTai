@@ -1,0 +1,74 @@
+*{margin:0; padding: 0;}
+
+.editform {
+    padding: 6px 0px;
+}
+
+.nganduoi {
+    border-bottom: 1px solid #b38f8f59;
+    padding-bottom: 12px;
+}
+
+.thongtinphu span {
+    color: black;
+    font-weight: 500;
+}
+
+.thongtinphu p {
+    font-size: 15px;
+}
+
+.thongtinphu i {
+    color: #8e839f;
+}
+
+span.btn-value {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-group.guilienhe button {
+    padding: 7px 50px;
+    background-color: #b98989;
+    border: none;
+}
+
+.editform span {
+    color: red;
+}
+
+.caption p {
+    padding-top: 38px;
+    padding-bottom: 17px;
+    font-size: 16px;
+}
+
+div.contentleft {
+    background-color: #ddb3b336;
+}
+
+
+.ContactContent h3 {
+    font-weight: 600;
+    font-size: 35px;
+    padding-top: 38px;
+    padding-bottom: 10px;
+}
+
+.thongtinphu h3 {
+    color: #b98888;
+    font-size: 18px;
+    margin-top: 0px;
+    padding-top: 30px;
+}
+
+.display div.thongtin {
+    font-size: 18px;
+    color: #7a5959;
+}
+ .display {
+    background-color: #60555517;
+    padding: 9px 0px;
+    color: #876767;
+}

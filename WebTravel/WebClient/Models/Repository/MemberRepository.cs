@@ -13,5 +13,9 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<Member>>("/api/member");
         }
+        public async Task<Member> GetMemberById(string id)
+        {
+            return await Get<Member>($"/api/member/{id}");
+        }
     }
 }

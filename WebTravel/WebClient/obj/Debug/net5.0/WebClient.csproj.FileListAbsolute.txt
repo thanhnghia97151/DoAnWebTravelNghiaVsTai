@@ -41,3 +41,7 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\Newtonsoft.Json.
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Member\Index.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\_ViewImports.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Role\Index.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Role\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Member\Role.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll

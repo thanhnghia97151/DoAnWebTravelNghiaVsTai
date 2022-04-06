@@ -22,6 +22,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Member.GetMembers();
         }
+        [HttpGet("{id}")]
+        public Member GetMemberById(string id)
+        {
+            return provider.Member.GetMemberById(id);
+        }
         
     }
 }

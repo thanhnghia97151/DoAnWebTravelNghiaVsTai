@@ -6,6 +6,6 @@ namespace WebTravelApi.Models
     {
         public Guid RoleID { get; set; }
         public string RoleName { get; set; }
-        public string RoleDescription { get; set; }
+        public string? RoleDesciption { get; set; }
     }
 }

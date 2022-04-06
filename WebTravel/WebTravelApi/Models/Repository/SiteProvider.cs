@@ -15,6 +15,30 @@ namespace WebTravelApi.Models.Repository
             // Thiếu đóng kết nối
         }
         MemberRepository member;
+        RoleRepository role;
+        MemberInRoleRepository memberInRole;
+        public MemberInRoleRepository MemberInRole
+        {
+            get
+            {
+                if (memberInRole is null)
+                {
+                    memberInRole = new MemberInRoleRepository(connection);
+                }
+                return memberInRole;
+            }
+        }
+        public RoleRepository Role
+        {
+            get
+            {
+                if (role is null)
+                {
+                    role = new RoleRepository(connection);
+                }
+                return role;
+            }
+        }
         public MemberRepository Member
         {
             get

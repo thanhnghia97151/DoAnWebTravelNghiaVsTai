@@ -1,9 +1,10 @@
 ﻿@model List<Member>
-<table>
-    <thead>
+<table class="table table-bordered">
+    <thead class="table-dark">
         <tr>
             <th>MemberID</th>
         <th>UserName</th>
+        <th>Roles</th>
         </tr>
         
     </thead>
@@ -13,6 +14,9 @@
             <tr>
                 <td>@item.MemberID</td>
                 <td>@item.UserName</td>
+                <td>
+                    <a href="/dashboard/member/role/@item.MemberID">Roles</a>
+                </td>
             </tr>
         }
     </tbody>
