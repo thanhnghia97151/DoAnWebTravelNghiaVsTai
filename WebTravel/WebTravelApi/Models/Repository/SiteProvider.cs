@@ -21,6 +21,102 @@ namespace WebTravelApi.Models.Repository
         TourCategoryRepository tourCategory;
         TourScheduleRepository tourSchedule;
         TourRepository tour;
+        TourMemberRepository tourMember;
+        PolicyCategoryRepository tourPolicy;
+        PolicyRepository policy;
+        AboutRepository about;
+        TagRepository tag;
+        NewsCategoryRepository newsCategory;
+        NewsRepository news;
+        NewsTagRepository newsTag;
+        public NewsTagRepository NewsTag
+        {
+            get
+            {
+                if(newsTag == null)
+                {
+                    newsTag = new NewsTagRepository(connection);
+                }
+                return newsTag;
+            }
+        }
+        public NewsRepository News
+        {
+            get
+            {
+                if(news is null)
+                {
+                    news = new NewsRepository(connection);
+                }
+                return news;
+            }
+        }
+        public NewsCategoryRepository NewsCategory
+        {
+            get
+            {
+                if(newsCategory == null)
+                {
+                    newsCategory = new NewsCategoryRepository(connection);
+                }
+                return newsCategory;
+            }
+        }
+        public TagRepository Tag
+        {
+            get
+            {
+                if(tag is null)
+                {
+                    tag = new TagRepository(connection);
+                }
+                return tag;
+            }
+        }
+        public AboutRepository About
+        {
+            get
+            {
+                if(about is null)
+                {
+                    about = new AboutRepository(connection);
+                }
+                return about;
+            }
+        }
+        public PolicyRepository Policy
+        {
+            get
+            {
+                if(policy == null)
+                {
+                    policy= new PolicyRepository(connection);
+                }
+                return policy;
+            }
+        }
+        public PolicyCategoryRepository PolicyCategory
+        {
+            get
+            {
+                if(tourPolicy == null)
+                {
+                    tourPolicy = new PolicyCategoryRepository(connection);
+                }
+                return tourPolicy;
+            }
+        }
+        public TourMemberRepository TourMember
+        {
+            get
+            {
+                if(tourMember is null)
+                {
+                    tourMember = new TourMemberRepository(connection);
+                }
+                return tourMember;
+            }
+        }
         public TourRepository Tour
         {
             get 

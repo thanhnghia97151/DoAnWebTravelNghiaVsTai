@@ -1,0 +1,46 @@
+﻿@model List<TourCategory>
+<a class="btn btn-success" asp-action="Create">Crate</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id </th>
+            <th>Name</th>
+            <th>SeoTitle</th>
+            <th>MetaTitle</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th> Status</th>
+            <th>Show On HOme</th>
+            <th>Type Of Tour</th>
+            <th> ParentId</th>
+            <th>Edit|Detail|Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+           <tr>
+               <td>@item.TourCategoriesId</td>
+               <td>@item.Name</td>
+               <td>@item.SeoTitle</td>
+               <td>@item.MetaTitle</td>
+               <td>@item.CreateDate</td>
+               <td>@item.CreatedBy</td>
+               <td>@item.ModifiedDate</td>
+               <td>@item.ModifiedBy</td>
+               <td>@item.Status</td>
+               <td>@item.ShowOnHome</td>
+               <td>@item.TypeOfTourId</td>
+               <td>@item.ParentId</td>
+               <td>
+                   <a href="/dashboard/tourcategory/edite/@item.TourCategoriesId"><i class="fa fa-edit"></i></a>|
+                   <a href="/dashboard/tourcategory/detail/@item.TourCategoriesId"><i class="fa fa-folder"></i></a>|
+                   <a href="/dashboard/tourcategory/delete/@item.TourCategoriesId"><i class="fa fa-ban"></i></a>
+
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>

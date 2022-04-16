@@ -116,7 +116,7 @@ create table Tours
 	Name nvarchar(250),
 	MetaTitle varchar(250),
 	Code varchar(50),
-	Image varchar(50),
+	Image varchar(50),  
 	Schedule nvarchar(250),
 	Price decimal(18,0),
 	PromotionPrice decimal(18,0),
@@ -145,6 +145,7 @@ go
 --drop table TourCategories
 --drop table TourSchedule
 --drop table Tours
+--drop table PolicyCategories
 
 create table PolicyCategories
 (
@@ -152,15 +153,16 @@ create table PolicyCategories
 	Name nvarchar(250),
 );
 go
+--drop table Policies
 create table Policies
 (
 	Id varchar(64) not null primary key,
 	Content ntext,
-	PolicyId varchar(64),
-	foreign key (PolicyId) references Policies(Id)
+	PolicyCategoryId varchar(64),
+	foreign key (PolicyCategoryId) references PolicyCategories(Id)
 );
 go
-
+--drop table Abouts
 create table Abouts
 (
 	Id varchar(64)not null primary key,
@@ -179,9 +181,83 @@ create table Abouts
 	foreign key (PolicyId) references Policies(Id)
 );
 go
+
+--insert into Tours(TourId,Name,MetaTitle,Code,Image,Schedule,Price,PromotionPrice,Quantity,DepartureDat,StartPlace,EndPlace,Transport,Detail,Note,CategoryId,ScheduleId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy)values('123','abc','abc','abc','abc','abc',123,123,1,'2002-2-2','abc','abc','abc','abc','abc','kdfjlasf','123','2002-1-1','abc','2002-1-1','abc')
+
+create table TourMembers
+(
+	MemberId varchar(64) not null ,
+	TourId varchar(64) not null,
+	PriceSale decimal(18,2),
+	NumberTicket int,
+	CreatedDate datetime,
+	primary key (MemberId,TourId),
+	foreign key (MemberId) references Members(MemberID),
+	foreign key (TourId) references Tours(TourId)
+);
+go
+
+create table Tags
+(
+	TagId varchar(64) not null primary key,
+	Name nvarchar(250)
+);
+go
+create table NewsCategories
+(
+	NewsCategoryId varchar(64) not null primary key,
+	Name nvarchar(250),
+	SeoTitle nvarchar(250),
+	MetaTitle nvarchar(250),
+	ParentId varchar(64),
+	CreatedDate datetime,
+	CreatedBy nvarchar(150),
+	ModifiedDate datetime,
+	ModifiedBy nvarchar(150),
+	Status bit default 0,
+	ShowOnHome bit default 0,
+	foreign key (ParentId) references NewsCategories(NewsCategoryId)
+);
+go
+create table News
+(
+	NewsId varchar(64) not null primary key,
+	Name nvarchar(250),
+	MetaTitle varchar(250),
+	Description ntext,
+	Code varchar(20),
+	Image varchar(300),
+	Detail ntext,
+	Note ntext,
+	NewCategoryId varchar(64),
+	CreatedDate datetime,
+	CreatedBy nvarchar(150),
+	ModifiedDate datetime,
+	ModifiedBy nvarchar(150),
+	Status bit default 0,
+	TopHot datetime,
+	ViewCount int
+);
+go
+create table NewTags
+(
+	NewsId varchar(64) not null,
+	TagId varchar(64) not null,
+	primary key(NewsId,TagId),
+	foreign key (NewsId) references News(NewsId),
+	foreign key (TagId) references Tags(TagId)
+);
+go
 --select * from TypeOfTours
 --select * from TourCategories
 --select * from TourSchedules
-
-insert into Tours(TourId,Name,MetaTitle,Code,Image,Schedule,Price,PromotionPrice,Quantity,DepartureDat,StartPlace,EndPlace,Transport,Detail,Note,CategoryId,ScheduleId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy)
-values('123','abc','abc','abc','abc','abc',123,123,1,'2002-2-2','abc','abc','abc','abc','abc','kdfjlasf','123','2002-1-1','abc','2002-1-1','abc')
+--select * from Tours
+--select * from Members
+--select * from TourMembers
+--select * from PolicyCategories
+--select * from Policies
+--select * from Abouts
+--select * from Tags
+--select * from NewsCategories
+--select * from News
+--select * from NewTags

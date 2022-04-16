@@ -17,7 +17,7 @@ namespace WebTravelApi.Models.Repository
         {
             string sql = "insert into TourCategories(TourCategoriesId,Name,SeoTitle,MetaTitle,ParentId,CreateDate,CreatedBy,ModifiedDate,ModifiedBy,TypeOfTourId) values(@TourCategoriesId,@Name,@SeoTitle,@MetaTitle,@ParentId,@CreateDate,@CreatedBy,@ModifiedDate,@ModifiedBy,@TypeOfTourId)";
             return connection.Execute(sql, new {
-                TourCategoriesId = obj.TourCategoriesId,
+                TourCategoriesId = Helper.Helper.RandomString(64),
                 Name = obj.Name,
                 SeoTitle=obj.SeoTitle,
                 MetaTitle=obj.MetaTitle,

@@ -19,7 +19,7 @@ namespace WebTravelApi.Models.Repository
             string sql = "insert into TypeOfTours values(@Id,@Type)";
             return connection.Execute(sql, new
             {
-                Id = obj.Id,
+                Id = Helper.Helper.RandomString(64),
                 Type = obj.Type
             });
         }

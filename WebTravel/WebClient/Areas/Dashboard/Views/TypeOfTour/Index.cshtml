@@ -1,9 +1,13 @@
 ﻿@model List<TypeOfTour>
+<a class="btn btn-success" href="/dashboard/typeoftour/create">Create</a>
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
             <th>Id</th>
             <th>Type</th>
+            <th>Edit</th>
+            <th>Detail</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -12,6 +16,18 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Type</td>
+                <td>
+                    <a href="/dashboard/typeoftour/eidt/@item.Id"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a href="/dashboard/typeoftour/detail/@item.Id" ><i class="fa fa-folder"></i></a>
+                </td>
+                <td>
+                    <a href="/dashboard/typeoftour/delete/@item.Id" ><i class="fa fa-ban"></i></a>
+                </td>
+                    
+                    
+               
             </tr>
 
         }

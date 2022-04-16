@@ -13,6 +13,18 @@ namespace WebClient.Models.Repository
         RoleRepository role;
         MemberInRoleRepository memberInRole;
         TypeOfTourRepository typeOfTour;
+        TourCategoryRepository tourCategory;
+        public TourCategoryRepository TourCategory
+        {
+            get
+            {
+                if(tourCategory == null)
+                {
+                    tourCategory = new TourCategoryRepository(configuration);
+                }
+                return tourCategory;
+            }
+        }
         public TypeOfTourRepository TypeOfTour
         {
             get

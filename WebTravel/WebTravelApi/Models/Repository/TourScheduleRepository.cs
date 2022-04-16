@@ -18,7 +18,7 @@ namespace WebTravelApi.Models.Repository
             string sql = "insert into TourSchedules values(@TourScheduleId,@Content)";
             return connection.Execute(sql, new
             {
-                TourScheduleId = obj.TourScheduleId,
+                TourScheduleId = Helper.Helper.RandomString(64),
                 Content = obj.Content
 
             });
