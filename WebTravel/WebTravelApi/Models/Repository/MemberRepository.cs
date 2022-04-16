@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -32,6 +32,29 @@ namespace WebTravelApi.Models.Repository
                 Password = Helper.Helper.Hash(obj.Password),
                 Email = obj.Email,
                 Gender = obj.Gender
+            });
+        }
+        public int Add(Member obj)
+        {
+            string sql = "insert into Members(MemberID,UserName,Password,Email,Phone) values(@Id,@UserName,@Password,@Email,@Phone)";
+            var t = new
+            {
+                Id = Helper.Helper.RandomString(64),
+                UserName = obj.UserName,
+                Password = Helper.Helper.Hash(obj.Password),
+                Email = obj.Email,
+                Phone = obj.Phone
+            };
+            var result = connection.Execute(sql,t );
+            return result;
+        }
+        public Member Login(LoginModel login)
+        {
+            string sql = "select MemberID,UserName,Email,Gender from Members where UserName=@Urs and Password=@Pwd";
+            return connection.QuerySingleOrDefault<Member>(sql, new
+            {
+                Urs = login.Urs,
+                Pwd = Helper.Helper.Hash(login.Pwd)
             });
         }
     }

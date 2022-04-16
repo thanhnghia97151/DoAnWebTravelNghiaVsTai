@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections;
@@ -26,6 +27,12 @@ namespace WebTravelApi.Api.Controllers
         public Member GetMemberById(string id)
         {
             return provider.Member.GetMemberById(id);
+        }
+        [HttpPost]
+        public int Add(Member obj)
+        {
+             
+            return provider.Member.Add(obj);
         }
         
     }

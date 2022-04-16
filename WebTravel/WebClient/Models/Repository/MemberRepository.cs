@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebClient.Models.ViewModels;
 
 namespace WebClient.Models.Repository
 {
@@ -16,6 +17,14 @@ namespace WebClient.Models.Repository
         public async Task<Member> GetMemberById(string id)
         {
             return await Get<Member>($"/api/member/{id}");
+        }
+        public async Task<int> Add(Member obj)
+        {
+            return await Post<Member>("/api/member", obj);
+        }
+        public async Task<ReponseLogin> Login(LoginModel obj)
+        {
+            return await PostGetData<LoginModel, ReponseLogin>("/api/auth", obj);
         }
     }
 }

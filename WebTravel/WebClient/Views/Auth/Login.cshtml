@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "_LayoutLogin";
+}
+@model LoginModel
+@*<div asp-validation-summary="All"></div>
+<form method="post">
+    <div>
+        <label>UserName</label>
+        <input type="text" asp-for="Urs"/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" asp-for="Pwd"/>
+    </div>
+    <div>
+        <label>Remember Me!</label>
+        <input type="checkbox" asp-for="Rem"/>
+    </div>
+    <dib>
+        <button class="btn btn-primary">Login</button>
+        <a class="btn btn-success" href="/auth/googlesignin">Google Sign In</a>
+    </dib>
+</form>*@
+
+<form method="post" accept-charset="utf-8">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 formsize">
+                           <div class="form-group size">
+                             <input type="text" asp-for="Urs" placeholder="Nhập User Name" 
+                             class="form-control" >
+                           </div>
+                           <div class="form-group size">
+                             <input type="password" asp-for="Pwd" placeholder="Nhập Mật Khẩu" 
+                             class="form-control">
+                           </div>
+                           <div class="form-group size">
+                             <input type="checkbox" asp-for="Rem" name="check">
+                             <label>&nbsp;&nbsp;Ghi Nhớ</label>
+                     
+                           </div>
+                      </div>
+                  </div> <!-- the end row 1 -->
+                  <div class="phanduoi">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+                           <button type="submit" class="dangnhap">ĐĂNG NHẬP</button>
+                                     
+                        </div>
+                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">                             
+                            <a href="/home" class="huy">HỦY</a>
+                        </div>
+                     </div>
+                      
+                  <p class="mk"><a href="#" title="" class="quenmk">QUÊN MẬT KHẨU</a></p>
+                  <p>Bạn chưa có tài khoản? <a href="/auth/register" class="dangky">ĐĂNG KÝ</a></p>
+                  </div>
+              </form>

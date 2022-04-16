@@ -45,3 +45,8 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dash
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Role\Create.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Member\Role.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Auth\Register.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Auth\Login.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\TypeOfTour\Index.cshtml.g.cs

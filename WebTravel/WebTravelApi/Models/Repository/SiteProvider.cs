@@ -17,6 +17,54 @@ namespace WebTravelApi.Models.Repository
         MemberRepository member;
         RoleRepository role;
         MemberInRoleRepository memberInRole;
+        TypeOfTourRepository typeOfTour;
+        TourCategoryRepository tourCategory;
+        TourScheduleRepository tourSchedule;
+        TourRepository tour;
+        public TourRepository Tour
+        {
+            get 
+            {
+                if (tour is null)
+                {
+                    tour = new TourRepository(connection);
+                }
+                return tour;
+            }
+        }
+        public TourScheduleRepository TourSchedule
+        {
+            get
+            {
+                if (tourSchedule is null)
+                {
+                    tourSchedule = new TourScheduleRepository(connection);
+                }
+                return tourSchedule;
+            }
+        }
+        public TourCategoryRepository TourCategory
+        {
+            get
+            {
+                if(tourCategory == null)
+                {
+                    tourCategory = new TourCategoryRepository(connection);  
+                }
+                return tourCategory;
+            }
+        }
+        public TypeOfTourRepository TypeOfTour
+        {
+            get
+            {
+                if (typeOfTour == null)
+                {
+                    typeOfTour = new TypeOfTourRepository(connection);
+                }
+                return typeOfTour;
+            }
+        }
         public MemberInRoleRepository MemberInRole
         {
             get

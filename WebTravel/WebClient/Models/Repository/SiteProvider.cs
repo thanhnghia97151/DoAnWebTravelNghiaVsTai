@@ -12,6 +12,18 @@ namespace WebClient.Models.Repository
         MemberRepository member;
         RoleRepository role;
         MemberInRoleRepository memberInRole;
+        TypeOfTourRepository typeOfTour;
+        public TypeOfTourRepository TypeOfTour
+        {
+            get
+            {
+                if(typeOfTour is null)
+                {
+                    typeOfTour = new TypeOfTourRepository(configuration);
+                }
+                return typeOfTour;  
+            }
+        }
         public MemberInRoleRepository MemberInRole
         {
             get

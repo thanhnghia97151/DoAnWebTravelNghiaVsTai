@@ -1,0 +1,19 @@
+﻿@model List<TypeOfTour>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model )
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Type</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

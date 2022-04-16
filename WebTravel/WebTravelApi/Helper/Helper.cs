@@ -18,9 +18,10 @@ namespace WebTravelApi.Helper
             char[] arr = new char[len];
             for (int i = 0; i < len; i++)
             {
-                arr[i]=pattern[random.Next(pattern.Length)]; 
+                arr[i] = pattern[random.Next(pattern.Length)];
+
             }
-            return string.Join(pattern, arr);
+            return string.Join(string.Empty, arr);
         }
         public static byte[] Hash(string plaintext)
         {
@@ -34,18 +35,19 @@ namespace WebTravelApi.Helper
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier,obj.MemberID),
-                new Claim(ClaimTypes.Name,obj.UserName),
-                new Claim(ClaimTypes.Email,obj.Email),  
-                new Claim(ClaimTypes.Gender,obj.Gender),
-                
+                   new Claim(ClaimTypes.Name,obj.UserName),
+                   new Claim(ClaimTypes.Email,obj.Email),
+                   //new Claim(ClaimTypes.Gender,obj.Gender.ToString())
+                   //new Claim(ClaimTypes.Role,obj.Role)
             };
-            if (obj.Roles!=null)
+            //Role
+            if (obj.Roles != null)
             {
                 foreach (string role in obj.Roles)
                 {
                     claims.Add(new Claim(ClaimTypes.Role, role));
+
                 }
-                
             }
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
             {

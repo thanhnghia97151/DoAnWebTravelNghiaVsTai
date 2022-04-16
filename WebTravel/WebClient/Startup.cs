@@ -26,15 +26,22 @@ namespace WebClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddAuthentication()
-                    .AddCookie()
-                    .AddGoogle(options =>
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(p =>
                     {
-                        IConfigurationSection googleAuthNSection =
-                            Configuration.GetSection("Authentication:Google");
-                        options.ClientId = googleAuthNSection["ClientId"];
-                        options.ClientSecret = googleAuthNSection["ClientSecret"];
+                        p.Cookie.Name = "cse.net.vn";
+                        p.LoginPath = "/auth/login";
+                        p.AccessDeniedPath = "/auth/denied";
+                        p.ExpireTimeSpan = TimeSpan.FromDays(30);
                     });
+                    //.AddGoogle(options =>
+                    //{
+                    //    IConfigurationSection googleAuthNSection =
+                    //        Configuration.GetSection("Authentication:Google");
+                    //    options.ClientId = googleAuthNSection["ClientId"];
+                    //    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                    //});
 
 
 
@@ -49,7 +56,12 @@ namespace WebClient
             }
 
             app.UseRouting();
-            
+
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

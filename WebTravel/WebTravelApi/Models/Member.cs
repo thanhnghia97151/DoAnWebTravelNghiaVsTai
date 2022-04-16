@@ -5,7 +5,7 @@ namespace WebTravelApi.Models
 {
     public class Member
     {
-        public string MemberID { get; set; }
+        public string? MemberID { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
         public DateTime Birthday { get; set; }
