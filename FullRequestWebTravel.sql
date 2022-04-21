@@ -110,6 +110,7 @@ create table TourSchedules
 	Content ntext
 );
 go
+--drop table Tours
 create table Tours
 (
 	TourId varchar(64) not null primary key,
@@ -122,6 +123,8 @@ create table Tours
 	PromotionPrice decimal(18,0),
 	Quantity int,
 	DepartureDat datetime,
+	StartDate datetime,
+	EndDate datetime,
 	StartPlace nvarchar(250),
 	EndPlace nvarchar(250),
 	Transport nvarchar(250),
@@ -183,7 +186,7 @@ create table Abouts
 go
 
 --insert into Tours(TourId,Name,MetaTitle,Code,Image,Schedule,Price,PromotionPrice,Quantity,DepartureDat,StartPlace,EndPlace,Transport,Detail,Note,CategoryId,ScheduleId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy)values('123','abc','abc','abc','abc','abc',123,123,1,'2002-2-2','abc','abc','abc','abc','abc','kdfjlasf','123','2002-1-1','abc','2002-1-1','abc')
-
+--drop table TourMembers
 create table TourMembers
 (
 	MemberId varchar(64) not null ,
@@ -203,6 +206,7 @@ create table Tags
 	Name nvarchar(250)
 );
 go
+--drop table NewsCategories
 create table NewsCategories
 (
 	NewsCategoryId varchar(64) not null primary key,
@@ -216,9 +220,10 @@ create table NewsCategories
 	ModifiedBy nvarchar(150),
 	Status bit default 0,
 	ShowOnHome bit default 0,
-	foreign key (ParentId) references NewsCategories(NewsCategoryId)
+	foreign key (ParentId) references NewsCategories(NewsCategoryId),
 );
 go
+--drop table News
 create table News
 (
 	NewsId varchar(64) not null primary key,
@@ -236,9 +241,11 @@ create table News
 	ModifiedBy nvarchar(150),
 	Status bit default 0,
 	TopHot datetime,
-	ViewCount int
+	ViewCount int, 
+	foreign key (NewCategoryId) references NewsCategories(NewsCategoryId)
 );
 go
+--drop table NewTags
 create table NewTags
 (
 	NewsId varchar(64) not null,
@@ -248,6 +255,8 @@ create table NewTags
 	foreign key (TagId) references Tags(TagId)
 );
 go
+
+
 --select * from TypeOfTours
 --select * from TourCategories
 --select * from TourSchedules

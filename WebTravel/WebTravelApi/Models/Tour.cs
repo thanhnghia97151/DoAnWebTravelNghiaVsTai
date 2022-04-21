@@ -14,6 +14,8 @@ namespace WebTravelApi.Models
         public decimal PromotionPrice { get; set; }
         public int Quantity { get; set; }
         public DateTime DepartureDat { get; set; }
+        public DateTime StartDate { get;set; }
+        public DateTime EndDate { get; set; }
         public string StartPlace { get; set; }
         public string EndPlace { get; set; }
         public string Transport { get; set; }

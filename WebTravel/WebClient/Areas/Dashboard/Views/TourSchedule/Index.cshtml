@@ -1,0 +1,18 @@
+﻿@model List<TourSchedule>
+<table class="table table-bordered">
+    <thead class="table-dark"> 
+        <tr>
+            <th>Tour Schedule ID</th>
+            <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+           <tr>
+               <td>@item.TourScheduleId</td>
+               <td>@item.Content</td>
+           </tr>
+       }
+    </tbody>
+</table>

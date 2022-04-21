@@ -1,0 +1,19 @@
+﻿@model List<Tag>
+<a class="btn btn-success" asp-action="Create">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Tag Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TagId</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

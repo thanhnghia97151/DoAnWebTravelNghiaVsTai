@@ -15,7 +15,7 @@ namespace WebTravelApi.Models.Repository
         }
         public int Add(Tour obj)
         {
-            string sql = "insert into Tours(TourId,Name,MetaTitle,Code,Image,Schedule,Price,PromotionPrice,Quantity,DepartureDat,StartPlace,EndPlace,Transport,Detail,Note,CategoryId,ScheduleId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status,TopHot,ViewCount) values(@TourId,@Name,@MetaTitle,@Code,@Image,@Schedule,@Price,@PromotionPrice,@Quantity,@DepartureDat,@StartPlace,@EndPlace,@Transport,@Detail,@Note,@CategoryId,@ScheduleId,@CreatedDate,@CreatedBy,@ModifiedDate,@ModifiedBy,@Status,@TopHot,@ViewCount)";
+            string sql = "insert into Tours(TourId,Name,MetaTitle,Code,Image,Schedule,Price,PromotionPrice,Quantity,DepartureDat,StartPlace,EndPlace,Transport,Detail,Note,CategoryId,ScheduleId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Status,TopHot,ViewCount,StartDate,EndDate) values(@TourId,@Name,@MetaTitle,@Code,@Image,@Schedule,@Price,@PromotionPrice,@Quantity,@DepartureDat,@StartPlace,@EndPlace,@Transport,@Detail,@Note,@CategoryId,@ScheduleId,@CreatedDate,@CreatedBy,@ModifiedDate,@ModifiedBy,@Status,@TopHot,@ViewCount,@StartDate,@EndDate)";
             return connection.Execute(sql, new
             {
                 TourId=Helper.Helper.RandomString(64),
@@ -41,7 +41,10 @@ namespace WebTravelApi.Models.Repository
                 ModifiedBy=obj.ModifiedBy,
                 Status = obj.Status,
                 TopHot = obj.TopHot,
-                ViewCount = obj.ViewCount
+                ViewCount = obj.ViewCount,
+                StartDate = obj.StartDate,
+                EndDate = obj.EndDate
+                
             });
 
         }

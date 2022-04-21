@@ -1,0 +1,19 @@
+﻿@model List<NewsTag>
+<table>
+    <thead>
+        <tr>
+            <th>News Id</th>
+            <th>Tag Id</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NewsId</td>
+                <td>@item.TagId</td>
+            </tr>
+        }
+    </tbody>
+</table>

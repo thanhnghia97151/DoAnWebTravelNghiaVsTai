@@ -14,6 +14,78 @@ namespace WebClient.Models.Repository
         MemberInRoleRepository memberInRole;
         TypeOfTourRepository typeOfTour;
         TourCategoryRepository tourCategory;
+        TourRepository tour;
+        TourScheduleRepository tourSchedule;
+        TagRepository tag;
+        NewsCategoryRepository newsCategory;
+        NewsRepository news;
+        NewsTagRepository newsTag;
+        public NewsTagRepository NewsTag
+        {
+            get
+            {
+                if (newsTag is null)
+                {
+                    newsTag = new NewsTagRepository(configuration);
+                }
+                return newsTag;
+            }
+        }
+        public NewsRepository News
+        {
+            get
+            {
+                if (news is null)
+                {
+                    news = new NewsRepository(configuration);
+                }
+                return news;
+            }
+        }
+        public NewsCategoryRepository NewsCategory
+        {
+            get
+            {
+                if (newsCategory is null)
+                {
+                    newsCategory = new NewsCategoryRepository(configuration);
+                }
+                return newsCategory;
+            }
+        }
+        public TagRepository Tag
+        {
+            get
+            {
+                if (tag is null)
+                {
+                    tag = new TagRepository(configuration);
+                }
+                return tag;
+            }
+        }
+        public TourScheduleRepository TourSchedule
+        {
+            get
+            {
+                if (tourSchedule is null)
+                {
+                    tourSchedule = new TourScheduleRepository(configuration);
+                }
+                return tourSchedule;
+            }
+        }
+        public TourRepository Tour
+        {
+            get
+            {
+                if (tour is null)
+                {
+                    tour = new TourRepository(configuration);
+                }
+                return tour;
+            }
+        }
         public TourCategoryRepository TourCategory
         {
             get

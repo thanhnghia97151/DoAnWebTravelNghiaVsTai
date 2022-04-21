@@ -1,0 +1,65 @@
+﻿@model List<Tour>
+<a class="btn btn-success" asp-action="Create">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Tour ID</th>
+            <th>Name</th>
+            <th>Meta Title</th>
+            <th>Code</th>
+            <th>Image</th>
+            <th>Schedule</th>
+            <th>Price</th>
+            <th>Promotion Price</th>
+            <th>Quantity</th>
+            <th>Departure Date</th>
+            <th>Start Place</th>
+            <th>End Place</th>
+            <th>Transport</th>
+            <th>Detail</th>
+            <th>Note</th>
+            <th>Category Id</th>
+            <th>ScheduleId</th>
+            <th>Created Date </th>
+            <th>Created By</th>
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th>Status</th>
+            <th>TopHot</th>
+            <th>ViewCount</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+           <tr>
+                <td>@item.TourId</td>
+                <td>@item.Name</td>
+                <td>@item.MetaTitle</td>
+                <td>@item.Code</td>
+                <td>@item.Image</td>
+                <td>@item.Schedule</td>
+                <td>@item.Price</td>
+                <td>@item.PromotionPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.DepartureDat</td>
+                <td>@item.StartPlace</td>
+                <td>@item.EndPlace</td>
+                <td>@item.Transport</td>
+                <td>@item.Detail</td>
+                <td>@item.Note</td>
+                <td>@item.CategoryId</td>
+                <td>@item.ScheduleId</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.ModifiedDate</td>
+                <td>@item.ModifiedBy</td>
+                <td>@item.Status</td>
+                <td>@item.TopHot</td>
+                <td>@item.ViewCount</td>
+            </tr>
+           
+       }
+    </tbody>
+</table>

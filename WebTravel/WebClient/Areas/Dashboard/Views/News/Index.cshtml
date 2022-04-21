@@ -1,0 +1,47 @@
+﻿@model List<News>
+<a class="btn btn-success" asp-action="Create">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Meta Title</th>
+            <th>Description</th>
+            <th>Code</th>
+            <th>Image</th>
+            <th>Detail</th>
+            <th>Note</th>
+            <th>NewCategory Id</th>
+            <th>Created Date</th>
+            <th>Created By</th>
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th>Status</th>
+            <th>Top hot</th>
+            <th>View Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NewsId</td>
+                <td>@item.Name</td>
+                <td>@item.MetaTitle</td>
+                <td>@item.Description</td>
+                <td>@item.Code</td>
+                <td>@item.Image</td>
+                <td>@item.Detail</td>
+                <td>@item.Note</td>
+                <td>@item.NewCategoryId</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.ModifiedDate</td>
+                <td>@item.ModifiedBy</td>
+                <td>@item.Status</td>
+                <td>@item.TopHot</td>
+                <td>@item.ViewCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
