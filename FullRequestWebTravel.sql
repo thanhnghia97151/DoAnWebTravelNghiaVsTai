@@ -255,8 +255,31 @@ create table NewTags
 	foreign key (TagId) references Tags(TagId)
 );
 go
+--drop table ImageTour
+create table ImageTour
+(
+	ImageId varchar(64) not null default NEWID() primary key,
+	ImageUrl varchar(64),
+	ImageOriginal nvarchar(250) not null,
+	ImageContentType nvarchar(250),
+	Size bigint,
+	TourId varchar(64),
+	Status bit default 0,
+	foreign key (TourId) references Tours(TourId)
+);
+go
 
+select * from Tours
+create proc GetToursPaging(@Page int, @Size int)
+as
+	begin
 
+		select * from Tours
+			order by TourId
+			OFFSET (@Page-1)*@Size rows
+			FETCH NEXT @Size ROWS ONLY;
+	end
+exec GetToursPaging @Page =1 , @Size = 4
 --select * from TypeOfTours
 --select * from TourCategories
 --select * from TourSchedules

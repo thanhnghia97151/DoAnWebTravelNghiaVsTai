@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Include="wwwroot\js\1.js" />
     <None Include="wwwroot\js\jquery-3.6.0.js" />
+    <None Include="wwwroot\js\scripts.js" />
   </ItemGroup>
 
   <ItemGroup>

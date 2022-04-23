@@ -16,7 +16,13 @@ namespace WebClient.Controllers
         {
             //Get Tours
             ViewBag.tours = await provider.Tour.GetTours();
+            var t = ViewBag.tours;
             return View();
+        }
+        public async Task<IActionResult> DetailTour(string id)
+        {
+
+            return View(await provider.Tour.GetTourById(id));
         }
     }
 }

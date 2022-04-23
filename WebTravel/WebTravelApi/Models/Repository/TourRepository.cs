@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -51,6 +52,12 @@ namespace WebTravelApi.Models.Repository
         public Tour GetTour(string id)
         {
             return connection.QueryFirstOrDefault<Tour>("select * from Tours where TourId =@Id",new {Id = id});
+        }
+        public IEnumerable<Tour> GetToursPaging(int page, int size, out int total)
+        {
+            List<Tour> list =(List<Tour>) connection.Query<Tour>("select * from Tour");
+            total = list.Count;
+            return connection.Query<Tour>("GetToursPaging",new { Page = page, Size = size},commandType: CommandType.StoredProcedure);
         }
     }
 }

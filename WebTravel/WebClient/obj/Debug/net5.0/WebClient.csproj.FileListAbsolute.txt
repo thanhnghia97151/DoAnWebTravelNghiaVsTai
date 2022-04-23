@@ -139,3 +139,5 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dash
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\Index.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\NewsTag\Index.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Home\DetailTour.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\TourSchedule\Create.cshtml.g.cs

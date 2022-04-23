@@ -29,6 +29,18 @@ namespace WebTravelApi.Models.Repository
         NewsCategoryRepository newsCategory;
         NewsRepository news;
         NewsTagRepository newsTag;
+        ImageTourRepository imageTour;
+        public ImageTourRepository ImageTour
+        {
+            get
+            {
+                if (imageTour is null)
+                {
+                    imageTour = new ImageTourRepository(connection);
+                }
+                return imageTour;
+            }
+        }
         public NewsTagRepository NewsTag
         {
             get

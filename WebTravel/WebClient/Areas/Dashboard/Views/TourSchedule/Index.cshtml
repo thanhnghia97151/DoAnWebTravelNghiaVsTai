@@ -1,4 +1,5 @@
 ﻿@model List<TourSchedule>
+<a asp-action="Create" class="btn btn-success">Create</a>
 <table class="table table-bordered">
     <thead class="table-dark"> 
         <tr>
@@ -11,7 +12,7 @@
        {
            <tr>
                <td>@item.TourScheduleId</td>
-               <td>@item.Content</td>
+               <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Content))</td>
            </tr>
        }
     </tbody>
