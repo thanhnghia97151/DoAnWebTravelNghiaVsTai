@@ -1,3 +1,4 @@
+
 create database DBWebTravel
 go
 
@@ -64,13 +65,15 @@ go
 create proc GetRolesChecked(@Id varchar(64))
 as
 	select Roles.*,iif(MemberID is null,0,1) as Checked from Roles left join MemberInRole on Roles.RoleID = MemberInRole.RoleID and MemberId =@Id and IsDeleted=0;
+go
 
-exec GetRolesChecked @Id = '1'
+--exec GetRolesChecked @Id = '1'
 --select * from 
 ---
 create proc GetRoleNamesByMemberId(@Id varchar(64))
 as
-	select RoleName from Roles join MemberInRole on Roles.RoleID = MemberInRole.RoleID and MemberID = @Id
+	select RoleName from Roles join MemberInRole on Roles.RoleID = MemberInRole.RoleID and MemberID = @Id;
+go
 
 --exec GetRoleNamesByMemberId @Id = '1'
 
@@ -269,7 +272,7 @@ create table ImageTour
 );
 go
 
-select * from Tours
+--select * from Tours
 create proc GetToursPaging(@Page int, @Size int)
 as
 	begin
@@ -278,8 +281,18 @@ as
 			order by TourId
 			OFFSET (@Page-1)*@Size rows
 			FETCH NEXT @Size ROWS ONLY;
-	end
-exec GetToursPaging @Page =1 , @Size = 4
+	end;
+go
+
+--drop proc GetRolesByMemberId
+create proc GetRolesByMemberId(@Id varchar(64))
+as
+	select Roles.RoleName from Roles join MemberInRole on Roles.RoleID = MemberInRole.RoleID and MemberInRole.MemberID = @Id;
+
+
+--select * from Roles
+
+--exec GetToursPaging @Page =1 , @Size = 4
 --select * from TypeOfTours
 --select * from TourCategories
 --select * from TourSchedules

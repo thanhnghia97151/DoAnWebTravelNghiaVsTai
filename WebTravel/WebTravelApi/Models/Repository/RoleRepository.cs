@@ -27,5 +27,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("insert into Roles(RoleName,RoleDesciption)  values (@Name,@Desciption)", new { Name = obj.RoleName, Desciption = obj.RoleDesciption });
         }
+        public IEnumerable<string> GetRoleNamesByMember(string id)
+        {
+            return connection.Query<string>("GetRoleNamesByMemberId", new { Id = id }, commandType: CommandType.StoredProcedure);
+        }
     }
 }

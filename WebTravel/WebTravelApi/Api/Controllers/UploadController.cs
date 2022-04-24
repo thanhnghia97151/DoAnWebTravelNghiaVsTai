@@ -11,7 +11,7 @@ namespace WebTravelApi.Api.Controllers
     [ApiController]
     public class UploadController : BaseController
     {
-        string Root => Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+        string Root => Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images");
         public UploadController(IConfiguration configuration) : base(configuration)
         {
         }

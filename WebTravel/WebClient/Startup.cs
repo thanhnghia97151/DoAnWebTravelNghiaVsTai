@@ -34,14 +34,14 @@ namespace WebClient
                         p.LoginPath = "/auth/login";
                         p.AccessDeniedPath = "/auth/denied";
                         p.ExpireTimeSpan = TimeSpan.FromDays(30);
+                    })
+                    .AddGoogle(options =>
+                    {
+                        IConfigurationSection googleAuthNSection =
+                            Configuration.GetSection("Authentication:Google");
+                        options.ClientId = googleAuthNSection["ClientId"];
+                        options.ClientSecret = googleAuthNSection["ClientSecret"];
                     });
-                    //.AddGoogle(options =>
-                    //{
-                    //    IConfigurationSection googleAuthNSection =
-                    //        Configuration.GetSection("Authentication:Google");
-                    //    options.ClientId = googleAuthNSection["ClientId"];
-                    //    options.ClientSecret = googleAuthNSection["ClientSecret"];
-                    //});
 
 
 

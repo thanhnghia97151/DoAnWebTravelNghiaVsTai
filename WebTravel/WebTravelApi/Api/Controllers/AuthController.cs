@@ -36,5 +36,26 @@ namespace WebTravelApi.Api.Controllers
             }
             return null;
         }
+
+        [HttpPost("loginoauth")]
+        public object LoginOAuth(Member obj)
+        {
+            Member member = provider.Member.GetMemberById(obj.MemberID);
+            if (member is null)
+            {
+                provider.Member.AddMemberByGoogle(obj);
+
+            }
+            obj.Roles = provider.Role.GetRoleNamesByMember(obj.MemberID);
+            //string token = Helper.CreateToken(obj);
+            return new
+            {
+                //Token = token,
+                MemberID = obj.MemberID,
+                Email = obj.Email,
+                Roles = obj.Roles
+            };
+
+        }
     }
 }

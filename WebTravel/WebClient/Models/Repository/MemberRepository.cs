@@ -26,5 +26,10 @@ namespace WebClient.Models.Repository
         {
             return await PostGetData<LoginModel, ReponseLogin>("/api/auth", obj);
         }
+        public async Task<ReponseLogin> LoginOAuth(Member obj)
+        {
+            return await PostGetData<Member, ReponseLogin>("/api/auth/loginoauth", obj);
+        }
+
     }
 }
