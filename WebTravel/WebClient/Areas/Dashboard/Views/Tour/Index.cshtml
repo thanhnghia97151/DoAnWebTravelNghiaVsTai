@@ -27,6 +27,7 @@
             <th>Status</th>
             <th>TopHot</th>
             <th>ViewCount</th>
+            <th></th>
             
         </tr>
     </thead>
@@ -38,7 +39,7 @@
                 <td>@item.Name</td>
                 <td>@item.MetaTitle</td>
                 <td>@item.Code</td>
-                <td>@item.Image</td>
+                <td><img src="https://localhost:44384/images/@item.Image" width="70" /></td>
                 <td>@item.Schedule</td>
                 <td>@item.Price</td>
                 <td>@item.PromotionPrice</td>
@@ -58,6 +59,10 @@
                 <td>@item.Status</td>
                 <td>@item.TopHot</td>
                 <td>@item.ViewCount</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TourId"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.TourId"><i class="fa fa-trash"></i></a>
+                </td>
             </tr>
            
        }

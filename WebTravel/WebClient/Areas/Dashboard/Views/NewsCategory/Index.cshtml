@@ -14,6 +14,7 @@
             <th>Modified By</th>
             <th>Status</th>
             <th>Show On Home</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,6 +32,10 @@
                 <td>@item.ModifiedBy</td>
                 <td>@item.Status</td>
                 <td>@item.ShowOnHome</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NewsCategoryId"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.NewsCategoryId"><i class="fa fa-trash"></i></a>
+                </td>
             </tr>
         }
     </tbody>

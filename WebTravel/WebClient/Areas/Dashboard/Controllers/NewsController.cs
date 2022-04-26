@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using WebClient.Models;
 using WebClient.Models.Repository;
+using WebClient.Models.ViewModels;
 
 namespace WebClient.Areas.Dashboard.Controllers
 {
@@ -23,10 +25,15 @@ namespace WebClient.Areas.Dashboard.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(News news)
+        public async Task<IActionResult> Create(News news, IFormFile f)
         {
             if (ModelState.IsValid)
             {
+                if (f != null)
+                {
+                    Image image = await provider.Tour.AddImage(f);
+                    news.Image = image.Name;
+                }
                 await provider.News.Add(news);
                 return Redirect("Index");
             }

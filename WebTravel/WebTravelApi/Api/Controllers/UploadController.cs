@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using WebTravelApi.Models;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Api.Controllers
 {
@@ -11,7 +12,7 @@ namespace WebTravelApi.Api.Controllers
     [ApiController]
     public class UploadController : BaseController
     {
-        string Root => Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images");
+        string Root => Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
         public UploadController(IConfiguration configuration) : base(configuration)
         {
         }
@@ -21,7 +22,7 @@ namespace WebTravelApi.Api.Controllers
             return provider.ImageTour.GetImageTours();
         }
         [HttpPost]
-        public ImageTour AddImageTour(IFormFile f,string tId)
+        public Image AddImage(IFormFile f)
         {
             if(f != null)
             {
@@ -31,15 +32,11 @@ namespace WebTravelApi.Api.Controllers
                 {
                     f.CopyTo(stream);
                 }
-                ImageTour image = new ImageTour
+                
+                return new Image
                 {
-                    ImageContentType = f.ContentType,
-                    ImageOriginal = f.FileName,
-                    Size = f.Length,
-                    ImageUrl = imageUrl,
-                    TourId = tId
+                    Name = imageUrl
                 };
-                return image;
             }
             return null;
         }

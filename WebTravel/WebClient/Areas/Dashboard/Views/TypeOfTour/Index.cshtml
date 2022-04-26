@@ -17,13 +17,8 @@
                 <td>@item.Id</td>
                 <td>@item.Type</td>
                 <td>
-                    <a href="/dashboard/typeoftour/eidt/@item.Id"><i class="fa fa-edit"></i></a>
-                </td>
-                <td>
-                    <a href="/dashboard/typeoftour/detail/@item.Id" ><i class="fa fa-folder"></i></a>
-                </td>
-                <td>
-                    <a href="/dashboard/typeoftour/delete/@item.Id" ><i class="fa fa-ban"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.Id"><i class="fa fa-trash"></i></a>
                 </td>
                     
                     

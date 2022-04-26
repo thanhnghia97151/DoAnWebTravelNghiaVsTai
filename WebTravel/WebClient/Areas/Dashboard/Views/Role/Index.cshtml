@@ -6,6 +6,7 @@
             <th>Id</th>
             <th>Role Name</th>
             <th>Role Description</th>
+            <th></th>
         </tr>
         
     </thead>
@@ -16,6 +17,10 @@
                 <td>@item.RoleID</td>
                 <td>@item.RoleName</td>
                 <td>@item.RoleDesciption</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RoleID"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.RoleID"><i class="fa fa-trash"></i></a>
+                </td>
             </tr>
         }
     </tbody>

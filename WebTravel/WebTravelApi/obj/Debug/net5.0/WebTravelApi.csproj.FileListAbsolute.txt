@@ -79,3 +79,8 @@ D:\DoAn_Tai_vs_Nghia\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetC
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.MvcApplicationPartsAssemblyInfo.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.MvcApplicationPartsAssemblyInfo.cs

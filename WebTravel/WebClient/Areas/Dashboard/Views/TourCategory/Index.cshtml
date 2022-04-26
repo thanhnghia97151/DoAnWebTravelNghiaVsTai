@@ -16,6 +16,7 @@
             <th>Type Of Tour</th>
             <th> ParentId</th>
             <th>Edit|Detail|Delete</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -35,11 +36,9 @@
                <td>@item.TypeOfTourId</td>
                <td>@item.ParentId</td>
                <td>
-                   <a href="/dashboard/tourcategory/edite/@item.TourCategoriesId"><i class="fa fa-edit"></i></a>|
-                   <a href="/dashboard/tourcategory/detail/@item.TourCategoriesId"><i class="fa fa-folder"></i></a>|
-                   <a href="/dashboard/tourcategory/delete/@item.TourCategoriesId"><i class="fa fa-ban"></i></a>
-
-               </td>
+                    <a asp-action="Edit" asp-route-id="@item.TourCategoriesId"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.TourCategoriesId"><i class="fa fa-trash"></i></a>
+                </td>
            </tr>
        }
     </tbody>

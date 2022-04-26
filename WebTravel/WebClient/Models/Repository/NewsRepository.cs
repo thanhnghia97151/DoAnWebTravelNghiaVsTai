@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
+using WebClient.Models.ViewModels;
 
 namespace WebClient.Models.Repository
 {
@@ -24,6 +27,23 @@ namespace WebClient.Models.Repository
         public async Task<int> Delete(News obj)
         {
             return await Post<News>($"/api/news/delete/{obj.NewsId}",obj);
+        }
+        public async Task<Image> AddImage(IFormFile f)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = uri;
+                var content = new MultipartFormDataContent();
+                content.Add(new StreamContent(f.OpenReadStream()), "f", f.FileName);
+
+                HttpResponseMessage message = await client.PostAsync("/api/upload/", content);
+                if (message.IsSuccessStatusCode)
+                {
+                    return await message.Content.ReadAsAsync<Image>();
+                }
+            }
+            return null;
+
         }
     }
 }
