@@ -22,7 +22,7 @@ namespace WebTravelApi.Api.Controllers
             return provider.ImageTour.GetImageTours();
         }
         [HttpPost]
-        public ImageTour Add(IFormFile f,string tId)
+        public ImageTour AddImageTour(IFormFile f,string tId)
         {
             if(f != null)
             {

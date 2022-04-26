@@ -21,14 +21,19 @@ namespace WebTravelApi.Api.Controllers
         [HttpPost]
         public int Add(News obj)
         {
-           
-                return provider.News.Add(obj);  
-            
+
+            return provider.News.Add(obj);
+
         }
         [HttpGet("{id}")]
         public News GetNews(string id)
         {
             return provider.News.GetNews(id);
+        }
+        [HttpPost("delete/{id}")]
+        public int Delete(string id)
+        {
+            return provider.News.Delete(id);
         }
 
     }

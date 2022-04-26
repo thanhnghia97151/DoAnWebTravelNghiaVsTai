@@ -26,6 +26,19 @@ namespace WebClient.Models.Repository
                 return 0;
             }
         }
+        //protected async Task<int> Delete<T>(string url)
+        //{
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = uri;
+        //        HttpResponseMessage message = await client.DeleteAsync(url);
+        //        if (message.IsSuccessStatusCode)
+        //        {
+        //            return await message.Content.ReadAsAsync<int>();
+        //        }
+        //        return 0;
+        //    }
+        //}
         protected async Task<Out> PostGetData<In, Out>(string url, In obj)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -75,5 +88,6 @@ namespace WebClient.Models.Repository
             }
 
         }
+        
     }
 }

@@ -33,5 +33,19 @@ namespace WebClient.Areas.Dashboard.Controllers
             return View(news);
         }
         
+        public async Task<IActionResult> ConfirmDelete(string id)
+        {
+            return View(await provider.News.GetNewById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(News obj)
+        {
+            if ((await provider.News.Delete(obj)) == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            return Redirect("/");
+        }
+        
     }
 }

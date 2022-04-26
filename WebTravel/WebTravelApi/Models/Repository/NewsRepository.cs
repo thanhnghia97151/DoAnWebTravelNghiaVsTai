@@ -9,6 +9,10 @@ namespace WebTravelApi.Models.Repository
         public NewsRepository(IDbConnection connection) : base(connection)
         {
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from News where NewsId = @Id", new { Id = id });
+        }
         public IEnumerable<News> GetNewses()
         {
             return connection.Query<News>("select * from News");

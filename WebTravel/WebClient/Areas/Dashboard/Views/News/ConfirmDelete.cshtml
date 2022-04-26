@@ -1,0 +1,12 @@
+﻿@model News
+
+<div><h2>Do you want to delete News with Name: </h2></div>
+<form method="post" action="/dashboard/news/delete">
+    <input type="hidden" asp-for="NewsId"/>
+    <input type="text" asp-for="Name" readonly/>
+    
+    <div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="/dashboard/news">Back to News</a>
+    </div>
+</form>

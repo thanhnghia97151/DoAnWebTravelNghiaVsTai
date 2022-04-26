@@ -19,6 +19,7 @@
             <th>Status</th>
             <th>Top hot</th>
             <th>View Count</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +42,10 @@
                 <td>@item.Status</td>
                 <td>@item.TopHot</td>
                 <td>@item.ViewCount</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NewsId"><i class="fa fa-edit"></i></a>
+                    <a href="/dashboard/news/confirmdelete/@item.NewsId"><i class="fa fa-trash"></i></a>
+                </td>
             </tr>
         }
     </tbody>
