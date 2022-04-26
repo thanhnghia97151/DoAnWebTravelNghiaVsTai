@@ -38,5 +38,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QueryFirstOrDefault<About>("select * from Abouts where Id =@Id", new { Id = id });
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Abouts where Id = @Id", new { Id = id });
+        }
     }
 }

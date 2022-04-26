@@ -28,6 +28,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.TypeOfTour.GetTypeOfTour(id);
         }
-        
+        [HttpPost("delete/{id}")]
+        public int Delete(string id)
+        {
+            return provider.TypeOfTour.Delete(id);
+        }
+
     }
 }

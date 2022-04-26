@@ -44,5 +44,6 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QueryFirstOrDefault<News>("select * from News where NewsId = @Id", new {Id = id});
         }
+
     }
 }

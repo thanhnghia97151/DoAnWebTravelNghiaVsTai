@@ -59,5 +59,9 @@ namespace WebTravelApi.Models.Repository
             total = list.Count;
             return connection.Query<Tour>("GetToursPaging",new { Page = page, Size = size},commandType: CommandType.StoredProcedure);
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Tours where TourId = @Id", new { Id = id });
+        }
     }
 }

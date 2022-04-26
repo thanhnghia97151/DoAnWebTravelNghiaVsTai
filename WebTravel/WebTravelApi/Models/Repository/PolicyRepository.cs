@@ -27,5 +27,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QueryFirstOrDefault<Policy>("select * from Policies where Id = @Id", new {Id = id});
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Policies where Id = @Id", new { Id = id });
+        }
     }
 }

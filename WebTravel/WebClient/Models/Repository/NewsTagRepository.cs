@@ -17,9 +17,13 @@ namespace WebClient.Models.Repository
         {
             return await Post<NewsTag>("/api/newstag", news);
         }
-        public async Task<NewsTag> GetNewsTagById(string id)
+        public async Task<List<NewsTag>> GetNewsTagByNewsId(string id)
         {
-            return await Get<NewsTag>($"/api/newstag/{id}");
+            return await Get<List<NewsTag>>($"/api/newstag/newstag-by-news/{id}");
+        }
+        public async Task<int> DeleteByNewsId(NewsTag obj)
+        {
+            return await Post<NewsTag>($"/api/newstag/delete-by-news-id/{obj.NewsId}", obj);
         }
     }
 }

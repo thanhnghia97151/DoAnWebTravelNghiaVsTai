@@ -31,5 +31,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Query<string>("GetRoleNamesByMemberId", new { Id = id }, commandType: CommandType.StoredProcedure);
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Roles where RoleID = @Id", new { Id = id });
+        }
     }
 }

@@ -26,5 +26,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QuerySingleOrDefault<Tag>("select * from Tags where TagId =@Id", new { Id = id });
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Tags where TagId = @Id", new { Id = id });
+        }
     }
 }

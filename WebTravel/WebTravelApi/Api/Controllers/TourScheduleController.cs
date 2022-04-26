@@ -28,5 +28,10 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.TourSchedule.Add(obj);  
         }
+        [HttpPost("delete/{id}")]
+        public int Delete(string id)
+        {
+            return provider.TourSchedule.Delete(id);
+        }
     }
 }

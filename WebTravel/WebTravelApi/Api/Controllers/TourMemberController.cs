@@ -23,5 +23,15 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.TourMember.Add(obj);
         }
+        [HttpPost("delete-by-member-id/{id}")]
+        public int DeleteByMemberId(string id)
+        {
+            return provider.TourMember.DeleteByMemberId(id);
+        }
+        [HttpPost("delete-by-tour-id/{id}")]
+        public int Delete(string id)
+        {
+            return provider.TourMember.DeleteByTourId(id);
+        }
     }
 }

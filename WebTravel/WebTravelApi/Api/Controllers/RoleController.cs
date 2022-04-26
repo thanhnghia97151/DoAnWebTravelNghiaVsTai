@@ -35,6 +35,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Role.Add(obj);
         }
+        [HttpPost("delete/{id}")]
+        public int Delete(string id)
+        {
+            return provider.Role.Delete(id);
+        }
 
     }
 }

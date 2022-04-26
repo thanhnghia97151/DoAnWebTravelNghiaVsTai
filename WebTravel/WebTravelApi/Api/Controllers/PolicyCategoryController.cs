@@ -28,5 +28,10 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.PolicyCategory.GetPolicyCategory(id);
         }
+        [HttpPost("delete/{id}")]
+        public int Delete(string id)
+        {
+            return provider.PolicyCategory.Delete(id);
+        }
     }
 }

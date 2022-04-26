@@ -27,5 +27,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QuerySingleOrDefault<TourSchedule>("select * from TourSchedules where TourScheduleId = @Id", new { Id = id });
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from TourSchedules where TourScheduleId = @Id", new { Id = id });
+        }
     }
 }

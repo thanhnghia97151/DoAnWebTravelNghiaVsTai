@@ -21,5 +21,9 @@ namespace WebClient.Models.Repository
         {
             return await Get<Tour>($"/api/tour/{id}");
         }
+        public async Task<int> Delete(News obj)
+        {
+            return await Post<News>($"/api/tour/delete/{obj.NewsId}", obj);
+        }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace WebTravelApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebTravel", Version = "v1" });
+            });
             byte[] key = Encoding.ASCII.GetBytes("qwertyuiopasdfghjklzxcvbnm");
             services.AddAuthentication(p => {
                 p.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,6 +62,8 @@ namespace WebTravelApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebTravel v1"));
             }
 
             app.UseRouting();
@@ -76,6 +83,7 @@ namespace WebTravelApi
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
                 endpoints.MapControllers();
+                
             });
             
            

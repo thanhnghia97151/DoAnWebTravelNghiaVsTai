@@ -27,5 +27,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QuerySingleOrDefault<TypeOfTour>("select * from TypeOfTours where Id=@TypeOfTourId", new { TypeOfTourId = id });
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from TypeOfTours where Id = @Id", new { Id = id });
+        }
     }
 }

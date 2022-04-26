@@ -25,5 +25,14 @@ namespace WebTravelApi.Models.Repository
                 CreatedDate = obj.CreatedDate,
             });
         }
+        public int DeleteByMemberId(string id)
+        {
+            return connection.Execute("delete from TourMembers where MemberId = @Id", new { Id = id });
+        }
+        public int DeleteByTourId(string id)
+        {
+            return connection.Execute("delete from TourMembers where TourId = @Id", new { Id = id });
+        }
+
     }
 }

@@ -23,5 +23,20 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.NewsTag.Add(obj);
         }
+        [HttpPost("delete-by-news-id/{id}")]
+        public int DeleteByNewsId(string id)
+        {
+            return provider.NewsTag.DeleteByNewsId(id);
+        }
+        [HttpPost("delete-by-tag-id/{id}")]
+        public int Delete(string id)
+        {
+            return provider.NewsTag.DeleteByTagId(id);
+        }
+        [HttpGet("newstag-by-news/{id}")]
+        public IEnumerable<NewsTag> GetNewsTagByNewsId(string id)
+        {
+            return provider.NewsTag.GetNewsTagByNewsId(id);
+        }
     }
 }

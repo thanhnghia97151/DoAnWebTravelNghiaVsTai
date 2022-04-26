@@ -40,11 +40,17 @@ namespace WebClient.Areas.Dashboard.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(News obj)
         {
+            var listNewsTag = (await provider.NewsTag.GetNewsTagByNewsId(obj.NewsId));
+            if (listNewsTag  != null)
+            {
+
+                    await provider.NewsTag.DeleteByNewsId(listNewsTag[0]);
+            }
             if ((await provider.News.Delete(obj)) == 1)
             {
                 return RedirectToAction("Index");
             }
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
         
     }

@@ -1015,29 +1015,36 @@
    					<hr>
    					</div>
    				
-
-   				<div class="row">
+                        @{
+                            List<News> listNews = ViewBag.news;
+                        }
+                        @if(listNews.Count > 0)
+                        {
+                  <div class="row">
    					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 hinhanhtindulich">
    						<img src="~/images/tindulich.jpg" alt="tindulich">
    					</div> <!-- end tin du lich column 1 -->
 
    					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
    						<h4 class="tindulich">
-   							<a href="">
-   						Vietravel và UBND tỉnh Tuyên Quang ký kết hợp tác chiến lược thúc đẩy phát triển du lịch
+   							<a href="/news">
+   						@*Vietravel và UBND tỉnh Tuyên Quang ký kết hợp tác chiến lược thúc đẩy phát triển du lịch*@
+                           @listNews[0].Name
    							</a>
    						</h4>
    						<p class="timedulich">
    							<span class="fa fa-history"></span>
-   							<small>12/1/2012</small>
+   							<small>@listNews[0].CreatedDate</small>
    						</p>
    						<p class="noidungdulich">
-   							Ngày 15/01/2022, Công ty CP Du lịch và Tiếp thị GTVT Việt Nam - Vietravel và UBND tỉnh Tuyên Quang đã ký kết hợp tác chiến lược, hướng tới tăng cường đẩy mạnh hợp tác phát triển du lịch, xúc tiến đầu tư phát triển kinh tế xã hội trên địa bàn tỉnh nhằm phát triển quan hệ hợp tác truyền thống giữa hai bên lên tầm cao mới, phù hợp ...
+   							@listNews[0].Description ...
    						</p>
 
-   						<a href="" class="btn btn-info">Chi tiết</a>
+   						<a href="/news/detail/@listNews[0].NewsId" class="btn btn-info">Chi tiết</a>
    					</div> <!-- end tin du lich column 2 -->
    				</div>
+                        }
+
    					</div>
    				</div> <!-- end row 2 in left news Du lich -->
    				

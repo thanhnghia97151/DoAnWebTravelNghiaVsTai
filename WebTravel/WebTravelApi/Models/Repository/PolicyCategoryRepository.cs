@@ -26,5 +26,10 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QueryFirstOrDefault<PolicyCategory>("select * from PolicyCategories where Id=@Id",new {Id =id});
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from PolicyCategories where Id = @Id", new { Id = id });
+        }
+        
     }
 }

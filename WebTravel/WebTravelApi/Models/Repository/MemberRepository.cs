@@ -57,5 +57,10 @@ namespace WebTravelApi.Models.Repository
                 Pwd = Helper.Helper.Hash(login.Pwd)
             });
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from Members where MemeberID = @Id", new { Id = id });
+        }
+        
     }
 }

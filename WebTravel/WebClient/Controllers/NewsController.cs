@@ -17,9 +17,9 @@ namespace WebClient.Controllers
             return View(await provider.News.GetNews());
         }
 
-        public async Task<IActionResult> Detail(/*string id*/)
+        public async Task<IActionResult> Detail(string id)
         {
-            return View(/*await provider.News.GetNewById(id)*/);
+            return View(await provider.News.GetNewById(id));
         }
     }
 }

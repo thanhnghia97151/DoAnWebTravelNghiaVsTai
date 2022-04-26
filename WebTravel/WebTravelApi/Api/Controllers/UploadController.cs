@@ -15,7 +15,6 @@ namespace WebTravelApi.Api.Controllers
         public UploadController(IConfiguration configuration) : base(configuration)
         {
         }
-        
         [HttpGet]
         public IEnumerable<ImageTour> GetImageTour()
         {

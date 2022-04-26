@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {}
+    "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj": {}
   },
   "projects": {
-    "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {
+    "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectUniqueName": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj",
         "projectName": "WebClient",
-        "projectPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectPath": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj",
         "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\obj\\",
+        "outputPath": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\ThanhNghiaPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

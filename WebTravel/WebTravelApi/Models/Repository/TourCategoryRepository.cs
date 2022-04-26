@@ -33,5 +33,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.QuerySingleOrDefault<TourCategory>("select * from TourCategories where TourCategoriesId=@Id", new { Id = id});
         }
+        public int Delete(string id)
+        {
+            return connection.Execute("delete from TourCategories where TourCategoriesId = @Id", new { Id = id });
+        }
     }
 }
