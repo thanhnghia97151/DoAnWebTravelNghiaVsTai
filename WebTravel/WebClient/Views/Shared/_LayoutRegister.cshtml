@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/vendor/bootstrap.js"></script>
+	<script type="text/javascript" src="~/js/1.js"></script>
+	<link rel="stylesheet" href="~/vendor/bootstrap.css">
+   <link rel="stylesheet" href="~/css/register.css">
+ 	<link rel="stylesheet" href="~/vendor/font-awesome.css">
+ 	<link href="http://fonts.cdnfonts.com/css/helvetica-neue-9" rel="stylesheet">
+     <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />  
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="register">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-10 col-xs-push-1 col-sm-6 col-sm-push-3 col-md-4 col-lg-4 col-md-push-4 col-lg-push-4 vien">
+              <div class="titleregister">
+                ĐĂNG KÝ
+              </div>
+              @RenderBody()
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

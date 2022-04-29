@@ -1,0 +1,5 @@
+- Thanh toán
+- Gửi mail
+- Vote
+- Comment
+- Validation - regular express

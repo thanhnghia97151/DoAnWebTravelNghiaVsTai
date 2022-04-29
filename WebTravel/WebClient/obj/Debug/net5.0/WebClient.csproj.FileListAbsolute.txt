@@ -9,7 +9,6 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\ref\WebClient.dl
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\WebClient.pdb
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\WebClient.Views.dll
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\bin\Debug\net5.0\WebClient.Views.pdb
-D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.GeneratedMSBuildEditorConfig.editorconfig
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.AssemblyInfoInputs.cache
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.AssemblyInfo.cs
@@ -292,3 +291,12 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dash
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\ConfirmDelete.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\NewsTag\Create.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\NewsTag\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\PolicyCategory\Index.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\PolicyCategory\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Policy\Index.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Policy\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\About\Index.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\About\Create.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutRegister.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_PartialMenuBar.cshtml.g.cs

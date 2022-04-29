@@ -1,0 +1,80 @@
+﻿<div>
+      <nav class="navbar navbar-default menutop" role="navigation">
+      <div class="container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header sizemin" style="">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <div>
+              <a class="navbar-brand" href="#"><img class="logo" src="~/images/logo6.PNG" alt="logo"></a>
+            </div>
+         </div>
+   
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                  role="button" aria-haspopup="true" aria-expanded="false">
+                DU LỊCH
+                </a>
+                <ul class="dropdown-menu">
+                     @*<li><a href="#">Du Lịch Trong Nước</a></li>
+                     <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
+                     @{
+                                IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
+                                IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
+                            }
+
+                                             @foreach (TypeOfTour item in listTypeOfTour)
+                                {
+                                    <li><a href="#">@item.Type</a></li>
+                                }
+
+                           
+                </ul>
+              </li>
+               <li><a href="#">LIÊN HỆ</a></li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                  role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
+                  <ul class="dropdown-menu">
+
+                    @* <li><a href="#">Tin Khuyến Mãi</a></li>
+                     <li><a href="#">Tin Tư Vấn</a></li>
+                     <li><a href="#">Tour Du Lịch Hot Nhất</a></li>
+                     <li><a href="#">Tour Du Mới Nhất</a></li>
+                     <li><a href="#">Nhật Ký Du Lịch</a></li>
+                     <li><a href="#">Cẩm Nang Du Lịch</a></li>*@
+                     @foreach (var item in listNewsCate)
+                    {
+                        <li><a href="#">@item.Name</a></li>
+                    }
+                  </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
+                  <ul class="dropdown-menu">
+                     <li><a href="#">Giới Thiệu Doanh Nghiệp</a></li>
+                     <li><a href="#">Đăng Ký Tài Khoản</a></li>
+                     <li><a href="#">Đăng Nhập Tài Khoản</a></li>
+                  </ul>
+               </li>
+
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">NGÔN NGỮ</a>
+                  <ul class="dropdown-menu">
+                     <li><a href="#">Vietnamese</a></li>
+                     <li><a href="#">English</a></li>
+                  </ul>
+               </li>
+            </ul>
+            
+         </div><!-- /.navbar-collapse -->
+      </div>
+   </nav> <!-- end menu -->
+</div>

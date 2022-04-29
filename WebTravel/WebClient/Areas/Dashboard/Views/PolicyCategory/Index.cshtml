@@ -1,0 +1,24 @@
+﻿@model List<PolicyCategory>
+<a asp-action="Create" class="btn btn-success">Create</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+           <tr>
+               <td>@item.Id</td>
+               <td>@item.Name</td>
+               <td>
+                   <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                   <a href="/dashboard/policycategory/confirmdelete/@item.Id"><i class="fa fa-trash"></i></a>
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>

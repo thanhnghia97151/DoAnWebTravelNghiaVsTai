@@ -290,6 +290,8 @@ as
 	select Roles.RoleName from Roles join MemberInRole on Roles.RoleID = MemberInRole.RoleID and MemberInRole.MemberID = @Id;
 
 
+--
+
 --select * from Roles
 
 --exec GetToursPaging @Page =1 , @Size = 4

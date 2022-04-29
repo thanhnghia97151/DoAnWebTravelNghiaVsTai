@@ -1,5 +1,5 @@
 ﻿@model Member
-<form method="post" action="/auth/register">
+@*<form method="post" action="/auth/register">
      <div>
         <label>UserName</label>
         <input type="text" asp-for ="UserName"/>
@@ -23,4 +23,31 @@
      <div>
         <button>Register</button>
     </div>
-</form>
+</form>*@
+@{
+    Layout = "_LayoutRegister";
+}
+<div class="formregister">
+    <form class="formwidth" action="/auth/register" method="post" accept-charset="utf-8">
+        <div class="form-group khoangcach">
+            <input type="text" name="username" id="username" asp-for="UserName" class="form-control" placeholder="Nhập Username">
+        </div>
+        <div class="form-group khoangcach">
+            <input type="text" name="email" id="email" class="form-control" asp-for="Email" placeholder="Nhập Email">
+        </div>
+        <div class="form-group khoangcach">
+            <input type="text" name="phone" id="phone" class="form-control" asp-for="Phone" placeholder="Nhập Số điện thoại">
+        </div>
+        <div class="form-group khoangcach">
+            <input type="text" name="address" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
+        </div>
+        <div class="form-group khoangcach">
+            <input type="text" name="password" id="password" class="form-control" asp-for="Password" placeholder="Nhập Password">
+        </div>
+        @*<div class="form-group khoangcach">
+            <input type="text" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
+            </div>*@
+        <p class="text-center"> <button type="submit" class="noderesgiter">ĐĂNG KÝ</button></p>
+        <p class="text-center">Bạn đã có tài khoản?&nbsp;&nbsp;<a href="" title="" class="dangnhap">ĐĂNG NHẬP</a></p>
+    </form>
+</div>

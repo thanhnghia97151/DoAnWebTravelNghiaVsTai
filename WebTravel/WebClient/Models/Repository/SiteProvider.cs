@@ -20,6 +20,42 @@ namespace WebClient.Models.Repository
         NewsCategoryRepository newsCategory;
         NewsRepository news;
         NewsTagRepository newsTag;
+        AboutRepository about;
+        PolicyRepository policy;
+        PolicyCategoryRepository policyCategory;
+        public PolicyCategoryRepository PolicyCategory
+        {
+            get
+            {
+                if (policyCategory is null)
+                {
+                    policyCategory = new PolicyCategoryRepository(configuration);   
+                }
+                return policyCategory;
+            }
+        }
+        public PolicyRepository Policy
+        {
+            get
+            {
+                if (policy is null)
+                {
+                    policy = new PolicyRepository(configuration);
+                }
+                return policy;
+            }
+        }
+        public AboutRepository About
+        {
+            get
+            {
+                if (about is null)
+                {
+                    about = new AboutRepository(configuration);
+                }
+                return about;
+            }
+        }
         public NewsTagRepository NewsTag
         {
             get

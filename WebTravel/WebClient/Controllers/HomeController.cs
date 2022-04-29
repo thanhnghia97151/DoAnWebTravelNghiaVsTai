@@ -18,12 +18,22 @@ namespace WebClient.Controllers
             ViewBag.tours = await provider.Tour.GetTours();
             
             //Get News
-            ViewBag.news = await provider.News.GetNews();   
+            ViewBag.news = await provider.News.GetNews();
+
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
             return View();
         }
         public async Task<IActionResult> DetailTour(string id)
         {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
             return View(await provider.Tour.GetTourById(id));
         }
     }
