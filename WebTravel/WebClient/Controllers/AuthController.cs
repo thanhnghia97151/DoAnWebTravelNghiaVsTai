@@ -150,5 +150,32 @@ namespace WebClient.Controllers
             return Redirect("/auth/login");
 
         }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> ChangePassword(ChangePassword obj)
+        {
+            obj.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Member memer = await provider.Member.GetMemberById(obj.Id);
+            if (ModelState.IsValid)
+            {
+                if ( Helper.Hash(obj.OldPassword).ToString() == memer.Password)
+                {
+                    if (obj.ConfirmPassword.Equals(obj.NewPassword))
+                    {
+                        if (await provider.Member.ChangePassword(obj) == 1)
+                        {
+                            return Redirect("/auth/logout");
+                        }
+                        ModelState.AddModelError("", "Change password Failded!");
+
+                    }
+                }
+            }    
+            
+            return View(obj); 
+        }    
     }
 }

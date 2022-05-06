@@ -30,6 +30,9 @@ namespace WebClient.Models.Repository
         {
             return await PostGetData<Member, ReponseLogin>("/api/auth/loginoauth", obj);
         }
-
+        public async Task<int> ChangePassword(ChangePassword obj)
+        {
+            return await Post<ChangePassword>("/api/auth/change-password", obj);
+        }
     }
 }

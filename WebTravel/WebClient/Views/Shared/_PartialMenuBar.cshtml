@@ -59,9 +59,19 @@
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
                   <ul class="dropdown-menu">
-                     <li><a href="#">Giới Thiệu Doanh Nghiệp</a></li>
-                     <li><a href="#">Đăng Ký Tài Khoản</a></li>
-                     <li><a href="#">Đăng Nhập Tài Khoản</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="#">Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/auth/changepassword">Thay đổi mật khẩu</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="#"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
+                    <li><a href="/auth/register"><small>Register</small></a></li>
+                        <li><a href="/auth/login"><small>Login</small></a></li>
+                                
+                            }
+                            
                   </ul>
                </li>
 

@@ -62,5 +62,9 @@ namespace WebTravelApi.Models.Repository
             return connection.Execute("delete from Members where MemeberID = @Id", new { Id = id });
         }
         
+        public int ChangePassword(ChangePassword obj)
+        {
+            return connection.Execute("update Members set Password = @Pwd where MemberID = @Id ", new { Id = obj.Id, Pwd = Helper.Helper.Hash(obj.NewPassword) });
+        }
     }
 }

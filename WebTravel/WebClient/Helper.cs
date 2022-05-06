@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebClient
 {
@@ -15,6 +17,11 @@ namespace WebClient
 
             }
             return string.Join(string.Empty, arr);
+        }
+        public static byte[] Hash(string plaintext)
+        {
+            HashAlgorithm hash = HashAlgorithm.Create("SHA-512");
+            return hash.ComputeHash(Encoding.ASCII.GetBytes(plaintext));
         }
     }
 }

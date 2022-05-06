@@ -57,5 +57,16 @@ namespace WebTravelApi.Api.Controllers
             };
 
         }
+        [HttpPost("change-password")]
+        public int ChangePassword(ChangePassword obj)
+        {
+            Member member = provider.Member.GetMemberById(obj.Id);
+            if (member != null)
+            {
+                return provider.Member.ChangePassword(obj);
+
+            }
+            return 0;
+        }
     }
 }
