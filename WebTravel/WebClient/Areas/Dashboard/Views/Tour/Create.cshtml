@@ -44,6 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Schedule" class="control-label"></label>
+                
                 <input asp-for="Schedule" class="form-control" />
                 <span asp-validation-for="Schedule" class="text-danger"></span>
             </div>
@@ -104,12 +105,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
+                <select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-control">
+                    <option value="">-- Choose Category ---</option>
+                </select>
+                @*<input asp-for="CategoryId" class="form-control" />*@
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ScheduleId" class="control-label"></label>
-                <input asp-for="ScheduleId" class="form-control" />
+                <select asp-for="ScheduleId" asp-items="@ViewBag.schedules" class="form-control">
+                    <option value="">-- Choose Schedule ---</option>
+                </select>
+                @*<input asp-for="ScheduleId" class="form-control" />*@
                 <span asp-validation-for="ScheduleId" class="text-danger"></span>
             </div>
             <div class="form-group">

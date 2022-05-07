@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <p class="titleorder">
-              Du lịch Hà Giang - Quản Bạ - Đồng Văn - Lũng Cú - Sông Nho Quế từ Sài Gòn 2022
+              @Model.Name
             </p>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -36,13 +36,14 @@
             <div class="row">
               <div class="imageorderchinhsua">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <img src="~/images/catenews5.jpg" alt="order">
+                  <img src="https://localhost:44384/images/@Model.Image" alt="order">
                 </div>
               </div>
               <!-- the end images -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>
                   &nbsp; &nbsp; Điểm nhấn hành trình
+                  
                 </p>
                 <div class="vachkeduoilichtrinh">
                   <hr>
@@ -50,7 +51,8 @@
               </div>
               <!-- the end dien nhan -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                content - lien he tai.
+                  @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Detail))
+                
               </div>
               <!-- the end content -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -61,7 +63,13 @@
               </div>
               <!-- the end lich trinh -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                lien he tai - use ck find
+                
+                @{
+                            TourSchedule tourSchedule = ViewBag.schedule;
+                        }
+
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(tourSchedule.Content))
+                        
               </div>
               <!-- the end content lich trinh -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

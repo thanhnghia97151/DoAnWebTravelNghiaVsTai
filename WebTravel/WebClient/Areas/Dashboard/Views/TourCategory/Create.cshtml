@@ -45,7 +45,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="TypeOfTourId" class="control-label"></label>
-                <input asp-for="TypeOfTourId" class="form-control" />
+                <select asp-for="TypeOfTourId" asp-items="@ViewBag.typeoftours" class="form-control">
+                    <option value="">-- Choose Type Of Tour ---</option>
+                </select>
+                @*<input asp-for="TypeOfTourId" class="form-control" />*@
             </div>
             <div class="form-group">
                 <div class="checkbox">

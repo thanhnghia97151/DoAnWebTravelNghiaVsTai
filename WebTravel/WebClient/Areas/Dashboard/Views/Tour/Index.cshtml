@@ -48,7 +48,7 @@
                 <td>@item.StartPlace</td>
                 <td>@item.EndPlace</td>
                 <td>@item.Transport</td>
-                <td>@item.Detail</td>
+                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Detail))</td>
                 <td>@item.Note</td>
                 <td>@item.CategoryId</td>
                 <td>@item.ScheduleId</td>

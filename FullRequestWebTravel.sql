@@ -312,3 +312,7 @@ as
 
 update Members set ConfirmedPhone = 0 where MemberID = '8th53v47v49cc0u40cs8mmabr7waiw4zzygh0qlevk8giqj0lod90keo5327czmx'
 delete from Members where MemberID = 'reppixlzyoyjxrowucnc5auolxsou5lwfizl1nbfykq7vvlv0p2ec9936q2boafs'
+delete from Tours
+delete from TypeOfTours
+delete from TourCategories
+delete from TourSchedules

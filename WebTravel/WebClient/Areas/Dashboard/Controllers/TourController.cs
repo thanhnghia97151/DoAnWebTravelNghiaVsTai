@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using WebClient.Models;
@@ -21,8 +22,13 @@ namespace WebClient.Areas.Dashboard.Controllers
 
             return View(await provider.Tour.GetTours());
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            // Category
+            ViewBag.categories = new SelectList(await provider.TourCategory.GetTourCategories(),"TourCategoriesId","Name");
+
+            // Schedule
+            ViewBag.schedules = new SelectList(await provider.TourSchedule.GetTourSchedules(), "TourScheduleId", "Content");
             return View();
         }
         [HttpPost]
