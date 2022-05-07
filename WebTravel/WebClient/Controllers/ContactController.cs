@@ -5,16 +5,23 @@ using WebClient.Models.Repository;
 
 namespace WebClient.Controllers
 {
-    public class TourController : Controller
+    public class ContactController : Controller
     {
         SiteProvider provider;
-
-        public TourController(IConfiguration configuration)
+        public ContactController(IConfiguration configuration)
         {
-            this.provider = new SiteProvider(configuration);
+            provider = new SiteProvider(configuration); 
         }
+        public async Task<IActionResult> Index()
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-        public async Task<IActionResult> BookTour(string id)
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+            return View();
+        }
+        public async Task<IActionResult> ContactWithMe()
         {
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
@@ -22,15 +29,7 @@ namespace WebClient.Controllers
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-            //Get Tour
-            ViewBag.tour = await provider.Tour.GetTourById(id);
-
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> BookTour()
-        {
-            return View();
+            return View();  
         }
     }
 }

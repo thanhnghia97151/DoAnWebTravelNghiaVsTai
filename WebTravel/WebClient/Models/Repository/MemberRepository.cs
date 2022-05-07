@@ -34,5 +34,9 @@ namespace WebClient.Models.Repository
         {
             return await Post<ChangePassword>("/api/auth/change-password", obj);
         }
+        public async Task<int> ConfirmNumberPhone(Member obj)
+        {
+            return await Post<Member>($"/api/auth/confirm-number-phone/{obj.MemberID}", obj);
+        }
     }
 }

@@ -68,5 +68,15 @@ namespace WebTravelApi.Api.Controllers
             }
             return 0;
         }
+        [HttpPost("confirm-number-phone/{id}")]
+        public int ConfirmNumberPhone(string id)
+        {
+            Member obj = provider.Member.GetMemberById(id); 
+            if (obj != null)
+            {
+                return provider.Member.ConfirmNumberPhone(id);
+            }
+            return 0;
+        }
     }
 }

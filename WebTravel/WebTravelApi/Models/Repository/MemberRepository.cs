@@ -24,15 +24,16 @@ namespace WebTravelApi.Models.Repository
         }
         public int AddMemberByGoogle(Member obj)
         {
-            string sql = "insert into Members(MemberID,UserName,Password,Email,Gender) values(@Id,@UserName,@Password,@Email,@Gender)";
+            string sql = "insert into Members(MemberID,UserName,Password,Email,Gender,ConfirmedPhone) values(@Id,@UserName,@Password,@Email,@Gender,@ConfirmedPhone)";
             return connection.Execute(sql, new
             {
                 Id = Helper.Helper.RandomString(64),
                 UserName = obj.UserName,
                 Password = Helper.Helper.Hash(obj.Password),
                 Email = obj.Email,
-                Gender = obj.Gender
-            });
+                Gender = obj.Gender,
+                ConfirmedPhone = true
+            }) ;
         }
         public int Add(Member obj)
         {
@@ -65,6 +66,10 @@ namespace WebTravelApi.Models.Repository
         public int ChangePassword(ChangePassword obj)
         {
             return connection.Execute("update Members set Password = @Pwd where MemberID = @Id ", new { Id = obj.Id, Pwd = Helper.Helper.Hash(obj.NewPassword) });
+        }
+        public int ConfirmNumberPhone(string id)
+        {
+            return connection.Execute("update Members set ConfirmedPhone = 1 where MemberID = @Id", new { Id = id });
         }
     }
 }

@@ -45,8 +45,13 @@ namespace WebClient.Controllers
         public async Task<IActionResult> Login(LoginModel obj, string returnUrl)
         {
             ReponseLogin member = await provider.Member.Login(obj);
+            Member m = await provider.Member.GetMemberById(member.MemberId);
             if (member != null)
             {
+                //if (!m.ConfirmedPhone)
+                //{
+                //    return Redirect($"/auth/confirmnumberphone/{member.MemberId}");
+                //}
                 //Code
                 List<Claim> claims = new List<Claim>()
                 {
@@ -158,10 +163,15 @@ namespace WebClient.Controllers
         public async Task<ActionResult> ChangePassword(ChangePassword obj)
         {
             obj.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Member memer = await provider.Member.GetMemberById(obj.Id);
+            
+            Member member = await provider.Member.GetMemberById(obj.Id);
+            LoginModel model = new LoginModel { Urs = member.UserName, Pwd = obj.OldPassword };
+            ReponseLogin checkMember = await provider.Member.Login(model);
+
+            var t = Helper.Hash(obj.OldPassword);
             if (ModelState.IsValid)
             {
-                if ( Helper.Hash(obj.OldPassword).ToString() == memer.Password)
+                if ( checkMember != null)
                 {
                     if (obj.ConfirmPassword.Equals(obj.NewPassword))
                     {
@@ -169,13 +179,24 @@ namespace WebClient.Controllers
                         {
                             return Redirect("/auth/logout");
                         }
-                        ModelState.AddModelError("", "Change password Failded!");
+                        
 
                     }
                 }
-            }    
-            
+            }
+            ModelState.AddModelError("", "Change password Failded!");
             return View(obj); 
-        }    
+        }  
+        
+        // Cofirm Number phone
+        public IActionResult ConfirmNumberPhone(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ConfirmNumberPhone(ConfirmNumberPhone obj)
+        {
+            return View(obj);
+        }
     }
 }

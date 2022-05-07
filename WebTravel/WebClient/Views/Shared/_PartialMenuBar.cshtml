@@ -38,7 +38,7 @@
                            
                 </ul>
               </li>
-               <li><a href="#">LIÊN HỆ</a></li>
+               <li><a href="/contact">LIÊN HỆ</a></li>
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
                   role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
@@ -61,12 +61,14 @@
                   <ul class="dropdown-menu">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li><a href="#">Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
                                 <li><a href="/auth/changepassword">Thay đổi mật khẩu</a></li>
                             }
                             else
                             {
-                                <li><a href="#"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
+                                <li><a href="/introduce"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
+                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
                     <li><a href="/auth/register"><small>Register</small></a></li>
                         <li><a href="/auth/login"><small>Login</small></a></li>
                                 

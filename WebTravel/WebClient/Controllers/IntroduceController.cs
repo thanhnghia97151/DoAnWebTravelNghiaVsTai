@@ -5,31 +5,20 @@ using WebClient.Models.Repository;
 
 namespace WebClient.Controllers
 {
-    public class TourController : Controller
+    public class IntroduceController : Controller
     {
         SiteProvider provider;
-
-        public TourController(IConfiguration configuration)
+        public IntroduceController(IConfiguration configuration)
         {
-            this.provider = new SiteProvider(configuration);
+            provider = new SiteProvider(configuration);
         }
-
-        public async Task<IActionResult> BookTour(string id)
+        public async Task<IActionResult> Index()
         {
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-            //Get Tour
-            ViewBag.tour = await provider.Tour.GetTourById(id);
-
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> BookTour()
-        {
             return View();
         }
     }
