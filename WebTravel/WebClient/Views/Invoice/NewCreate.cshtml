@@ -1,0 +1,361 @@
+﻿@model WebClient.Models.ViewModels.InvoiceDetailModel
+
+@{
+    ViewData["Title"] = "NewCreate";
+}
+
+<h2>NewCreate</h2>
+
+<h4>InvoiceDetailModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberId" class="control-label"></label>
+                <input asp-for="MemberId" class="form-control" />
+                <span asp-validation-for="MemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceId" class="control-label"></label>
+                <input asp-for="InvoiceId" class="form-control" />
+                <span asp-validation-for="InvoiceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TourId" class="control-label"></label>
+                <input asp-for="TourId" class="form-control" />
+                <span asp-validation-for="TourId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Payment" class="control-label"></label>
+                <input asp-for="Payment" class="form-control" />
+                <span asp-validation-for="Payment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantityDepartment" class="control-label"></label>
+                <input asp-for="QuantityDepartment" class="form-control" />
+                <span asp-validation-for="QuantityDepartment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="PaymentMore" /> @Html.DisplayNameFor(model => model.PaymentMore)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@*
+@using System.Security.Claims
+@model InvoiceDetailModel
+@{
+    Tour tour = ViewBag.tour;
+}
+
+<link rel="stylesheet" href="~/css/orderdetails.css">
+<!-- Thong tin goi nho -->
+<div class="goinho">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thongtin">
+                    <small>Trang chủ > </small>
+                    <small>Đặt tour</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- the end goi nho -->
+<!-- Section -->
+
+<div class="orderdetails">
+    <div class="container">
+        <div class="row">
+            <div class="imagechinhsuachieucao">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 imagesleft">
+                    <img src="https://localhost:44384/images/@tour.Image">
+                </div>
+            </div>
+            <!-- the end images -->
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 tableright">
+                <div class="tabletop">
+                    <p class="contenttabletop">
+                        @tour.Name
+                    </p>
+                </div>
+                <div class="tablebottom">
+                    <p>
+                        Mã tour: &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.TourId</small>
+                    </p>
+                    <p>
+                        Thời gian: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.Schedule</small>
+                    </p>
+                    <p>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.PromotionPrice đ</small>
+                    </p>
+                    <p>
+                        Ngày khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.StartDate.Date Ngày khác</small>
+                    </p>
+                    <p>
+                        Nơi khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.StartPlace</small>
+                    </p>
+                    <p>
+                        Số chỗ còn nhận: &nbsp;&nbsp;&nbsp;&nbsp;
+                        <small class="sotabletop">@tour.Quantity</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- the end row 1-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="phiphatsinh">
+                    <p>
+                        Các khoản phí phát sinh (nếu có) như: phụ thu dành cho khách nước ngoài, việt kiều; phụ thu phòng đơn; phụ thu chênh lệch giá tour… Nhân viên Du Lịch Việt sẽ gọi điện thoại tư vấn cho quý khách ngay sau khi có phiếu xác nhận booking. (Trong giờ hành chính)
+                        Trường hợp quý khách không đồng ý các khoản phát sinh, phiếu xác nhận booking của quý khách sẽ không có hiệu lực.
+                    </p>
+                </div>
+                <div class="gachduoiphi">
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <!-- the end row 2-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+          banggiatourchitiet text-center">
+                <p>
+                    BẢNG GIÁ TOUR CHI TIẾT
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tablechitietgia">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-right">Loại giá/độ tuổi</th>
+                            <th scope="col" class="text-right">Người lớn(từ 12 tuổi)</th>
+                            <th scope="col" class="text-right">Trẻ em(dưới 12 tuổi)</th>
+                            <th scope="col" class="text-right">Khác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-right">
+                        <tr>
+                            <th scope="row" class="text-right">Giá</th>
+                            <td>6,899,000 đ</td>
+                            <td><a href="#" title="">Xem tại đây</a></td>
+                            <td>không</td>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-right">Phụ thu nước ngoài</th>
+                            <td>590,000 đ</td>
+                            <td>0 đ</td>
+                            <td>không</td>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-right">Phụ thu phòng đơn</th>
+                            <td colspan="3" class="text-center">1,300,000 đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- th end row 3 -->
+     <form asp-action="NewCreate" asp-controller="Invoice" method="post" >
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+          banggiatourchitiet text-center">
+                    <p>
+                        THÔNG TIN LIÊN HỆ
+                    </p>
+                </div>
+                <div class="formkhoangcanh">
+
+                    <input type="hidden" asp-for="InvoiceId" />
+                    <input type="hidden" asp-for="Price" value="@tour.Price"/>
+                    <input type="hidden" asp-for="TourId" value="@tour.TourId" />
+                    <input type="hidden" asp-for="MemberId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                        <div class="form-group">
+                            <input type="text" asp-for="FullName" class="form-control" placeholder="Họ và tên"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                        <div class="form-group">
+                            <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                        <div class="form-group">
+                            <input type="text" name="email" asp-for="Email" class="form-control" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                        <div class="form-group">
+                            <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 thongtinduoi">
+                        <div class="form-group">
+                            <input type="text" asp-for="Description" class="form-control" placeholder="Ghi chú"/>
+                        </div>
+                    </div>
+
+                    <!-- the end form thong tin person -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+          banggiatourchitiet text-center">
+                        <p>
+                            THÔNG TIN THAM GIA
+                        </p>
+                    </div>
+                    <div class="khoangcachpersonthamgia">
+                        <div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="personprice">
+                                    <p>
+                                        Số người tham gia
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" value="1" asp-for="Quantity" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="personprice">
+                                    <p>
+                                        Phụ thu phòng đơn
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <select asp-for="PaymentMore" class="form-control">
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="personprice">
+                                    <p>
+                                        Số lượng phòng đơn
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" value="0" asp-for="QuantityDepartment" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- the end form person tha gia -->
+
+                    <div class="tonggiatridonhang pull-right">
+                        <p>Tổng giá trị : <small class="giachot">5,599,000 đ</small></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- the end row 4 -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+          banggiatourchitiet text-center">
+                    <p>
+                        PHƯƠNG THỨC THANH TOÁN
+                    </p>
+                </div>
+                <div class="khoangcachphuongthucthanhtoan">
+                    <div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <input type="radio" asp-for="Payment" value="0" />
+                                &nbsp; &nbsp;
+                                <label for="phuongthucthanhtoan">
+                                    Thanh toán qua Mastercard
+                                </label>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <input type="radio" value="1" asp-for="Payment" checked />
+                                &nbsp; &nbsp;
+                                <label for="phuongthucthanhtoan">
+                                    Thanh toán qua ngân hàng
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <input type="radio" value="2" asp-for="Payment" />
+                                &nbsp; &nbsp;
+                                <label for="phuongthucthanhtoan">
+                                    Thanh toán qua ví điện tử
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hoanthanhthanhtoan text-center">
+                            <input type="submit"  class="btn btn-success" value="Hoàn thành"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- the end row 5 -->
+    </div>
+</div>*@
+

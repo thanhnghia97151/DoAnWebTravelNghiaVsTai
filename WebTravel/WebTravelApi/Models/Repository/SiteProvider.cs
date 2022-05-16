@@ -30,6 +30,31 @@ namespace WebTravelApi.Models.Repository
         NewsRepository news;
         NewsTagRepository newsTag;
         ImageTourRepository imageTour;
+        InvoiceRepository invoice;
+        InvoiceDetailRepository invoiceDetail;
+
+        public InvoiceDetailRepository InvoiceDetail
+        {
+            get
+            {
+                if (invoiceDetail is null)
+                {
+                    invoiceDetail = new InvoiceDetailRepository(connection);
+                }
+                return invoiceDetail;
+            }
+        }
+        public InvoiceRepository Invoice
+        {
+            get
+            {
+                if (invoice is null)
+                {
+                    invoice = new InvoiceRepository(connection);
+                }
+                return invoice;
+            }
+        }
         public ImageTourRepository ImageTour
         {
             get

@@ -27,7 +27,7 @@ namespace WebTravelApi.Models.Repository
             string sql = "insert into Members(MemberID,UserName,Password,Email,Gender,ConfirmedPhone) values(@Id,@UserName,@Password,@Email,@Gender,@ConfirmedPhone)";
             return connection.Execute(sql, new
             {
-                Id = Helper.Helper.RandomString(64),
+                Id = obj.MemberID,
                 UserName = obj.UserName,
                 Password = Helper.Helper.Hash(obj.Password),
                 Email = obj.Email,

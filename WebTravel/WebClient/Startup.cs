@@ -62,7 +62,7 @@ namespace WebClient
             app.UseAuthentication();
             app.UseAuthorization();
 
-
+            app.UseDeveloperExceptionPage();
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>

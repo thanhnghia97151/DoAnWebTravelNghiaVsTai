@@ -23,6 +23,18 @@ namespace WebClient.Models.Repository
         AboutRepository about;
         PolicyRepository policy;
         PolicyCategoryRepository policyCategory;
+        InvoiceRepository invoice;
+        public InvoiceRepository Invoice
+        {
+            get
+            {
+                if (invoice is null)
+                {
+                    invoice = new InvoiceRepository(configuration);
+                }
+                return invoice;
+            }
+        }
         public PolicyCategoryRepository PolicyCategory
         {
             get

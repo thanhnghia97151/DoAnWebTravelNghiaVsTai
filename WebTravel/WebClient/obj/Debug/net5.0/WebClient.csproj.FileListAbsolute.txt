@@ -312,7 +312,6 @@ D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Auth\Chang
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutChangePassword.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Introduce\Index.cshtml.g.cs
-D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\BookTour.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Contact\ContactWithMe.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Auth\ConfirmNumberPhone.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutConfirmNumberPhone.cshtml.g.cs
@@ -324,3 +323,5 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Intr
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutChangePassword.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_LayoutConfirmNumberPhone.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\BookTour.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\NewCreate.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\Create.cshtml.g.cs

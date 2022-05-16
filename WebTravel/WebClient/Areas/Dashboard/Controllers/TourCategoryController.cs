@@ -24,6 +24,9 @@ namespace WebClient.Areas.Dashboard.Controllers
         {
             //Get Type Of Tour
             ViewBag.typeoftours = new SelectList(await provider.TypeOfTour.GetTypeOfTours(),"Id","Type");
+
+            //Get Tour Category
+            ViewBag.categories = new SelectList(await provider.TourCategory.GetTourCategories(), "TourCategoriesId", "Name");
             return View();
         }
         [HttpPost]

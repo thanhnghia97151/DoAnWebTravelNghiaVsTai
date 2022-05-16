@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection.Metadata;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -36,6 +37,10 @@ namespace WebTravelApi.Models.Repository
         public int Delete(string id)
         {
             return connection.Execute("delete from TourCategories where TourCategoriesId = @Id", new { Id = id });
+        }
+        public IEnumerable<TourCategory> GetListCategoriesChildrent(string id)
+        {
+            return connection.Query<TourCategory>("GetListCategoriesChildrent", new { CategoryId = id }, commandType: CommandType.StoredProcedure);
         }
     }
 }

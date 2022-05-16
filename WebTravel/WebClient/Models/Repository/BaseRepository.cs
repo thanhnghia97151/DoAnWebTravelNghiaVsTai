@@ -17,13 +17,16 @@ namespace WebClient.Models.Repository
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = uri;
-                HttpResponseMessage message = await client.PostAsJsonAsync<T>(url, obj);
-                if (message.IsSuccessStatusCode)
-                {
-                    return await message.Content.ReadAsAsync<int>();
-                }
-                return 0;
+
+                    client.BaseAddress = uri;
+
+                    HttpResponseMessage message = await client.PostAsJsonAsync<T>(url, obj);
+                    if (message.IsSuccessStatusCode)
+                    {
+                        return await message.Content.ReadAsAsync<int>();
+                    }
+                    return 0;
+
             }
         }
         //protected async Task<int> Delete<T>(string url)

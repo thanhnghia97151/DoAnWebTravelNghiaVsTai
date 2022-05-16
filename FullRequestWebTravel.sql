@@ -86,6 +86,7 @@ create table TypeOfTours
 	Type nvarchar(250)
 );
 go
+--drop table TourCategories
 create table TourCategories 
 (
 	TourCategoriesId varchar(64) not null primary key,
@@ -117,7 +118,7 @@ go
 create table Tours
 (
 	TourId varchar(64) not null primary key,
-	Name nvarchar(250),
+	Name nvarchar(max),
 	MetaTitle varchar(250),
 	Code varchar(50),
 	Image varchar(50),  
@@ -272,6 +273,30 @@ create table ImageTour
 );
 go
 
+--drop table Invoice
+create table Invoice
+(
+	InvoiceId varchar(64) not null primary key ,
+	IncoiceDate datetime not null default getdate(),
+	[Address] nvarchar(max) not null ,
+	MemberId varchar(64) not null references Members(MemberID),
+	Status bit 
+);
+go
+--drop table IncoiveDetail
+create table InvoiceDetail
+(
+	InvoiceId varchar(64) not null references Invoice(InvoiceId),
+	TourId varchar(64) not null references Tours(TourId),
+	Price int not null,
+	Quantity smallint not null,
+	Payment decimal(18,0),
+	QuantityDepartment int,
+	Description nvarchar(max),
+	PaymentMore bit
+
+);
+go
 --select * from Tours
 create proc GetToursPaging(@Page int, @Size int)
 as
@@ -283,7 +308,19 @@ as
 			FETCH NEXT @Size ROWS ONLY;
 	end;
 go
-
+-- drop proc AddInvoice
+create proc AddInvoice (
+	@InvoiceId varchar(64) ,
+	@Address nvarchar(max) ,
+	@MemberId varchar(64)
+)
+as 
+	begin
+	insert into Invoice(InvoiceId,Address,MemberId,Status) values (@InvoiceId,@Address,@MemberId,0);
+	end;
+go
+--delete Invoice
+exec AddInvoice @InvoiceId = 'dssfa', @Address = 'fafdfdsaf', @MemberId = '6zbqfwpeg19j2xm7xnw5ujohcs9d9wgicx2s5rkk5mo5m6jh1kho7wshaiger8rf'
 --drop proc GetRolesByMemberId
 create proc GetRolesByMemberId(@Id varchar(64))
 as
@@ -309,6 +346,7 @@ as
 --select * from News
 --select * from NewTags
 --select * from Contacts
+--select * from ImageTour
 
 update Members set ConfirmedPhone = 0 where MemberID = '8th53v47v49cc0u40cs8mmabr7waiw4zzygh0qlevk8giqj0lod90keo5327czmx'
 delete from Members where MemberID = 'reppixlzyoyjxrowucnc5auolxsou5lwfizl1nbfykq7vvlv0p2ec9936q2boafs'

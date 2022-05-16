@@ -33,5 +33,10 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.TourCategory.Delete(id);
         }
+        [HttpGet("childrent/{id}")]
+        public IEnumerable<TourCategory> GetListCategoriesChildrent(string id)
+        {
+            return provider.TourCategory.GetListCategoriesChildrent(id);
+        }
     }
 }

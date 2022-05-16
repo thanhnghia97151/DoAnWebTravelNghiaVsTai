@@ -63,5 +63,18 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("delete from Tours where TourId = @Id", new { Id = id });
         }
+        public List<Tour> GetTourByCategoryId(IEnumerable<TourCategory> tourCategories)
+        {
+            List<Tour> tours = new List<Tour>();
+            if (tourCategories != null)
+            {
+                foreach (var item in tourCategories)
+                {
+                     tours.AddRange(connection.Query<Tour>($"select * from Tours where CategoryId = '{item.TourCategoriesId}'"));   
+                }
+                return tours;
+            }
+            return null;
+        }
     }
 }
