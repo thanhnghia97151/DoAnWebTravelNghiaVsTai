@@ -79,7 +79,7 @@ go
 
 --select * from Members
 --insert into Members(MemberID,UserName,Password,Email,Phone) values('gwqwertyuiopasdfghjklzxcvbnm1234567890kqwertyuiopasdfghjklzxcvbn','fdasfas','fdafdas','abc@gmai.com','dafasfdsaf')
---drop table TypeOfTours
+--drop table TypeOfTours   
 create table TypeOfTours
 (
 	Id varchar(64) not null primary key,
@@ -93,7 +93,6 @@ create table TourCategories
 	Name nvarchar(250),
 	SeoTitle nvarchar(250),
 	MetaTitle nvarchar(250),
-
 	ParentId varchar(64),
 	CreateDate datetime,
 	CreatedBy nvarchar(250),
@@ -157,7 +156,7 @@ go
 create table PolicyCategories
 (
 	Id varchar(64) not null primary key,
-	Name nvarchar(250),
+	Name nvarchar(250)
 );
 go
 --drop table Policies
@@ -274,7 +273,7 @@ create table ImageTour
 go
 
 --drop table Invoice
-insert into Invoice(InvoiceId,Address,MemberId) values ('fdafasd','dfaafd','02h15ldivfn0x65jfdvysdlhskdn0nhv33c20q03q8ls89jwy2ml7zmvpqgfubi9')
+--insert into Invoice(InvoiceId,Address,MemberId) values ('fdafasd','dfaafd','02h15ldivfn0x65jfdvysdlhskdn0nhv33c20q03q8ls89jwy2ml7zmvpqgfubi9')
 create table Invoice
 (
 	InvoiceId varchar(64) not null primary key ,
@@ -376,9 +375,9 @@ as
 			select * from TourCategories where TourCategoriesId = @CategoryId;
 	end;
 go
---exec GetListCategoriesChildrent @CategoryId = '2vjoug09s5yu19dpkx9nvm9jqbx9ssxv360ewv7nj8mux3eu07zxe4beb0iz5wvq'
+--exec GetListCategoriesChildrent @CategoryId = '53t14n5cap8yxt5ox8ytv42lt2gdr6ncj4sopvs9vbj9vh7rcvobwm4qqvcwplkg'
 ----
---select ParentId from TourCategories where TourCategoriesid = '2vjoug09s5yu19dpkx9nvm9jqbx9ssxv360ewv7nj8mux3eu07zxe4beb0iz5wvq'
+--select ParentId from TourCategories where TourCategoriesid = 'bkw2ylmd98tvbogmkhmsr1gl6xvra6qfk9vfjk4l0n8sibpboybk7iv8rl6x7cwe'
 ----select * from Roles
 
 --exec GetToursPaging @Page =1 , @Size = 4
@@ -407,6 +406,6 @@ go
 --delete from TourCategories
 --delete from TourSchedules
 
-
+--select * from TourCategories where TypeOfTourId = '53t14n5cap8yxt5ox8ytv42lt2gdr6ncj4sopvs9vbj9vh7rcvobwm4qqvcwplkg'
 
 --select * from Tours where CategoryId = '2vjoug09s5yu19dpkx9nvm9jqbx9ssxv360ewv7nj8mux3eu07zxe4beb0iz5wvq'

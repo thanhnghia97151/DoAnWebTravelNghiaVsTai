@@ -1,0 +1,55 @@
+*{margin:0; padding: 0}
+
+
+.noidunglienquan span.glyphicon {
+    background-color: #000000e8;
+    border-radius: 50%;
+    margin: -109px -80px;
+    font-size: 28px;
+}
+
+.row.hanglienhe {
+    padding: 12px 0px;
+}
+
+.lienhe a.btn {font-size: 14px;background-color: #c53c3cdb;font-weight: 400;}
+
+.social a.btn.btn-info {
+    font-size: 31px;
+}
+
+.social a {
+    color: #000000e0;
+    font-weight: 500;
+    font-size: 15.5px;
+}
+
+.social i.fa {
+    font-size: 17px;
+    color: white;
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #5858cd;
+    margin-right: 12px;
+    padding-top: 5px;
+    padding-left: 7px;
+}
+
+.social i.fa.fa-envelope {
+    background-color: #bd37b5;
+    border-radius: 20%;
+}
+
+.social i.fa.fa-facebook {
+    padding: 6px 11px;
+	padding-top: 8px
+}
+
+.eye {
+    padding: 6px 0px;
+}
+
+.thumbnail img {height: 216px; width: 100%}
+.eye small{
+	font-size: 14px;
+}

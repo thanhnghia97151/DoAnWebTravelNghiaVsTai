@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using WebTravelApi.Models;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Api.Controllers
 {
@@ -37,6 +38,16 @@ namespace WebTravelApi.Api.Controllers
         public IEnumerable<TourCategory> GetListCategoriesChildrent(string id)
         {
             return provider.TourCategory.GetListCategoriesChildrent(id);
+        }
+        [HttpGet("typeoftour/{id}")]
+        public IEnumerable<TourCategory> GetTourCategoriesByTypeOfTourId(string id)
+        {
+            return provider.TourCategory.GetCategoriesByTypeOfTour(id);
+        }
+        [HttpGet("categorymodel/{id}")]
+        public IEnumerable<TourCategoryModel> GetTourCategoryModelssByTypeOfTourId(string id)
+        {
+            return provider.TourCategory.GetCategoryModelsByTypeOfTour(id);
         }
     }
 }

@@ -325,3 +325,5 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shar
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\BookTour.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\NewCreate.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\Create.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\TypeOfTour.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\ToursByCategory.cshtml.g.cs

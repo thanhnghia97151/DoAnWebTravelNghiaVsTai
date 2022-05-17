@@ -2172,8 +2172,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Tour\" />
-  </ItemGroup>
-
 </Project>

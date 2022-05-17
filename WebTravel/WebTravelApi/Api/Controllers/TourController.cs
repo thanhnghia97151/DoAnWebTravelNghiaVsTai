@@ -40,6 +40,10 @@ namespace WebTravelApi.Api.Controllers
             
             return provider.Tour.GetTourByCategoryId(list);
         }
-        
+        [HttpGet("newcategory/{id}")]
+        public IEnumerable<Tour> GetNewTourByCategoryId(string id)
+        {
+            return provider.Tour.GetNewTourByCategoryId(id);
+        }
     }
 }

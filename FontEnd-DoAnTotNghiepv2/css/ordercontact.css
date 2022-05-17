@@ -1,0 +1,45 @@
+*{margin:0; padding: 0;}
+
+.informationorder small {
+    font-size: 19px;
+    color: #db6a6a;
+}
+
+.informationorder p {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.bandolienhe iframe {
+    margin: 20px 0px;
+}
+
+
+.bandolienhe iframe {
+    width: 61%;
+}
+
+p.contentorderlienhe {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 16px 0px;
+}
+@media only screen and (min-width: 300px) and (max-width: 680px)
+{
+	.bandolienhe iframe
+	{
+		width: 100%;
+	}
+	p.contentorderlienhe
+	{
+		font-size: 16px;
+	}
+} 
+@media only screen and (min-width: 700px) and (max-width: 1200px)
+{
+	.bandolienhe iframe
+	{
+		width: 100%;
+
+	}
+}

@@ -31,5 +31,6 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("delete from TypeOfTours where Id = @Id", new { Id = id });
         }
+        
     }
 }

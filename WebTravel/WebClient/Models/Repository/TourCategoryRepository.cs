@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebClient.Models.ViewModels;
 
 namespace WebClient.Models.Repository
 {
@@ -20,6 +21,15 @@ namespace WebClient.Models.Repository
         public async Task<TourCategory> GetCategory(string id)
         {
             return await Get<TourCategory>($"/api/tourcategory/{id}");
+        }
+        public async Task<List<TourCategory>> GetCategoriesByTypeOfTourId(string id)
+        {
+            return await Get<List<TourCategory>>($"/api/tourcategory/typeoftour/{id}");
+
+        }
+        public async Task<List<TourCategoryModel>> GetTourCategoryModelByTypeOfTour(string id)
+        {
+            return await Get<List<TourCategoryModel>>($"/api/tourcategory/categorymodel/{id}");
         }
     }
 }

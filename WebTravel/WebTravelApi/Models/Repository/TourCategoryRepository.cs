@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection.Metadata;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -41,6 +42,15 @@ namespace WebTravelApi.Models.Repository
         public IEnumerable<TourCategory> GetListCategoriesChildrent(string id)
         {
             return connection.Query<TourCategory>("GetListCategoriesChildrent", new { CategoryId = id }, commandType: CommandType.StoredProcedure);
+        }
+        public IEnumerable<TourCategory> GetCategoriesByTypeOfTour(string id)
+        {
+            return connection.Query<TourCategory>("select * from TourCategories where TypeOfTourId = @Id",new { Id = id});
+        }
+        public IEnumerable<TourCategoryModel> GetCategoryModelsByTypeOfTour(string id)
+        {
+            return connection.Query<TourCategoryModel>("select * from TourCategories where TypeOfTourId = @Id", new { Id = id });
+
         }
     }
 }

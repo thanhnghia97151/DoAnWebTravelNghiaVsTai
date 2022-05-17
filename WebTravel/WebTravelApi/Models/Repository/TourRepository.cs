@@ -76,5 +76,10 @@ namespace WebTravelApi.Models.Repository
             }
             return null;
         }
+        public IEnumerable<Tour> GetNewTourByCategoryId(string id)
+        {
+            return connection.Query<Tour>("select * from Tours where CategoryId = @Id", new { Id = id });
+        } 
+
     }
 }

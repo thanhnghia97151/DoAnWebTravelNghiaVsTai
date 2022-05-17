@@ -1,0 +1,169 @@
+*{margin:0;padding: 0}
+
+.col-xs-12.col-sm-12.col-md-5.col-lg-5.loginleft {
+    margin-bottom: 23px;
+}
+
+body {
+    background-image: url('../images/login.png');
+}
+
+.login {
+}
+
+.loginright {
+    border-left: 1px solid #833d3d63;
+}
+
+
+.formsize {
+}
+
+.formsize div.form-group {}
+
+.form-group.size {
+    margin-bottom: 21px;
+}
+
+a.dangky {
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.phanduoi p {
+    text-align: center;
+    padding-bottom: 4px;
+}
+
+.phanduoi p.mk {
+    text-align: center;
+    margin-top: 23px;
+}
+
+p a.quenmk {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.editrow {
+    border: 1px solid #ebd6d6db;
+    border-radius: 27px;
+    margin-top: 9%;
+    background-color: white;
+}
+
+.loginright button.huy {
+    padding: 7px 53px;
+    font-size: 13px;
+    color: white;
+    background-color: #ff0000ba;
+    border: none;
+}
+
+.loginright button.dangnhap {
+    background-color: #545499db;
+    padding: 7px 28px;
+    margin-bottom: 6px;
+    border: none;
+    color: white;
+    font-size: 13px;
+}
+
+.phanduoi {
+}
+
+.col-xs-6.col-sm-3.col-md-3.col-lg-3.loginleft {
+    padding: 0px 13px;
+}
+
+.phantren {
+    padding-left: 4%;
+}
+
+.loginright label {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.col-xs-6.col-sm-9.col-md-9.col-lg-9.loginright {
+    border-left: 1px solid #0000005e;
+}
+
+.nuttren a {
+    border-left: 1px solid #0000004a;
+    padding: 10px;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.nuttren i.fa.fa-facebook {
+    font-size: 19px;
+    color: white;
+    padding-top: 3%;
+    margin-right: 3%;
+}
+
+
+.nutduoi a {
+    color: white;
+}
+
+.nutduoi {
+    background-color: #dd4b39;
+    padding: 0px 0px;
+    text-align: center;
+}
+
+.nutduoi a {
+    border-left: 1px solid #0000004a;
+    padding: 10px;
+    padding-right: 25px;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.nutduoi i.fa.fa-google {
+    font-size: 19px;
+    color: white;
+    margin-right: 3%;
+    padding-top: 4%;
+}
+
+
+.nuttren a {
+    color: white;
+}
+
+a {}
+
+.nuttren {
+    background-color: #3b5998;
+    padding: 3px 0px;
+    text-align: center;
+}
+
+.titlelogin p {
+    font-weight: bold;
+    font-size: 21px;
+    padding: 19px 0px;
+    text-align: center;
+}
+
+.loginleft p {
+    color: black;
+    font-size: 15px;
+    padding-bottom: 9px;
+}
+
+
+input.form-control {
+    width: 100%;
+    font-size: 13px;
+}
+
+/* .login {
+    width: 50%;
+    margin: auto;
+    padding: 0px;
+    border: 1px solid black;
+} */

@@ -48,5 +48,9 @@ namespace WebClient.Models.Repository
             return null;
 
         }
+        public async Task<List<Tour>> GetTourByCategoryId(string id)
+        {
+            return await Get<List<Tour>>($"/api/tour/newcategory/{id}");
+        }
     }
 }
