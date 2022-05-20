@@ -109,9 +109,12 @@ namespace WebClient.Controllers
                     claim.Type,
                     claim.Value
                 });
+
+
             Member obj = new Member();
             obj.Gender = null;
-            obj.Password = Helper.RandomString(16);
+            
+            obj.Password = "123456";
             foreach (var claim in claims)
             {
                 switch (claim.Type)
@@ -134,6 +137,7 @@ namespace WebClient.Controllers
                     new Claim(ClaimTypes.NameIdentifier,reponse.MemberId),
                     new Claim(ClaimTypes.Name,reponse.Email),
                     new Claim(ClaimTypes.Email,reponse.Email),
+                    
                      //new Claim(ClaimTypes.PrimarySid,reponse.Token)
                 };
                 if (reponse.Roles != null)

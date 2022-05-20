@@ -230,7 +230,7 @@ go
 create table News
 (
 	NewsId varchar(64) not null primary key,
-	Name nvarchar(250),
+	Name nvarchar(max),
 	MetaTitle varchar(250),
 	Description ntext,
 	Code varchar(20),
@@ -334,6 +334,18 @@ as
 	insert into InvoiceDetail(InvoiceId,TourId,Price,Quantity,Payment,QuantityDepartment,Description,PaymentMore,FullName,Phone,Email) values (@InvoiceId,@TourId,@Price,@Quantity,@Paymentt,@QuantityDepartment,@Description,@PaymentMore,@FullName,@Phone,@Email);
 	end;
 go
+create proc UpdateQuantity(
+	@Id varchar(64)
+)
+as
+	begin
+		declare @t int;
+		set @t = (select Quantity from Tours)-1
+
+		update Tours set Quantity = @t where TourId = @Id
+	end
+go
+
 -- drop proc AddInvoiceDetail
 --create proc AddInvoiceDetail(
 --	@InvoiceId varchar(64) ,
@@ -393,6 +405,7 @@ go
 --select * from Tags
 --select * from NewsCategories
 --select * from News
+--select * from NewCategories
 --select * from NewTags
 --select * from Contacts
 --select * from ImageTour

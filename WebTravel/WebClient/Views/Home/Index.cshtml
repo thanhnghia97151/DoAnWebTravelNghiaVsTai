@@ -3,111 +3,92 @@
 }
 
 
-   <div class="category1">
-   	<div class="container">
+<div class="category1">
+    <div class="container">
 
-   		<div class="row">
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-   					<div class="containercategory1">
-   					<h3><span class="fa fa-user"></span> &nbsp;&nbsp;<span>Du lịch</span> <a href="">TRONG NƯỚC</a></h3>
-   					</div>
-   			</div> <!-- end left 1 cate -->
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   				<div class="containercategory1">
-   					<h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Du lịch</span> <a href="">NGOÀI NƯỚC</a></h3>
-   					</div>
-   					
-   			</div> <!-- end left 2 cate -->
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   					<div class="containercategory1">
-   					<h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Du lịch</span> <a href="">KHÁCH ĐOÀN</a></h3>
-   					</div>
-   			</div> <!-- end left 3 cate -->
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
-   					<div class="containercategory1">
-   					<h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Du lịch</span> <a href="">COMBO</a></h3>
-   					</div>
-   			</div> <!-- end left 4 cate -->
-   		</div>
-   	</div>
-   </div> <!-- end cate -->
+        <div class="row">
+        </div>
+    </div>
+</div> <!-- end cate -->
 
-   <div class="showproduct">
-   	<div class="container">
-   		<div class="row">
-   			
-   			<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 leftshow">
-            	<h2>TOUR DU LỊCH</h2>
+<div class="showproduct">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 leftshow">
+                <h2>TOUR DU LỊCH</h2>
             </div>
             <!-- end colunm 1 into category name -->
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="padding-top: 21px; padding-bottom:5px;">
-            <div class="leftview" style="margin-left: -10px;">
-              <a style="text-decoration: none; color: black;" href="£"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
+                <div class="leftview" style="margin-left: -10px;">
+                    <a style="text-decoration: none; color: black;" href="/tour/alltour"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
+                </div>
             </div>
-          </div>
-   		</div>
-   		<div class="row">
-   			<div id="carousel-id2" class="carousel slide">
-   				<ol class="carousel-indicators">
+        </div>
+        <div class="row">
+            <div id="carousel-id2" class="carousel slide">
+                <ol class="carousel-indicators">
                     @{
                         List<Tour> listTours = ViewBag.tours;
                         var length = listTours.Count();
 
                     }
-                    @if(length > 0){
+                    @if (length > 0)
+                    {
                         <li data-target="#carousel-id2" data-slide-to="0" class="active"></li>
 
-                        for(int i = 1; i < (length/4)+1; i++)
+                        for (int i = 1; i < (length / 4) + 1; i++)
                         {
                             <li data-target="#carousel-id2" data-slide-to="@i" class=""></li>
                         }
                     }
-@*   					<li data-target="#carousel-id2" data-slide-to="0" class="active
-   					"></li>
-   					<li data-target="#carousel-id2" data-slide-to="1" class=""></li>
-   					<li data-target="#carousel-id2" data-slide-to="2" class=""></li>*@
-   				</ol>
-                   @if(length > 0)
-                    {
-   				<div class="carousel-inner">
+                    @*   					<li data-target="#carousel-id2" data-slide-to="0" class="active
+                        "></li>
+                        <li data-target="#carousel-id2" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-id2" data-slide-to="2" class=""></li>*@
+                </ol>
+                @if (length > 0)
+                {
+                    <div class="carousel-inner">
 
-                    
-                    <div class="item active">
-   						<div class="row">
-                               @if( length < 4)
+
+                        <div class="item active">
+                            <div class="row">
+                                @if (length < 4)
                                 {
                                     for (var i = 0; i < length; i++)
                                     {
-                                             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   								                <div class="thumbnail">
-   									                <a href="/home/detailtour/@listTours[i].TourId"><div><img src="https://localhost:44384/images/@listTours[i].Image" width="70" alt="" ></div></a>
-   									                <div class="captionbottomimage">
-   										                @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
-                                                           @listTours[i].Name
-   									                </div>
-   									                <div class="caption">
-   										                <div>
-   											
-   											                <p>
-   												                <span class="fa fa-history"></span>
-   											                &nbsp;@*Lịch trình: 3 ngày 2 đêm*@ @listTours[i].Schedule</p>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                            <div class="thumbnail">
+                                                <a href="/home/detailtour/@listTours[i].TourId"><div><img src="https://localhost:44384/images/@listTours[i].Image" width="70" alt=""></div></a>
+                                                <div class="captionbottomimage">
+                                                    @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
+                                                    @listTours[i].Name
+                                                </div>
+                                                <div class="caption">
+                                                    <div>
 
-   										                </div>
-   										                <div>
-   											
-   											                <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[i].StartDate.Day / @listTours[i].StartDate.Month / @listTours[i].StartDate.Year</p>
+                                                        <p>
+                                                            <span class="fa fa-history"></span>
+                                                            &nbsp;@*Lịch trình: 3 ngày 2 đêm*@ @listTours[i].Schedule
+                                                        </p>
 
-   										                </div>
-   										                <div>
-   											                <b class="pull-right">@listTours[i].Price đ</b>
-   											
-   											                <p><span class="fa fa-user"></span>&nbsp; Số vé:  @listTours[i].Quantity</p>
+                                                    </div>
+                                                    <div>
 
-   										                </div>
-   										
-   									                </div>
-   								                </div>
-   							
+                                                        <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[i].StartDate.Day / @listTours[i].StartDate.Month / @listTours[i].StartDate.Year</p>
+
+                                                    </div>
+                                                    <div>
+                                                        <b class="pull-right">@listTours[i].Price đ</b>
+
+                                                        <p><span class="fa fa-user"></span>&nbsp; Số vé:  @listTours[i].Quantity</p>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </div> <!-- end slide left 1 item 1 -->
                                     }
                                 }
@@ -115,399 +96,413 @@
                                 {
                                     for (var i = 0; i < 4; i++)
                                     {
-                                             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   								                <div class="thumbnail">
-   									                <a href="/home/detailtour/@listTours[i].TourId"><div><img src="https://localhost:44384/images/@listTours[i].Image" width="70" alt="" ></div></a>
-   									                <div class="captionbottomimage">
-   										                @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
-                                                           @listTours[i].Name
-   									                </div>
-   									                <div class="caption">
-   										                <div>
-   											
-   											                <p>
-   												                <span class="fa fa-history"></span>
-   											               &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[i].Schedule</p>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                            <div class="thumbnail">
+                                                <a href="/home/detailtour/@listTours[i].TourId"><div><img src="https://localhost:44384/images/@listTours[i].Image" width="70" alt=""></div></a>
+                                                <div class="captionbottomimage">
+                                                    @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
+                                                    @listTours[i].Name
+                                                </div>
+                                                <div class="caption">
+                                                    <div>
 
-   										                </div>
-   										                <div>
-   											
-   											                <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[i].StartDate.Day / @listTours[i].StartDate.Month / @listTours[i].StartDate.Year</p>
+                                                        <p>
+                                                            <span class="fa fa-history"></span>
+                                                            &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[i].Schedule
+                                                        </p>
 
-   										                </div>
-   										                <div>
-   											                <b class="pull-right">@listTours[i].Price đ</b>
-   											
-   											                <p><span class="fa fa-user"></span>&nbsp;Số vé:  @listTours[i].Quantity</p>
+                                                    </div>
+                                                    <div>
 
-   										                </div>
-   										
-   									                </div>
-   								                </div>
-   							
+                                                        <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[i].StartDate.Day / @listTours[i].StartDate.Month / @listTours[i].StartDate.Year</p>
+
+                                                    </div>
+                                                    <div>
+                                                        <b class="pull-right">@listTours[i].Price đ</b>
+
+                                                        <p><span class="fa fa-user"></span>&nbsp;Số vé:  @listTours[i].Quantity</p>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </div> <!-- end slide left 1 item 1 -->
                                     }
                                 }
 
-   						</div>
-                     </div> <!-- end item 1 category -->
-                     @for(int i = 1; i < (length/4)+1; i++)
-                     {
-                           <div class="item">
-   						    <div class="row">
-                                    @if(i*4+4 > length)
+                            </div>
+                        </div> <!-- end item 1 category -->
+                        @for (int i = 1; i < (length / 4) + 1; i++)
+                        {
+                            <div class="item">
+                                <div class="row">
+                                    @if (i * 4 + 4 > length)
                                     {
-                                        for(int j=4*i; j < length; j++)
+                                        for (int j = 4 * i; j < length; j++)
                                         {
-                                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   								                    <div class="thumbnail">
-   									                    <a href="/home/detailtour/@listTours[j].TourId"><div><img src="https://localhost:44384/images/@listTours[j].Image" width="70" alt="" ></div></a>
-   									                    <div class="captionbottomimage">
-   										                    @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
-                                                               @listTours[j].Name
-   									                    </div>
-   									                    <div class="caption">
-   										                    <div>
-   											
-   											                    <p>
-   												                    <span class="fa fa-history"></span>
-   											                    &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[j].Schedule</p>
+                                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                <div class="thumbnail">
+                                                    <a href="/home/detailtour/@listTours[j].TourId"><div><img src="https://localhost:44384/images/@listTours[j].Image" width="70" alt=""></div></a>
+                                                    <div class="captionbottomimage">
+                                                        @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
+                                                        @listTours[j].Name
+                                                    </div>
+                                                    <div class="caption">
+                                                        <div>
 
-   										                    </div>
-   										                    <div>
-   											
-   											                    <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[j].StartDate.Day / @listTours[j].StartDate.Month / @listTours[j].StartDate.Year</p>
+                                                            <p>
+                                                                <span class="fa fa-history"></span>
+                                                                &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[j].Schedule
+                                                            </p>
 
-   										                    </div>
-   										                    <div>
-   											                    <b class="pull-right">@listTours[j].Price đ</b>
-   											
-   											                    <p><span class="fa fa-user"></span>&nbsp; Số vé còn: @listTours[j].Quantity</p>
+                                                        </div>
+                                                        <div>
 
-   										                    </div>
-   										
-   									                    </div>
-   								                    </div>
-   							
+                                                            <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[j].StartDate.Day / @listTours[j].StartDate.Month / @listTours[j].StartDate.Year</p>
+
+                                                        </div>
+                                                        <div>
+                                                            <b class="pull-right">@listTours[j].Price đ</b>
+
+                                                            <p><span class="fa fa-user"></span>&nbsp; Số vé còn: @listTours[j].Quantity</p>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
                                             </div> <!-- end slide left 1 item 1 -->
                                         }
-                                    } 
+                                    }
                                     else
                                     {
-                                        for(int j=4*i; j < i*4+4; j++)
+                                        for (int j = 4 * i; j < i * 4 + 4; j++)
                                         {
-                                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   								                    <div class="thumbnail">
-   									                    <a href="/home/detailtour/@listTours[j].TourId"><div><img src="https://localhost:44384/images/@listTours[j].Image" width="70" alt="" ></div></a>
-   									                    <div class="captionbottomimage">
-   										                    @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
-                                                               @listTours[j].Name
-   									                    </div>
-   									                    <div class="caption">
-   										                    <div>
-   											
-   											                    <p>
-   												                    <span class="fa fa-history"></span>
-   											                    &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[j].Schedule</p>
+                                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                <div class="thumbnail">
+                                                    <a href="/home/detailtour/@listTours[j].TourId"><div><img src="https://localhost:44384/images/@listTours[j].Image" width="70" alt=""></div></a>
+                                                    <div class="captionbottomimage">
+                                                        @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
+                                                        @listTours[j].Name
+                                                    </div>
+                                                    <div class="caption">
+                                                        <div>
 
-   										                    </div>
-   										                    <div>
-   											
-   											                    <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[j].StartDate.Day / @listTours[j].StartDate.Month / @listTours[j].StartDate.Year</p>
+                                                            <p>
+                                                                <span class="fa fa-history"></span>
+                                                                &nbsp; @*Lịch trình: 3 ngày 2 đêm*@ @listTours[j].Schedule
+                                                            </p>
 
-   										                    </div>
-   										                    <div>
-   											                    <b class="pull-right">@listTours[j].Price đ</b>
-   											
-   											                    <p><span class="fa fa-user"></span>&nbsp; Số vé còn: @listTours[j].Quantity</p>
+                                                        </div>
+                                                        <div>
 
-   										                    </div>
-   										
-   									                    </div>
-   								                    </div>
-   							
+                                                            <p><span class="fa fa-calendar"></span>&nbsp; @*Khởi hành: 19/2/2021*@ Khởi hành: @listTours[j].StartDate.Day / @listTours[j].StartDate.Month / @listTours[j].StartDate.Year</p>
+
+                                                        </div>
+                                                        <div>
+                                                            <b class="pull-right">@listTours[j].Price đ</b>
+
+                                                            <p><span class="fa fa-user"></span>&nbsp; Số vé còn: @listTours[j].Quantity</p>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
                                             </div> <!-- end slide left 1 item 1 -->
                                         }
                                     }
 
-   						
-   						    </div>
-   					    </div> <!-- end item 2 category -->
-                     }
-                    
-   				
-   				</div>
-                   }
-   				<a class="left carousel-control" style="background: none !important;  " href="#carousel-id2" data-slide="prev"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-left"></span></a>
-   				<a class="right carousel-control" style="background: none !important" href="#carousel-id2" data-slide="next"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-right"></span></a>
-   			</div>
-   		</div> <!-- end row cate 01 -->
-   	</div>
-   </div> <!-- end show product -->
 
-   <div class="showdichvu">
-   	<div class="container">
-   		<div class="row">
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   				<div class="hinhchunhat hinhchunhat1">
-   					<div class="row">
-   						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-   							<b class="fa fa-plane"></b>
-   					
-   						</div>
-   						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-   							<div class="hcm">
-   								<h4>KHÁCH SẠN</h4>
-   							<p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-   							</div>
-   						</div>
-   					</div>
-   				</div> <!-- end hinhchunhat 01  -->
+                                </div>
+                            </div> <!-- end item 2 category -->
+                        }
 
-   			</div>
 
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   				<div class="hinhchunhat hinhchunhat2">
-   					<div class="row">
-   						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-   							<b class="fa fa-plane"></b>
-   					
-   						</div>
-   						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-   							<div class="hcm">
-   								<h4>KHÁCH SẠN</h4>
-   							<p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-   							</div>
-   						</div>
-   					</div>
-   				</div> <!-- end hinhchunhat 02  -->
-   				
-   			</div>
+                    </div>
+                }
+                <a class="left carousel-control" style="background: none !important;  " href="#carousel-id2" data-slide="prev"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control" style="background: none !important" href="#carousel-id2" data-slide="next"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div> <!-- end row cate 01 -->
+    </div>
+</div> <!-- end show product -->
 
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   				<div class="hinhchunhat hinhchunhat3">
-   					<div class="row">
-   						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-   							<b class="fa fa-plane"></b>
-   					
-   						</div>
-   						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-   							<div class="hcm">
-   								<h4>KHÁCH SẠN</h4>
-   							<p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-   							</div>
-   						</div>
-   					</div>
-   				</div> <!-- end hinhchunhat 03  -->
-   				
-   			</div>
+<div class="showdichvu">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="hinhchunhat hinhchunhat1">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <b class="fa fa-plane"></b>
 
-   			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-   				<div class="hinhchunhat hinhchunhat4">
-   					<div class="row">
-   						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-   							<b class="fa fa-plane"></b>
-   					
-   						</div>
-   						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-   							<div class="hcm">
-   								<h4>KHÁCH SẠN</h4>
-   							<p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-   							</div>
-   						</div>
-   					</div>
-   				</div> <!-- end hinhchunhat 04  -->
-   				
-   			</div>
-   		</div>
-   	</div>
-   </div> <!-- end show hinh chu nhat cac dich vu -->
-   <div class="baiviet">
-   	<div class="container">
-   		<div class="row">
-   			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-   				<div class="row">
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="row">
-   							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-   								<hr>
-   								<div class="imageleftnew">
-   									<img src="~/images/newkhachsan.jpg" alt="khachsan">
-   								</div>
-   								<div class="textrightnew">
-   									<h5>
-                                     Biking Tour Saigon - Sự kiện hưởng 
-                                     ứng Kỷ niệm 26 năm thành lập Vietravel
-                                    </h5>
-                                    <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                    </p>
-   								</div>
-   							</div> <!-- end column 1 -->
-   							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-   								<hr>
-   								<div class="imageleftnew">
-   									<img src="~/images/newkhachsan.jpg" alt="khachsan">
-   								</div>
-   								<div class="textrightnew">
-   									<h5>
-                                     Biking Tour Saigon - Sự kiện hưởng 
-                                     ứng Kỷ niệm 26 năm thành lập Vietravel
-                                    </h5>
-                                    <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                    </p>
-   								</div>
-   							</div> <!-- end column 2 -->
-   							
-   						</div> <!-- end row 1 top khach sann -->
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div class="hcm">
+                                <h4>KHÁCH SẠN</h4>
+                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end hinhchunhat 01  -->
 
-   						<div class="row">
-   							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-   								<hr>
-   								<div class="imageleftnew">
-   									<img src="~/images/newkhachsan.jpg" alt="khachsan">
-   								</div>
-   								<div class="textrightnew">
-   									<h5>
-                                     Biking Tour Saigon - Sự kiện hưởng 
-                                     ứng Kỷ niệm 26 năm thành lập Vietravel
-                                    </h5>
-                                    <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                    </p>
-   								</div>
-   							</div> <!-- end column 1 -->
-   							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-   								<hr>
-   								<div class="imageleftnew">
-   									<img src="~/images/newkhachsan.jpg" alt="khachsan">
-   								</div>
-   								<div class="textrightnew">
-   									<h5>
-                                     Biking Tour Saigon - Sự kiện hưởng 
-                                     ứng Kỷ niệm 26 năm thành lập Vietravel
-                                    </h5>
-                                    <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                    </p>
-   								</div>
-   							</div> <!-- end column 2 -->
-   							
-   						</div> <!-- end row 2 top khach sann -->
-   					</div>
-   				</div> <!-- end row 1 in left news khach san -->
-   				
-   				<div class="row">
-   			
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="ngantin">
-   					<h2><a href="/news">Tin Du Lịch</a></h2>
-   					<hr>
-   					</div>
-   				
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="hinhchunhat hinhchunhat2">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <b class="fa fa-plane"></b>
+
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div class="hcm">
+                                <h4>KHÁCH SẠN</h4>
+                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end hinhchunhat 02  -->
+
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="hinhchunhat hinhchunhat3">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <b class="fa fa-plane"></b>
+
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div class="hcm">
+                                <h4>KHÁCH SẠN</h4>
+                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end hinhchunhat 03  -->
+
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="hinhchunhat hinhchunhat4">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <b class="fa fa-plane"></b>
+
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div class="hcm">
+                                <h4>KHÁCH SẠN</h4>
+                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end hinhchunhat 04  -->
+
+            </div>
+        </div>
+    </div>
+</div> <!-- end show hinh chu nhat cac dich vu -->
+<div class="baiviet">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="row">
+                            @{
+                                List<News> list = ViewBag.newnews;
+                            }
+                            
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <hr>
+
+
+                                    <div class="imageleftnew">
+                                        <img src="~/images/newkhachsan.jpg" alt="khachsan">
+                                    </div>
+                                    <div class="textrightnew">
+                                        <h5>
+                                            Biking Tour Saigon - Sự kiện hưởng
+                                            ứng Kỷ niệm 26 năm thành lập Vietravel
+                                        </h5>
+                                        <p>
+                                            Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
+                                        </p>
+                                    </div>
+                                </div> <!-- end column 1 -->
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                       <hr>
+                                       <div class="imageleftnew">
+                                       <img src="~/images/newkhachsan.jpg" alt="khachsan">
+                                       </div>
+                                       <div class="textrightnew">
+                                       <h5>
+                                       Biking Tour Saigon - Sự kiện hưởng
+                                       ứng Kỷ niệm 26 năm thành lập Vietravel
+                                       </h5>
+                                       <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
+                                       </p>
+                                       </div>
+                                       </div> <!-- end column 2 -->
+
+                        </div> <!-- end row 1 top khach sann -->
+
+                        <div class="row">
+                           
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <hr>
+                                    <div class="imageleftnew">
+                                        <img src="~/images/newkhachsan.jpg" alt="khachsan">
+                                    </div>
+                                    <div class="textrightnew">
+                                        <h5>
+                                            Biking Tour Saigon - Sự kiện hưởng
+                                            ứng Kỷ niệm 26 năm thành lập Vietravel
+                                        </h5>
+                                        <p>
+                                            Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
+                                        </p>
+                                    </div>
+                                </div> <!-- end column 1 -->
+                            
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <hr>
+                                <div class="imageleftnew">
+                                <img src="~/images/newkhachsan.jpg" alt="khachsan">
+                                </div>
+                                <div class="textrightnew">
+                                <h5>
+                                Biking Tour Saigon - Sự kiện hưởng
+                                ứng Kỷ niệm 26 năm thành lập Vietravel
+                                </h5>
+                                <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
+                                </p>
+                                </div>
+                                </div> <!-- end column 2 -->
+
+                        </div> <!-- end row 2 top khach sann -->
+                    </div>
+                </div> <!-- end row 1 in left news khach san -->
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="ngantin">
+                            <h2><a href="/news">Tin Du Lịch</a></h2>
+                            <hr>
+                        </div>
+
                         @{
                             List<News> listNews = ViewBag.news;
                         }
-                        @if(listNews.Count > 0)
+                        @if (listNews.Count > 0)
                         {
-                  <div class="row">
-   					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 hinhanhtindulich">
-   						<img src="~/images/tindulich.jpg" alt="tindulich">
-   					</div> <!-- end tin du lich column 1 -->
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 hinhanhtindulich">
+                                    <img src="https://localhost:44384/images/tindulich.jpg" alt="tindulich">
+                                </div> <!-- end tin du lich column 1 -->
 
-   					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-   						<h4 class="tindulich">
-   							<a href="/news">
-   						@*Vietravel và UBND tỉnh Tuyên Quang ký kết hợp tác chiến lược thúc đẩy phát triển du lịch*@
-                           @listNews[0].Name
-   							</a>
-   						</h4>
-   						<p class="timedulich">
-   							<span class="fa fa-history"></span>
-   							<small>@listNews[0].CreatedDate</small>
-   						</p>
-   						<p class="noidungdulich">
-   							@listNews[0].Description ...
-   						</p>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <h4 class="tindulich">
+                                        <a href="/news">
+                                            @*Vietravel và UBND tỉnh Tuyên Quang ký kết hợp tác chiến lược thúc đẩy phát triển du lịch*@
+                                            @listNews[0].Name
+                                        </a>
+                                    </h4>
+                                    <p class="timedulich">
+                                        <span class="fa fa-history"></span>
+                                        <small>@listNews[0].CreatedDate</small>
+                                    </p>
+                                    <p class="noidungdulich">
+                                        @listNews[0].Description
+                                    </p>
 
-   						<a href="/news/detail/@listNews[0].NewsId" class="btn btn-info">Chi tiết</a>
-   					</div> <!-- end tin du lich column 2 -->
-   				</div>
+                                    <a href="/news/detail/@listNews[0].NewsId" class="btn btn-info">Chi tiết</a>
+                                </div> <!-- end tin du lich column 2 -->
+                        </div>
                         }
 
-   					</div>
-   				</div> <!-- end row 2 in left news Du lich -->
-   				
-   			</div>
-   			<div class="col-xs-0 col-sm-4 col-md-4 col-lg-4">
-   				<div class="row">
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="anhbia">
-   							<img src="~/images/biadulich.jpg" alt="biadulich">
-   						</div>
-   					</div>
-   				</div><!--  end row 1 right tin quan tam -->
-   				<div class="row">
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<h2 class="tinquantam">Tin Được Quan Tâm</h2>
-   						<hr>
-   					</div>
-   				</div> <!--  end row 2 right tin quan tam -->
-   				<div class="row">
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="noidungquantamleft">
-   							<img src="~/images/product1.jpg" alt="">
-   						</div>
-   						<div class="noidungquantamright">
-   							<h5>
-   								<a href="">
-                                 Vietravel và UBND tỉnh Tuyên Quang ký 
-                                 kết hợp tác chiến lược thúc đẩy phát triển du lịch
+                    </div>
+                </div> <!-- end row 2 in left news Du lich -->
+
+            </div>
+            <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="anhbia">
+                            <img src="~/images/biadulich.jpg" alt="biadulich">
+                        </div>
+                    </div>
+                </div><!--  end row 1 right tin quan tam -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2 class="tinquantam">Tin Được Quan Tâm</h2>
+                        <hr>
+                    </div>
+                </div> <!--  end row 2 right tin quan tam -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="noidungquantamleft">
+                            <img src="~/images/product1.jpg" alt="">
+                        </div>
+                        <div class="noidungquantamright">
+                            <h5>
+                                <a href="">
+                                    Vietravel và UBND tỉnh Tuyên Quang ký
+                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
                                 </a>
                             </h5>
-                            	
-                            	<p> <span class="fa fa-history"></span>&nbsp; 
-                                     <small>15/1/2021</small>
-                            	</p>
-   						</div>
-   					</div> <!-- noi dung quan tam 1 -->
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="noidungquantamleft">
-   							<img src="~/images/product1.jpg" alt="">
-   						</div>
-   						<div class="noidungquantamright">
-   							<h5>
-   								<a href="">
-                                 Vietravel và UBND tỉnh Tuyên Quang ký 
-                                 kết hợp tác chiến lược thúc đẩy phát triển du lịch
+
+                            <p>
+                                <span class="fa fa-history"></span>&nbsp;
+                                <small>15/1/2021</small>
+                            </p>
+                        </div>
+                    </div> <!-- noi dung quan tam 1 -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="noidungquantamleft">
+                            <img src="~/images/product1.jpg" alt="">
+                        </div>
+                        <div class="noidungquantamright">
+                            <h5>
+                                <a href="">
+                                    Vietravel và UBND tỉnh Tuyên Quang ký
+                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
                                 </a>
                             </h5>
-                            	
-                            	<p> <span class="fa fa-history"></span>&nbsp; 
-                                     <small>15/1/2021</small>
-                            	</p>
-   						</div>
-   					</div> <!-- noi dung quan tam 2 -->
-   					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   						<div class="noidungquantamleft">
-   							<img src="~/images/product1.jpg" alt="">
-   						</div>
-   						<div class="noidungquantamright">
-   							<h5>
-   								<a href="">
-                                 Vietravel và UBND tỉnh Tuyên Quang ký 
-                                 kết hợp tác chiến lược thúc đẩy phát triển du lịch
+
+                            <p>
+                                <span class="fa fa-history"></span>&nbsp;
+                                <small>15/1/2021</small>
+                            </p>
+                        </div>
+                    </div> <!-- noi dung quan tam 2 -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="noidungquantamleft">
+                            <img src="~/images/product1.jpg" alt="">
+                        </div>
+                        <div class="noidungquantamright">
+                            <h5>
+                                <a href="">
+                                    Vietravel và UBND tỉnh Tuyên Quang ký
+                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
                                 </a>
                             </h5>
-                            	
-                            	<p> <span class="fa fa-history"></span>&nbsp; 
-                                     <small>15/1/2021</small>
-                            	</p>
-   						</div>
-   					</div> <!-- noi dung quan tam 3 -->
-   					
-   				</div> <!--  end row 2 right tin quan tam -->
-   			</div>
-   		</div>
-   	</div>
-   </div> <!-- end bai viet -->
 
+                            <p>
+                                <span class="fa fa-history"></span>&nbsp;
+                                <small>15/1/2021</small>
+                            </p>
+                        </div>
+                    </div> <!-- noi dung quan tam 3 -->
 
-
+                </div> <!--  end row 2 right tin quan tam -->
+            </div>
+        </div>
+    </div>
+</div> <!-- end bai viet -->

@@ -55,9 +55,20 @@ namespace WebClient.Controllers
             obj.InvoiceId = Helper.RandomString(64);
             if (await provider.Invoice.Add(obj) == 2)
             {
-                return Redirect("/home");
+                await provider.Tour.Ticket(await provider.Tour.GetTourById(obj.TourId));
+                return RedirectToAction("SuccessBook");
             }
             return View(obj);
+        }
+        public async Task<IActionResult> SuccessBook()
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            return View();
         }
     }
 }

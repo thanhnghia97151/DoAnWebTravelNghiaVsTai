@@ -40,7 +40,7 @@ namespace WebClient.Controllers
 
             return View();
         }
-        public async Task<IActionResult> ToursByCategory()
+        public async Task<IActionResult> ToursByCategory(string id)
         {
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
@@ -48,7 +48,26 @@ namespace WebClient.Controllers
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
+            //Get Tour Category by Id
+            ViewBag.tourcate = await provider.TourCategory.GetCategory(id);
+
+
+            //Get Tours by CategoryId
+            ViewBag.toursbycategoryid = await provider.Tour.GetTourByCategoryId(id);
+
             return View();
         }
+        public async Task<IActionResult> AllTour()
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+
+            return View(await provider.Tour.GetTours());
+        }
+        
     }
 }

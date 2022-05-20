@@ -41,9 +41,7 @@
          </div>
          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 topmenuright">
             <ul>
-               <li>
-                   <a href="/dashboard"><small>Dashboard</small></a>
-               </li>
+               
                    
                 @if (User.Identity.IsAuthenticated)
                     {
@@ -116,35 +114,35 @@
                  <p>Tên người dùng:</p>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>Lê Văn Tài</p>
+                 <p>@User.FindFirstValue(ClaimTypes.Name)</p>
               </div>
               <!-- the end one info -->
                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>Địa chỉ:</p>
+                 <p>@*Địa chỉ:*@</p>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>127 Trần Bá Giao</p>
+                 <p>@*127 Trần Bá Giao*@</p>
               </div>
               <!-- the end one info -->
                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <p>Địa chỉ email:</p>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>Leanhtai"gmail.com</p>
+                 <p>@User.FindFirstValue(ClaimTypes.Email)</p>
               </div>
               <!-- the end one info -->
                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>Số điện thoại:</p>
+                 <p>@*ố điện thoại:*@</p>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>089574830</p>
+                 <p>@*089574830*@</p>
               </div>
               <!-- the end one info -->
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p>Trạng thái:</p>
+                 <p>@*Trạng thái*@:</p>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p class="trangthai"><i>Đang hoạt động</i></p>
+                 <p class="trangthai"><i>@*Đang hoạt động*@</i></p>
               </div>
            </div>
         </div>
@@ -152,7 +150,7 @@
       <div class="modal-footer">
           <a class="btn btn-danger" href="/auth/logout">Logout</a>
         <button type="button" class="btn btn-info" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-danger">Thay đổi mật khẩu</button>
+        @*<button type="button" class="btn btn-danger">Thay đổi mật khẩu</button>*@
       </div>
     </div>
   </div>

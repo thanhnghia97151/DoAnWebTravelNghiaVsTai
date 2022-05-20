@@ -21,6 +21,9 @@ namespace WebClient.Controllers
             //Get News
             ViewBag.news = await provider.News.GetNews();
 
+            //Get new Tour
+            ViewBag.newnews = await provider.News.GetNews();
+
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 

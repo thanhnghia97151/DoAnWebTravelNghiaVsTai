@@ -45,5 +45,10 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Tour.GetNewTourByCategoryId(id);
         }
+        [HttpPost("ticket/{id}")]
+        public int Ticket(string id)
+        {
+            return provider.Tour.Ticket(id);
+        }
     }
 }
