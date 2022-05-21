@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj": {}
+    "F:\\Khoa_Luan_Tot_Nghiep\\CodeSourceFull\\WebTravel\\WebClient\\WebClient.csproj": {}
   },
   "projects": {
-    "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj": {
+    "F:\\Khoa_Luan_Tot_Nghiep\\CodeSourceFull\\WebTravel\\WebClient\\WebClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectUniqueName": "F:\\Khoa_Luan_Tot_Nghiep\\CodeSourceFull\\WebTravel\\WebClient\\WebClient.csproj",
         "projectName": "WebClient",
-        "projectPath": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\WebClient.csproj",
-        "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAn_Tai_vs_Nghia\\WebTravel\\WebClient\\obj\\",
+        "projectPath": "F:\\Khoa_Luan_Tot_Nghiep\\CodeSourceFull\\WebTravel\\WebClient\\WebClient.csproj",
+        "packagesPath": "C:\\Users\\VanTaiPC\\.nuget\\packages\\",
+        "outputPath": "F:\\Khoa_Luan_Tot_Nghiep\\CodeSourceFull\\WebTravel\\WebClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ThanhNghiaPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\VanTaiPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,6 +63,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -71,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.210\\RuntimeIdentifierGraph.json"
         }
       }
     }
