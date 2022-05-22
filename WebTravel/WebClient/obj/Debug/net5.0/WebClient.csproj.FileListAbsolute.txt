@@ -419,7 +419,6 @@ F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\bin\Debug\net5.0\zh-H
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
-F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.GeneratedMSBuildEditorConfig.editorconfig
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.AssemblyInfoInputs.cache
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.AssemblyInfo.cs

@@ -106,55 +106,96 @@
 
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div class="row">
-                <div class="tableorder">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableborder">
-                    <div class="table1">
-                      <p class="titletable">
-                          @Model.Name
-                      </p>
-                    </div> 
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Mã tour:</small> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;@Model.TourId 
-                      </p>
-                    </div> 
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Thời gian:</small>
-                          &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; @Model.Schedule
-                      </p>
-                    </div>
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Vận Chuyển:</small> &nbsp; &nbsp;@Model.Transport
-                      </p>
-                    </div>
+                  <div class="tableorder">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableborder">
+                          <div class="table1">
+                              <p class="titletable">
+                                  @Model.Name
+                              </p>
+                          </div>
+                          <div class="table1">
+                              <p class="gachduoitable">
+                                  <hr>
+                              </p>
+                              <p>
+                                  <small>Mã tour:</small> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;@Model.TourId
+                              </p>
+                          </div>
+                          <div class="table1">
+                              <p class="gachduoitable">
+                                  <hr>
+                              </p>
+                              <p>
+                                  <small>Thời gian:</small>
+                                  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; @Model.Schedule
+                              </p>
+                          </div>
+                          <div class="table1">
+                              <p class="gachduoitable">
+                                  <hr>
+                              </p>
+                              <p>
+                                  <small>Vận Chuyển:</small> &nbsp; &nbsp;@Model.Transport
+                              </p>
+                          </div>
+                      </div>
+                      <!-- the end table -->
+                      <div class="pricetable">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pricetable1">
+                              <p class="giatable">Giá từ: <small>@Model.PromotionPrice đ</small></p>
+                              <!-- the end price -->
+                              <form>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" name="date" />
+                                  </div>
+                                  <a href="/invoice/create/@Model.TourId" class="btn btn-success">
+                                      ĐẶT TOUR
+                                  </a>
+                              </form>
+                          </div>
+                      </div>
+                      @*comment*@
+                      <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                              <h4>Phản hồi</h4>
+                              <div class="well editcomment">
+                                  <div class="row">
+                                      <div class="col-xs-2 col-sm-4 col-md-2 col-lg-2">
+                                          <img src="https://localhost:44384/images/person.jpg" class="img-responsive center-block">
+                                      </div>
+                                      <div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
+                                          <p class="comment-info">
+                                              <strong>
+                                                  Le Van Tai
+                                              </strong>
+                                              <span>20/2/2022</span>
+                                          </p>
+                                          <p>
+                                              Very good
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="comment-post">
+                          <h4>Bình luận</h4>
+                          <form asp-controller="Comments" asp-action="SaveCommentData" method="post">
+                              <input type="hidden" name="id" value="" />
+                              <div class="row editcomment">
+                                  <div class="col-md-12">
+                                      <textarea name="message" type="text" class="form-control" id="message" rows="3" required="required" placeholder="Type here message"></textarea>
+                                  </div>
+                              </div>
+                              <div class="row comment">
+                                  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                      <button type="submit" id="submit" name="submit" class="btn btn-success">Bình luận</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                      @*the end comment*@
                   </div>
-                  <!-- the end table -->  
-                  <div class="pricetable">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pricetable1">
-                      <p class="giatable">Giá từ: <small>@Model.PromotionPrice đ</small></p>
-                      <!-- the end price -->
-                      <form  >
-                        <div class="form-group">
-                          <input type="text" class="form-control" name="date"/>
-                        </div>
-                          <a href="/invoice/create/@Model.TourId" class="btn btn-success">
-                              ĐẶT TOUR
-                          </a>
-                      </form>
-                    </div>
-                  </div> 
-                </div>
               </div>
           </div>
           <!-- the end row right -->
