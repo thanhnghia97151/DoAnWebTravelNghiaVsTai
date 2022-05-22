@@ -18,6 +18,13 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.News.GetNewses();
         }
+
+        [HttpGet("fournews")]
+        public IEnumerable<News> GetFourNewses()
+        {
+            return provider.News.GetFourNewses();
+        }
+
         [HttpPost]
         public int Add(News obj)
         {
@@ -25,11 +32,29 @@ namespace WebTravelApi.Api.Controllers
             return provider.News.Add(obj);
 
         }
+
         [HttpGet("{id}")]
         public News GetNews(string id)
         {
+            var news = provider.News.GetNews(id);
+            var count = news.ViewCount + 1;
+            provider.News.UpdateCountViewer(count, id);
+
             return provider.News.GetNews(id);
         }
+
+        [HttpGet("newshot")]
+        public News GetNewsHot() 
+        {
+            return provider.News.GetNewsHot();
+        }
+
+        [HttpGet("newsoutstanding")]
+        public IEnumerable<News> GetNewsOutStanding()
+        {
+            return provider.News.GetNewsOutstanding();
+        }
+
         [HttpPost("delete/{id}")]
         public int Delete(string id)
         {

@@ -12,7 +12,7 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<Tour> GetTours()
         {
-            return connection.Query<Tour>("select * from Tours");
+            return connection.Query<Tour>("select TOP 20 * from [dbo].[Tours] as t order by t.ModifiedDate DESC");
         }
         public int Add(Tour obj)
         {

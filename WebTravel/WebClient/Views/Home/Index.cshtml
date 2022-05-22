@@ -2,12 +2,45 @@
     Layout = "_Layout";
 }
 
-
+@{
+    var fourNews = (List<News>)ViewBag.fournews;
+    var threeNewsOutstanding = (List<News>)ViewBag.newsoutstanding;
+}
 <div class="category1">
     <div class="container">
 
         <div class="row">
         </div>
+    </div>
+</div> <!-- end cate -->
+
+<div class="category1">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                <div class="containercategory1">
+                    <h3><span class="fa fa-user"></span> &nbsp;&nbsp;<span>Du lịch</span> <a href="">NƯỚC NGOÀI</a></h3>
+                </div>
+            </div> <!-- end left 1 cate -->
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="containercategory1">
+                    <h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Du lịch</span> <a href="">TRONG NƯỚC</a></h3>
+                </div>
+
+            </div> <!-- end left 2 cate -->
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="containercategory1">
+                    <h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Du lịch</span> <a href="">GIA ĐÌNH</a></h3>
+                </div>
+            </div> <!-- end left 3 cate -->
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
+                <div class="containercategory1">
+                    <h3><span class="fa fa-user"></span>&nbsp;&nbsp;<span>Combo</span> <a href="">DU LỊCH</a></h3>
+                </div>
+            </div> <!-- end left 4 cate -->
+        </div>
+
     </div>
 </div> <!-- end cate -->
 
@@ -63,7 +96,7 @@
                                                 <a href="/home/detailtour/@listTours[i].TourId"><div><img src="https://localhost:44384/images/@listTours[i].Image" width="70" alt=""></div></a>
                                                 <div class="captionbottomimage">
                                                     @*Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt*@
-                                                    @listTours[i].Name
+                                                    <a href="/home/detailtour/@listTours[i].TourId"> @listTours[i].Name</a>
                                                 </div>
                                                 <div class="caption">
                                                     <div>
@@ -222,168 +255,48 @@
 
                     </div>
                 }
-                <a class="left carousel-control" style="background: none !important;  " href="#carousel-id2" data-slide="prev"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-left"></span></a>
-                <a class="right carousel-control" style="background: none !important" href="#carousel-id2" data-slide="next"><span style="margin: -31% -26%; color: #483131eb;" class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="left carousel-control" style="background: none !important;  " href="#carousel-id2" data-slide="prev"><span style="margin: -31% -26%; color: white;" class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control" style="background: none !important" href="#carousel-id2" data-slide="next"><span style="margin: -31% -26%; color: white;" class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div> <!-- end row cate 01 -->
     </div>
 </div> <!-- end show product -->
 
-<div class="showdichvu">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="hinhchunhat hinhchunhat1">
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <b class="fa fa-plane"></b>
-
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <div class="hcm">
-                                <h4>KHÁCH SẠN</h4>
-                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end hinhchunhat 01  -->
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="hinhchunhat hinhchunhat2">
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <b class="fa fa-plane"></b>
-
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <div class="hcm">
-                                <h4>KHÁCH SẠN</h4>
-                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end hinhchunhat 02  -->
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="hinhchunhat hinhchunhat3">
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <b class="fa fa-plane"></b>
-
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <div class="hcm">
-                                <h4>KHÁCH SẠN</h4>
-                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end hinhchunhat 03  -->
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="hinhchunhat hinhchunhat4">
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <b class="fa fa-plane"></b>
-
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <div class="hcm">
-                                <h4>KHÁCH SẠN</h4>
-                                <p>Dịch vụ thuê xe giá tốt từ các nhà xe uy tín và chu đáo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end hinhchunhat 04  -->
-
-            </div>
-        </div>
-    </div>
-</div> <!-- end show hinh chu nhat cac dich vu -->
 <div class="baiviet">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="row">
-                            @{
-                                List<News> list = ViewBag.newnews;
-                            }
-                            
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <hr>
+                        @if (fourNews != null)
+                        {
+                            <div class="row">
+                                @foreach (var news in fourNews)
+                                {
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <hr>
+                                        <div class="imageleftnew">
+                                            <img src="~/images/@news.Image" alt="khachsan">
+                                        </div>
+                                        <div class="textrightnew">
+                                            <h5>
+                                                <a href="/news/detail/@news.NewsId">@news.Name</a>
+                                            </h5>
+                                            @if (news.Description.Length > 50)
+                                            {
+                                                <p>@news.Description.Substring(0, 48)...</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@news.Description</p>
+                                            }
 
-                                    <div class="imageleftnew">
-                                        <img src="~/images/newkhachsan.jpg" alt="khachsan">
-                                    </div>
-                                    <div class="textrightnew">
-                                        <h5>
-                                            Biking Tour Saigon - Sự kiện hưởng
-                                            ứng Kỷ niệm 26 năm thành lập Vietravel
-                                        </h5>
-                                        <p>
-                                            Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                        </p>
-                                    </div>
-                            </div> <!-- end column 1 -->
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                       <hr>
-                                       <div class="imageleftnew">
-                                       <img src="~/images/newkhachsan.jpg" alt="khachsan">
-                                       </div>
-                                       <div class="textrightnew">
-                                       <h5>
-                                       Biking Tour Saigon - Sự kiện hưởng
-                                       ứng Kỷ niệm 26 năm thành lập Vietravel
-                                       </h5>
-                                       <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                       </p>
-                                       </div>
-                                       </div> <!-- end column 2 -->
+                                        </div>
+                                    </div> <!-- end column 1 -->
+                                }
 
-                        </div> <!-- end row 1 top khach sann -->
-
-                        <div class="row">
-                           
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <hr>
-                                    <div class="imageleftnew">
-                                        <img src="~/images/newkhachsan.jpg" alt="khachsan">
-                                    </div>
-                                    <div class="textrightnew">
-                                        <h5>
-                                            Biking Tour Saigon - Sự kiện hưởng
-                                            ứng Kỷ niệm 26 năm thành lập Vietravel
-                                        </h5>
-                                        <p>
-                                            Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                        </p>
-                                    </div>
-                            </div> <!-- end column 1 -->
-                            
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                <hr>
-                                <div class="imageleftnew">
-                                <img src="~/images/newkhachsan.jpg" alt="khachsan">
-                                </div>
-                                <div class="textrightnew">
-                                <h5>
-                                Biking Tour Saigon - Sự kiện hưởng
-                                ứng Kỷ niệm 26 năm thành lập Vietravel
-                                </h5>
-                                <p>Hưởng ứng Ngày kỷ niệm 26 năm thành lập, Vietravel ...
-                                </p>
-                                </div>
-                            </div> <!-- end column 2 -->
-
-                        </div> <!-- end row 2 top khach sann -->
+                            </div> <!-- end row 1 top khach sann -->
+                        }
                     </div>
                 </div> <!-- end row 1 in left news khach san -->
 
@@ -396,33 +309,32 @@
                         </div>
 
                         @{
-                            List<News> listNews = ViewBag.news;
+                            var newshot = ViewBag.news;
                         }
-                        @if (listNews.Count > 0)
+                        @if (newshot != null)
                         {
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 hinhanhtindulich">
-                                    <img src="https://localhost:44384/images/tindulich.jpg" alt="tindulich">
+                                    <img src="https://localhost:44384/images/@newshot.Image" alt="tindulich">
                                 </div> <!-- end tin du lich column 1 -->
 
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                     <h4 class="tindulich">
                                         <a href="/news">
-                                            @*Vietravel và UBND tỉnh Tuyên Quang ký kết hợp tác chiến lược thúc đẩy phát triển du lịch*@
-                                            @listNews[0].Name
+                                            @newshot.Name
                                         </a>
                                     </h4>
                                     <p class="timedulich">
                                         <span class="fa fa-history"></span>
-                                        <small>@listNews[0].CreatedDate</small>
+                                        <small>@newshot.ModifiedDate</small>
                                     </p>
                                     <p class="noidungdulich">
-                                        @listNews[0].Description
+                                        @newshot.Description
                                     </p>
 
-                                    <a href="/news/detail/@listNews[0].NewsId" class="btn btn-info">Chi tiết</a>
+                                    <a href="/news/detail/@newshot.NewsId" class="btn btn-info">Chi tiết</a>
                                 </div> <!-- end tin du lich column 2 -->
-                        </div>
+                            </div>
                         }
 
                     </div>
@@ -444,60 +356,30 @@
                     </div>
                 </div> <!--  end row 2 right tin quan tam -->
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="noidungquantamleft">
-                            <img src="~/images/product1.jpg" alt="">
-                        </div>
-                        <div class="noidungquantamright">
-                            <h5>
-                                <a href="">
-                                    Vietravel và UBND tỉnh Tuyên Quang ký
-                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
-                                </a>
-                            </h5>
 
-                            <p>
-                                <span class="fa fa-history"></span>&nbsp;
-                                <small>15/1/2021</small>
-                            </p>
-                        </div>
-                    </div> <!-- noi dung quan tam 1 -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="noidungquantamleft">
-                            <img src="~/images/product1.jpg" alt="">
-                        </div>
-                        <div class="noidungquantamright">
-                            <h5>
-                                <a href="">
-                                    Vietravel và UBND tỉnh Tuyên Quang ký
-                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
-                                </a>
-                            </h5>
+                    @if (threeNewsOutstanding.Count() > 0)
+                    {
+                        @foreach (var newsoutstanding in threeNewsOutstanding)
+                        {
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="noidungquantamleft">
+                                    <img src="https://localhost:44384/images/@newsoutstanding.Image" alt="">
+                                </div>
+                                <div class="noidungquantamright">
+                                    <h5>
+                                        <a href="/news/detail/@newshot.NewsId">
+                                            @newsoutstanding.Name
+                                        </a>
+                                    </h5>
 
-                            <p>
-                                <span class="fa fa-history"></span>&nbsp;
-                                <small>15/1/2021</small>
-                            </p>
-                        </div>
-                    </div> <!-- noi dung quan tam 2 -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="noidungquantamleft">
-                            <img src="~/images/product1.jpg" alt="">
-                        </div>
-                        <div class="noidungquantamright">
-                            <h5>
-                                <a href="">
-                                    Vietravel và UBND tỉnh Tuyên Quang ký
-                                    kết hợp tác chiến lược thúc đẩy phát triển du lịch
-                                </a>
-                            </h5>
-
-                            <p>
-                                <span class="fa fa-history"></span>&nbsp;
-                                <small>15/1/2021</small>
-                            </p>
-                        </div>
-                    </div> <!-- noi dung quan tam 3 -->
+                                    <p>
+                                        <span class="fa fa-history"></span>&nbsp;
+                                        <small>@newsoutstanding.ModifiedDate</small>
+                                    </p>
+                                </div>
+                            </div> <!-- noi dung quan tam 1 -->
+                        }
+                    }
 
                 </div> <!--  end row 2 right tin quan tam -->
             </div>
