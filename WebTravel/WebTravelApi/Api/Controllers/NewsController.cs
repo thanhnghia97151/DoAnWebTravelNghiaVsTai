@@ -35,6 +35,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.News.Delete(id);
         }
+        [HttpPost("edit")]
+        public int Edit(News obj)
+        {
+            return provider.News.Edit(obj);
+        }
 
     }
 }

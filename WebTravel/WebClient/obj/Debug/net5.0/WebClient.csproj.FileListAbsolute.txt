@@ -329,3 +329,5 @@ D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\TypeO
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\ToursByCategory.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\AllTour.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\SuccessBook.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\WebClient.StaticWebAssets.xml
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\Edit.cshtml.g.cs
