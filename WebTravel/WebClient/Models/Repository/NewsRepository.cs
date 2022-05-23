@@ -65,5 +65,9 @@ namespace WebClient.Models.Repository
             return null;
 
         }
+        public async Task<List<News>> GetNewsPaging(int page, int size)
+        {
+            return await Get<List<News>>($"/api/news/newspaging/{page}/{size}");
+        }
     }
 }
