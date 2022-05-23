@@ -22,6 +22,31 @@ namespace WebTravelApi.Models.Repository
             return connection.
                 Query<News>("select TOP 4 n.NewsId, n.Name, n.Description, n.Image from [dbo].[News] as n  order by n.ModifiedDate DESC");
         }
+        public int Edit(News obj)
+        {
+            string sql = "update News set Name = @Name,MetaTitle = @MetaTitle,Description = @Description,Code = @Code,Image = @Image,Detail = @Detail,Note = @Note, NewCategoryId = @NewCategoryId,Status = @Status, ViewCount = @ViewCount where NewsId = @Id";
+                
+            return connection.Execute(sql, new
+            {
+                
+                Name = obj.Name,
+                MetaTitle = obj.MetaTitle,
+                Description = obj.Description,
+                Code = obj.Code,
+                Image = obj.Image,
+                Detail = obj.Detail,
+                Note = obj.Note,
+                NewCategoryId = obj.NewCategoryId,
+                //CreatedDate = obj.CreatedDate,
+                //CreatedBy = obj.CreatedBy,
+                //ModifiedDate = obj.ModifiedDate,
+                //ModifiedBy = obj.ModifiedBy,
+                Status = obj.Status,
+                //TopHot = obj.TopHot,
+                ViewCount = obj.ViewCount,
+                Id = obj.NewsId
+            });
+        }
         public int Add(News obj)
         {
             string sql = "insert into News values(@Id,@Name,@MetaTitle,@Description,@Code,@Image,@Detail,@Note,@NewCategoryId,@CreatedDate,@CreatedBy,@ModifiedDate,@ModifiedBy,@Status,@TopHot,@ViewCount)";
