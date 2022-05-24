@@ -102,5 +102,19 @@ namespace WebTravelApi.Models.Repository
             string sql = "select TOP 3 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
             return connection.Query<News>(sql);
         }
+
+        public IEnumerable<News> GetNewsPaging(int page, int size)
+        {
+            return connection.Query<News>("GetNewsPaging", new
+            {
+                Page = page,
+                Size = size
+            }, commandType: CommandType.StoredProcedure);
+        }
+
+        public IEnumerable<News> GetNewsByCategoryId(string id)
+        {
+            return connection.Query<News>($"select * from News where NewCategoryId = '{id}'");
+        }
     }
 }
