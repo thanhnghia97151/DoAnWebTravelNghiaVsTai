@@ -105,5 +105,10 @@ namespace WebTravelApi.Models.Repository
                 Size = size
             }, commandType: CommandType.StoredProcedure);
         }
+
+        public IEnumerable<News> GetNewsByCategoryId(string id)
+        {
+            return connection.Query<News>($"select * from News where NewCategoryId = '{id}'");
+        }
     }
 }
