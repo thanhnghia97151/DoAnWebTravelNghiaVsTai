@@ -69,5 +69,9 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<News>>($"/api/news/newspaging/{page}/{size}");
         }
+        public async Task<List<News>> GetNewsByCategoryId(string id)
+        {
+            return await Get<List<News>>($"/api/news/newscategory/{id}");
+        }
     }
 }
