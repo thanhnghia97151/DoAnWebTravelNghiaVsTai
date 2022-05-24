@@ -1,0 +1,25 @@
+﻿@model Comment
+
+
+<div class="comment-post">
+    <h4>Bình luận</h4>
+    <form asp-action="SaveCommentData" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ParentId"/>
+        <input type="hidden" asp-for="CreatedAt"/>
+        <input type="hidden" asp-for="PublishedAt"/>
+        <input type="hidden" asp-for="MemberId"/>
+        <input type="hidden" asp-for="TourId"/>
+        <input type="hidden" asp-for="Status"/>
+        <div class="row editcomment">
+            <div class="col-md-12">
+                <textarea  type="text" asp-for="Content" class="form-control"  rows="3" required="required" placeholder="Type here message"></textarea>
+            </div>
+        </div>
+        <div class="row comment">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <button type="submit" class="btn btn-success">Bình luận</button>
+            </div>
+        </div>
+    </form>
+</div>

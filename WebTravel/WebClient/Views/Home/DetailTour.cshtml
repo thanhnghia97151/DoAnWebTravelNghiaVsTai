@@ -1,4 +1,5 @@
-﻿@model Tour
+﻿@using System.Security.Claims
+@model Tour
 
 
  <!-- Thong tin goi nho -->
@@ -156,45 +157,48 @@
                       </div>
                       @*comment*@
                       <div class="row">
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                              <h4>Phản hồi</h4>
-                              <div class="well editcomment">
-                                  <div class="row">
-                                      <div class="col-xs-2 col-sm-4 col-md-2 col-lg-2">
-                                          <img src="https://localhost:44384/images/person.jpg" class="img-responsive center-block">
-                                      </div>
-                                      <div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
-                                          <p class="comment-info">
-                                              <strong>
-                                                  Le Van Tai
-                                              </strong>
-                                              <span>20/2/2022</span>
-                                          </p>
-                                          <p>
-                                              Very good
-                                          </p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                            @{
+                                
+                                
+                                    List<Comment> comments = ViewBag.comments;
+                                
+                                
+                            }
+                            @if(comments != null)
+                            {
+                                foreach (var item in comments)
+                                {
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h4>Phản hồi</h4>
+                                        <div class="well editcomment">
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-4 col-md-2 col-lg-2">
+                                                    <img src="https://localhost:44384/images/person.jpg" class="img-responsive center-block">
+                                                </div>
+                                                <div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
+                                                    <p class="comment-info">
+                                                        <strong>
+                                                            @item.MemberId
+                                                        </strong>
+                                                        <span>20/2/2022</span>
+                                                    </p>
+                                                    <p>
+                                                        @item.Content
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            
                       </div>
-                      <div class="comment-post">
-                          <h4>Bình luận</h4>
-                          <form asp-controller="Comments" asp-action="SaveCommentData" method="post">
-                              <input type="hidden" name="id" value="" />
-                              <div class="row editcomment">
-                                  <div class="col-md-12">
-                                      <textarea name="message" type="text" class="form-control" id="message" rows="3" required="required" placeholder="Type here message"></textarea>
-                                  </div>
-                              </div>
-                              <div class="row comment">
-                                  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                      <button type="submit" id="submit" name="submit" class="btn btn-success">Bình luận</button>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                      @*the end comment*@
+
+
+                        @{
+                            await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberId = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
+                        }
+                        @*the end comment*@
                   </div>
               </div>
           </div>

@@ -24,6 +24,18 @@ namespace WebClient.Models.Repository
         PolicyRepository policy;
         PolicyCategoryRepository policyCategory;
         InvoiceRepository invoice;
+        CommentRepository comment;
+        public CommentRepository Comment
+        {
+            get
+            {
+                if (comment is null)
+                {
+                    comment = new CommentRepository(configuration);
+                }
+                return comment;
+            }
+        }
         public InvoiceRepository Invoice
         {
             get

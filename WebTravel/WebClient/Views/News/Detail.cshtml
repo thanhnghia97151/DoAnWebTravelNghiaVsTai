@@ -1,4 +1,4 @@
-﻿@*@model News*@
+﻿@model News
 <link rel="stylesheet" href="~/css/detailnews.css"/>
 <!-- Thong tin goi nho -->
 <div class="goinho">
@@ -20,9 +20,10 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div class="titlenews">
-                    Vietravel Airlines khai trương các đường bay mới kết nối nhiều tỉnh, thành phố trong cả nước
+                    @*Vietravel Airlines khai trương các đường bay mới kết nối nhiều tỉnh, thành phố trong cả nước*@
+                    @Model.Name
                 </div>
-                <div class="descriptionnews">
+                @*<div class="descriptionnews">
                     <p>
                         <i>
                             Kể từ ngày 21/01/2022, Hãng hàng không Vietravel (Vietravel Airlines) sẽ chính thức mở rộng mạng đường bay mới của hãng với chặng bay từ thành phố Hồ Chí Minh - thành phố Quy Nhơn (SGN - UIH) & khôi phục đường bay của hãng đến thành phố Đà Nẵng (DAD), chính thức kết nối hai tỉnh, thành lớn trong cả nước. Đồng thời, đây cũng là dịp tri ân quý khách hàng đã đồng hành cùng Vietravel Airlines nhân dịp sinh nhật 1 năm cất cánh với hàng loạt các ưu đãi vàng với giá chỉ từ 1,000/ vé.
@@ -69,7 +70,7 @@
                             Sự kiện này là cột mốc quan trọng đánh dấu bước chuyển mình tích cực, tái khởi động sau thời gian “ngủ đông chủ động” của hãng do ảnh hưởng của COVID-19. Theo đó, chuyến bay đầu tiên cất cánh từ TP. Hồ Chí Minh đến TP. Qui Nhơn lúc 13:25 ngày 21/01.
                         </p>
                     </div>
-                </div>
+                </div>*@
                 <!-- the one conten -->
             </div>
             <!-- the end left -->

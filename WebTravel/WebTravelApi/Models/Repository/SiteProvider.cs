@@ -32,6 +32,18 @@ namespace WebTravelApi.Models.Repository
         ImageTourRepository imageTour;
         InvoiceRepository invoice;
         InvoiceDetailRepository invoiceDetail;
+        CommentRepository comment;
+        public CommentRepository Comment
+        {
+            get
+            {
+                if (comment is null)
+                {
+                    comment = new CommentRepository(connection);
+                }
+                return comment;
+            }
+        }
 
         public InvoiceDetailRepository InvoiceDetail
         {

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -41,6 +41,14 @@ namespace WebClient
                             Configuration.GetSection("Authentication:Google");
                         options.ClientId = googleAuthNSection["ClientId"];
                         options.ClientSecret = googleAuthNSection["ClientSecret"];
+                    })
+                    .AddFacebook(facebookOptions => {
+                        // Đọc cấu hình
+                        IConfigurationSection facebookAuthNSection = Configuration.GetSection("Authentication:Facebook");
+                        facebookOptions.AppId = facebookAuthNSection["AppId"];
+                        facebookOptions.AppSecret = facebookAuthNSection["AppSecret"];
+                        // Thiết lập đường dẫn Facebook chuyển hướng đến
+                        facebookOptions.CallbackPath = "/dang-nhap-tu-facebook";
                     });
 
 

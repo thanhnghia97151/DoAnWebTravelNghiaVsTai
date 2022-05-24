@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebClient.Models;
 using WebClient.Models.Repository;
@@ -52,7 +53,28 @@ namespace WebClient.Controllers
             //Get Schedule
             ViewBag.schedule = await provider.TourSchedule.GetTourScheduleById(tour.ScheduleId);
 
+            //Get 
+            List<Comment> listCommentParent = await provider.Comment.GetCommentsByTourIdParent(id);
+            foreach (var item in listCommentParent)
+            {
+                item.Childrent = await provider.Comment.GetCommentsByTourId(item.TourId);
+            }
+            ViewBag.comments = listCommentParent;
+
             return View(await provider.Tour.GetTourById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> SaveCommentData(Comment obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if (obj != null)
+                {
+                    await provider.Comment.Add(obj);
+                    return RedirectToAction("DetailTour", "Home", new { id = obj.TourId });
+                }
+            }
+            return View(obj);
         }
     }
 }
