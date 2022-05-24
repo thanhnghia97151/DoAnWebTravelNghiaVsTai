@@ -65,6 +65,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.News.Edit(obj);
         }
+        [HttpGet("newspaging/{pid}/{sid}")]
+        public IEnumerable<News> GetNewsPaging(int pid , int sid)
+        {
+            return provider.News.GetNewsPaging(pid, sid);
+        }
 
     }
 }
