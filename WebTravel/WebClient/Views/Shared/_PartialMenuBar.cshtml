@@ -1,4 +1,7 @@
-﻿<div>
+﻿@{ 
+    var Ids = "57hd8asv4nkmsw188l50zt7mv55rl8wops7mlqpve4jono2k75k09uqk5vghdar7";
+}
+<div>
       <nav class="navbar navbar-default menutop" role="navigation">
       <div class="container">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,17 +64,17 @@
                   <ul class="dropdown-menu">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
-                                <li><a href="/auth/changepassword">Thay đổi mật khẩu</a></li>
+                                <li><a asp-controller="Introduce" asp-action="Index" >Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/contact/contactwithme">Liên Hệ Chúng Tôi</a></li>
+                                <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
                                 <li><a href="/dashboard"><small>Dashboard</small></a></li>
                             }
                             else
                             {
                                 <li><a href="/introduce"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
-                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
-                    <li><a href="/auth/register"><small>Register</small></a></li>
-                        <li><a href="/auth/login"><small>Login</small></a></li>
+                                <li><a href="/contact/contactwithme">Liên Hệ Chúng Tôi</a></li>
+                    <li><a href="/auth/register"><small>Đăng Ký</small></a></li>
+                        <li><a href="/auth/login"><small>Đăng Nhập</small></a></li>
                                 
                             }
                             

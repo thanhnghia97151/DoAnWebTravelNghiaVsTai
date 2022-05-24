@@ -49,6 +49,12 @@ namespace WebTravelApi.Api.Controllers
             return provider.News.GetNewsHot();
         }
 
+        [HttpGet("news10hot")]
+        public IEnumerable<News> GetNews10Hot() 
+        {
+            return provider.News.GetNews10Host();
+        }
+
         [HttpGet("newsoutstanding")]
         public IEnumerable<News> GetNewsOutStanding()
         {

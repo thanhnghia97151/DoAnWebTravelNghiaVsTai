@@ -12,7 +12,7 @@ namespace WebTravelApi.Models.Repository
         {
             this.configuration = configuration;
             connection = new SqlConnection(configuration.GetConnectionString("TravelWeb"));
-            // Thiếu đóng kết nối
+           
         }
         MemberRepository member;
         RoleRepository role;

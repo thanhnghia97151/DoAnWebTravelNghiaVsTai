@@ -91,6 +91,12 @@ namespace WebTravelApi.Models.Repository
             return connection.QueryFirst<News>(sql);
         }
 
+        public IEnumerable<News> GetNews10Host() 
+        {
+            string sql = "select TOP 12 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
+            return connection.Query<News>(sql);
+        }
+
         public IEnumerable<News> GetNewsOutstanding()
         {
             string sql = "select TOP 3 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
