@@ -28,26 +28,38 @@
     Layout = "_LayoutRegister";
 }
 <div class="formregister">
+
     <form class="formwidth" action="/auth/register" method="post" accept-charset="utf-8">
+        <div style="color: red; font-size: 13px;" asp-validation-summary="ModelOnly"></div>
         <div class="form-group khoangcach">
-            <input type="text" name="username" id="username" asp-for="UserName" class="form-control" placeholder="Nhập Username">
+            <input type="text" id="username" asp-for="UserName" class="form-control" placeholder="Nhập Username">
+            <span style="color: red; font-size: 13px;" asp-validation-for="UserName"></span>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="email" id="email" class="form-control" asp-for="Email" placeholder="Nhập Email">
+            <input type="text" id="brithday" class="form-control" asp-for="Birthday" placeholder="Nhập ngày sinh">
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorBrithday</small>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="phone" id="phone" class="form-control" asp-for="Phone" placeholder="Nhập Số điện thoại">
+            <input type="text" id="email" class="form-control" asp-for="Email" placeholder="Nhập Email">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Email"></span>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="address" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
+            <input type="text" id="phone" class="form-control" asp-for="Phone" placeholder="Nhập Số điện thoại">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Phone"></span>
+        </div>
+        <div class="form-group khoangcach">
+            <input type="text" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Address"></span>
         </div>
         <div class="form-group khoangcach">
             <input type="text" name="password" id="password" class="form-control" asp-for="Password" placeholder="Nhập Password">
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorPassword</small>
         </div>
-        @*<div class="form-group khoangcach">
-            <input type="text" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
-            </div>*@
+        <div class="form-group khoangcach">
+            <input type="text" name="confirmPassword" id="confirmpassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorPassword</small>
+        </div>
         <p class="text-center"> <button type="submit" class="noderesgiter">ĐĂNG KÝ</button></p>
-        <p class="text-center">Bạn đã có tài khoản?&nbsp;&nbsp;<a href="" title="" class="dangnhap">ĐĂNG NHẬP</a></p>
+        <p class="text-center">Bạn đã có tài khoản?&nbsp;&nbsp;<a href="/auth/register" title="" class="dangnhap">ĐĂNG NHẬP</a></p>
     </form>
 </div>

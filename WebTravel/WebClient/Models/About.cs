@@ -8,6 +8,9 @@ namespace WebClient.Models
         public string Name { get; set; }
         public string MetaTitle { get; set; }
         public string Content { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
         public string Image { get; set; }
         public string Detail { get; set; }
         public string Note { get; set; }

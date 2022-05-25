@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using WebTravelApi.Models;
 using WebTravelApi.Models.Repository;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Api.Controllers
 {
@@ -13,7 +14,7 @@ namespace WebTravelApi.Api.Controllers
     [ApiController]
     public class MemberController : BaseController
     {
-        
+
 
         public MemberController(IConfiguration configuration) : base(configuration)
         {
@@ -31,7 +32,7 @@ namespace WebTravelApi.Api.Controllers
         [HttpPost]
         public int Add(Member obj)
         {
-             
+
             return provider.Member.Add(obj);
         }
         [HttpPost("delete/{id}")]

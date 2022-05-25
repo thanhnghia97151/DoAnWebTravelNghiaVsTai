@@ -74,6 +74,7 @@ namespace WebClient.Controllers
                     return RedirectToAction("DetailTour", "Home", new { id = obj.TourId });
                 }
             }
+            // edit at here.
             return View(obj);
         }
     }

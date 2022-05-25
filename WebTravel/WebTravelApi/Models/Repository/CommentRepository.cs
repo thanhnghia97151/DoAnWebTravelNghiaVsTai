@@ -16,7 +16,7 @@ namespace WebTravelApi.Models.Repository
                 Id = Helper.Helper.RandomString(64),
                 Content = obj.Content,
                 TourId = obj.TourId,
-                MemberId = obj.MemberId,
+                MemberId = obj.MemberID,
                 ParentId = obj.ParentId
             }) ;
         }
