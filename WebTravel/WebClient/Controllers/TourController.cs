@@ -128,5 +128,28 @@ namespace WebClient.Controllers
 
             return View();
         }
+        public async Task<IActionResult> TourModelByTourCategory(string id)
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            //Get tour cate
+            var listTourCate = await provider.TourCategory.GetTourCategroyChild(id);
+
+            if (listTourCate != null)
+            {
+                foreach (var item in listTourCate)
+                {
+                    item.Tours = await provider.Tour.GetTourByCategoryId(item.TourCategoriesId);
+                }
+            }
+
+            ViewBag.tour = listTourCate;
+
+            return View();
+        }
     }
 }
