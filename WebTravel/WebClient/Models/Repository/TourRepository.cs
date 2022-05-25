@@ -56,5 +56,9 @@ namespace WebClient.Models.Repository
         {
             return await Post<Tour>($"/api/tour/ticket/{obj.TourId}", obj);
         }
+        public async Task<List<Tour>> Search(TourModelSearch obj)
+        {
+            return await Get<List<Tour>>($"/api/tour/search/{obj.Address}/{obj.PriceStart}/{obj.PriceEnd}");
+        }
     }
 }
