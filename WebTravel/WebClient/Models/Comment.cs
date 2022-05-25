@@ -13,6 +13,7 @@ namespace WebClient.Models
         public string MemberId { get; set; }
         public string ParentId { get; set; }
         public bool Status { get; set; }
+        public string FullName { get; set; }
         public ICollection<Comment> Childrent { get; set; }
     }
 }

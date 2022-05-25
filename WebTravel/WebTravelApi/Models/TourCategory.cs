@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models
 {
@@ -18,6 +19,6 @@ namespace WebTravelApi.Models
         public bool Status { get; set; }
         public bool ShowOnHome { get; set; }
 
-        public ICollection<TourCategory> Childrens { get; set; }
+        public ICollection<TourCategoryModel> Childrens { get; set; }
     }
 }

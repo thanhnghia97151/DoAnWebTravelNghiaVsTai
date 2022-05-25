@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,6 +39,33 @@ namespace WebClient.Controllers
             }
             ViewBag.tourcategories = tourCate;
 
+
+            //Get tour category parent
+            List<TourCategoryModel> listparentCate = await provider.TourCategory.GetTourCategoryParent(id);
+            if (listparentCate != null)
+            {
+                foreach (var item in listparentCate)
+                {
+                    item.Childrens = await provider.TourCategory.GetTourCategroyChild(item.TourCategoriesId);
+                }
+            }
+
+            if (listparentCate != null)
+            {
+                foreach (var item in listparentCate)
+                {
+                    if (item.Childrens != null)
+                    {
+                        foreach (var child in item.Childrens)
+                        {
+                            child.Tours = await provider.Tour.GetTourByCategoryId(child.TourCategoriesId);
+                        }
+                    }
+                }
+            }
+
+            ViewBag.tourcateparent = listparentCate;
+
             return View();
         }
         public async Task<IActionResult> ToursByCategory(string id)
@@ -65,6 +93,9 @@ namespace WebClient.Controllers
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
+            List<Tour> list =(List<Tour>) await provider.Tour.GetTours();
+
+            
 
             return View(await provider.Tour.GetTours());
         }
