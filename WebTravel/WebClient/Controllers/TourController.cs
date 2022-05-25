@@ -85,7 +85,7 @@ namespace WebClient.Controllers
 
             return View();
         }
-        public async Task<IActionResult> AllTour()
+        public async Task<IActionResult> AllTour(int id = 1)
         {
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
@@ -95,10 +95,38 @@ namespace WebClient.Controllers
 
             List<Tour> list =(List<Tour>) await provider.Tour.GetTours();
 
+
+            //var t = list.ToPagedList(3, 6);
+
             
 
-            return View(await provider.Tour.GetTours());
+            //return View(await provider.Tour.GetTours());
+            return View(list.ToPagedList(id,6));
         }
-        
+        [HttpPost]
+        public async Task<IActionResult> Search(TourModelSearch obj)
+        {
+
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            if (obj != null)
+            {
+                if (obj.PriceEnd != 9000000)
+                {
+                    obj.PriceStart = obj.PriceEnd - 2000000;
+
+                }
+            }
+
+            //Get Tour Search
+            ViewBag.tour = await provider.Tour.Search(obj);
+
+
+            return View();
+        }
     }
 }

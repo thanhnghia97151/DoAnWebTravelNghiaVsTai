@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using WebTravelApi.Models;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Api.Controllers
 {
@@ -49,6 +50,11 @@ namespace WebTravelApi.Api.Controllers
         public int Ticket(string id)
         {
             return provider.Tour.Ticket(id);
+        }
+        [HttpGet("search/{address}/{priceStart}/{priceEnd}")]
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+        {
+            return provider.Tour.Search(address,priceStart,priceEnd);
         }
     }
 }
