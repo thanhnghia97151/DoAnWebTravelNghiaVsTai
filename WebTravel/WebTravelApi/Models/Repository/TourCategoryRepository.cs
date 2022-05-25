@@ -60,5 +60,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Query<TourCategoryModel>("select * from TourCategories where ParentId = @Id and ParentId is not null", new { Id = id });
         }
+        public TourCategoryModel GetTourCategoryModel(string id)
+        {
+            return connection.QuerySingleOrDefault<TourCategoryModel>("select * from TourCategories where TourCategoriesId = @Id", new { Id = id });
+        }
     }
 }

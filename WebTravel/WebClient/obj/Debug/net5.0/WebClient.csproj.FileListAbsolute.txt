@@ -505,3 +505,4 @@ D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_Pa
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\PagedList.dll
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\PagedList.Mvc.dll
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\Search.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\TourModelByTourCategory.cshtml.g.cs
