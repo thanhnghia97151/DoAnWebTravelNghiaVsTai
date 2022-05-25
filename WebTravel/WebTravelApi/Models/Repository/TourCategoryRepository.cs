@@ -49,8 +49,16 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<TourCategoryModel> GetCategoryModelsByTypeOfTour(string id)
         {
-            return connection.Query<TourCategoryModel>("select * from TourCategories where TypeOfTourId = @Id", new { Id = id });
+            return connection.Query<TourCategoryModel>("select * from TourCategories where TypeOfTourId = @Id and ParentId is not null", new { Id = id });
 
+        }
+        public IEnumerable<TourCategoryModel> GetTourCategoriesParent(string id)
+        {
+            return connection.Query<TourCategoryModel>("select * from TourCategories where TypeOfTourId = @Id and ParentId is null", new { Id = id });
+        }
+        public IEnumerable<TourCategoryModel> GetTourCategoryChildrent(string id)
+        {
+            return connection.Query<TourCategoryModel>("select * from TourCategories where ParentId = @Id and ParentId is not null", new { Id = id });
         }
     }
 }

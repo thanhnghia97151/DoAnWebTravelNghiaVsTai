@@ -37,5 +37,15 @@ namespace WebClient.Controllers
 
             return View(await provider.News.GetNewById(id));
         }
+        public async Task<IActionResult> NewsCategory(string id)
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            return View(await provider.News.GetNewsByCategoryId(id));
+        }
     }
 }
