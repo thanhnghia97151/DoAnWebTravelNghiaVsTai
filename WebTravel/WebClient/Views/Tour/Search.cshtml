@@ -1,8 +1,4 @@
-﻿@*@model List<Tour>*@
-@model PagedList.IPagedList<Tour>
-@{
-    int p = ViewContext.RouteData.Values["id"] != null ? Convert.ToInt32(ViewContext.RouteData.Values["id"]) : 1;
-}
+﻿
 
 
 <!-- Thong tin goi nho -->
@@ -22,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2> CÁC TOUR DU LICH</h2>
+                <h2> KẾT QUẢ SEARCH</h2>
             </div>
         </div>
         <div class="row">
@@ -38,11 +34,11 @@
 
     </div>
 </div>
-<!--  Demos -->
+
 <div class="row1">
     <div class="container">
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in ViewBag.tour)
            {
              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
                 <div class="thumbnail">
@@ -78,25 +74,7 @@
 
         </div>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                @for (var i = 1; i <= Model.PageCount; i++)
-                {
-                    
-                    @if (p == i)
-                    {
-                        <li class="page-item active"><a class="page-link" href="/tour/alltour/@i">@i</a></li>
-                    }
-                    else
-                    {
-                        <li class="page-item "><a class="page-link" href="/tour/alltour/@i">@i</a></li>
-                    }
-                }
-            </ul>
-        </nav>
+        
     </div>
     <!-- Thêm mã phân trang -->
 

@@ -497,3 +497,11 @@ F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebC
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\ref\WebClient.dll
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.pdb
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\obj\Debug\net5.0\WebClient.genruntimeconfig.cache
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\WebClient.StaticWebAssets.xml
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\Edit.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\News\NewsCategory.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Shared\_PartialComment.cshtml.g.cs
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\PagedList.dll
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\bin\Debug\net5.0\PagedList.Mvc.dll
+D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Tour\Search.cshtml.g.cs

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,6 +39,33 @@ namespace WebClient.Controllers
             }
             ViewBag.tourcategories = tourCate;
 
+
+            //Get tour category parent
+            List<TourCategoryModel> listparentCate = await provider.TourCategory.GetTourCategoryParent(id);
+            if (listparentCate != null)
+            {
+                foreach (var item in listparentCate)
+                {
+                    item.Childrens = await provider.TourCategory.GetTourCategroyChild(item.TourCategoriesId);
+                }
+            }
+
+            if (listparentCate != null)
+            {
+                foreach (var item in listparentCate)
+                {
+                    if (item.Childrens != null)
+                    {
+                        foreach (var child in item.Childrens)
+                        {
+                            child.Tours = await provider.Tour.GetTourByCategoryId(child.TourCategoriesId);
+                        }
+                    }
+                }
+            }
+
+            ViewBag.tourcateparent = listparentCate;
+
             return View();
         }
         public async Task<IActionResult> ToursByCategory(string id)
@@ -57,7 +85,7 @@ namespace WebClient.Controllers
 
             return View();
         }
-        public async Task<IActionResult> AllTour()
+        public async Task<IActionResult> AllTour(int id = 1)
         {
             //Get Type of Tour
             ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
@@ -65,9 +93,40 @@ namespace WebClient.Controllers
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
+            List<Tour> list =(List<Tour>) await provider.Tour.GetTours();
 
-            return View(await provider.Tour.GetTours());
+
+            //var t = list.ToPagedList(3, 6);
+
+            
+
+            //return View(await provider.Tour.GetTours());
+            return View(list.ToPagedList(id,6));
         }
-        
+        [HttpPost]
+        public async Task<IActionResult> Search(TourModelSearch obj)
+        {
+
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            if (obj != null)
+            {
+                if (obj.PriceEnd != 9000000)
+                {
+                    obj.PriceStart = obj.PriceEnd - 2000000;
+
+                }
+            }
+
+            //Get Tour Search
+            ViewBag.tour = await provider.Tour.Search(obj);
+
+
+            return View();
+        }
     }
 }

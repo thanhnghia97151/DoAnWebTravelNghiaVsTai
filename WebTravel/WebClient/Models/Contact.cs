@@ -12,21 +12,20 @@ namespace WebClient.Models
 
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(36, ErrorMessage = "Tên phải nhỏ hơn hoặc bằng 36 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Tên phải là chuỗi ký tự")]
+        [RegularExpression("^(.+)$", ErrorMessage = "Tên không được xuống dòng")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Tiêu đề không được để trống")]
         [StringLength(50, ErrorMessage = "Tiêu đề phải nhỏ hơn hoặc bằng 50 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Tiêu đề phải là chuỗi ký tự")]
+        [RegularExpression("^(.+)$", ErrorMessage = "Tiêu đề không được xuống dòng")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Nội dung không được trống ")]
-        [StringLength(500, ErrorMessage = "Nội dung phải nhỏ hơn hoặc bằng 500 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Nội dung phải là chuỗi ký tự")]
+        [StringLength(500, ErrorMessage = "Nội dung phải nhỏ hơn hoặc bằng 500 ký tự")]    
         public string Content { get; set; }
 
         [StringLength(30, ErrorMessage = "Công ty phải nhỏ hơn hoặc bằng 30 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Công ty phải là chuỗi ký tự")]
+        [RegularExpression("^(.+)$", ErrorMessage = "Công ty không được xuống dòng")]
         public string Company { get; set; }
 
         [Required (ErrorMessage = "Số điện thoại không được để trống ")]

@@ -3,7 +3,7 @@
 
 <div class="comment-post">
     <h4>Bình luận</h4>
-    <form asp-action="SaveCommentData" method="post">
+    <form asp-controller="Home" asp-action="SaveCommentData" method="post">
         <input type="hidden" asp-for="Id" />
         <input type="hidden" asp-for="ParentId"/>
         <input type="hidden" asp-for="CreatedAt"/>

@@ -21,5 +21,21 @@ namespace WebClient.Extentions
             }
             return "1";
         }
+
+        public static string CheckBrithday(DateTime date) 
+        {
+            if (date >= DateTime.Now) 
+            {
+                if (date.Year - DateTime.Now.Year < 15)
+                {
+                    return "Bạn chưa đủ 15 tuổi để đăng ký dịch vụ của chúng tôi";
+                }
+                return "1";
+            }
+            else 
+            {
+                return "Ngày sinh không được nhỏ hơn ngày hiện tại";
+            }
+        }
     }
 }

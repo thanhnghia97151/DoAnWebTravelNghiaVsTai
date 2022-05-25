@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -84,6 +85,10 @@ namespace WebTravelApi.Models.Repository
         public int Ticket(string id)
         {
             return connection.Execute("UpdateQuantity", new {Id = id}, commandType: CommandType.StoredProcedure);
+        }
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+        {
+            return connection.Query<Tour>($"select * from Tours as t where t.Name like N'%{address}%' and t.Price < {priceEnd} and t.Price >={priceStart}");
         }
     }
 }

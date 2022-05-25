@@ -50,14 +50,15 @@
                         <label>Họ tên <span>(*)</span></label>
                         <input type="text" asp-for="Name" placeholder="Họ tên" class="form-control"
                                id="hoten">
-                        <span style="color: red; font-size:13px; " asp-validation-for="Name"></span>                       
-
+                        <span style="color: red; font-size:13px; " asp-validation-for="Name"></span>
+                        <small style="color: red; font-size: 13px">@ViewBag.ErrorName</small>
                     </div>
                     <div class="form-group editform">
                         <label>Tên công ty</label>
                         <input type="text" asp-for="Company" placeholder="Tên công ty" class="form-control"
                                id="tencongty">
                         <span style="color: red" asp-validation-for="Company"></span>
+                        <small style="color: red; font-size: 13px">@ViewBag.ErrorCompany</small>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -83,15 +84,17 @@
                         <input type="text" asp-for="Title" placeholder="Tiêu đề" class="form-control"
                                id="tieude">
                         <span style="color: red" asp-validation-for="Title"></span>
+                        <small style="color: red; font-size: 13px">@ViewBag.ErrorTitle</small>
                     </div>
                     <div class="form-group editform">
                         <label>Nội dung <span>(*)</span></label>
                         <textarea class="form-control" asp-for="Content" id="noidung" rows="4"></textarea>
                         <span style="color: red" asp-validation-for="Content"></span>
+                        <small style="color: red; font-size: 13px">@ViewBag.ErrorContent</small>
                     </div>
 
                     <div class="form-group guilienhe">
-                        <button type="submit"><span class="btn-value gui">Gửi</span></button>
+                        <button type="submit"><span class="btn gui">Gửi</span></button>
                     </div>
                 </form>
             </div>

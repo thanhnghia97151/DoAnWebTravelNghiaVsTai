@@ -37,14 +37,16 @@ namespace WebTravelApi.Models.Repository
         }
         public int Add(Member obj)
         {
-            string sql = "insert into Members(MemberID,UserName,Password,Email,Phone) values(@Id,@UserName,@Password,@Email,@Phone)";
+            string sql = "insert into Members(MemberID,UserName,Brithday,Address,Password,Email,Phone) values(@Id,@UserName,@Brithday,@Address,@Password,@Email,@Phone)";
             var t = new
             {
                 Id = Helper.Helper.RandomString(64),
                 UserName = obj.UserName,
                 Password = Helper.Helper.Hash(obj.Password),
                 Email = obj.Email,
-                Phone = obj.Phone
+                Phone = obj.Phone,
+                Brithday = obj.Birthday,
+                Address = obj.Address
             };
             var result = connection.Execute(sql,t );
             return result;

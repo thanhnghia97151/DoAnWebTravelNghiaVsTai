@@ -34,12 +34,28 @@ namespace WebClient.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(Member obj)
+        public async Task<IActionResult> Register(Member obj, string confirmPassword)
         {
             if (ModelState.IsValid)
-            {              
-                var result = await provider.Member.Add(obj);
-                return Redirect("/auth/login");
+            {
+                if (PasswordNews.CheckPassword(obj.Password, confirmPassword) == "1")
+                {
+                    if (LoginInformation.CheckBrithday(obj.Birthday) == "1")
+                    {
+                        try
+                        {
+                            var result = await provider.Member.Add(obj);
+                            return Redirect("/auth/login");
+                        }
+                        catch (System.Exception)
+                        {
+
+                            ModelState.AddModelError("", "Lỗi hệ thống thử lại sau");
+                        }
+                    }
+                    ViewBag.ErrorBrithday = LoginInformation.CheckBrithday(obj.Birthday);
+                }
+                ViewBag.ErrorPassword = PasswordNews.CheckPassword(obj.Password, confirmPassword);
             }
             return View(obj);
         }
@@ -282,9 +298,7 @@ namespace WebClient.Controllers
                         if (await provider.Member.ChangePassword(obj) == 1)
                         {
                             return Redirect("/auth/logout");
-                        }
-                        
-
+                        }                       
                     }
                 }
             }
