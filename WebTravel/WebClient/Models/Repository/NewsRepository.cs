@@ -16,6 +16,12 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<News>>("/api/news");
         }
+
+        public async Task<List<News>> GetNews10Hot()
+        {
+            return await Get<List<News>>("/api/news/news10hot");
+        }
+
         public async Task<int> Edit(News news)
         {
             return await Post<News>("/api/news/edit", news);
@@ -73,5 +79,6 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<News>>($"/api/news/newscategory/{id}");
         }
+
     }
 }

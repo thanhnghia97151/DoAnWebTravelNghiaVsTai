@@ -14,8 +14,8 @@ namespace WebTravelApi.Api.Controllers
         public AuthController(IConfiguration configuration) : base(configuration)
         {
         }       
-        [HttpPost]
-        
+
+        [HttpPost]        
         public object Login(LoginModel obj)
         {
             Member member = provider.Member.Login(obj);
@@ -31,7 +31,9 @@ namespace WebTravelApi.Api.Controllers
                     Token = token,
                     MemberId = member.MemberID,
                     Email = member.Email,
-                    Roles = member.Roles
+                    Roles = member.Roles,
+                    Phone = member.Phone,
+                    UserName = member.UserName
                 };
             }
             return null;
@@ -77,6 +79,12 @@ namespace WebTravelApi.Api.Controllers
                 return provider.Member.ConfirmNumberPhone(id);
             }
             return 0;
+        }
+
+        [HttpPost("ChangePassword")]
+        public int ChangePassword(PasswordNew passwordNew)
+        {
+            return provider.Member.ForgetPassword(passwordNew);
         }
     }
 }

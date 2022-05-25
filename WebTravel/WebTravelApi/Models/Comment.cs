@@ -9,7 +9,7 @@ namespace WebTravelApi.Models
         public DateTime PublishedAt { get; set; }
         public string Content { get; set; }
         public string TourId { get; set; }
-        public string MemberId { get; set; }
+        public string MemberID { get; set; }
         public string ParentId { get; set; }
         public bool Status { get; set; }
     }
