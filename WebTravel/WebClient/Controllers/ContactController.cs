@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using WebClient.Models;
 using WebClient.Models.Repository;
 
 namespace WebClient.Controllers
@@ -36,6 +37,41 @@ namespace WebClient.Controllers
             ViewBag.news10hot = await provider.News.GetNews10Hot();
 
             return View();  
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DisplayContact() 
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            // Infomation about company
+            ViewBag.abouts = await provider.About.GetAbouts();            
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DisplayContact( Contact contact) 
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            // Infomation about company
+            ViewBag.abouts = await provider.About.GetAbouts();
+
+            if (ModelState.IsValid) 
+            {
+                await provider.Contact.Add(contact);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(contact);
         }
     }
 }

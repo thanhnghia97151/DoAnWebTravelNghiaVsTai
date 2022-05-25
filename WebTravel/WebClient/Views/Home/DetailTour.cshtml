@@ -178,7 +178,7 @@
                                                 <div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
                                                     <p class="comment-info">
                                                         <strong>
-                                                            @item.MemberId
+                                                            @item.MemberID
                                                         </strong>
                                                         <span>20/2/2022</span>
                                                     </p>
@@ -196,7 +196,7 @@
 
 
                         @{
-                            await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberId = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
+                            await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberID = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
                         }
                         @*the end comment*@
                   </div>

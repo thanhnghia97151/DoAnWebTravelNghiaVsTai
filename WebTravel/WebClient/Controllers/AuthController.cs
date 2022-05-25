@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebClient.Extentions;
 using WebClient.Models;
 using WebClient.Models.Repository;
 using WebClient.Models.ViewModels;
@@ -17,10 +19,15 @@ namespace WebClient.Controllers
     public class AuthController : Controller
     {
         SiteProvider provider;
-        public AuthController(IConfiguration configuration)
+        private readonly IForgetPasswordRepository _forgetPasswordRepository;
+
+        public AuthController(IConfiguration configuration,
+            IForgetPasswordRepository forgetPasswordRepository)
         {
             provider = new SiteProvider(configuration);
+            _forgetPasswordRepository = forgetPasswordRepository;
         }
+
         //Register: /auth/register
         public IActionResult Register()
         {
@@ -30,8 +37,7 @@ namespace WebClient.Controllers
         public async Task<IActionResult> Register(Member obj)
         {
             if (ModelState.IsValid)
-            {
-               
+            {              
                 var result = await provider.Member.Add(obj);
                 return Redirect("/auth/login");
             }
@@ -45,47 +51,70 @@ namespace WebClient.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel obj, string returnUrl)
         {
-            ReponseLogin member = await provider.Member.Login(obj);
-            Member m = await provider.Member.GetMemberById(member.MemberId);
-            if (member != null)
+            if (ModelState.IsValid) 
             {
-                //if (!m.ConfirmedPhone)
-                //{
-                //    return Redirect($"/auth/confirmnumberphone/{member.MemberId}");
-                //}
-                //Code
-                List<Claim> claims = new List<Claim>()
+                if (LoginInformation.CheckLogin(obj) == "1")
                 {
-                    new Claim(ClaimTypes.NameIdentifier,member.MemberId),
-                    new Claim(ClaimTypes.Email,member.Email),
-                    new Claim(ClaimTypes.Name,obj.Urs),
-                    //new Claim(ClaimTypes.PrimarySid,member.Token)//Chuyền thử vào PrimarySid đề test
-                };
-                if (member.Roles != null)
-                {
-                    foreach (string role in member.Roles)
+                    ReponseLogin member = await provider.Member.Login(obj);
+                    if (member != null)
                     {
-                        claims.Add(new Claim(ClaimTypes.Role, role));
+                        Member m = await provider.Member.GetMemberById(member.MemberId);
+                        if (member != null)
+                        {
+                            //if (!m.ConfirmedPhone)
+                            //{
+                            //    return Redirect($"/auth/confirmnumberphone/{member.MemberId}");
+                            //}
+                            //Code
+                            try
+                            {
+                                List<Claim> claims = new List<Claim>()
+                            {
+                                 new Claim(ClaimTypes.NameIdentifier,member.MemberId),
+                                 new Claim(ClaimTypes.Email,member.Email),
+                                 new Claim(ClaimTypes.Name,member.UserName),
+                                 new Claim(ClaimTypes.MobilePhone, member.Phone)
+                                //new Claim(ClaimTypes.PrimarySid,member.Token)//Chuyền thử vào PrimarySid đề test
+                            };
+                                if (member.Roles != null)
+                                {
+                                    foreach (string role in member.Roles)
+                                    {
+                                        claims.Add(new Claim(ClaimTypes.Role, role));
+                                    }
+                                }
+                                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                                AuthenticationProperties properties = new AuthenticationProperties
+                                {
+                                    IsPersistent = obj.Rem
+                                };
+                                await HttpContext.SignInAsync(principal, properties);
+                                if (string.IsNullOrEmpty(returnUrl))
+                                {
+                                    return Redirect("/");
+                                }
+                                else
+                                {
+                                    return Redirect(returnUrl);
+                                }
+                            }
+                            catch (System.Exception)
+                            {
+
+                                ModelState.AddModelError("", "Đang có lỗi xảy ra");
+                            }
+
+                        }
+                        ModelState.AddModelError("", "Đang có lỗi xảy ra");
                     }
-                }
-                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-                AuthenticationProperties properties = new AuthenticationProperties
-                {
-                    IsPersistent = obj.Rem
-                };
-                await HttpContext.SignInAsync(principal, properties);
-                if (string.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect("/");
+                    ModelState.AddModelError("", "Tài khoản không tồn tại");
                 }
                 else
                 {
-                    return Redirect(returnUrl);
-                }
-
+                    ViewBag.ErrorPassword = LoginInformation.CheckLogin(obj);
+                }    
             }
-            ModelState.AddModelError("", "Login Fail");
             return View();
         }
        
@@ -272,6 +301,86 @@ namespace WebClient.Controllers
         public IActionResult ConfirmNumberPhone(ConfirmNumberPhone obj)
         {
             return View(obj);
+        }
+
+        [HttpGet]
+        public IActionResult DisplayConfirm() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DisplayConfirm(string phone)
+        {
+            if (PhoneNumber.CheckPhone(phone)) 
+            {
+                // Send otp code.
+                //var code = _forgetPasswordRepository.SendSMS(phone);
+                var code = "111111";
+                if (code != null)
+                {
+                    // Save code into session.
+                    HttpContext.Session.SetString(Constant.Code, code);
+
+                    // Save phone into session.
+                    HttpContext.Session.SetString(Constant.Phone, phone);
+
+                    return RedirectToAction("DisplayConfirmCode");
+                }
+                ViewBag.ErrorPhoneFormat = "Lỗi gửi mã đã xảy ra";
+                return View();
+            }
+            ViewBag.ErrorPhoneFormat = "Số điện thoại phải là số";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult DisplayConfirmCode() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DisplayConfirmCode(string code) 
+        {
+            var session = HttpContext.Session;
+            if (session.GetString(Constant.Code) == code) 
+            {
+                return RedirectToAction("ResetPassword");
+            }
+            ViewBag.ErrorCodeOTP = "Mã OTP không đúng!";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword() 
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string password, string confirmPassword) 
+        {
+            var session = HttpContext.Session;
+            if (PasswordNews.CheckPassword(password, confirmPassword) == "1") 
+            {
+                if (session.GetString(Constant.Phone) != null)
+                {
+                    var passwordNew = new PasswordNew() { Password = password, Phone = session.GetString(Constant.Phone) };
+                    // Change new password.
+                    await provider.Member.ChangePassword(passwordNew);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            if (session.GetString(Constant.Phone) == null)
+            {
+                ViewBag.Error = "Hết thời gian thay đổi mật khẩu";
+            }
+            else if(PasswordNews.CheckPassword(password, confirmPassword) != "1")
+            {
+                ViewBag.ErrorPasswordNew = PasswordNews.CheckPassword(password, confirmPassword);
+            }
+            return View();
         }
     }
 }

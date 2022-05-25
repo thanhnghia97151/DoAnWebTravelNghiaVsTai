@@ -64,17 +64,17 @@
                   <ul class="dropdown-menu">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li><a asp-controller="Introduce" asp-action="Index" >Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/contactwithme">Liên Hệ Chúng Tôi</a></li>
+                                <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/contact/DisplayContact">Liên Hệ Chúng Tôi</a></li>
                                 <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
-                                <li><a href="/dashboard"><small>Dashboard</small></a></li>
+                                <li><a href="/dashboard">Dashboard</a></li>
                             }
                             else
                             {
-                                <li><a href="/introduce"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
-                                <li><a href="/contact/contactwithme">Liên Hệ Chúng Tôi</a></li>
-                    <li><a href="/auth/register"><small>Đăng Ký</small></a></li>
-                        <li><a href="/auth/login"><small>Đăng Nhập</small></a></li>
+                                <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
+                                <li><a href="/contact/DisplayContact">Liên Hệ Chúng Tôi</a></li>
+                                <li><a href="/auth/register">Đăng Ký</a></li>
+                                <li><a href="/auth/login">Đăng Nhập</a></li>
                                 
                             }
                             

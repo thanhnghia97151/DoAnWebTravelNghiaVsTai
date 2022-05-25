@@ -33,6 +33,19 @@ namespace WebTravelApi.Models.Repository
         InvoiceRepository invoice;
         InvoiceDetailRepository invoiceDetail;
         CommentRepository comment;
+        ContactRepository contact;
+
+        public ContactRepository Contact
+        {
+            get
+            {
+                if (contact is null)
+                {
+                    contact = new ContactRepository(connection);
+                }
+                return contact;
+            }
+        }
         public CommentRepository Comment
         {
             get

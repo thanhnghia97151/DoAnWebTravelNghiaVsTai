@@ -28,9 +28,7 @@ namespace WebTravelApi.Api.Controllers
         [HttpPost]
         public int Add(News obj)
         {
-
             return provider.News.Add(obj);
-
         }
 
         [HttpGet("{id}")]

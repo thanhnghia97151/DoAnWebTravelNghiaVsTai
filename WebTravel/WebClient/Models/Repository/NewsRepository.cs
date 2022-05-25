@@ -79,5 +79,6 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<News>>($"/api/news/newscategory/{id}");
         }
+
     }
 }
