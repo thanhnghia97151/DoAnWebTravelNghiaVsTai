@@ -1,0 +1,72 @@
+﻿
+@{
+    List<TourCategoryModel> listTour = ViewBag.tour;
+}
+@if (listTour != null)
+{
+    @foreach (var item in listTour)
+    {
+        @if (item.Tours.Count() > 0)
+        {
+            <div class="loaikhachsan1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                            <h2>@item.Name</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                            <div class="left">
+                                <a href="/tour/toursbycategory/@item.TourCategoriesId"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- the end loaikhachsan1 -->
+            <!--  Demos -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="large-10 columns">
+                                <div class="owl-carousel owl-theme">
+                                    @foreach (var tour in item.Tours)
+                                    {
+                                        <div class="item">
+                                            <div class="thumbnail">
+                                                <a href="/home/detailtour/@tour.TourId"><img src="https://localhost:44384/images/@tour.Image" alt=""></a>
+                                                <div class="captionbottomimage">
+                                                    @tour.MetaTitle
+                                                </div>
+                                                <div class="caption">
+                                                    <div class="review">
+                                                        <p>
+                                                            <span class="fa fa-history"></span>
+                                                            &nbsp;Lịch trình: @tour.Schedule
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @tour.StartDate</p>
+                                                    </div>
+
+                                                    <div class="detailItem">
+                                                        <b class="pull-right price">Giá: @tour.Price đ</b>
+                                                        <p>
+                                                            <span class="fa fa-user book"></span>
+                                                            &nbsp;Vé còn: @tour.Quantity
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div> <!-- end slide left 2 item 1 -->
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+}
