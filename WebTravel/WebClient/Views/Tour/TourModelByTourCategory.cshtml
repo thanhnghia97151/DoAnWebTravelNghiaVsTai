@@ -3,6 +3,47 @@
     List<TourCategoryModel> listTour = ViewBag.tour;
 }
 
+
+<!-- Thong tin goi nho -->
+<div class="goinho">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thongtin">
+                    <small>Trang chủ > </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- the end goi nho -->
+<!-- Thong tin khach san -->
+<div class="motakhachsanall">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @if (ViewBag.parent != null)
+                {
+                    var parent = ViewBag.parent;
+                    <h2> @parent.Name.ToUpper()</h2>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="danhgia">Đánh giá:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @*<p class="tinkhachsan">Du lịch Đà Nẵng, tên đầy đủ là Đại công quốc Luxembourg, là một quốc gia nhỏ nằm trong lục địa ở Tây Âu, giáp với Bỉ, Pháp, và Đức. Luxembourg là một nước theo dân chủ đại nghị và quân chủ lập hiến, được cai trị bởi một đại công tước và là đại công quốc duy nhất còn tồn tại trên thế giơi. Du lịch đến Luxembourg, du khách sẽ được thưởng lãm những thắng cảnh cổ xưa vô cùng thú vị và đầy quyến rũ như: Những khu phố cổ có đường rải sỏi, những pháo đài thời trung cổ trên đỉnh đồi cùng khung cảnh đồi núi tự nhiên, đất nông nghiệp và lưu vực sông.</p>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr />
+<br />
+
 @if (listTour != null)
 {
     @foreach (var item in listTour)
