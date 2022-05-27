@@ -23,11 +23,17 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.About.Add(obj);
         }
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public About GetAbout(string id)
         {
             return provider.About.GetAbout(id);
+        }*/
+        [HttpGet("abouts")]
+        public About GetAbout()
+        {
+            return provider.About.GetAbout();
         }
+
         [HttpPost("delete/{id}")]
         public int Delete(string id)
         {

@@ -23,7 +23,7 @@ namespace WebClient.Controllers
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
                 // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
+                ViewBag.abouts = await provider.About.GetAbout();
 
                 //Get 10 news hot.
                 ViewBag.news10hot = await provider.News.GetNews10Hot();

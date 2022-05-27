@@ -25,9 +25,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
-
                 listnews = await provider.News.GetNews();
                 ViewBag.total = (listnews.Count - 1) / 6 + 1;
             }
@@ -51,9 +48,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
-
                 //Get 10 news hot.
                 ViewBag.news10hot = await provider.News.GetNews10Hot();
             }
@@ -75,8 +69,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
             }
             catch (System.Exception)
             {
