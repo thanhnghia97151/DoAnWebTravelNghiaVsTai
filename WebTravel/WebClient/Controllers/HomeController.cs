@@ -65,6 +65,8 @@ namespace WebClient.Controllers
             List<Comment> listCommentParent = await provider.Comment.GetCommentsByTourIdParent(id);
             foreach (var item in listCommentParent)
             {
+                var t = await provider.Member.GetMemberById(item.MemberID);
+                item.FullName = t.UserName;
                 item.Childrent = await provider.Comment.GetCommentsByTourId(item.TourId);
             }
             ViewBag.comments = listCommentParent;

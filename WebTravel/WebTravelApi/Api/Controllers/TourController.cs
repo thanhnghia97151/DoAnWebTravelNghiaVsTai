@@ -46,10 +46,10 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Tour.GetNewTourByCategoryId(id);
         }
-        [HttpPost("ticket/{id}")]
-        public int Ticket(string id)
+        [HttpPost("ticket/{id}/{quantity}")]
+        public int Ticket(string id, int quantity)
         {
-            return provider.Tour.Ticket(id);
+            return provider.Tour.Ticket(id,quantity);
         }
         [HttpGet("search/{address}/{priceStart}/{priceEnd}")]
         public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)

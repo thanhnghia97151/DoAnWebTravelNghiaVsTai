@@ -4,6 +4,9 @@ namespace WebClient.Models.ViewModels
 {
     public class InvoiceDetailModel 
     {
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
+        [StringLength(250, ErrorMessage = "Địa chỉ phải nhỏ hơn hoặc bằng 250 ký tự")]
+        [RegularExpression("^(.+)$", ErrorMessage = "Địa chỉ không được xuống dòng")]
         public string Address { get; set; }
         public string MemberId { get; set; }
         public string InvoiceId { get; set; }
@@ -27,8 +30,8 @@ namespace WebClient.Models.ViewModels
         [RegularExpression("^(.+)$", ErrorMessage = "Tên không được xuống dòng")]
         public string FullName { get; set; }
 
-        //[Required(ErrorMessage = "Số điện thoại không được để trống ")]
-        //[RegularExpression("^([0][0-9]{9})|([0-9]{12})$", ErrorMessage = "Số điện thoại phải là số có 10 hoặc 12 số")]
+        [Required(ErrorMessage = "Số điện thoại không được để trống ")]
+        [RegularExpression("^([0][0-9]{9})|([0-9]{12})$", ErrorMessage = "Số điện thoại phải là số có 10 hoặc 12 số")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Email không được để trống")]

@@ -129,3 +129,4 @@ F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebTravelApi\obj\Debug\net5.0\W
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.genruntimeconfig.cache
 F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.csproj.AssemblyReference.cache
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebTravelApi\bin\Debug\net5.0\WebTravelApi.StaticWebAssets.xml
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebTravelApi\bin\Debug\net5.0\WebTravelApi.StaticWebAssets.xml

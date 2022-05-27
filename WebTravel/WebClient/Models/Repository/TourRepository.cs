@@ -52,9 +52,9 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<Tour>>($"/api/tour/newcategory/{id}");
         }
-        public async Task<int> Ticket(Tour obj)
+        public async Task<int> Ticket(InvoiceDetailModel obj)
         {
-            return await Post<Tour>($"/api/tour/ticket/{obj.TourId}", obj);
+            return await Post<InvoiceDetailModel>($"/api/tour/ticket/{obj.TourId}/{obj.Quantity}", obj);
         }
         public async Task<List<Tour>> Search(TourModelSearch obj)
         {
