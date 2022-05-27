@@ -76,8 +76,10 @@ namespace WebClient.Controllers
 
             return View();
         }
-        public async Task<IActionResult> ToursByCategory(string id)
+        
+        public async Task<IActionResult> ToursByCategory(string id,[FromQuery] int page = 1)
         {
+            List<Tour> litsTour = new List<Tour>();
             try
             {
                 //Get Type of Tour
@@ -91,15 +93,17 @@ namespace WebClient.Controllers
 
 
                 //Get Tours by CategoryId
-                ViewBag.toursbycategoryid = await provider.Tour.GetTourByCategoryId(id);
+                //ViewBag.toursbycategoryid = await provider.Tour.GetTourByCategoryId(id);
+                litsTour = await provider.Tour.GetTourByCategoryId(id);
             }
             catch (Exception)
             {
 
                 ViewBag.ErrorSystem = "Lỗi hệ thống, vui lòng thử lại sau!";
             }
-
-            return View();
+            //int pageNumber = page ?? 1;
+            ViewBag.page = page;
+            return View(litsTour.ToPagedList(page,6));
         }
         public async Task<IActionResult> AllTour(int id = 1)
         {
@@ -165,6 +169,9 @@ namespace WebClient.Controllers
 
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+                //Get Tour Cate parent
+                ViewBag.parent = await provider.TourCategory.GetCategory(id);
 
                 //Get tour cate
                 var listTourCate = await provider.TourCategory.GetTourCategroyChild(id);
