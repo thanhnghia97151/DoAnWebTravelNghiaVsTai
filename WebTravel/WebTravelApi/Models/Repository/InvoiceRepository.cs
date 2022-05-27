@@ -39,6 +39,10 @@ namespace WebTravelApi.Models.Repository
             return connection.Execute($"update Invoice set Status = 1 where InvoiceId = '{obj.InvoiceId}' and MemberId = '{obj.MemberId}'");
         }
         
+        public IEnumerable<InvoiceModel> GetInvoiceModel(string id)
+        {
+            return connection.Query<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.MemberId = @Id", new {Id = id});
+        }
 
         
     }

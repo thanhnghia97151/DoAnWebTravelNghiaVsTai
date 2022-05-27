@@ -33,5 +33,11 @@ namespace WebTravelApi.Api.Controllers
         { 
             return provider.Invoice.CheckOut(obj);
         }
+
+        [HttpGet("invoicebymemberid/{id}")]
+        public IEnumerable<InvoiceModel> GetInvoiceModelByMemberId(string id)
+        {
+            return provider.Invoice.GetInvoiceModel(id);
+        }
     }
 }

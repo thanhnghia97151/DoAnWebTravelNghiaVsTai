@@ -90,5 +90,6 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Query<Tour>($"select * from Tours as t where t.Name like N'%{address}%' and t.Price < {priceEnd} and t.Price >={priceStart}");
         }
+
     }
 }

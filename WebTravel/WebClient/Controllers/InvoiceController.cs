@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebClient.Models.Repository;
 using WebClient.Models.ViewModels;
@@ -60,6 +62,7 @@ namespace WebClient.Controllers
             }
             return View(obj);
         }
+        
         public async Task<IActionResult> SuccessBook()
         {
             //Get Type of Tour
@@ -70,5 +73,22 @@ namespace WebClient.Controllers
 
             return View();
         }
+        [Authorize]
+        public async Task<IActionResult> History()
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            var list = await provider.Invoice.GetInvoiceModelByMemberId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            foreach (var item in list)
+            {
+                item.Tour = await provider.Tour.GetTourById(item.TourId);
+            }
+            return View(list);
+        }
+
     }
 }

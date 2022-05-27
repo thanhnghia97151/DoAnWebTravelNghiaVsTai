@@ -18,9 +18,9 @@ namespace WebClient.Models
         public string ParentId { get; set; }
         public bool Status { get; set; }
 
-        [Required(ErrorMessage = "Tên đầy đủ không được để trống")]
-        [StringLength(36, ErrorMessage = "Tên đầy đủ phải nhỏ hơn hoặc bằng 36 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Tên đầy đủ phải là chuỗi ký tự")]
+        //[Required(ErrorMessage = "Tên đầy đủ không được để trống")]
+        //[StringLength(36, ErrorMessage = "Tên đầy đủ phải nhỏ hơn hoặc bằng 36 ký tự")]
+        //[RegularExpression("^[a-zA-Z\\s\\.]+$", ErrorMessage = "Tên đầy đủ phải là chuỗi ký tự")]
         public string FullName { get; set; }
         public ICollection<Comment> Childrent { get; set; }
     }

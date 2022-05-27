@@ -75,7 +75,7 @@ namespace WebClient.Controllers
                 }
             }
             // edit at here.
-            return View(obj);
+            return NotFound();
         }
     }
 }

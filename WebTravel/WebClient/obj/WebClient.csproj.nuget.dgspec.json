@@ -64,13 +64,13 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
-            "Twilio": {
-              "target": "Package",
-              "version": "[5.75.1, )"
-            },
             "PagedList.Mvc": {
               "target": "Package",
               "version": "[4.5.0, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[5.75.1, )"
             }
           },
           "imports": [
