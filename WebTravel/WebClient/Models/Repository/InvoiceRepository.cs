@@ -25,5 +25,10 @@ namespace WebClient.Models.Repository
         //{
         //    return await Post<Invoice>("/api/invoice/checkout",obj ); 
         //}
+
+        public async Task<List<InvoiceModel>> GetInvoiceModelByMemberId(string id)
+        {
+            return await Get<List<InvoiceModel>>($"/api/invoice/invoicebymemberid/{id}");
+        }
     }
 }

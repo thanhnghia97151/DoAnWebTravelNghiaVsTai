@@ -2,8 +2,9 @@
 @model InvoiceDetailModel
 @{
     Tour tour = ViewBag.tour;
+    var total = 0;
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="~/css/orderdetails.css">
 <!-- Thong tin goi nho -->
 <div class="goinho">
@@ -134,7 +135,7 @@
                 <div class="formkhoangcanh">
 
                     <input type="hidden" asp-for="InvoiceId" />
-                    <input type="hidden" asp-for="Price" value="@tour.Price"/>
+                    <input type="hidden" id="tongcong" asp-for="Price" value="@tour.Price"/>
                     <input type="hidden" asp-for="TourId" value="@tour.TourId" />
                     <input type="hidden" asp-for="MemberId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
@@ -179,7 +180,7 @@
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" value="1" asp-for="Quantity" class="form-control">
+                                    <input type="number" id="sl" value="1" asp-for="Quantity" class="form-control">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -210,7 +211,7 @@
                     <!-- the end form person tha gia -->
 
                     <div class="tonggiatridonhang pull-right">
-                        <p>Tổng giá trị : <small class="giachot">5,599,000 đ</small></p>
+                        <p>Tổng giá trị : <small class="giachot" id="showtongcong" >@tour.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) </small></p>
                     </div>
 
                 </div>
@@ -264,4 +265,12 @@
         <!-- the end row 5 -->
     </div>
 </div>
-
+<script>
+    $('#sl').change(function (){
+        var sluong = $(this).val();
+        console.log(sluong);
+        var total = sluong * @tour.Price;
+        $('#tongcong').val(total);
+        $('#showtongcong').html(total);
+    });
+</script>
