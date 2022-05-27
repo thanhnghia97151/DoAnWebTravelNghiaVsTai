@@ -40,7 +40,7 @@ namespace WebClient.Extentions
                     }
                 }
             }
-            return "Lỗi mật khẩu";
+            return "Nhập lại mật khẩu";
         }
     }
 }

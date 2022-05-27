@@ -16,27 +16,37 @@ namespace WebClient.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //Get Tours
-            ViewBag.tours = await provider.Tour.GetTours();
+            try
+            {
+                //Get Tours
+                ViewBag.tours = await provider.Tour.GetTours();
 
-            //Get News hot.
-            ViewBag.news = await provider.News.GetNewsHot();
+                //Get News three hot.
+                ViewBag.news = await provider.News.GetNewsHot();
 
-            //Get News outstanding.
-            ViewBag.newsoutstanding = await provider.News.GetNewsOutstanding();
+                //Get News outstanding.
+                ViewBag.newsoutstanding = await provider.News.GetNewsOutstanding();
 
-            //Get new Tour
-            ViewBag.newnews = await provider.News.GetNews();
+                //Get new Tour
+                ViewBag.newnews = await provider.News.GetNews();
 
-            //Get new Tour
-            ViewBag.fournews = await provider.News.GetFourNews();
+                //Get new news.
+                ViewBag.fournews = await provider.News.GetFourNews();
 
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
+                // Infomation about company
+                ViewBag.abouts = await provider.About.GetAbouts();
+
+            }
+            catch (System.Exception)
+            {
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
+            }
             return View();
         }
         public async Task<IActionResult> DetailTour(string id)
@@ -46,6 +56,9 @@ namespace WebClient.Controllers
 
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            // Infomation about company
+            ViewBag.abouts = await provider.About.GetAbouts();
 
             //Get Type Tour
             Tour tour = await provider.Tour.GetTourById(id);
@@ -75,7 +88,7 @@ namespace WebClient.Controllers
                 }
             }
             // edit at here.
-            return View(obj);
+            return NotFound();
         }
     }
 }

@@ -70,6 +70,29 @@ namespace WebTravelApi.Api.Controllers
             }
             return 0;
         }
+
+        [HttpPost("check-phone/{phone}")]
+        public int MemberByPhone(string phone)
+        {
+            var obj = provider.Member.GetMemberByPhone(phone);
+            if (obj != null)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        [HttpPost("confirm-status-phone/{phone}")]
+        public int ConfirmStatusPhone(string phone)
+        {
+            var obj = provider.Member.GetMemberByPhone(phone);
+            if (obj != null)
+            {
+                return provider.Member.ConfirmStatusPhone(phone);
+            }
+            return 0;
+        }
+
         [HttpPost("confirm-number-phone/{id}")]
         public int ConfirmNumberPhone(string id)
         {

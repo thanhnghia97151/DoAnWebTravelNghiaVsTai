@@ -1,6 +1,4 @@
 ﻿
-
-
 <!-- Thong tin goi nho -->
 <div class="goinho">
     <div class="container">
@@ -38,40 +36,41 @@
 <div class="row1">
     <div class="container">
         <div class="row">
-            @foreach (var item in ViewBag.tour)
-           {
-             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
-                    <div class="captionbottomimage">
-                        @item.Name
-                    </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: @item.Schedule
-                            </p>
-                        </div>
+            @if (ViewBag.tour != null)
+            {
+                @foreach (var item in ViewBag.tour)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+                        <div class="thumbnail">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
+                            <div class="captionbottomimage">
+                                @item.Name
+                            </div>
+                            <div class="caption">
+                                <div class="review">
+                                    <p>
+                                        <span class="fa fa-history"></span>
+                                        &nbsp;Lịch trình: @item.Schedule
+                                    </p>
+                                </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
-                        </div>
+                                <div>
+                                    <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
+                                </div>
 
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: @item.Quantity
-                            </p>
-                        </div>
+                                <div class="detailItem">
+                                    <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
+                                    <p>
+                                        <span class="fa fa-user book"></span>
+                                        &nbsp;Vé còn: @item.Quantity
+                                    </p>
+                                </div>
 
-                    </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column1 row 1 -->
-           }
-            
-
+                            </div>
+                        </div> <!-- end slide left 2 item 1 -->
+                    </div> <!-- the end column1 row 1 -->
+                }
+            }
         </div>
 
         

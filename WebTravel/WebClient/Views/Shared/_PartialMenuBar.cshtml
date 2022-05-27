@@ -1,7 +1,4 @@
-﻿@{ 
-    var Ids = "57hd8asv4nkmsw188l50zt7mv55rl8wops7mlqpve4jono2k75k09uqk5vghdar7";
-}
-<div>
+﻿<div>
       <nav class="navbar navbar-default menutop" role="navigation">
       <div class="container">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,53 +23,53 @@
                 DU LỊCH
                 </a>
                 <ul class="dropdown-menu">
-                     @*<li><a href="#">Du Lịch Trong Nước</a></li>
-                     <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
-                     @{
-                                IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
-                                IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
-                            }
+                    @*<li><a href="#">Du Lịch Trong Nước</a></li>
+        <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
+                    @{
+                        IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
+                        IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
+                    }
 
-                                             @foreach (TypeOfTour item in listTypeOfTour)
-                                {
-                                    <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
-                                }
+                    @if (listTypeOfTour != null)
+                    {
+                        @foreach (TypeOfTour item in listTypeOfTour)
+                        {
+                            <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
+                        }
+                    }
 
-                           
+
                 </ul>
               </li>
-               <li><a href="/contact">LIÊN HỆ</a></li>
+               <li><a href="/contact/DisplayContact">LIÊN HỆ</a></li>
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
                   role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
                   <ul class="dropdown-menu">
 
-                    @* <li><a href="#">Tin Khuyến Mãi</a></li>
-                     <li><a href="#">Tin Tư Vấn</a></li>
-                     <li><a href="#">Tour Du Lịch Hot Nhất</a></li>
-                     <li><a href="#">Tour Du Mới Nhất</a></li>
-                     <li><a href="#">Nhật Ký Du Lịch</a></li>
-                     <li><a href="#">Cẩm Nang Du Lịch</a></li>*@
-                     @foreach (var item in listNewsCate)
-                    {
-                        <li><a href="/news/newscategory/@item.NewsCategoryId">@item.Name</a></li>
-                    }
+                      @if (listNewsCate != null)
+                      {
+                          @foreach (var item in listNewsCate)
+                          {
+                              <li><a href="/news/newscategory/@item.NewsCategoryId">@item.Name</a></li>
+                          }
+                      }
                   </ul>
                </li>
                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
+                  <a asp-controller="Introduce" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
                   <ul class="dropdown-menu">
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/DisplayContact">Liên Hệ Chúng Tôi</a></li>
+                                <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
                                 <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
                                 <li><a href="/dashboard">Dashboard</a></li>
                             }
                             else
                             {
                                 <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/DisplayContact">Liên Hệ Chúng Tôi</a></li>
+                                <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
                                 <li><a href="/auth/register">Đăng Ký</a></li>
                                 <li><a href="/auth/login">Đăng Nhập</a></li>
                                 

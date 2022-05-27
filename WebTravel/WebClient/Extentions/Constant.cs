@@ -9,5 +9,7 @@ namespace WebClient.Extentions
     {
         public static string Code = "CODE";
         public static string Phone = "PHONE";
+        public static string Register = "REGISTER";
+        public static string MemberId = "MEMBERID";
     }
 }

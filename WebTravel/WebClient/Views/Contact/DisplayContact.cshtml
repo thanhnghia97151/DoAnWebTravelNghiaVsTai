@@ -1,6 +1,6 @@
 ﻿@model WebClient.Models.Contact;
 @{
-    var abouts = (List<About>)ViewBag.abouts;
+    List<About> abouts = (List<About>)ViewBag.abouts;
 }
 
 <div class="category1">
@@ -45,6 +45,7 @@
                         Nếu quý khách có thắc mắc hay đóng góp xin vui lòng điền vào Form dưới đây và gửi cho chúng tôi. Xin chân thành cảm ơn!
                     </p>
                 </div>
+                <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
                 <form asp-controller="Contact" asp-action="DisplayContact" method="post" accept-charset="utf-8">
                     <div class="form-group editform">
                         <label>Họ tên <span>(*)</span></label>
@@ -100,23 +101,30 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 contentright">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <iframe src="@abouts.ElementAtOrDefault(0).Image" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 thongtinphu">
-                        <div>
-                            <h3>@abouts.ElementAtOrDefault(0).Name</h3>
+                    @if (abouts != null)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <iframe src="@abouts.ElementAtOrDefault(0).Image" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
-                        <div>
-                            <p><i class="fa fa-home"></i>&nbsp;&nbsp;<span>Địa chỉ:</span> @abouts.ElementAtOrDefault(0).Address</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 thongtinphu">
+                            <div>
+                                <h3>@abouts.ElementAtOrDefault(0).Name</h3>
+                            </div>
+                            <div>
+                                <p><i class="fa fa-home"></i>&nbsp;&nbsp;<span>Địa chỉ:</span> @abouts.ElementAtOrDefault(0).Address</p>
+                            </div>
+                            <div>
+                                <p><i class="fa fa-phone"></i>&nbsp;&nbsp;<span>Điện thoại:</span>  @abouts.ElementAtOrDefault(0).Phone</p>
+                            </div>
+                            <div class="nganduoi">
+                                <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span>Email:</span> @abouts.ElementAtOrDefault(0).Email</p>
+                            </div>
                         </div>
-                        <div>
-                            <p><i class="fa fa-phone"></i>&nbsp;&nbsp;<span>Điện thoại:</span>  @abouts.ElementAtOrDefault(0).Phone</p>
-                        </div>
-                        <div class="nganduoi">
-                            <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span>Email:</span> @abouts.ElementAtOrDefault(0).Email</p>
-                        </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <h5 style="color: red;">Thông tin không có chúng tôi sẽ cập nhật sau</h5>
+                    }
                     <!-- Tro Giup -->
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 thongtinphu">
                         <div>

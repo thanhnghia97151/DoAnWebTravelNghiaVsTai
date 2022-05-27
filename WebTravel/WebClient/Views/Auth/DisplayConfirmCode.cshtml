@@ -36,11 +36,11 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                         <form asp-controller="Auth" asp-action="DisplayConfirmCode" method="post">
+                            <small style="color: red; font-size:13px">@ViewBag.ErrorCodeOTP</small>
                             <div class="form-group">
                                 <label for="">Nhập mã:</label>
                                 <input type="text" name="code" class="nhapma">
-                                <button type="submit" class="guilaima">Gửi lại mã</button>
-                                <small style="color: red; font-size:13px">@ViewBag.ErrorCodeOTP</small>
+                                <a style="border:1px solid gray; padding: 2px; text-decoration:none; background-color:darkgray; color: white;" href="/auth/DisplayConfirm" class="guilaima">Gửi lại mã</a>
                             </div>
                             <button type="submit" class="btn btn-success gui">Gửi</button>
                         </form>

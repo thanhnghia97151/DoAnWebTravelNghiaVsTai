@@ -14,17 +14,26 @@ namespace WebClient.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+            try
+            {
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-            // Infomation about company
-            ViewBag.abouts = await provider.About.GetAbouts();
+                // Infomation about company
+                ViewBag.abouts = await provider.About.GetAbouts();
 
-            //Get 10 news hot.
-            ViewBag.news10hot = await provider.News.GetNews10Hot();
+                //Get 10 news hot.
+                ViewBag.news10hot = await provider.News.GetNews10Hot();
+            }
+            catch (System.Exception)
+            {
+
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
+            }
+
             return View();
         }
     }

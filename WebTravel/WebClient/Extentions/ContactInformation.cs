@@ -19,11 +19,16 @@ namespace WebClient.Extentions
             {
                 name = "Tên phải là chuỗi ký tự không phải số";
             } 
+            else if (Regex.IsMatch(contact.Name, "^[a-zA-Z0-9]+$"))
+            {
+                name = "Tên phải là chuỗi ký tự không có số";
+            } 
             else
             if (Regex.IsMatch(contact.Name, "^[/`/!/@/#/$/%/^/&/*/(/)/-/+/=/~/./,/;/:/'//]+$"))
             {
                 name = "Tên phải là chuỗi ký tự không là ký tự đặt biệt";
             }
+
             if (Regex.IsMatch(contact.Title, "^[0-9]+$"))
             {
                 title = "Tiêu đề phải là chuỗi ký tự không phải số";
@@ -51,7 +56,7 @@ namespace WebClient.Extentions
             {
                 content = "Nội dung phải là chuỗi ký tự không là ký tự đặt biệt";
             }
-            if (name != null || title != null || content != null || company != null)
+            if (name != "" || title != "" || content != "" || company != "")
             {
                 return false;
             }
