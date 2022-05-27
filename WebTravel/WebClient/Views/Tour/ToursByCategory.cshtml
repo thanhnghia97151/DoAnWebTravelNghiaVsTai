@@ -20,7 +20,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2> @cate.Name.ToUpper()</h2>
+                @if (cate != null)
+                {
+                    <h2> @cate.Name.ToUpper()</h2>
+                }
             </div>
         </div>
         <div class="row">
@@ -41,271 +44,277 @@
 <div class="row1">
     <div class="container">
         <div class="row">
-            @foreach (var item in listTours)
-           {
-             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
-                    <div class="captionbottomimage">
-                        @item.Name
-                    </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: @item.Schedule
-                            </p>
-                        </div>
+            @if (listTours != null)
+            {
+                @foreach (var item in listTours)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+                        <div class="thumbnail">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
+                            <div class="captionbottomimage">
+                                @item.Name
+                            </div>
+                            <div class="caption">
+                                <div class="review">
+                                    <p>
+                                        <span class="fa fa-history"></span>
+                                        &nbsp;Lịch trình: @item.Schedule
+                                    </p>
+                                </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
-                        </div>
+                                <div>
+                                    <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
+                                </div>
 
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: @item.Quantity
-                            </p>
-                        </div>
+                                <div class="detailItem">
+                                    <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
+                                    <p>
+                                        <span class="fa fa-user book"></span>
+                                        &nbsp;Vé còn: @item.Quantity
+                                    </p>
+                                </div>
 
-                    </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column1 row 1 -->
-           }
-            
+                            </div>
+                        </div> <!-- end slide left 2 item 1 -->
+                    </div> <!-- the end column1 row 1 -->
+                }
+            }
+            else 
+            {
+                <h5 style="color: red">Thông tin tạm thời không có</h5>
+            }
             @*<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel2.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+            <div class="thumbnail">
+                <img src="~/images/hotel2.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column2 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel3.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column2 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel3.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column3 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel4.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column4 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel5.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column3 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel4.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column5 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tiem">
-                <div class="thumbnail">
-                    <img src="~/images/hotel5.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column4 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel5.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column6 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel1.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column7 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel2.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column5 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tiem">
+            <div class="thumbnail">
+                <img src="~/images/hotel5.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column8 row 1 -->
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <img src="~/images/hotel3.jpg" alt="">
-                    <div class="captionbottomimage">
-                        Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
                     </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: 3 ngày 2 đêm
-                            </p>
-                        </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                        </div>
-
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: 3,333,000 đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: 10
-                            </p>
-                        </div>
-
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column6 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel1.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
                     </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column9 row 1 -->*@
+
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
+                    </div>
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
+                    </div>
+
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column7 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel2.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
+                    </div>
+
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
+                    </div>
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
+                    </div>
+
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column8 row 1 -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+            <div class="thumbnail">
+                <img src="~/images/hotel3.jpg" alt="">
+                <div class="captionbottomimage">
+                    Du lịch Đà Nẵng - Ngũ Hành Sơn - Bà Nà - Phố Cổ Hội An từ Sài Gòn giá tốt
+                </div>
+                <div class="caption">
+                    <div class="review">
+                        <p>
+                            <span class="fa fa-history"></span>
+                            &nbsp;Lịch trình: 3 ngày 2 đêm
+                        </p>
+                    </div>
+
+                    <div>
+                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
+                    </div>
+
+                    <div class="detailItem">
+                        <b class="pull-right price">Giá: 3,333,000 đ</b>
+                        <p>
+                            <span class="fa fa-user book"></span>
+                            &nbsp;Vé còn: 10
+                        </p>
+                    </div>
+
+                </div>
+            </div> <!-- end slide left 2 item 1 -->
+        </div> <!-- the end column9 row 1 -->*@
 
         </div>
     </div>

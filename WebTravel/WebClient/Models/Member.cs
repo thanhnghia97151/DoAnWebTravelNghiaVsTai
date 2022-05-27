@@ -10,12 +10,12 @@ namespace WebClient.Models
 
         [Required(ErrorMessage = "Tên không được để trống")]
         [StringLength(36, ErrorMessage = "Tên phải nhỏ hơn hoặc bằng 36 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s]+$", ErrorMessage = "Tên phải là chuỗi ký tự")]
+        [RegularExpression("^.+$", ErrorMessage = "Tên phải là chuỗi ký tự")]
         public string UserName { get; set; }
 
         //[Required(ErrorMessage = "Tên đầy đủ không được để trống")]
         [StringLength(36, ErrorMessage = "Tên đầy đủ phải nhỏ hơn hoặc bằng 36 ký tự")]
-        [RegularExpression("^[a-zA-Z\\s]+$", ErrorMessage = "Tên đầy đủ phải là chuỗi ký tự")]
+        [RegularExpression("^.+$", ErrorMessage = "Tên đầy đủ phải là chuỗi ký tự")]
         public string FullName { get; set; }
         public DateTime Birthday { get; set; }
         public string Gender { get; set; }
@@ -26,7 +26,7 @@ namespace WebClient.Models
 
         [Required(ErrorMessage = "Địa chỉ không được để trống")]
         [StringLength(60, ErrorMessage = "Địa chỉ phải nhỏ hơn hoặc bằng 60 ký tự")]
-        [RegularExpression("^[a-zA-Z0-9\\s]+$", ErrorMessage = "Địa chỉ không có ký tự đặc biệt")]
+        [RegularExpression("^.+$", ErrorMessage = "Địa chỉ không có ký tự đặc biệt")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Email không được để trống")]

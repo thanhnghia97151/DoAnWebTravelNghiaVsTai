@@ -36,7 +36,7 @@
                         <form asp-controller="Auth" asp-action="DisplayConfirm" method="post">
                             <div class="form-group">
                                 <label >Nhập số điện thoại:</label>
-                                <input type="text"  name="phone" value="" class="nhapma">
+                                <input type="text"  name="phone" value="@HttpContextAccessor.HttpContext.Session.GetString("PHONE")" class="nhapma">
                                 <small style="color: red; font-size: 13px">@ViewBag.ErrorPhoneFormat</small>
                             </div>
                             <button type="submit" class="btn btn-success gui">Gửi</button>

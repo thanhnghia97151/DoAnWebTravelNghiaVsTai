@@ -1,5 +1,9 @@
 ﻿@model News
-<link rel="stylesheet" href="~/css/detailnews.css"/>
+@{
+    List<News> news10hot = null;
+}
+
+<link rel="stylesheet" href="~/css/detailnews.css" />
 <!-- Thong tin goi nho -->
 <div class="goinho">
     <div class="container">
@@ -18,59 +22,62 @@
 <div class="baiviet">
     <div class="container">
         <div class="row">
+            <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div class="titlenews">
-                    @*Vietravel Airlines khai trương các đường bay mới kết nối nhiều tỉnh, thành phố trong cả nước*@
-                    @Model.Name
+                    @if (Model != null)
+                    {
+                        @Model.Name
+                    }
                 </div>
                 @*<div class="descriptionnews">
-                    <p>
-                        <i>
-                            Kể từ ngày 21/01/2022, Hãng hàng không Vietravel (Vietravel Airlines) sẽ chính thức mở rộng mạng đường bay mới của hãng với chặng bay từ thành phố Hồ Chí Minh - thành phố Quy Nhơn (SGN - UIH) & khôi phục đường bay của hãng đến thành phố Đà Nẵng (DAD), chính thức kết nối hai tỉnh, thành lớn trong cả nước. Đồng thời, đây cũng là dịp tri ân quý khách hàng đã đồng hành cùng Vietravel Airlines nhân dịp sinh nhật 1 năm cất cánh với hàng loạt các ưu đãi vàng với giá chỉ từ 1,000/ vé.
-                        </i>
-                    </p>
-                </div>
-                <div class="share">
-                    <b class="pull-right"><span class="fa fa-facebook"></span> chia sẻ</b>
-                    <p>
-                        <span class="fa fa-history">&nbsp;</span>
-                        <i>11/2/2021</i>
-                    </p>
-                </div>
-                <!-- the end description -->
+                        <p>
+                            <i>
+                                Kể từ ngày 21/01/2022, Hãng hàng không Vietravel (Vietravel Airlines) sẽ chính thức mở rộng mạng đường bay mới của hãng với chặng bay từ thành phố Hồ Chí Minh - thành phố Quy Nhơn (SGN - UIH) & khôi phục đường bay của hãng đến thành phố Đà Nẵng (DAD), chính thức kết nối hai tỉnh, thành lớn trong cả nước. Đồng thời, đây cũng là dịp tri ân quý khách hàng đã đồng hành cùng Vietravel Airlines nhân dịp sinh nhật 1 năm cất cánh với hàng loạt các ưu đãi vàng với giá chỉ từ 1,000/ vé.
+                            </i>
+                        </p>
+                    </div>
+                    <div class="share">
+                        <b class="pull-right"><span class="fa fa-facebook"></span> chia sẻ</b>
+                        <p>
+                            <span class="fa fa-history">&nbsp;</span>
+                            <i>11/2/2021</i>
+                        </p>
+                    </div>
+                    <!-- the end description -->
 
-                <div class="totalcontent">
-                    <div class="imagenews">
-                        <img src="~/images/detailnews1.jpg" alt="">
+                    <div class="totalcontent">
+                        <div class="imagenews">
+                            <img src="~/images/detailnews1.jpg" alt="">
+                        </div>
+                        <div class="imagecontent">
+                            <p>
+                                Trong giai đoạn “bình thường mới”, Vietravel Airlines sẽ duy trì các đường bay này với tần suất 1 chuyến/ngày, đồng thời đảm bảo tỷ lệ khai thác đúng giờ luôn đạt trên 98%. Tùy theo nhu cầu thực tế của thị trường, hãng sẽ nâng tần suất của một số đường bay lên 2 chuyến/ngày. Song song đó, hãng cũng áp dụng các biện pháp phòng chống dịch theo đúng khuyến cáo của chính phủ để đảm bảo an toàn bay cho hành khách.
+                            </p>
+                        </div>
                     </div>
-                    <div class="imagecontent">
-                        <p>
-                            Trong giai đoạn “bình thường mới”, Vietravel Airlines sẽ duy trì các đường bay này với tần suất 1 chuyến/ngày, đồng thời đảm bảo tỷ lệ khai thác đúng giờ luôn đạt trên 98%. Tùy theo nhu cầu thực tế của thị trường, hãng sẽ nâng tần suất của một số đường bay lên 2 chuyến/ngày. Song song đó, hãng cũng áp dụng các biện pháp phòng chống dịch theo đúng khuyến cáo của chính phủ để đảm bảo an toàn bay cho hành khách.
-                        </p>
+                    <!-- the one conten -->
+                    <div class="totalcontent">
+                        <div class="imagenews">
+                            <img src="~/images/detailnews2.jpg" alt="">
+                        </div>
+                        <div class="imagecontent">
+                            <p>
+                                Phát biểu tại buổi lễ, lãnh đạo TP. Qui Nhơn đánh giá cao vai trò tiên phong của các doanh nghiệp hàng không - lữ hành, đặc biệt là Vietravel Airlines trong việc kết nối các điểm đến du lịch nổi tiếng trong và ngoài nước cũng như thúc đẩy giao thương, đáp ứng tốt nhu cầu đi lại gia tăng của người dân dịp cuối năm và Tết Nguyên Đán 2022 trong giai đoạn “bình thường mới” - cùng các gói chính sách hỗ trợ thiết thực, theo sát các chỉ đạo từ Chính phủ, Bộ Giao thông vận tải, Cục Hàng không và các cơ quan quản lý, thị trường hàng không Việt Nam.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <!-- the one conten -->
-                <div class="totalcontent">
-                    <div class="imagenews">
-                        <img src="~/images/detailnews2.jpg" alt="">
-                    </div>
-                    <div class="imagecontent">
-                        <p>
-                            Phát biểu tại buổi lễ, lãnh đạo TP. Qui Nhơn đánh giá cao vai trò tiên phong của các doanh nghiệp hàng không - lữ hành, đặc biệt là Vietravel Airlines trong việc kết nối các điểm đến du lịch nổi tiếng trong và ngoài nước cũng như thúc đẩy giao thương, đáp ứng tốt nhu cầu đi lại gia tăng của người dân dịp cuối năm và Tết Nguyên Đán 2022 trong giai đoạn “bình thường mới” - cùng các gói chính sách hỗ trợ thiết thực, theo sát các chỉ đạo từ Chính phủ, Bộ Giao thông vận tải, Cục Hàng không và các cơ quan quản lý, thị trường hàng không Việt Nam.
-                        </p>
-                    </div>
-                </div>
-                <!-- the one conten -->
-                <div class="totalcontent">
-                    <div class="imagenews">
-                        <img src="~/images/detailnews3.jpg" alt="">
-                    </div>
-                    <div class="imagecontent">
-                        <p>
-                            Sự kiện này là cột mốc quan trọng đánh dấu bước chuyển mình tích cực, tái khởi động sau thời gian “ngủ đông chủ động” của hãng do ảnh hưởng của COVID-19. Theo đó, chuyến bay đầu tiên cất cánh từ TP. Hồ Chí Minh đến TP. Qui Nhơn lúc 13:25 ngày 21/01.
-                        </p>
-                    </div>
-                </div>*@
+                    <!-- the one conten -->
+                    <div class="totalcontent">
+                        <div class="imagenews">
+                            <img src="~/images/detailnews3.jpg" alt="">
+                        </div>
+                        <div class="imagecontent">
+                            <p>
+                                Sự kiện này là cột mốc quan trọng đánh dấu bước chuyển mình tích cực, tái khởi động sau thời gian “ngủ đông chủ động” của hãng do ảnh hưởng của COVID-19. Theo đó, chuyến bay đầu tiên cất cánh từ TP. Hồ Chí Minh đến TP. Qui Nhơn lúc 13:25 ngày 21/01.
+                            </p>
+                        </div>
+                    </div>*@
                 <!-- the one conten -->
             </div>
             <!-- the end left -->
@@ -160,13 +167,13 @@
     </div>
 </div>
 
-<!--  Section -->
+
 <!-- infor relation -->
 <div class="thongtinlienquan">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h3>THÔNG TIN LIÊN QUAN</h3>
+                <h3>THÔNG TIN NỔI BẬT</h3>
             </div>
         </div>
     </div>
@@ -179,295 +186,53 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="large-12 columns">
                     <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews1.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
+                        @if (news10hot != null)
+                        {
+                            @foreach (var news in news10hot)
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="thumbnail">
+                                                <img src="https://localhost:44384/images/@news.Image" alt="">
+                                                <div class="caption">
 
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
+                                                    @if (news.Name.Length > 65)
+                                                    {
+                                                        <h4>@news.Name.Substring(0, 65)...</h4>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h4>@news.Name</h4>
+                                                    }
+
+
+                                                    <div class="eye">
+                                                        <p>
+                                                            <span class="fa fa-calendar"></span>&nbsp; @news.ModifiedDate
+                                                            &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;@news.ViewCount</small>
+                                                        </p>
+                                                    </div>
+
+
+                                                    @if (news.Description.Length > 145)
+                                                    {
+                                                        <p>@news.Description.Substring(0, 145).ToString()...</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@news.Description</p>
+                                                    }
+
+
+                                                </div>
                                             </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews2.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews3.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews4.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews1.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews2.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews3.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews4.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews4.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews3.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews2.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="thumbnail">
-                                        <img src="~/images/catenews1.jpg" alt="">
-                                        <div class="caption">
-                                            <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                                            <div class="eye">
-                                                <p>
-                                                    <span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                                                    &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                            }
+                        }
+                        @*the end 1 item*@
                     </div>
                 </div>
             </div>

@@ -24,9 +24,9 @@ namespace WebClient.Extentions
 
         public static string CheckBrithday(DateTime date) 
         {
-            if (date <= DateTime.Now) 
+            if (date < DateTime.Now) 
             {
-                if ( DateTime.Now.Year - date.Year < 15)
+                if (DateTime.Now.Year - date.Year < 15)
                 {
                     return "Bạn chưa đủ 15 tuổi để đăng ký dịch vụ của chúng tôi";
                 }

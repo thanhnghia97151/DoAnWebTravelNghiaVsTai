@@ -22,6 +22,13 @@ namespace WebTravelApi.Models.Repository
             string sql = "select * from Members where MemberID = @Id";
             return connection.QuerySingleOrDefault<Member>(sql, new { Id = id });
         }
+
+        public Member GetMemberByPhone(string phone)
+        {
+            string sql = "select * from Members where Phone = @Phone";
+            return connection.QuerySingleOrDefault<Member>(sql, new { Phone = phone });
+        }
+
         public int AddMemberByGoogle(Member obj)
         {
             string sql = "insert into Members(MemberID,UserName,Password,Email,Gender,ConfirmedPhone) values(@Id,@UserName,@Password,@Email,@Gender,@ConfirmedPhone)";
@@ -53,7 +60,7 @@ namespace WebTravelApi.Models.Repository
         }
         public Member Login(LoginModel login)
         {
-            string sql = "select MemberID,UserName,Email,Gender,Phone from Members where Phone=@Phone and Password=@Pwd";
+            string sql = "select MemberID,UserName,Email,Gender,Phone from Members where Phone=@Phone and Password=@Pwd and ConfirmedPhone = 1";
             return connection.QuerySingleOrDefault<Member>(sql, new
             {
                 Phone = login.Phone,
@@ -79,5 +86,10 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("update Members set ConfirmedPhone = 1 where MemberID = @Id", new { Id = id });
         }
+        public int ConfirmStatusPhone(string phone)
+        {
+            return connection.Execute("update Members set ConfirmedPhone = 1 where Phone = @Phone", new { Phone = phone });
+        }
+
     }
 }

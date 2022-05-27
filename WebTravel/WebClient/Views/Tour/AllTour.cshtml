@@ -1,9 +1,9 @@
 ﻿@*@model List<Tour>*@
+
 @model PagedList.IPagedList<Tour>
 @{
     int p = ViewContext.RouteData.Values["id"] != null ? Convert.ToInt32(ViewContext.RouteData.Values["id"]) : 1;
 }
-
 
 <!-- Thong tin goi nho -->
 <div class="goinho">
@@ -42,58 +42,69 @@
 <div class="row1">
     <div class="container">
         <div class="row">
-            @foreach (var item in Model)
-           {
-             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                <div class="thumbnail">
-                    <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
-                    <div class="captionbottomimage">
-                        @item.Name
-                    </div>
-                    <div class="caption">
-                        <div class="review">
-                            <p>
-                                <span class="fa fa-history"></span>
-                                &nbsp;Lịch trình: @item.Schedule
-                            </p>
-                        </div>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+                        <div class="thumbnail">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
+                            <div class="captionbottomimage">
+                                @item.Name
+                            </div>
+                            <div class="caption">
+                                <div class="review">
+                                    <p>
+                                        <span class="fa fa-history"></span>
+                                        &nbsp;Lịch trình: @item.Schedule
+                                    </p>
+                                </div>
 
-                        <div>
-                            <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
-                        </div>
+                                <div>
+                                    <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
+                                </div>
 
-                        <div class="detailItem">
-                            <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
-                            <p>
-                                <span class="fa fa-user book"></span>
-                                &nbsp;Vé còn: @item.Quantity
-                            </p>
-                        </div>
+                                <div class="detailItem">
+                                    <b class="pull-right price">Giá: @item.PromotionPrice đ</b>
+                                    <p>
+                                        <span class="fa fa-user book"></span>
+                                        &nbsp;Vé còn: @item.Quantity
+                                    </p>
+                                </div>
 
-                    </div>
-                </div> <!-- end slide left 2 item 1 -->
-            </div> <!-- the end column1 row 1 -->
-           }
-            
-
+                            </div>
+                        </div> <!-- end slide left 2 item 1 -->
+                    </div> <!-- the end column1 row 1 -->
+                }
+            }
+            else
+            {
+                <h5 style="color: red;">Thông tin không có, vui lòng thử lại sau</h5>
+            }    
         </div>
-
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                @for (var i = 1; i <= Model.PageCount; i++)
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                @if (Model != null)
                 {
-                    
-                    @if (p == i)
+                    @for (var i = 1; i <= Model.PageCount; i++)
                     {
-                        <li class="page-item active"><a class="page-link" href="/tour/alltour/@i">@i</a></li>
+
+                        @if (p == i)
+                        {
+                            <li class="page-item active"><a class="page-link" href="/tour/alltour/@i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item "><a class="page-link" href="/tour/alltour/@i">@i</a></li>
+                        }
                     }
-                    else
-                    {
-                        <li class="page-item "><a class="page-link" href="/tour/alltour/@i">@i</a></li>
-                    }
+                }
+                else
+                {
+                    <h5 style="color: red;">Thông tin không có, vui lòng thử lại sau</h5>
                 }
             </ul>
         </nav>

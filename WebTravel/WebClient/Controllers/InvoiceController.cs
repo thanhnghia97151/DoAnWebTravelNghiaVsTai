@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebClient.Extentions;
 using WebClient.Models.Repository;
 using WebClient.Models.ViewModels;
 
@@ -46,21 +47,33 @@ namespace WebClient.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(InvoiceDetailModel obj)
         {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
-
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-            //Get Tour
-            ViewBag.tour = await provider.Tour.GetTourById(obj.TourId);
-            obj.InvoiceId = Helper.RandomString(64);
-            if (await provider.Invoice.Add(obj) == 2)
+            try
             {
-                await provider.Tour.Ticket(await provider.Tour.GetTourById(obj.TourId));
-                return RedirectToAction("SuccessBook");
+                if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+                {
+                    obj.InvoiceId = Helper.RandomString(64);
+                    //Get Type of Tour
+                    ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+                    //Get type of News Category
+                    ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+                    //Get Tour
+                    ViewBag.tour = await provider.Tour.GetTourById(obj.TourId);
+                    //obj.InvoiceId = Helper.RandomString(64);
+                    if (await provider.Invoice.Add(obj) == 2)
+                    {
+                        //await provider.Tour.Ticket(await provider.Tour.GetTourById(obj.TourId));
+                        return RedirectToAction("SuccessBook");
+                    }
+                }
+
             }
-            return View(obj);
+            catch (System.Exception)
+            {
+                ModelState.AddModelError("", "Lỗi hệ thống, vui lòng truy cập sau");  
+            }
+            return Redirect($"/invoice/create/{obj.TourId}");
         }
         
         public async Task<IActionResult> SuccessBook()

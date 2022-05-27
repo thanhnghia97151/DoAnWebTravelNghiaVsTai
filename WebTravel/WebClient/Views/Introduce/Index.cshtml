@@ -1,6 +1,6 @@
 ﻿@{
-    var news10host = (List<News>)ViewBag.news10hot;
-    var abouts = (List<About>)ViewBag.abouts;
+    List<News> news10host = (List<News>)ViewBag.news10hot;
+    List<About> abouts = (List<About>)ViewBag.abouts;
 }
 
 <link rel="stylesheet" href="~/css/introduce.css">
@@ -37,15 +37,20 @@
 <div class="gioithieu">
     <div class="container">
         <div class="row">
-            <div class="aboutcompany">
-                @if(abouts != null)
-                {
-                   @Html.Raw(System.Web.HttpUtility.HtmlDecode(@abouts.ElementAtOrDefault(0).Detail))
-                }
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 khoangcach">
-                <iframe src="@abouts.ElementAtOrDefault(0).Image" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+            <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
+            @if (abouts != null)
+            {
+                <div class="aboutcompany">
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(@abouts.ElementAtOrDefault(0).Detail))
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 khoangcach">
+                    <iframe src="@abouts.ElementAtOrDefault(0).Image" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            }
+            else 
+            {
+                <h5 style="color: red;">Chúng tôi sẽ cập nhật thông tin sớm nhất có thể</h5>
+            }
         </div>
     </div>
 </div>

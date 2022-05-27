@@ -36,22 +36,33 @@ namespace WebClient.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Member obj, string confirmPassword)
         {
+            var memberByPhone = await provider.Member.MemberByPhone(obj);
             if (ModelState.IsValid)
             {
                 if (PasswordNews.CheckPassword(obj.Password, confirmPassword) == "1")
                 {
                     if (LoginInformation.CheckBrithday(obj.Birthday) == "1")
                     {
-                        try
+                        if (RegisterInformation.CheckMember(obj) == true)
                         {
-                            var result = await provider.Member.Add(obj);
-                            return Redirect("/auth/login");
+                            try
+                            {
+                                if (memberByPhone == 0)
+                                {
+                                    HttpContext.Session.SetString(Constant.Register, "1");
+                                    HttpContext.Session.SetString(Constant.Phone, obj.Phone);
+                                    var result = await provider.Member.Add(obj);
+                                    return RedirectToAction("DisplayConfirm");
+                                }
+                                ModelState.AddModelError("", "Số điện thoại này đã có tài khoản");
+                            }
+                            catch (System.Exception)
+                            {
+                                ModelState.AddModelError("", "Lỗi hệ thống thử lại sau");
+                            }
                         }
-                        catch (System.Exception)
-                        {
-
-                            ModelState.AddModelError("", "Lỗi hệ thống thử lại sau");
-                        }
+                        ViewBag.ErrorUserName = RegisterInformation.username;
+                        ViewBag.ErrorUserAddress = RegisterInformation.address;
                     }
                     ViewBag.ErrorBrithday = LoginInformation.CheckBrithday(obj.Birthday);
                 }
@@ -124,7 +135,10 @@ namespace WebClient.Controllers
                         }
                         ModelState.AddModelError("", "Đang có lỗi xảy ra");
                     }
-                    ModelState.AddModelError("", "Tài khoản không tồn tại");
+                    else 
+                    {
+                        ModelState.AddModelError("", "Tài khoản không tồn tại hoặc chưa xác thực");
+                    }
                 }
                 else
                 {
@@ -136,7 +150,15 @@ namespace WebClient.Controllers
        
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            try
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+            catch (System.Exception)
+            {
+
+                return NotFound();
+            }
             return Redirect("/auth/login");
         }
         public IActionResult FacebookSignIn()
@@ -275,40 +297,48 @@ namespace WebClient.Controllers
             return Redirect("/auth/login");
 
         }
+
         public IActionResult ChangePassword()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<ActionResult> ChangePassword(ChangePassword obj)
         {
-            obj.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
-            Member member = await provider.Member.GetMemberById(obj.Id);
-            LoginModel model = new LoginModel { Urs = member.UserName, Pwd = obj.OldPassword };
-            ReponseLogin checkMember = await provider.Member.Login(model);
+            obj.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);                       
 
-            var t = Helper.Hash(obj.OldPassword);
             if (ModelState.IsValid)
             {
-                if ( checkMember != null)
+                if (PasswordNews.CheckPassword(obj.NewPassword, obj.ConfirmPassword) == "1")
                 {
-                    if (obj.ConfirmPassword.Equals(obj.NewPassword))
+                    Member member = await provider.Member.GetMemberById(obj.Id);
+                    LoginModel model = new LoginModel { Phone = member.Phone, Pwd = obj.OldPassword };
+                    ReponseLogin checkMember = await provider.Member.Login(model);
+                    var t = Helper.Hash(obj.OldPassword);
+                    if (checkMember != null)
                     {
-                        if (await provider.Member.ChangePassword(obj) == 1)
+                        if (obj.ConfirmPassword.Equals(obj.NewPassword))
                         {
-                            return Redirect("/auth/logout");
-                        }                       
+                            if (await provider.Member.ChangePassword(obj) == 1)
+                            {
+                                return Redirect("/auth/logout");
+                            }
+                        }
                     }
+                    ModelState.AddModelError("", "Thay đổi mật khẩu không thành!");
                 }
+                ViewBag.ErrorPassword = PasswordNews.CheckPassword(obj.NewPassword, obj.ConfirmPassword);
+            
             }
-            ModelState.AddModelError("", "Change password Failded!");
+            
             return View(obj); 
         }  
         
         // Cofirm Number phone
         public IActionResult ConfirmNumberPhone(string id)
         {
+            //ChangeConfirmPhone
             return View();
         }
         [HttpPost]
@@ -331,7 +361,7 @@ namespace WebClient.Controllers
                 // Send otp code.
                 //var code = _forgetPasswordRepository.SendSMS(phone);
                 var code = "111111";
-                if (code != null)
+                if (code != null || code != "")
                 {
                     // Save code into session.
                     HttpContext.Session.SetString(Constant.Code, code);
@@ -357,12 +387,52 @@ namespace WebClient.Controllers
         [HttpPost]
         public IActionResult DisplayConfirmCode(string code) 
         {
-            var session = HttpContext.Session;
-            if (session.GetString(Constant.Code) == code) 
+            if (ConfirmCodeValidator.CheckOTPCode(code) == "1")
             {
-                return RedirectToAction("ResetPassword");
+                var session = HttpContext.Session;
+                if (session.GetString(Constant.Code) == code)
+                {// HttpContext.Session.SetString(Constant.Register,"1");
+                    if (HttpContext.Session.GetString(Constant.Register) == "1")
+                    {
+                        HttpContext.Session.SetString(Constant.Register, "0");
+                        return RedirectToAction("ResetStatusPhone");
+                    }
+                    return RedirectToAction("ResetPassword");
+                }
+                ViewBag.ErrorCodeOTP = "Mã OTP không đúng!";
             }
-            ViewBag.ErrorCodeOTP = "Mã OTP không đúng!";
+            else 
+            {
+                ViewBag.ErrorCodeOTP = ConfirmCodeValidator.CheckOTPCode(code);
+            }
+            return View();
+        }
+
+        // Cofirm Number phone
+        [HttpGet]
+        public IActionResult ResetStatusPhone()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetStatusPhone(Member obj)
+        {
+            try
+            {
+                obj.Phone = HttpContext.Session.GetString(Constant.Phone);
+                if (obj.Phone != null || obj.Phone != "")
+                {
+                    await provider.Member.ChangeConfirmStatusPhone(obj);
+                    return Redirect("/Auth/Login");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                ViewBag.ErrorSystem = "Lỗi hệ thống, vui lòng thử lại sau";
+            }
+            ModelState.AddModelError("","Xác thực tài khoản không thành công");
             return View();
         }
 
@@ -371,7 +441,7 @@ namespace WebClient.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> ResetPassword(string password, string confirmPassword) 
         {

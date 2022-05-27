@@ -2,6 +2,7 @@
 @{
     List<TourCategoryModel> listTour = ViewBag.tour;
 }
+
 @if (listTour != null)
 {
     @foreach (var item in listTour)
@@ -69,4 +70,8 @@
             </section>
         }
     }
+}
+else 
+{
+    <h5 style="color: red;">Tour không tồn tại, vui lòng thử lại sau</h5>
 }

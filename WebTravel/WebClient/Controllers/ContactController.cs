@@ -16,11 +16,24 @@ namespace WebClient.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+            try
+            {
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+                // Infomation about company
+                ViewBag.abouts = await provider.About.GetAbouts();
+
+            }
+            catch (System.Exception)
+            {
+
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
+            }
+
             return View();
         }
         public async Task<IActionResult> ContactWithMe()
@@ -42,7 +55,7 @@ namespace WebClient.Controllers
             catch (System.Exception)
             {
 
-                return View();
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
             }
 
             return View();  
@@ -51,15 +64,22 @@ namespace WebClient.Controllers
         // DisplayContact.
         [HttpGet]
         public async Task<IActionResult> DisplayContact() 
-        {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+        {            
+            try
+            {
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+                // Infomation about company
+                ViewBag.abouts = await provider.About.GetAbouts();
+            }
+            catch (System.Exception)
+            {
 
-            // Infomation about company
-            ViewBag.abouts = await provider.About.GetAbouts();            
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
+            }           
 
             return View();
         }
@@ -67,26 +87,34 @@ namespace WebClient.Controllers
         [HttpPost]
         public async Task<IActionResult> DisplayContact( Contact contact) 
         {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
-
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-            // Infomation about company
-            ViewBag.abouts = await provider.About.GetAbouts();
-
-            if (ModelState.IsValid) 
+            try
             {
-                if (ContactInformation.CheckInformationContact(contact) == true)
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+                // Infomation about company
+                ViewBag.abouts = await provider.About.GetAbouts();
+
+                if (ModelState.IsValid)
                 {
-                    await provider.Contact.Add(contact);
-                    return RedirectToAction("Index", "Home");
+                    if (ContactInformation.CheckInformationContact(contact) == true)
+                    {
+                        await provider.Contact.Add(contact);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    ViewBag.ErrorName = ContactInformation.name;
+                    ViewBag.ErrorTitle = ContactInformation.title;
+                    ViewBag.ErrorContent = ContactInformation.content;
+                    ViewBag.ErrorCompany = ContactInformation.company;
                 }
-                ViewBag.ErrorName = ContactInformation.name;
-                ViewBag.ErrorTitle = ContactInformation.title;
-                ViewBag.ErrorContent = ContactInformation.content;
-                ViewBag.ErrorCompany = ContactInformation.company;
+            }
+            catch (System.Exception)
+            {
+
+                ViewBag.ErrorSystem = "Hệ thống tạm thời bị lỗi vui lòng trở lại sau.";
             }
             return View(contact);
         }

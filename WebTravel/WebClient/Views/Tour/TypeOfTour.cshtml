@@ -19,13 +19,13 @@
 </div> <!-- the end goi nho -->
 <!-- Tìm kiếm du lịch trong nước -->
 <div class="KhungTimKiem">
-
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
                 <div class="TitleTimKiem text-center">
                     <p>TÌM TOUR </p>
                 </div>
+                <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
                 <form action="/tour/search" method="post">
                     <input type="hidden" asp-for="PriceStart"/>
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -78,7 +78,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2>DU LỊCH @typeOfTour.Type.ToUpper()</h2>
+                @if (typeOfTour != null)
+                {
+                    <h2>DU LỊCH @typeOfTour.Type.ToUpper()</h2>
+	            }
             </div>
         </div>
         <div class="row">
@@ -97,7 +100,7 @@
     </div>
 </div>
 
-<!-- begin hien thi loai khach hang -->
+<!-- begin hien thi loai tour -->
 @if (listFullTourCateVsTour != null)
 {
     @foreach (var cate in listFullTourCateVsTour)
