@@ -13,21 +13,21 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\_ViewImports.cshtml"
+#line 1 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\_ViewImports.cshtml"
 using WebClient.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\_ViewImports.cshtml"
+#line 2 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\_ViewImports.cshtml"
 using WebClient.Models.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\_ViewImports.cshtml"
+#line 3 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Http;
 
 #line default
@@ -35,9 +35,7 @@ using Microsoft.AspNetCore.Http;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2c7a58f08030eda1cd1956eacc820d5be6a8ad66", @"/Views/Tour/TypeOfTour.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"169f23584bdde1d27398dd2e1409d4fef4c01ec3", @"/Views/_ViewImports.cshtml")]
-    #nullable restore
     public class Views_Tour_TypeOfTour : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<TourModelSearch>
-    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "hidden", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "Hà Nội", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -87,7 +85,7 @@ using Microsoft.AspNetCore.Http;
         {
             WriteLiteral("\r\n");
 #nullable restore
-#line 3 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
+#line 3 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
   
     TypeOfTour typeOfTour = ViewBag.typeoftour;
     List<TourCategoryModel> listTourCate = ViewBag.tourcategories;
@@ -135,7 +133,7 @@ using Microsoft.AspNetCore.Http;
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.InputTypeName = (string)__tagHelperAttribute_0.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_0);
 #nullable restore
-#line 30 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
+#line 30 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvider.CreateModelExpression(ViewData, __model => __model.PriceStart);
 
 #line default
@@ -269,7 +267,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper>();
                 __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper);
 #nullable restore
-#line 33 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
+#line 33 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
 __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.For = ModelExpressionProvider.CreateModelExpression(ViewData, __model => __model.Address);
 
 #line default
@@ -374,7 +372,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.For = ModelExpressionProvi
                 __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper>();
                 __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper);
 #nullable restore
-#line 57 "D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
+#line 57 "F:\Khoa_Luan_Tot_Nghiep\CodeSourceFull\WebTravel\WebClient\Views\Tour\TypeOfTour.cshtml"
 __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.For = ModelExpressionProvider.CreateModelExpression(ViewData, __model => __model.PriceEnd);
 
 #line default
@@ -698,30 +696,18 @@ WriteAttributeValue("", 7262, tour.Image, 7262, 11, false);
             WriteLiteral("\r\n\r\n\r\n\r\n\r\n");
         }
         #pragma warning restore 1998
-        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public IHttpContextAccessor HttpContextAccessor { get; private set; } = default!;
-        #nullable disable
-        #nullable restore
+        public IHttpContextAccessor HttpContextAccessor { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
-        #nullable disable
-        #nullable restore
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
-        #nullable disable
-        #nullable restore
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
-        #nullable disable
-        #nullable restore
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
-        #nullable disable
-        #nullable restore
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<TourModelSearch> Html { get; private set; } = default!;
-        #nullable disable
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<TourModelSearch> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

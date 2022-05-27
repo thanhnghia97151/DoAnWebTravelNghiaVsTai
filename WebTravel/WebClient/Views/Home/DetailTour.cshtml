@@ -196,7 +196,10 @@
 
 
                         @{
-                            await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberID = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
+                            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+                            {
+                                await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberID = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
+                            }
                         }
                         @*the end comment*@
                   </div>

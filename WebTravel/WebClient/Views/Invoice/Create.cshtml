@@ -24,51 +24,54 @@
 <div class="orderdetails">
     <div class="container">
         <div class="row">
-            <div class="imagechinhsuachieucao">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 imagesleft">
-                    <img src="https://localhost:44384/images/@tour.Image">
+            @if (tour != null)
+            {
+                <div class="imagechinhsuachieucao">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 imagesleft">
+                        <img src="https://localhost:44384/images/@tour.Image">
+                    </div>
                 </div>
-            </div>
-            <!-- the end images -->
-            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 tableright">
-                <div class="tabletop">
-                    <p class="contenttabletop">
-                        @tour.Name
-                    </p>
+                <!-- the end images -->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 tableright">
+                    <div class="tabletop">
+                        <p class="contenttabletop">
+                            @tour.Name
+                        </p>
+                    </div>
+                    <div class="tablebottom">
+                        <p>
+                            Mã tour: &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.TourId</small>
+                        </p>
+                        <p>
+                            Thời gian: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.Schedule</small>
+                        </p>
+                        <p>
+                            Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.PromotionPrice đ</small>
+                        </p>
+                        <p>
+                            Ngày khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.StartDate.Date Ngày khác</small>
+                        </p>
+                        <p>
+                            Nơi khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.StartPlace</small>
+                        </p>
+                        <p>
+                            Số chỗ còn nhận: &nbsp;&nbsp;&nbsp;&nbsp;
+                            <small class="sotabletop">@tour.Quantity</small>
+                        </p>
+                    </div>
                 </div>
-                <div class="tablebottom">
-                    <p>
-                        Mã tour: &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.TourId</small>
-                    </p>
-                    <p>
-                        Thời gian: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.Schedule</small>
-                    </p>
-                    <p>
-                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.PromotionPrice đ</small>
-                    </p>
-                    <p>
-                        Ngày khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.StartDate.Date Ngày khác</small>
-                    </p>
-                    <p>
-                        Nơi khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.StartPlace</small>
-                    </p>
-                    <p>
-                        Số chỗ còn nhận: &nbsp;&nbsp;&nbsp;&nbsp;
-                        <small class="sotabletop">@tour.Quantity</small>
-                    </p>
-                </div>
-            </div>
+            }
         </div>
         <!-- the end row 1-->
         <div class="row">
@@ -124,97 +127,107 @@
             </div>
         </div>
         <!-- th end row 3 -->
-     <form asp-action="Create" asp-controller="Invoice" method="post" >
+        <form asp-action="Create" asp-controller="Invoice" method="post">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
-          banggiatourchitiet text-center">
-                    <p>
-                        THÔNG TIN LIÊN HỆ
-                    </p>
-                </div>
-                <div class="formkhoangcanh">
-
-                    <input type="hidden" asp-for="InvoiceId" />
-                    <input type="hidden" id="tongcong" asp-for="Price" value="@tour.Price"/>
-                    <input type="hidden" asp-for="TourId" value="@tour.TourId" />
-                    <input type="hidden" asp-for="MemberId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
-                        <div class="form-group">
-                            <input type="text" asp-for="FullName" class="form-control" placeholder="Họ và tên">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
-                        <div class="form-group">
-                            <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
-                        <div class="form-group">
-                            <input type="text" name="email" asp-for="Email" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
-                        <div class="form-group">
-                            <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 thongtinduoi">
-                        <div class="form-group">
-                            <input type="text" asp-for="Description" class="form-control" placeholder="Ghi chú">
-                        </div>
-                    </div>
-
-                    <!-- the end form thong tin person -->
+                @if (tour != null)
+                {
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
-          banggiatourchitiet text-center">
+                banggiatourchitiet text-center">
                         <p>
-                            THÔNG TIN THAM GIA
+                            THÔNG TIN LIÊN HỆ
                         </p>
                     </div>
-                    <div class="khoangcachpersonthamgia">
-                        <div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="personprice">
-                                    <p>
-                                        Số người tham gia
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="sl" value="1" asp-for="Quantity" class="form-control">
-                                </div>
+                    <div class="formkhoangcanh">
+
+                        <input type="hidden" asp-for="InvoiceId" />
+                        <input type="hidden" id="tongcong" asp-for="Price" value="@tour.Price" />
+                        <input type="hidden" asp-for="TourId" value="@tour.TourId" />
+                        <input type="hidden" asp-for="MemberId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" asp-for="FullName" class="form-control" placeholder="Họ và tên">
+                                <small style="color:red; font-size: 13px;">@ViewBag.ErrorName</small>
+                                <span asp-validation-for="FullName"></span>
                             </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="personprice">
-                                    <p>
-                                        Phụ thu phòng đơn
-                                    </p>
-                                </div>
-                                <div class="form-group">
-                                    <select asp-for="PaymentMore" class="form-control">
-                                        <option value="1">Có</option>
-                                        <option value="0">Không</option>}
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
+                                <span asp-validation-for="Phone"></span>
                             </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="personprice">
-                                    <p>
-                                        Số lượng phòng đơn
-                                    </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" name="email" asp-for="Email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ">
+                                <span asp-validation-for="Address"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" asp-for="Description" class="form-control" placeholder="Ghi chú">
+                            </div>
+                        </div>
+
+                        <!-- the end form thong tin person -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+          banggiatourchitiet text-center">
+                            <p>
+                                THÔNG TIN THAM GIA
+                            </p>
+                        </div>
+                        <div class="khoangcachpersonthamgia">
+                            <div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="personprice">
+                                        <p>
+                                            Số người tham gia
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" id="sl" value="1" asp-for="Quantity" class="form-control">
+                                        <span asp-validation-for="Quantity"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="number" value="0" asp-for="QuantityDepartment" class="form-control">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="personprice">
+                                        <p>
+                                            Phụ thu phòng đơn
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <select asp-for="PaymentMore" class="form-control">
+                                            <option value="1">Có</option>
+                                            <option value="0">Không</option>}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="personprice">
+                                        <p>
+                                            Số lượng phòng đơn
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" value="0" asp-for="QuantityDepartment" class="form-control">
+                                        <span asp-validation-for="QuantityDepartment"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- the end form person tha gia -->
+                        <!-- the end form person tha gia -->
 
-                    <div class="tonggiatridonhang pull-right">
-                        <p>Tổng giá trị : <small class="giachot" id="showtongcong" >@tour.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) </small></p>
-                    </div>
+                        <div class="tonggiatridonhang pull-right">
+                            <p>Tổng giá trị : <small class="giachot" id="showtongcong">@tour.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) </small></p>
+                        </div>
 
-                </div>
+                    </div>
+                }
             </div>
 
             <!-- the end row 4 -->
@@ -229,7 +242,7 @@
                     <div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <input type="radio" asp-for="Payment" value="0" >
+                                <input type="radio" asp-for="Payment" value="0">
                                 &nbsp; &nbsp;
                                 <label for="phuongthucthanhtoan">
                                     Thanh toán qua Mastercard
@@ -256,7 +269,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hoanthanhthanhtoan text-center">
-                            <button  class="btn btn-success">HOÀN THÀNH</button>
+                            <button class="btn btn-success">HOÀN THÀNH</button>
                         </div>
                     </div>
                 </div>
@@ -265,7 +278,9 @@
         <!-- the end row 5 -->
     </div>
 </div>
-<script>
+@if (tour != null)
+{
+    <script>
     $('#sl').change(function (){
         var sluong = $(this).val();
         console.log(sluong);
@@ -273,4 +288,5 @@
         $('#tongcong').val(total);
         $('#showtongcong').html(total);
     });
-</script>
+    </script>
+}
