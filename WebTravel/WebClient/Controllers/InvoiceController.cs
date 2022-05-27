@@ -63,7 +63,7 @@ namespace WebClient.Controllers
                     //obj.InvoiceId = Helper.RandomString(64);
                     if (await provider.Invoice.Add(obj) == 2)
                     {
-                        //await provider.Tour.Ticket(await provider.Tour.GetTourById(obj.TourId));
+                        await provider.Tour.Ticket(obj);
                         return RedirectToAction("SuccessBook");
                     }
                 }
@@ -73,7 +73,8 @@ namespace WebClient.Controllers
             {
                 ModelState.AddModelError("", "Lỗi hệ thống, vui lòng truy cập sau");  
             }
-            return Redirect($"/invoice/create/{obj.TourId}");
+            //return Redirect($"/invoice/create/{obj.TourId}");
+            return View(obj);
         }
         
         public async Task<IActionResult> SuccessBook()

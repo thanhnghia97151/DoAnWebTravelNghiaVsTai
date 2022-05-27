@@ -82,9 +82,9 @@ namespace WebTravelApi.Models.Repository
             return connection.Query<Tour>("select * from Tours where CategoryId = @Id", new { Id = id });
         } 
         
-        public int Ticket(string id)
+        public int Ticket(string id, int quantity)
         {
-            return connection.Execute("UpdateQuantity", new {Id = id}, commandType: CommandType.StoredProcedure);
+            return connection.Execute("UpdateQuantity", new {Id = id, SoLuong = quantity}, commandType: CommandType.StoredProcedure);
         }
         public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
         {
