@@ -17,10 +17,16 @@ namespace WebClient.Models.Repository
         {
             return await Post<About>("/api/about", obj);
         }
-        public async Task<About> GetAbout(string id)
+        /*public async Task<About> GetAbout(string id)
         {
             return await Get<About>($"/api/about/{id}");
+        }*/
+
+        public async Task<About> GetAbout()
+        {
+            return await Get<About>($"/api/about/abouts");
         }
+
         public async Task<int> Delete(About obj)
         {
             return await Post<About>($"/api/about/{obj.Id}", obj);

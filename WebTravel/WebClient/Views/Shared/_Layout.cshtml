@@ -1,8 +1,4 @@
-﻿
-@{ 
-    List<About> abouts = ViewBag.abouts;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"><head>
 	<title> Example </title>
 	<meta charset="utf-8">
@@ -35,12 +31,9 @@
          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 topmenuleft">
             <ul>
                 <li class="topdownmemnu">
-                    @if (abouts != null)
-                    {
-                        <a href="#">
-                            Hotline: <span>@abouts.ElementAtOrDefault(0).Phone</span>
-                        </a>
-                    }
+                   <a href="#">
+                      Hotline: <span>0868321730</span>
+                  </a>
                 </li>
             </ul>
          </div>
@@ -235,21 +228,21 @@
    	<div class="container">
    		<div class="row footer1">
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    @if (abouts != null)
-                    {
-                        <p class="tencongty">@abouts.ElementAt(0).Name</p>
+                        <p class="tencongty">
+                            CÔNG TY TRÁCH NHIỆM HỮU HẠN DU LỊCH KỲ THÚ
+                        </p>
                         <div class="thongtindoanhnghiep">
 
                             <p>
                                 <b>Trụ sở:</b> &nbsp;
-                                @abouts.ElementAt(0).Address
+                                127 Trần Bá Giao
                             </p>
                         </div>
                         <div class="thongtindoanhnghiep">
 
                             <p>
                                 <b>Điện thoại:</b>&nbsp;
-                                @abouts.ElementAt(0).Phone
+                                0868321730
                             </p>
                         </div>
                         <div class="thongtindoanhnghiep">
@@ -263,14 +256,9 @@
 
                             <p>
                                 <b>Email:</b> &nbsp;
-                                @abouts.ElementAt(0).Email
+                                speakerstai@gmail.com
                             </p>
-                        </div>
-                    }
-                    else
-                    {
-                        <h5 style="color: red;">Thông tin công ty tạm mất</h5>
-                    }
+                        </div>                    
                 </div> <!-- end column 1 footer -->
    			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 right2 text-center">
    				<div class="gockhachhang khoangcachtren">

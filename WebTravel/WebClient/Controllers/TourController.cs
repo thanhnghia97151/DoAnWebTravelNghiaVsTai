@@ -28,9 +28,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
-
                 //Get Type Of Tour
                 ViewBag.typeoftour = await provider.TypeOfTour.GetTypeOfTour(id);
 
@@ -89,9 +86,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
-
                 //Get Tour Category by Id
                 ViewBag.tourcate = await provider.TourCategory.GetCategory(id);
 
@@ -118,9 +112,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
-
                 list = (List<Tour>)await provider.Tour.GetTours();
             }
             catch (Exception)
@@ -144,9 +135,6 @@ namespace WebClient.Controllers
 
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
 
                 if (obj != null)
                 {
@@ -177,9 +165,6 @@ namespace WebClient.Controllers
 
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
 
                 //Get tour cate
                 var listTourCate = await provider.TourCategory.GetTourCategroyChild(id);

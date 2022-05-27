@@ -35,16 +35,16 @@ namespace WebClient.Extentions
                 }
                 TwilioClient.Init(accountSid, authToken);
 
-                var result = ""; /*MessageResource.Create(
+                var result = ""; MessageResource.Create(
                     body: "your code: " + createCode,
                     from: new Twilio.Types.PhoneNumber("+19378723828"),
                     to: new Twilio.Types.PhoneNumber(phoneNumber)
-                );*/
+                );
                 if (result is null)
                 {
                     return "";
                 }
-                return phoneNumber;
+                return createCode;
             }
             catch (Exception e)
             {

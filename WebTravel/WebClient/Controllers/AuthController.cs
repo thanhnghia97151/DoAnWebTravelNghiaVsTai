@@ -359,8 +359,8 @@ namespace WebClient.Controllers
             if (PhoneNumber.CheckPhone(phone)) 
             {
                 // Send otp code.
-                //var code = _forgetPasswordRepository.SendSMS(phone);
-                var code = "111111";
+                var code = _forgetPasswordRepository.SendSMS(phone);
+                //var code = "111111";
                 if (code != null || code != "")
                 {
                     // Save code into session.

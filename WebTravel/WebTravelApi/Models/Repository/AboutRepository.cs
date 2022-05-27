@@ -14,6 +14,12 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Query<About>("select * from Abouts");
         }
+
+        public About GetAbout()
+        {
+            return connection.QuerySingleOrDefault<About>("select * from Abouts");
+        }
+
         public int Add(About obj)
         {
             string sql = "insert into Abouts values (@Id,@Name,@MetaTitle,@Content,@Image,@Detail,@Note,@CreatedDate,@CreatedBy,@ModifiedDate,@ModifiedBy,@PolicyId,@Status)";
@@ -34,10 +40,10 @@ namespace WebTravelApi.Models.Repository
                 Status = obj.Status
             }) ;
         }
-        public About GetAbout(string id)
+       /* public About GetAbout(string id)
         {
             return connection.QueryFirstOrDefault<About>("select * from Abouts where Id =@Id", new { Id = id });
-        }
+        }*/
         public int Delete(string id)
         {
             return connection.Execute("delete from Abouts where Id = @Id", new { Id = id });

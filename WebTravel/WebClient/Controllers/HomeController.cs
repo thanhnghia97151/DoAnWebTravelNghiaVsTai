@@ -39,8 +39,6 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbouts();
 
             }
             catch (System.Exception)
@@ -56,9 +54,6 @@ namespace WebClient.Controllers
 
             //Get type of News Category
             ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-            // Infomation about company
-            ViewBag.abouts = await provider.About.GetAbouts();
 
             //Get Type Tour
             Tour tour = await provider.Tour.GetTourById(id);
