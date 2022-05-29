@@ -1,0 +1,18 @@
+﻿@model InvoiceModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+            <label><small>Bạn có muốn xóa hóa đơn này không?</small></label>
+            <form asp-action="DeleteInvoice" method="post">
+                <input type="hidden" asp-for="InvoiceId"/>
+                <input type="hidden" asp-for="Quantity"/>
+                <input type="hidden" asp-for="TourId"/>
+                <div>
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
