@@ -1,11 +1,10 @@
 ﻿@model WebClient.Models.Contact;
 @{
-    List<About> abouts = (List<About>)ViewBag.abouts;
+    List<About> abouts = ViewBag.abouts;
 }
 
 <div class="category1">
     <div class="container">
-
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 ">
                 <div class="containercategory1">
@@ -48,7 +47,7 @@
                 <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
                 <form asp-controller="Contact" asp-action="DisplayContact" method="post" accept-charset="utf-8">
                     <div class="form-group editform">
-                        <label>Họ tên <span>(*)</span></label>
+                        <label>Họ tên <span style="color: red;">(*)</span></label>
                         <input type="text" asp-for="Name" placeholder="Họ tên" class="form-control"
                                id="hoten">
                         <span style="color: red; font-size:13px; " asp-validation-for="Name"></span>
@@ -64,16 +63,15 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="form-group editform">
-                                <label>Email <span>(*)</span></label>
+                                <label>Email <span style="color: red;">(*)</span></label>
                                 <input type="text" asp-for="Email" placeholder="Email" class="form-control"
                                        id="email">
                                 <span style="color: red" asp-validation-for="Email"></span>
                             </div>
                         </div> <!-- the end cot 1 -->
-
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <div class="form-group editform">
-                                <label>Điện thoại <span>(*)</span></label>
+                                <label>Điện thoại <span style="color: red;">(*)</span></label>
                                 <input type="text" asp-for="Phone" placeholder="Điện thoại" class="form-control"
                                        id="dienthoai">
                                 <span style="color: red" asp-validation-for="Phone"></span>
@@ -81,19 +79,18 @@
                         </div>
                     </div>
                     <div class="form-group editform">
-                        <label>Tiêu đề <span>(*)</span></label>
+                        <label>Tiêu đề <span style="color: red;">(*)</span></label>
                         <input type="text" asp-for="Title" placeholder="Tiêu đề" class="form-control"
                                id="tieude">
                         <span style="color: red" asp-validation-for="Title"></span>
                         <small style="color: red; font-size: 13px">@ViewBag.ErrorTitle</small>
                     </div>
                     <div class="form-group editform">
-                        <label>Nội dung <span>(*)</span></label>
+                        <label>Nội dung <span style="color: red;">(*)</span></label>
                         <textarea class="form-control" asp-for="Content" id="noidung" rows="4"></textarea>
                         <span style="color: red" asp-validation-for="Content"></span>
                         <small style="color: red; font-size: 13px">@ViewBag.ErrorContent</small>
                     </div>
-
                     <div class="form-group guilienhe">
                         <button type="submit"><span class="btn gui">Gửi</span></button>
                     </div>
@@ -101,7 +98,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 contentright">
                 <div class="row">
-                    @if (abouts != null)
+                    @if (abouts.Count() > 0)
                     {
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <iframe src="@abouts.ElementAtOrDefault(0).Image" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -120,27 +117,28 @@
                                 <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span>Email:</span> @abouts.ElementAtOrDefault(0).Email</p>
                             </div>
                         </div>
+                        <!-- Tro Giup -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 thongtinphu">
+                            <div>
+                                <h3>BẠN CẦN TRỢ GIÚP?</h3>
+                            </div>
+
+                            <div>
+                                <p><i class="fa fa-phone"></i>&nbsp;&nbsp;<span>Hotline:</span> @abouts.ElementAtOrDefault(0).Phone</p>
+                            </div>
+                            <div>
+                                <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span>Email:</span> @abouts.ElementAtOrDefault(0).Email</p>
+                            </div>
+                            <div>
+                                <p><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;<span>Hoạt động:</span> Từ 8h:00 - 18h:00 hằng ngày</p>
+                            </div>
+                        </div>
                     }
                     else
                     {
-                        <h5 style="color: red;">Thông tin không có chúng tôi sẽ cập nhật sau</h5>
+                        <h5 style="color: red; font-size: 16px;">Thông tin không có chúng tôi sẽ cập nhật sau</h5>
                     }
-                    <!-- Tro Giup -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 thongtinphu">
-                        <div>
-                            <h3>BẠN CẦN TRỢ GIÚP?</h3>
-                        </div>
 
-                        <div>
-                            <p><i class="fa fa-phone"></i>&nbsp;&nbsp;<span>Hotline:</span> @abouts.ElementAtOrDefault(0).Phone</p>
-                        </div>
-                        <div>
-                            <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span>Email:</span> @abouts.ElementAtOrDefault(0).Email</p>
-                        </div>
-                        <div>
-                            <p><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;<span>Hoạt động:</span> Từ 8h:00 - 18h:00 hằng ngày</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -17,6 +17,8 @@ namespace WebClient.Models
         [StringLength(36, ErrorMessage = "Tên đầy đủ phải nhỏ hơn hoặc bằng 36 ký tự")]
         [RegularExpression("^.+$", ErrorMessage = "Tên đầy đủ phải là chuỗi ký tự")]
         public string FullName { get; set; }
+
+        [Required(ErrorMessage = "Ngày sinh không được để trống")]
         public DateTime Birthday { get; set; }
         public string Gender { get; set; }
 

@@ -14,6 +14,7 @@
         </div>
         <div class="form-group khoangcach">
             <input type="text" id="brithday" class="form-control" asp-for="Birthday" placeholder="Nhập ngày sinh">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Birthday"></span>
             @if (ViewBag.ErrorBrithday != "1")
             {
                 <small style="color: red; font-size: 13px;">@ViewBag.ErrorBrithday</small>
@@ -30,10 +31,11 @@
         <div class="form-group khoangcach">
             <input type="text" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
             <span style="color: red; font-size: 13px;" asp-validation-for="Address"></span>
-            <small style="color: red; font-size: 13px;">@ViewBag.ErrorUserAddress</small>
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorAddress</small>
         </div>
         <div class="form-group khoangcach">
             <input type="text" name="password" id="password" class="form-control" asp-for="Password" placeholder="Nhập Password">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Password"></span>
             @if (ViewBag.ErrorPassword != "1")
             {
                 <small style="color: red; font-size: 13px;">@ViewBag.ErrorPassword</small>

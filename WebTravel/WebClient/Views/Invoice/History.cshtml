@@ -1,50 +1,58 @@
 ﻿@model List<InvoiceModel>
 
 
-@if (Model != null)
-{
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <table class="table table-bordered">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Id</th>
-                            <th>Image</th>
-                            <th>Name Tour</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-    
-                            <th>Thanh toán</th>
-                            <th>Hủy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.InvoiceId</td>
-                                <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
-                                <td>@item.Tour.Name</td>
-                                <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
-                                <td>@item.Quantity</td>
-                                @if(item.Status){
-                                    <td><small>Đã thanh toán</small></td>
-                                    <td></td>
-                                }
-                                else
-                                {
-                                    <td><a class="btn btn-success" href="/payment/payment">Thanh toán</a></td>
-                                    <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
-                                }
-                                
-                                
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            @if (Model != null)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Image</th>
+                                        <th>Name Tour</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Thanh toán</th>
+                                        <th>Hủy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Tour != null)
+                                        {
+                                            <tr>
+                                                <td>@item.InvoiceId</td>
+                                                <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
+                                                <td>@item.Tour.Name</td>
+                                                <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                                <td>@item.Quantity</td>
+                                                @if (item.Status)
+                                                {
+                                                    <td><small>Đã thanh toán</small></td>
+                                                    <td></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><a class="btn btn-success" href="/payment/payment">Thanh toán</a></td>
+                                                    <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
+                                                }
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            }
         </div>
     </div>
-
-}
+</div>

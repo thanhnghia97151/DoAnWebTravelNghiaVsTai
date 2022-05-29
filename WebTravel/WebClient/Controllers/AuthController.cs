@@ -39,34 +39,37 @@ namespace WebClient.Controllers
             var memberByPhone = await provider.Member.MemberByPhone(obj);
             if (ModelState.IsValid)
             {
-                if (PasswordNews.CheckPassword(obj.Password, confirmPassword) == "1")
+                if (NameValidator.CheckName(obj.UserName) == false)
                 {
-                    if (LoginInformation.CheckBrithday(obj.Birthday) == "1")
+                    if (PasswordNews.CheckPassword(obj.Password, confirmPassword) == "1")
                     {
-                        if (RegisterInformation.CheckMember(obj) == true)
+                        if (LoginInformation.CheckBrithday(obj.Birthday) == "1")
                         {
-                            try
+                            if (NameValidator.CheckAddress(obj.Address) == true)
                             {
-                                if (memberByPhone == 0)
+                                try
                                 {
-                                    HttpContext.Session.SetString(Constant.Register, "1");
-                                    HttpContext.Session.SetString(Constant.Phone, obj.Phone);
-                                    var result = await provider.Member.Add(obj);
-                                    return RedirectToAction("DisplayConfirm");
+                                    if (memberByPhone == 0)
+                                    {
+                                        HttpContext.Session.SetString(Constant.Register, "1");
+                                        HttpContext.Session.SetString(Constant.Phone, obj.Phone);
+                                        var result = await provider.Member.Add(obj);
+                                        return RedirectToAction("DisplayConfirm");
+                                    }
+                                    ModelState.AddModelError("", "Số điện thoại này đã có tài khoản");
                                 }
-                                ModelState.AddModelError("", "Số điện thoại này đã có tài khoản");
+                                catch (System.Exception)
+                                {
+                                    ModelState.AddModelError("", "Lỗi hệ thống thử lại sau");
+                                }
                             }
-                            catch (System.Exception)
-                            {
-                                ModelState.AddModelError("", "Lỗi hệ thống thử lại sau");
-                            }
+                            ViewBag.ErrorAddress = NameValidator.address;
                         }
-                        ViewBag.ErrorUserName = RegisterInformation.username;
-                        ViewBag.ErrorUserAddress = RegisterInformation.address;
+                        ViewBag.ErrorBrithday = LoginInformation.CheckBrithday(obj.Birthday);
                     }
-                    ViewBag.ErrorBrithday = LoginInformation.CheckBrithday(obj.Birthday);
+                    ViewBag.ErrorPassword = PasswordNews.CheckPassword(obj.Password, confirmPassword);
                 }
-                ViewBag.ErrorPassword = PasswordNews.CheckPassword(obj.Password, confirmPassword);
+                ViewBag.ErrorUserName = NameValidator.name;
             }
             return View(obj);
         }
@@ -326,7 +329,7 @@ namespace WebClient.Controllers
                             }
                         }
                     }
-                    ModelState.AddModelError("", "Thay đổi mật khẩu không thành!");
+                    ModelState.AddModelError("", "Mật khẩu không chính xác!");
                 }
                 ViewBag.ErrorPassword = PasswordNews.CheckPassword(obj.NewPassword, obj.ConfirmPassword);
             
@@ -453,7 +456,7 @@ namespace WebClient.Controllers
                     var passwordNew = new PasswordNew() { Password = password, Phone = session.GetString(Constant.Phone) };
                     // Change new password.
                     await provider.Member.ChangePassword(passwordNew);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Auth");
                 }
             }
             if (session.GetString(Constant.Phone) == null)

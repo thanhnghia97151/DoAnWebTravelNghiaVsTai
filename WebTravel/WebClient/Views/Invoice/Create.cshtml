@@ -43,7 +43,7 @@
                             Mã tour: &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <small class="sotabletop">@tour.TourId</small>
+                            <small class="sotabletop">@tour.TourId.Substring(0,50)</small>
                         </p>
                         <p>
                             Thời gian: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,7 +55,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <small class="sotabletop">@tour.PromotionPrice đ</small>
+                            <small class="sotabletop">@tour.Price đ</small>
                         </p>
                         <p>
                             Ngày khởi hành: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -101,26 +101,34 @@
                         <tr>
                             <th scope="col" class="text-right">Loại giá/độ tuổi</th>
                             <th scope="col" class="text-right">Người lớn(từ 12 tuổi)</th>
-                            <th scope="col" class="text-right">Trẻ em(dưới 12 tuổi)</th>
+                            <th scope="col" class="text-right">Trẻ em theo cùng</th>
                             <th scope="col" class="text-right">Khác</th>
                         </tr>
                     </thead>
                     <tbody class="text-right">
                         <tr>
                             <th scope="row" class="text-right">Giá</th>
-                            <td>6,899,000 đ</td>
+                            <td><p class="sotabletop">@tour.Price đ</p></td>
                             <td><a href="#" title="">Xem tại đây</a></td>
                             <td>không</td>
                         </tr>
                         <tr>
                             <th scope="col" class="text-right">Phụ thu nước ngoài</th>
-                            <td>590,000 đ</td>
+                            @if (tour.Price > 0)
+                            {
+                                var gia = (@tour.Price * (decimal)0.05);
+                                <td>@gia đ</td>
+                            }
                             <td>0 đ</td>
                             <td>không</td>
                         </tr>
                         <tr>
                             <th scope="col" class="text-right">Phụ thu phòng đơn</th>
-                            <td colspan="3" class="text-center">1,300,000 đ</td>
+                            @if (tour.Price > 0)
+                            {
+                                var gia = (@tour.Price * (decimal)0.1);
+                                <td colspan="3" class="text-center">@gia đ</td>
+                            }
                         </tr>
                     </tbody>
                 </table>
@@ -129,53 +137,58 @@
         <!-- th end row 3 -->
         <form asp-action="Create" asp-controller="Invoice" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="row">
-                
+            @if (tour != null)
+            {
+                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
                 banggiatourchitiet text-center">
                         <p>
                             THÔNG TIN LIÊN HỆ
                         </p>
+                        <small style="color:red; font-size: 23px;">@ViewBag.ErrorRegister</small><br />
                     </div>
                     <div class="formkhoangcanh">
-
                         <input type="hidden" asp-for="InvoiceId" />
                         <input type="hidden" id="tongcong" asp-for="Price" value="@tour.Price" />
+                        <small style="color: red; font-size: 13px;">@ViewBag.ErrPrice</small>
                         <input type="hidden" asp-for="TourId" value="@tour.TourId" />
                         <input type="hidden" asp-for="MemberId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                        <small style="color:red; font-size: 13px;">@ViewBag.ErrorName</small>
+                        <div style="color:red; font-size:13px" asp-validation-summary="ModelOnly"></div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
                                 <input type="text" asp-for="FullName" class="form-control" placeholder="Họ và tên">
-                                <small style="color:red; font-size: 13px;">@ViewBag.ErrorName</small>
-                                <span asp-validation-for="FullName" class="text-danger"></span>
+                                <span style="color:red; font-size:13px" asp-validation-for="FullName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
                                 <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
-                                <span asp-validation-for="Phone" class="text-danger"></span>
+                                <span style="color:red; font-size:13px" asp-validation-for="Phone" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
                                 <input type="text" name="email" asp-for="Email" class="form-control" placeholder="Email">
-                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <span style="color:red; font-size:13px" asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
                                 <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ">
-                                <span asp-validation-for="Address" class="text-danger"></span>
+                                <span style="color:red; font-size:13px" asp-validation-for="Address" class="text-danger"></span>
+                                <small style="color:red; font-size:13px;">@ViewBag.ErrorAddress</small>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 thongtinduoi">
                             <div class="form-group">
-                                <input type="text" asp-for="Description" class="form-control" placeholder="Ghi chú">
+                                <input style="color:red; font-size:13px" type="text" asp-for="Description" class="form-control" placeholder="Ghi chú">
                             </div>
                         </div>
 
                         <!-- the end form thong tin person -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
           banggiatourchitiet text-center">
                             <p>
                                 THÔNG TIN THAM GIA
@@ -190,8 +203,8 @@
                                         </p>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" id="sl" value="1" asp-for="Quantity" class="form-control">
-                                        <span asp-validation-for="Quantity"></span>
+                                        <input type="number" id="sl" value="1" min="1" max="@tour.Quantity" asp-for="Quantity" class="form-control">
+                                        <span style="color:red; font-size:13px" asp-validation-for="Quantity"></span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -201,9 +214,10 @@
                                         </p>
                                     </div>
                                     <div class="form-group">
-                                        <select asp-for="PaymentMore" class="form-control">
+                                        <select id="phu" onchange="phongDon(this);" asp-for="PaymentMore" class="form-control">
+                                            <option value="False">Không</option>
                                             <option value="True">Có</option>
-                                            <option value="False">Không</option>}
+
                                         </select>
                                     </div>
                                 </div>
@@ -214,21 +228,22 @@
                                         </p>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" value="0" asp-for="QuantityDepartment" class="form-control">
-                                        <span asp-validation-for="QuantityDepartment"></span>
+                                        <input type="number" id="don" value="0" min="0" asp-for="QuantityDepartment" class="form-control" disabled>
+                                        <span style="color:red; font-size:13px" asp-validation-for="QuantityDepartment"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- the end form person tha gia -->
 
-                    <div class="tonggiatridonhang pull-right">
+                        <div class="tonggiatridonhang pull-right">
                             <p>Tổng giá trị : <small class="giachot" id="showtongcong">@tour.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) </small></p>
                         </div>
 
                     </div>
-                
-            </div>
+
+                </div>
+            }
 
             <!-- the end row 4 -->
             <div class="row">
@@ -281,12 +296,88 @@
 @if (tour != null)
 {
     <script>
-        $('#sl').change(function (){
+        const element = document.getElementsByClassName('#sl');
+
+        function handleKeypress(e) {
+            element[0].value = '';
+        }
+
+        element[0].addEventListener('keyup', handleKeypress);
+    </script>
+    <script>
+        const element = document.getElementsByClassName('#don');
+
+        function handleKeypress(e) {
+            element[0].value = '';
+        }
+
+        element[0].addEventListener('keyup', handleKeypress);
+    </script>
+    <script>
+        @*$('#phu').click(function () {
+            $("#don").prop("disabled", false);
+        });*@
+
+        function phongDon(obj) {
+            var giatri = obj.value;
+            console.log(giatri);
+            if (giatri == 'True') {
+                $("#don").prop("disabled", false);
+            }
+            else {
+                $("#don").prop("disabled", true);
+            }
+        }
+
+    </script>
+    <script>
+         var total = 0;
+        $('#sl').change(function () {
+            var sluongmoi = $('#don').val();
+            console.log(sluongmoi);
             var sluong = $(this).val();
             console.log(sluong);
-            var total = sluong * @tour.Price;
+            total = (sluong * @tour.Price) + (sluongmoi * @tour.Price * 0.1);
             $('#tongcong').val(total);
             $('#showtongcong').html(total);
         });
+        $('#don').change(function () {
+            var sluong = $('#sl').val();
+            console.log(sluong);
+            var totalmoi = 0;
+            sluongmoi = $(this).val();
+            console.log(sluongmoi);
+            totalmoi = (sluong * @tour.Price) + (sluongmoi * @tour.Price * 0.1);
+            $('#tongcong').val(totalmoi);
+            $('#showtongcong').html(totalmoi);
+        });
+       @* var total = 0;
+        $('#sl').change(function (){
+            var sluong = $(this).val();
+            console.log(sluong);
+            total = sluong * @tour.Price;
+            $('#tongcong').val(total);
+            $('#showtongcong').html(total);
+        });
+         $('#don').change(function (){
+            sluongmoi = $(this).val();
+             console.log(sluongmoi);
+            var total = sluong * @tour.Price;
+            $('#tongcong').val(total);
+            $('#showtongcong').html(total);
+        });*@
     </script>
 }
+@*@if (tour != null)
+    {
+        <script>
+            $('#sl').change(function (){
+                var sluong = $(this).val();
+                console.log(sluong);
+                var total = sluong * @tour.Price;
+                $('#tongcong').val(total);
+                $('#showtongcong').html(total);
+            });
+        </script>
+    }
+*@
