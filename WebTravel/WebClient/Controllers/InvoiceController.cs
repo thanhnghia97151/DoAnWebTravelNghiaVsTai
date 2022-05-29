@@ -104,6 +104,27 @@ namespace WebClient.Controllers
             }
             return View(list);
         }
-       
+        public async Task<IActionResult> ConfirmDelete(string id)
+        {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            return View(await provider.Invoice.GetInvoiceModelById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteInvoice(InvoiceModel obj)
+        {
+            if (obj != null)
+            {
+                await provider.Invoice.DeleteInvoiceDetail(obj);
+                await provider.Invoice.DeleteInvoice(obj);
+                var restore = await provider.Invoice.RestoreQuantity(obj);
+                return Redirect("/invoice/history");
+            }
+            return View(obj);
+        }
     }
 }

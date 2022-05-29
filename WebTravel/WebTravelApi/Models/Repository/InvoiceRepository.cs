@@ -43,7 +43,26 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Query<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.MemberId = @Id", new {Id = id});
         }
+        public InvoiceModel GetInvoiceModelById(string id)
+        {
+            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
 
-        
+        }
+        public int Delete(string id)
+        {
+            return connection.Execute($"delete from Invoice where InvoiceId = @Id", new { Id = id });
+        }
+        public int DeleteInvoiceDetail(string id)
+        {
+            return connection.Execute($"delete from InvoiceDetail where InvoiceId = @Id", new { Id = id });
+        }
+        public int RestoreQuantity(string id, int quantity)
+        {
+            return connection.Execute("update Tours set Quantity = (select Quantity from Tours where TourId = @Id)+ @SoLuong where TourId = @Id", new { Id = id, SoLuong = quantity });
+        }
+        public Invoice GetInvoice(string id)
+        {
+            return connection.QuerySingleOrDefault<Invoice>("select * from Invoice where InvoiceId = @Id", new { Id = id });
+        }
     }
 }
