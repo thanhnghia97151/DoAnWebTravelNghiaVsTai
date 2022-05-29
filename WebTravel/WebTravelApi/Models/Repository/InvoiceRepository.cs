@@ -44,17 +44,6 @@ namespace WebTravelApi.Models.Repository
             return connection.Query<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.MemberId = @Id", new {Id = id});
         }
 
-        public int DeleteInvoice(string id)
-        {
-            return connection.Execute("delete from Invoice where InvoiceId = @Id", new { Id = id });
-        }
-        public int DeleteInvoiceDetail(string id)
-        {
-            return connection.Execute("delete from InvoiceDetail where InvoiceId = @Id", new { Id = id });
-        }
-        public Invoice GetInvoice(string id)
-        {
-            return connection.QuerySingleOrDefault("select * from Invoice where InvoiceId = @Id", new { Id = id });
-        }
+        
     }
 }
