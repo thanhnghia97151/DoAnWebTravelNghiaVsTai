@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebClient.Extentions;
+using WebClient.Models;
 using WebClient.Models.Repository;
 using WebClient.Models.ViewModels;
 
@@ -103,6 +104,27 @@ namespace WebClient.Controllers
             }
             return View(list);
         }
+        public async Task<IActionResult> ConfirmDelete(string id)
+        {
+            var t = await provider.Invoice.GetInvoice(id);
+            return View(await provider.Invoice.GetInvoice(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteInvoice(Invoice obj)
+        {
+            if (ModelState.IsValid)
+            {
+                if (obj != null)
+                {
+                    await provider.Invoice.DeleteInvoiceDetail(obj);
+                    await provider.Invoice.DeleteInvoice(obj);
+                    
+                    return Redirect("/invoice/history");
 
+                }
+            }
+            
+            return NotFound();
+        }
     }
 }

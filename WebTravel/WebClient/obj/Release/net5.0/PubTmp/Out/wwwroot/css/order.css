@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: :0;
+}
+
+.well.editcomment {
+    padding: 6px;
+}
+
+.tableorder {
+}
+
+.table1 small {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+p.titletable {
+    font-size: 17px;
+    color: #9d5c5cf0;
+    font-weight: 500;
+}
+
+.tableorder button.btn.btn-success {
+    width: 100%;
+    font-size: 19px;
+}
+
+p.giatable small {
+    font-size: 23px;
+}
+
+p.giatable {
+    color: white;
+    font-size: 19px;
+}
+
+.pricetable {
+}
+
+.pricetable1 {
+    background-color: #837089ed;
+    padding: 19px 27px;
+}
+
+.tableborder {
+    border: 1px solid #8080805c;
+    margin-bottom: 36px;
+    padding: 18px 19px;
+}
+
+p.diemnhanhanhtrinh {
+    font-size: 23px;
+    font-weight: 500;
+    padding: 10px 0px;
+    margin-top: 30px;
+}
+
+
+.order img {
+    width: 100%;
+    height: 486px;
+}
+
+img.img-responsive.center-block {
+    width: 100%;
+    height: 40%;
+}
+
+imageorderchinhsua img {
+}
+
+p.titleEvalued {
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 0px;
+}
+
+p.titleorder {
+    color: black;
+    font-weight: 500;
+    font-size: 31px;
+}
+
+@media only screen and (min-width: 710px) and (max-width: 2000px) {
+    .tableorder {
+        margin-right: 4%;
+    }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 680px) {
+    .order img {
+        height: 260px;
+    }
+
+    .tableborder {
+        margin-top: 10px;
+    }
+}
+
+.row.comment {
+    margin-top: 2%;
+}
+
+/**{margin:0; padding:0;}
+
+.tableorder {
+}
+
+.table1 small {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.row.comment {
+    margin-top: 2%;
+}
+
+p.titletable {
+    font-size: 17px;
+    color: #9d5c5cf0;
+    font-weight: 500;
+}
+
+.tableorder button.btn.btn-success {
+    width: 100%;
+    font-size: 19px;
+}
+
+p.giatable small {
+    font-size: 23px;
+}
+
+p.giatable {
+    color: white;
+    font-size: 19px;
+}
+
+.pricetable {}
+
+.pricetable1 {
+    background-color: #837089ed;
+    padding: 19px 27px;
+}
+
+.tableborder {
+    border: 1px solid #8080805c;
+    margin-bottom: 36px;
+    padding: 18px 19px;
+}
+
+p.diemnhanhanhtrinh {
+    font-size: 23px;
+    font-weight: 500;
+    padding: 10px 0px;
+    margin-top: 30px;
+}
+
+
+.order img {
+    width: 100%;
+    height: 486px;
+}
+
+imageorderchinhsua img {
+}
+
+p.titleEvalued {
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 0px;
+}
+
+p.titleorder {
+    color: black;
+    font-weight: 500;
+    font-size: 31px;
+}
+@media only screen and (min-width: 710px) and (max-width: 2000px) {
+    .tableorder
+    {
+        margin-right: 4%;
+    }
+}
+@media only screen and (min-width: 300px) and (max-width: 680px)
+{
+    .order img
+    {
+        height: 260px;
+    }
+    .tableborder
+    {
+        margin-top: 10px;
+    }
+}*/

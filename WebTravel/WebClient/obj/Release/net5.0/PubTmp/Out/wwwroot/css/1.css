@@ -1,0 +1,469 @@
+*{margin:0;padding:0;}
+
+.navbar-brand img.logo {
+    height: 72px;
+    width: 151px;
+    margin-top: -9%;
+}
+
+.row.bodymodalcontent {
+    width: 30%;
+}
+
+.row.bodymodalcontent p {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+p.trangthai i {
+    color: #ed0000;
+}
+
+.topmenuright ul li a {
+    text-decoration: none;
+}
+
+.topmenuleft li.topdownmemnu a {
+    text-decoration: none;
+}
+
+.topmenuright a.topdangnhap {
+    color: #324a0b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.topmenuright ul li {
+    margin-top: 5px;
+}
+
+.topmenuright li {float: right;}
+
+.topmenuleft ul {
+    list-style-type: none;
+}
+
+li.dropdown.topdownmemnu {height: 40px;}
+
+.topdownmemnu a {
+    font-size: 16px;
+    color: aliceblue;
+    padding-left: 15px;
+}
+
+.topmenuleft li.topdownmenu:hover {
+    background-color: black;
+}
+
+
+.topmenuright ul {
+    list-style-type: none;
+}
+
+.topmenuright small {
+    font-size: 18px;
+    color: #b50808;
+    font-weight: 500;
+}
+
+.topmenuright img {
+    width: 41px;
+    padding-bottom: 4px;
+}
+
+.category1 span.fa.fa-user {
+    padding: 10px 12px;
+    border-radius: 50%;
+    background-color: #a95463e6;
+    color: white;
+}
+
+.category1 div.containercategory1 {
+    background-color: white;
+    padding: 4px 11px;
+    margin-bottom: 4px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+
+span.fa.fa-eye {}
+
+.footer3 p {
+    font-weight: 800;
+    font-size: 14px;
+    font-family: -webkit-body;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+.row.footer2 {
+    padding-top: 6px;
+}
+
+span.fa.fa-university {
+    padding: 10px 12px;
+    background-color: #efabab99;
+    color: #2e2e62d6;
+    border: 1px solid #00000003;
+    font-size: 15px;
+}
+
+.chapnhanthanhtoan p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ketnoivoicungtoi p {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+span.fa.fa-youtube {
+    padding: 10px 13px;
+    background-color: #e30000;
+    color: white;
+}
+
+span.fa.fa-twitter {
+    padding: 10px 12px;
+    background-color: #0000ff8c;
+    color: white;
+}
+
+span.fa.fa-facebook {
+    padding: 10px 16px;
+    BACKGROUND-COLOR: #303060;
+    color: white;
+}
+
+.dangkykinhdoanhtt4 {
+    color: black;
+    font-weight: 500;
+}
+
+.dangkykinhdoanhtt1 {
+    color: black;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.khoangcachtren a {
+    font-size: 15px;
+}
+
+.khoangcachtren {
+    padding-bottom: 10px;
+}
+
+.noidunggockhachhang a {
+}
+
+.gockhachhang p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+p.tencongty {
+    color: #000000d9;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.row.footer1 {
+    border-top: 3px solid #a55c68;
+    padding: 17px 0px;
+    margin-top: 25px;
+    padding-top: 35px;
+}
+
+.baiviet {
+    padding: 3px 0px;
+}
+
+.noidungquantamright {
+    margin-top: -11px;
+}
+
+.noidungquantamright h5 {
+}
+
+.noidungquantamright a {
+    font-weight: 500;
+    color: #000000c2;
+}
+
+h2.tinquantam {
+    font-size: 26px;
+}
+
+a.btn.btn-info {
+    background-color: #0000ff8f;
+}
+
+p.timedulich small {
+    color: #0000ffdb;
+    font-size: 14px;
+    font-style: italic;
+}
+
+h4.tindulich a {
+    color: #000000cf;
+    font-size: 18px;
+}
+
+.hinhanhtindulich img {
+    width: 100%;
+}
+
+.ngantin hr {
+}
+
+.ngantin h2 {
+    font-size: 26px;
+    color: #000000d6;
+}
+
+h2 {}
+
+.ngantin {
+    padding-top: 38px;
+}
+
+.textrightnew h5 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.imageleftnew {
+    width: 47%;
+}
+
+.showdichvu div.hinhchunhat4 {
+    background-color: #0000ffd6;
+}
+
+showdichvu div.hinhchunhat.hinhchunhat4 {
+    background-color: black;
+}
+
+.showdichvu div.hinhchunhat3 {
+    background-color: black;
+}
+
+.showdichvu div.hinhchunhat3 {background-color: #008000bf;}
+
+.showdichvu p {
+    font-size: 12.5px;
+}
+
+h4 {}
+
+.showdichvu div.hcm h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.showdichvu div.h4 {
+}
+
+.showdichvu {margin-top: 30px;}
+
+.showdichvu div.row {
+}
+
+.row {}
+
+.showdichvu b.fa.fa-plane {
+    font-size: 41px;
+    margin-top: 26px;
+    margin-left: 23px;
+}
+
+.showdichvu div.hinhchunhat {
+    border-radius: 12px;
+    color: white;
+    padding: 11px 0px;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.showdichvu div.hinhchunhat1 {
+    background-color: #a95967;
+}
+
+.showdichvu div.hinhchunhat2 {
+    background-color: #0000ff91;
+}
+
+.showproduct b.pull-right {
+    font-size: 15px;
+    color: #d1663e;
+}
+
+.showproduct div.thumbnail img {width: 100%;}
+
+.showproduct div.col-xs-3.col-sm-3.col-md-3.col-lg-3 {
+}
+
+.showproduct div.caption {
+    margin-top: 8px;
+}
+
+.caption {}
+
+.showproduct div.caption {
+}
+
+.showproduct div.caption {
+}
+
+.showproduct div.captionbottomimage {
+    background-color: #9f979778;
+    color: #180808c4;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.showproduct {
+    padding-top: 26px;
+}
+
+
+
+
+.showproduct div.leftshow {
+    padding-left: 0px;
+    padding-bottom: 4px;
+}
+ @font-face {
+    src: url(fonts/fontawesome-webfont.ttf);
+    font-family: Roboto;
+
+ }
+
+.showproduct h2 {
+    color: #5e5eddc4;
+    font-size: 18px;
+}
+
+
+.category1 {
+    background-color: #ddc9c95c;
+    padding: 20px 0px;
+    margin-top: 4px;
+}
+
+
+.category1 b {
+    color: black;
+}
+
+.category1 h3 {
+    width: 100%;
+    font-size: 17px;
+    color: #101010db;
+    padding-left: 16px;
+}
+
+.category1 div.containercategory1 a {
+    text-decoration: none;
+    color: #1a5a78d9;
+}
+
+nav.navbar.navbar-default.menutop ul li a {
+    color: #000000de;
+    font-size: 15px;
+}
+
+nav.navbar.navbar-default.menutop ul li a:hover {
+    color: #555;
+}
+
+.collapse.navbar-collapse.navbar-ex1-collapse {
+    padding: 13px 0px;
+}
+
+.menutop ul li a {
+    color: #0c0c0c;
+}
+
+.menutop ul li a {
+    color: #262020;
+    font-weight: bold;
+}
+
+
+.menutop {
+    margin-bottom: 0px;
+    background-color: white;
+}
+
+body {
+    font-family: 'Roboto'
+}
+
+.topmenuleft {
+    margin-top: 11px;
+}
+
+.topmenufull {
+    background-color: #9d6a6ab5;
+}
+
+.topdownmemnu a span {
+    font-size: 20px;
+    color: orange;
+}
+
+.topdownmemnu span {}
+
+.iconketnoi {
+    font-size: 18px;
+    margin-top: 16px;
+}
+
+.noidungquantamright small {
+    font-size: 13px;
+    color: #0000ffc2;
+    font-style: italic;
+}
+
+.noidungquantamleft img {
+    width: 35%;
+    float: left;
+    margin-right: 8px;
+    margin-bottom: 2%;
+}
+
+.imageleftnew {
+    float: left;
+}
+
+.showdichvu div.hcm {
+    margin-right: -31px;
+    margin-left: 25px;
+}
+
+.imageleftnew img {width: 89%;}
+
+.anhbia img {width: 100%;margin-top: 20px;}
+ 
+
+
+ @media only screen and (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+    .sizemin
+    {
+        padding: 25px 0px;
+    }
+}
+
+@media only screen and (min-width: 710px) and (max-width: 1200px) {
+
+}

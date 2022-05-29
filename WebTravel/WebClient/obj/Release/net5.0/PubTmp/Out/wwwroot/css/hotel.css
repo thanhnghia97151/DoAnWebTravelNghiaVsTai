@@ -1,0 +1,96 @@
+*{margin:0;padding:0; }
+
+.KhungTimKiem {background-color: #f2f5f8;margin-top: 6px;}
+
+.chinhtimkiem {height: 42px;}
+
+form {}
+
+input.btn.btn-dark.timkiem {width: 100%;background-color: #8d7b7b;color: white;padding: 10px 0px;}
+
+.TitleTimKiem {background-color: #818285b3;margin-top: 36px;margin-bottom: 39px;}
+
+.TitleTimKiem p {font-size: 19px;color: white;font-weight: 600;padding: 10px 2px;}
+
+
+.motakhachsanall {
+    padding: 18px 0px;
+}
+
+.review p {
+    padding-top: 10px;
+}
+
+.review p {
+    font-size: 15px;
+}
+
+.detailItem b.price {
+    font-size: 15px;
+    color: #d50606f0;
+    font-weight: 900;
+}
+
+.detailItem span.book {
+    font-size: 15px;
+}
+
+.detailItem p {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+.item .caption {
+    background-color: #f1dcdc21;
+}
+
+.item div.captionbottomimage {
+    background-color: #5a5555b8;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 6px 0px;
+}
+
+.motakhachsan {
+    margin-top: 26px;
+}
+
+
+.loaikhachsan1 div.col-xs-12.col-sm-2.col-md-2.col-lg-2 {
+    padding-top: 32px;
+}
+
+.loaikhachsan1 {
+    padding: 20px 0px;
+}
+.left a {
+    color: black;
+    text-decoration: none;
+}
+
+.item img {
+    height: 200px;
+    width: 100%;
+}
+
+section.item img {
+}
+.danhgia {
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.motakhachsan p.tinkhachsan {border-bottom: 1px solid #7c6a6a57;padding-bottom: 15px;}
+.motakhachsanall p.tinkhachsan {border-bottom: 1px solid #7c6a6a57;padding-bottom: 15px;}
+
+.goinho div.thongtin {
+    font-size: 18px;
+    color: #7a5959;
+}
+
+
+.goinho {background-color: #60555517;padding: 9px 0px;margin-top: 6px;}

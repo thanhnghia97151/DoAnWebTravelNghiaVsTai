@@ -39,5 +39,20 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Invoice.GetInvoiceModel(id);
         }
+        [HttpPost("deleteinvoice/{id}")]
+        public int DeleteInvoice(string id)
+        {
+            return provider.Invoice.DeleteInvoice(id);
+        }
+        [HttpPost("deleteinvoicedetail/{id}")]
+        public int DeleteInvoiceDetail(string id)
+        {
+            return provider.Invoice.DeleteInvoiceDetail(id);
+        }
+        [HttpGet("{id}")]
+        public Invoice GetInvoice(string id)
+        {
+            return provider.Invoice.GetInvoice(id);
+        }
     }
 }

@@ -30,5 +30,17 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<InvoiceModel>>($"/api/invoice/invoicebymemberid/{id}");
         }
+        public async Task<int> DeleteInvoice(Invoice obj)
+        {
+            return await Post<Invoice>($"/api/invoice/deleteinvoice/{obj.InvoiceId}",obj);
+        }
+        public async Task<int> DeleteInvoiceDetail(Invoice obj)
+        {
+            return await Post<Invoice>($"/api/invoice/deleteinvoicedetail/{obj.InvoiceId}", obj);
+        }
+        public async Task<Invoice> GetInvoice(string id)
+        {
+            return await Get<Invoice>($"/api/invoice/{id}");
+        }
     }
 }

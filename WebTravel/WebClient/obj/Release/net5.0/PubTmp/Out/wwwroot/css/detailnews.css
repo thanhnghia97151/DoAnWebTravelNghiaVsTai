@@ -1,0 +1,45 @@
+*{margin:0px;padding:0px; }
+
+.imagenews img {
+    width: 99%;
+}
+
+.imagenews {
+    padding: 16px 0px;
+}
+
+.share b {
+    border-radius: 4px;
+    background-color: #0000ff82;
+    padding: 3px 6px;
+    font-size: 12px;goi
+    color: white;
+    margin-right: 3%;
+}
+
+.share b span.fa.fa-facebook {
+    border-radius: 50%;
+    background-color: white;
+    color: #0000ffc7;
+    padding: 2px 5px;
+}
+
+.share p {
+    color: #0000ffa8;
+}
+
+.share p span.fa.fa-history {
+    color: #bf8282a6;
+}
+
+.descriptionnews p {
+    font-size: 15px;
+    padding-bottom: 1%;
+}
+
+
+.titlenews {
+    font-size: 26px;
+    font-weight: 500;
+    padding: 20px 0px;
+}
