@@ -13,10 +13,14 @@ namespace WebClient.Controllers
     public class InvoiceController : Controller
     {
         SiteProvider provider;
-        public InvoiceController(IConfiguration configuration)
+        private readonly IForgetPasswordRepository _forgetPasswordRepository;
+        public InvoiceController(IConfiguration configuration,
+            IForgetPasswordRepository forgetPasswordRepository)
         {
             provider = new SiteProvider(configuration);
+            _forgetPasswordRepository = forgetPasswordRepository;
         }
+
 
         public async Task<IActionResult> Create(string id)
         {
@@ -50,34 +54,56 @@ namespace WebClient.Controllers
         {
             try
             {
+                obj.InvoiceId = Helper.RandomString(64);
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+                //Get Tour
+                var tour = await provider.Tour.GetTourById(obj.TourId);
+                ViewBag.tour = tour;
+
                 if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
                 {
-                    obj.InvoiceId = Helper.RandomString(64);
-                    //Get Type of Tour
-                    ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-                    //Get type of News Category
-                    ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-                    //Get Tour
-                    ViewBag.tour = await provider.Tour.GetTourById(obj.TourId);
-                    //obj.InvoiceId = Helper.RandomString(64);
-                    if (await provider.Invoice.Add(obj) == 2)
+                    if (ModelState.IsValid)
                     {
-                        await provider.Tour.Ticket(obj);
-                        return RedirectToAction("SuccessBook");
+                        if (NameValidator.CheckName(obj.FullName) == false)
+                        {
+                            if (NameValidator.CheckAddress(obj.Address) == true)
+                            {
+                                if (CheckNumber.NumberModel(obj.Price) == "1")
+                                {
+                                    //obj.InvoiceId = Helper.RandomString(64);
+                                    if (await provider.Invoice.Add(obj) == 2)
+                                    {
+                                        await provider.Tour.Ticket(obj);
+                                        _forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
+                                        _forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        return RedirectToAction("SuccessBook");
+                                    }
+                                }
+                                ViewBag.ErrPrice = CheckNumber.NumberModel(obj.Price);
+                            }
+                            ViewBag.ErrorAddress = NameValidator.address;
+                            return View(obj);
+                        }
+                        ViewBag.ErrorName = NameValidator.name;
+                        return View(obj);
                     }
                 }
+                ViewBag.ErrorRegister = "Bạn Chưa đăng nhập để mua tour";
 
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError("", "Lỗi hệ thống, vui lòng truy cập sau");  
+                ModelState.AddModelError("", "Lỗi hệ thống, vui lòng truy cập sau");
             }
             //return Redirect($"/invoice/create/{obj.TourId}");
             return View(obj);
         }
-        
+
         public async Task<IActionResult> SuccessBook()
         {
             //Get Type of Tour
@@ -103,28 +129,6 @@ namespace WebClient.Controllers
                 item.Tour = await provider.Tour.GetTourById(item.TourId);
             }
             return View(list);
-        }
-        public async Task<IActionResult> ConfirmDelete(string id)
-        {
-            var t = await provider.Invoice.GetInvoice(id);
-            return View(await provider.Invoice.GetInvoice(id));
-        }
-        [HttpPost]
-        public async Task<IActionResult> DeleteInvoice(Invoice obj)
-        {
-            if (ModelState.IsValid)
-            {
-                if (obj != null)
-                {
-                    await provider.Invoice.DeleteInvoiceDetail(obj);
-                    await provider.Invoice.DeleteInvoice(obj);
-                    
-                    return Redirect("/invoice/history");
-
-                }
-            }
-            
-            return NotFound();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebClient.Models;
 using WebClient.Models.Repository;
 
 namespace WebClient.Controllers
@@ -22,8 +24,10 @@ namespace WebClient.Controllers
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
+                List<About> aboutList = new List<About>();
                 // Infomation about company
-                ViewBag.abouts = await provider.About.GetAbout();
+                aboutList = await provider.About.GetAbouts();
+                ViewBag.abouts = aboutList;
 
                 //Get 10 news hot.
                 ViewBag.news10hot = await provider.News.GetNews10Hot();

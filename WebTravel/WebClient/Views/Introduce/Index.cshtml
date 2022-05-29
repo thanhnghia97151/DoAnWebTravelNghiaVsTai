@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
             <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
-            @if (abouts != null)
+            @if (abouts.Count() > 0)
             {
                 <div class="aboutcompany">
                     @Html.Raw(System.Web.HttpUtility.HtmlDecode(@abouts.ElementAtOrDefault(0).Detail))

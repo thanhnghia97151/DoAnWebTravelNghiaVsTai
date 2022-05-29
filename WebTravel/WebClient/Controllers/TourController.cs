@@ -131,21 +131,25 @@ namespace WebClient.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(TourModelSearch obj)
         {
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
             try
             {
-                //Get Type of Tour
-                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
-
-                //Get type of News Category
-                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
                 if (obj != null)
                 {
-                    if (obj.PriceEnd != 9000000)
+                    if (obj.PriceEnd <= 8000000)
                     {
                         obj.PriceStart = obj.PriceEnd - 2000000;
 
+                    }
+                    else
+                    {
+                        obj.PriceStart = 8000001;
+                        obj.PriceEnd = 100000000;
                     }
                 }
 
@@ -160,6 +164,7 @@ namespace WebClient.Controllers
 
             return View();
         }
+
         public async Task<IActionResult> TourModelByTourCategory(string id)
         {
             try
