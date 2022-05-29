@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebClient.Extentions;
+using WebClient.Models;
 using WebClient.Models.Repository;
 using WebClient.Models.ViewModels;
 

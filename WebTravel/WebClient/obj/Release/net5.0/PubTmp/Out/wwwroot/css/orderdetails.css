@@ -1,0 +1,118 @@
+*{margin:0; padding: 0;}
+
+.imagechinhsuachieucao img {height: 266px;}
+
+.thongtinduoi {
+    margin-bottom: 13px;
+}
+
+.hoanthanhthanhtoan button {
+    width: 150px;
+    font-size: 18px;
+    padding: 8px 0px;
+    margin: 19px 0px;
+    background-color: #bb4949;
+    border: none;
+}
+
+.tonggiatridonhang small {
+    font-size: 23px;
+    color: #c19191;
+}
+
+.tonggiatridonhang {
+    padding: 13px 0px;
+}
+
+.tonggiatridonhang p {
+    font-size: 18px;
+}
+
+.personprice p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+table.table.table-bordered {
+    background-color: #d3bdbd0d;
+}
+
+.tablechitietgia a {
+    text-decoration: none;
+    color: #ff00007a;
+    font-size: 15px;
+}
+
+.tablechitietgia {
+    font-size: 16px;
+}
+
+.banggiatourchitiet p {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 15px 0px;
+}
+
+.phiphatsinh p {
+    color: red;
+    padding-top: 26px;
+}
+
+.imagesleft {
+}
+
+imagesleft img {
+    width: 100%;
+}
+
+.tablebottom p small {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.tablebottom {
+    border-left: 1px solid #d5bebedb;
+    border-right: 1px solid #d5bebedb;
+    border-bottom: 1px solid #d5bebedb;
+    padding-left: 1%;
+}
+
+.tablebottom p {
+    color: black;
+    font-size: 15px;
+}
+
+.tabletop {
+    border: 1px solid #d5bebedb;
+}
+
+p.contenttabletop {
+    color: black;
+    font-weight: 600;
+    font-size: 23px;
+    margin-left: 1%;
+}
+
+.imagesleft img {
+    width: 100%;
+}
+
+@media only screen and (min-width: 710px) and (max-width: 1200px) 
+{
+	p.contenttabletop
+	{
+		font-size: 18px;
+	}
+    .imagechinhsuachieucao img
+    {
+        height: 253px;
+    }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 680px)
+{
+	.imagechinhsuachieucao img
+    {
+        margin-bottom: 3%;
+    }
+}

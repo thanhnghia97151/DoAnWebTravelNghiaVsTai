@@ -1,0 +1,35 @@
+*{margin:0;padding:0;}
+
+.sdtxacnhan {
+    margin-bottom: 6px;
+}
+
+input.nhapma {
+    margin-left: 9px;
+}
+
+button.guilaima {
+    margin-left: 13px;
+}
+
+.gui {
+    padding: 4px 21px;
+}
+
+.khungxacnhan {
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 11%;
+    padding: 16px;
+}
+
+b.mausdt {
+    color: red;
+}
+
+.titlexacnhan p {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 11px 0px;
+}
