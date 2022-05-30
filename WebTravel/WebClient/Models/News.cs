@@ -12,7 +12,7 @@ namespace WebClient.Models
         public string MetaTitle { get; set; }
         public string Description { get; set; }
         public string Code { get; set; }
-        [Required(ErrorMessage = "Ảnh không được để trống")]
+        //[Required(ErrorMessage = "Ảnh không được để trống")]
         public string Image { get; set; }
 
         public string Detail { get; set; }
