@@ -30,6 +30,12 @@
                         @Model.Name
                     }
                 </div>
+                <div class="descriptionnews">
+                    @if (Model != null)
+                    {
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Detail))
+                    }
+                </div >
                 @*<div class="descriptionnews">
                         <p>
                             <i>
