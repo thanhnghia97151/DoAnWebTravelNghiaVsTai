@@ -152,5 +152,22 @@ namespace WebClient.Controllers
             }
             return View(obj);
         }
+
+        [HttpGet]
+        public IActionResult Checkout(string MemberId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout()
+        {
+            var list = await provider.Invoice.GetInvoiceByMemberId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            foreach (var item in list)
+            {
+                await provider.Invoice.CheckOut(item);
+            }
+            return RedirectToAction("History");
+        }
     }
 }
