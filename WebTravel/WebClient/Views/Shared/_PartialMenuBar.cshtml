@@ -65,7 +65,7 @@
                                 <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
                                 <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
                                 <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
-                                @if(User.FindFirstValue(ClaimTypes.Role) != null)
+                                @*@if(User.FindFirstValue(ClaimTypes.Role) != null)
                                 {
                                         foreach (var item in User.FindFirstValue(ClaimTypes.Role))
                                     {
@@ -75,8 +75,8 @@
                                          }
                                     }
                                 }
-                                
-                                @*<li><a href="/dashboard">Dashboard</a></li>*@
+                                *@
+                                <li><a href="/dashboard">Dashboard</a></li>
                                 <li><a href="/invoice/history">Hóa đơn</a></li>
                             }
                             else
