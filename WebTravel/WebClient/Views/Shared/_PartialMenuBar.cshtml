@@ -1,4 +1,5 @@
-﻿<div>
+﻿@using System.Security.Claims
+<div>
       <nav class="navbar navbar-default menutop" role="navigation">
       <div class="container">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,6 +65,17 @@
                                 <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
                                 <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
                                 <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
+                                @*@if(User.FindFirstValue(ClaimTypes.Role) != null)
+                                {
+                                        foreach (var item in User.FindFirstValue(ClaimTypes.Role))
+                                    {
+                                         if (item.ToString() == "Admin")
+                                         {
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                         }
+                                    }
+                                }
+                                *@
                                 <li><a href="/dashboard">Dashboard</a></li>
                                 <li><a href="/invoice/history">Hóa đơn</a></li>
                             }
