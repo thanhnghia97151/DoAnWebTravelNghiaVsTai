@@ -1,16 +1,18 @@
 ﻿@model List<News>
+   
 <a class="btn btn-success" asp-action="Create">Create</a>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
-            <th>Id</th>
+
             <th>Name</th>
             <th>Meta Title</th>
-            <th>Description</th>
+
             <th>Code</th>
             <th>Image</th>
-            <th>Detail</th>
-            <th>Note</th>
+
             <th>NewCategory Id</th>
             <th>Created Date</th>
             <th>Created By</th>
@@ -20,21 +22,21 @@
             <th>Top hot</th>
             <th>View Count</th>
             <th>Edit</th>
-            <th>Remove</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.NewsId</td>
+
                 <td>@item.Name</td>
                 <td>@item.MetaTitle</td>
-                <td>@item.Description</td>
+
                 <td>@item.Code</td>
                 <td><img src="https://localhost:44384/images/@item.Image" width="70" /></td>
-                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Detail))</td>
-                <td>@item.Note</td>
+
+
                 <td>@item.NewCategoryId</td>
                 <td>@item.CreatedDate</td>
                 <td>@item.CreatedBy</td>
@@ -53,3 +55,7 @@
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>

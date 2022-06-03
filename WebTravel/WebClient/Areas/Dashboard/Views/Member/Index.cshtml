@@ -1,8 +1,10 @@
 ﻿@model List<Member>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
-            <th>MemberID</th>
+
             <th>UserName</th>
             <th>Roles</th>
             <th></th>
@@ -13,7 +15,7 @@
         @foreach(var item in Model)
         {
             <tr>
-                <td>@item.MemberID</td>
+
                 <td>@item.UserName</td>
                 <td>
                     <a href="/dashboard/member/role/@item.MemberID">Roles</a>
@@ -26,3 +28,7 @@
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>
