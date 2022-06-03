@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebClient.Models.ViewModels
 {
@@ -37,7 +38,7 @@ namespace WebClient.Models.ViewModels
         [Required(ErrorMessage = "Email không được để trống")]
         [StringLength(30, ErrorMessage = "Email phải nhỏ hơn hoặc bằng 30 ký tự")]
         [RegularExpression("^[a-zA-Z]+[0-9a-zA-Z]+[/@][gG][mM][aA][iY][lL][/.][cC][oO][mM]$", ErrorMessage = "Email không đúng định dạng chuẩn")]
-        public string Email { get; set; }
+        public string Email { get; set; }       
 
     }
     public enum Payment

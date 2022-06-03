@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebClient.Extentions;
@@ -50,11 +52,33 @@ namespace WebClient.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(InvoiceDetailModel obj)
+        public async Task<IActionResult> Create(InvoiceDetailModel obj, IFormCollection f)
         {
+            obj.InvoiceId = Helper.RandomString(64);
+            List<Customer> listCustomers = new List<Customer>();
+            var result = 1;
             try
             {
-                obj.InvoiceId = Helper.RandomString(64);
+                result = int.Parse(f["result"].ToString());
+            }
+            catch (System.Exception)
+            {
+                result = 1;
+            }
+            for (int i = 0; i < result; i++)
+            {
+                Customer customer = new Customer()
+                {
+                    CustomerID = Helper.RandomString(64),
+                    UserName = f["customername" + i].ToString(),
+                    Phone = f["customersdt" + i].ToString(),
+                    Address = f["customeraddress" + i].ToString(),
+                    InvoiceId = obj.InvoiceId
+                };
+                listCustomers.Add(customer);
+            }
+            try
+            {
                 //Get Type of Tour
                 ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
@@ -79,8 +103,12 @@ namespace WebClient.Controllers
                                     if (await provider.Invoice.Add(obj) == 2)
                                     {
                                         await provider.Tour.Ticket(obj);
-                                        _forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
-                                        _forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        //_forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
+                                        //_forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        foreach (var item in listCustomers)
+                                        {
+                                            await provider.Customer.Add(item);
+                                        }
                                         return RedirectToAction("SuccessBook");
                                     }
                                 }
@@ -103,7 +131,6 @@ namespace WebClient.Controllers
             //return Redirect($"/invoice/create/{obj.TourId}");
             return View(obj);
         }
-
         public async Task<IActionResult> SuccessBook()
         {
             //Get Type of Tour

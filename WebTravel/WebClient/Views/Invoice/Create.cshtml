@@ -43,7 +43,7 @@
                             Mã tour: &nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <small class="sotabletop">@tour.TourId.Substring(0,50)</small>
+                            <small class="sotabletop">@tour.TourId.Substring(0, 50)</small>
                         </p>
                         <p>
                             Thời gian: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -80,6 +80,12 @@
                     <p>
                         Các khoản phí phát sinh (nếu có) như: phụ thu dành cho khách nước ngoài, việt kiều; phụ thu phòng đơn; phụ thu chênh lệch giá tour… Nhân viên Du Lịch Việt sẽ gọi điện thoại tư vấn cho quý khách ngay sau khi có phiếu xác nhận booking. (Trong giờ hành chính)
                         Trường hợp quý khách không đồng ý các khoản phát sinh, phiếu xác nhận booking của quý khách sẽ không có hiệu lực.
+                    </p> <br />
+                    <p>
+                        Trẻ em dưới 12 tuổi cần đi theo người lớn vì chưa đủ trách nhiệm dân sự.
+                    </p><br />
+                    <p>
+                        Em bé dưới 5 tuổi được đi cùng một người lớn.
                     </p>
                 </div>
                 <div class="gachduoiphi">
@@ -101,16 +107,16 @@
                         <tr>
                             <th scope="col" class="text-right">Loại giá/độ tuổi</th>
                             <th scope="col" class="text-right">Người lớn(từ 12 tuổi)</th>
-                            <th scope="col" class="text-right">Trẻ em theo cùng</th>
-                            <th scope="col" class="text-right">Khác</th>
+                            <th scope="col" class="text-right">Trẻ em(từ 5-11)</th>
+                            <th scope="col" class="text-right">Trẻ nhỏ(< 5 tuổi)</th>
                         </tr>
                     </thead>
                     <tbody class="text-right">
                         <tr>
                             <th scope="row" class="text-right">Giá</th>
                             <td><p class="sotabletop">@tour.Price đ</p></td>
-                            <td><a href="#" title="">Xem tại đây</a></td>
-                            <td>không</td>
+                            <td><a href="#" title="">50% giá vé</a></td>
+                            <td>Miễn phí</td>
                         </tr>
                         <tr>
                             <th scope="col" class="text-right">Phụ thu nước ngoài</th>
@@ -127,7 +133,7 @@
                             @if (tour.Price > 0)
                             {
                                 var gia = (@tour.Price * (decimal)0.1);
-                                <td colspan="3" class="text-center">@gia đ</td>
+                                <td colspan="3" class="text-center">@gia đ / (1 người lớn và trẻ em đi cùng)</td>
                             }
                         </tr>
                     </tbody>
@@ -158,13 +164,13 @@
                         <div style="color:red; font-size:13px" asp-validation-summary="ModelOnly"></div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
-                                <input type="text" asp-for="FullName" class="form-control" placeholder="Họ và tên">
+                                <input type="text" oninput="enterName();" id="entername" asp-for="FullName" class="form-control" placeholder="Họ và tên">
                                 <span style="color:red; font-size:13px" asp-validation-for="FullName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
-                                <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
+                                <input type="text" oninput="enterSdt();" id="entersdt" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
                                 <span style="color:red; font-size:13px" asp-validation-for="Phone" class="text-danger"></span>
                             </div>
                         </div>
@@ -176,7 +182,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 thongtinduoi">
                             <div class="form-group">
-                                <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ">
+                                <input type="text" oninput="enterAddress();" id="enteraddress" asp-for="Address" class="form-control" placeholder="Địa chỉ">
                                 <span style="color:red; font-size:13px" asp-validation-for="Address" class="text-danger"></span>
                                 <small style="color:red; font-size:13px;">@ViewBag.ErrorAddress</small>
                             </div>
@@ -196,42 +202,54 @@
                         </div>
                         <div class="khoangcachpersonthamgia">
                             <div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <div class="personprice">
                                         <p>
-                                            Số người tham gia
+                                            Số người lớn(>= 12 tuổi)
                                         </p>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" id="sl" value="1" min="1" max="@tour.Quantity" asp-for="Quantity" class="form-control">
+                                        <input type="number" id="slnguoilon" value="1" min="1" max="@tour.Quantity" asp-for="Quantity" class="form-control">
                                         <span style="color:red; font-size:13px" asp-validation-for="Quantity"></span>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <div class="personprice">
                                         <p>
-                                            Phụ thu phòng đơn
+                                            Số trẻ em(5 đến dưới 12 tuổi)
                                         </p>
                                     </div>
                                     <div class="form-group">
-                                        <select id="phu" onchange="phongDon(this);" asp-for="PaymentMore" class="form-control">
-                                            <option value="False">Không</option>
-                                            <option value="True">Có</option>
+                                        @{ var ketquatreem = @tour.Quantity - 1; }
+                                        <input type="number" id="sltreem" value="0" min="0" max="@ketquatreem" asp-for="Quantity" class="form-control">
+                                        <span style="color:red; font-size:13px" asp-validation-for="Quantity"></span>
+                                    </div>
+                                </div>
+                                @*<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="personprice">
+                                            <p>
+                                                Phụ thu phòng đơn
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <select id="phu" onchange="phongDon(this);" asp-for="PaymentMore" class="form-control">
+                                                <option value="False">Không</option>
+                                                <option value="True">Có</option>
 
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <div class="personprice">
-                                        <p>
-                                            Số lượng phòng đơn
-                                        </p>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" id="don" value="0" min="0" asp-for="QuantityDepartment" class="form-control" disabled>
-                                        <span style="color:red; font-size:13px" asp-validation-for="QuantityDepartment"></span>
-                                    </div>
-                                </div>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                @*<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="personprice">
+                                            <p>
+                                                Số lượng phòng đơn
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" id="don" value="0" min="0" asp-for="QuantityDepartment" class="form-control" disabled>
+                                            <span style="color:red; font-size:13px" asp-validation-for="QuantityDepartment"></span>
+                                        </div>
+                                    </div>*@
                             </div>
                         </div>
                         <!-- the end form person tha gia -->
@@ -250,39 +268,63 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12
           banggiatourchitiet text-center">
                     <p>
-                        PHƯƠNG THỨC THANH TOÁN
+                        THÔNG TIN KHÁCH HÀNG
                     </p>
                 </div>
+
                 <div class="khoangcachphuongthucthanhtoan">
                     <div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 thongtinduoi">
                             <div class="form-group">
-                                <input type="radio" asp-for="Payment" value="0">
-                                &nbsp; &nbsp;
-                                <label for="phuongthucthanhtoan">
-                                    Thanh toán qua Mastercard
-                                </label>
+                                <input type="text" id="name" name="customername0" class="form-control" placeholder="Họ và tên">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" id="address" name="customeraddress0" class="form-control" placeholder="Địa chỉ">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 thongtinduoi">
+                            <div class="form-group">
+                                <input type="text" id="sdt" name="customersdt0" class="form-control" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 thongtinduoi">
+                            <div class="form-group">
+                                <input type="checkbox" name="customerpd0" value="1">
+                                <label>Phòng đơn</label>
+                            </div>
+                        </div>
+                        <div class="row"><br /></div>
+                        <p id="subjectInfo"></p>
+                        @*<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <input type="radio" asp-for="Payment" value="0">
+                &nbsp; &nbsp;
+                <label for="phuongthucthanhtoan">
+                    Thanh toán qua Mastercard
+                </label>
 
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <input type="radio" value="1" asp-for="Payment" checked>
-                                &nbsp; &nbsp;
-                                <label for="phuongthucthanhtoan">
-                                    Thanh toán qua ngân hàng
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <input type="radio" value="2" asp-for="Payment">
-                                &nbsp; &nbsp;
-                                <label for="phuongthucthanhtoan">
-                                    Thanh toán qua ví điện tử
-                                </label>
-                            </div>
-                        </div>
+            </div>
+        </div>*@
+                        @*<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <input type="radio" value="1" asp-for="Payment" checked>
+                &nbsp; &nbsp;
+                <label for="phuongthucthanhtoan">
+                    Thanh toán qua ngân hàng
+                </label>
+            </div>
+        </div>*@
+                        @* <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <input type="radio" value="2" asp-for="Payment">
+                &nbsp; &nbsp;
+                <label for="phuongthucthanhtoan">
+                    Thanh toán qua ví điện tử
+                </label>
+            </div>
+        </div>*@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hoanthanhthanhtoan text-center">
                             <button class="btn btn-success">HOÀN THÀNH</button>
                         </div>
@@ -295,6 +337,23 @@
 </div>
 @if (tour != null)
 {
+    <script>
+        function enterName() {
+            var name = document.getElementById("entername").value;
+            document.getElementById("name").value = name;
+            console.log(name);
+        }
+        function enterAddress() {
+            var address = document.getElementById("enteraddress").value;
+            document.getElementById("address").value = address;
+            console.log(address);
+        }
+        function enterSdt() {
+            var sdt = document.getElementById("entersdt").value;
+            document.getElementById("sdt").value = sdt;
+            console.log(sdt);
+        }
+    </script>
     <script>
         const element = document.getElementsByClassName('#sl');
 
@@ -320,7 +379,6 @@
 
         function phongDon(obj) {
             var giatri = obj.value;
-            console.log(giatri);
             if (giatri == 'True') {
                 $("#don").prop("disabled", false);
             }
@@ -331,26 +389,111 @@
 
     </script>
     <script>
-         var total = 0;
-        $('#sl').change(function () {
-            var sluongmoi = $('#don').val();
-            console.log(sluongmoi);
+
+        $('#slnguoilon').change(function () {
+           
+            var slnguoilon = $('#slnguoilon').val();
+                var sltreem = $('#sltreem').val();
+                var result = parseInt(slnguoilon) + parseInt(sltreem);
+                if (result > @tour.Quantity)
+                {
+                    var value = parseInt(slnguoilon) - 1;
+                    $('#slnguoilon').val(value);
+                    alert("Số người tham gia tối đa là: "+ @tour.Quantity);
+                }
+
+            if (result <= @tour.Quantity) {
+                $('.ab').remove();
+                    var sluongtreem = $('#sltreem').val();
+                    var sluong = $(this).val();
+                    var total = (sluong * @tour.Price) + (sluongtreem * @tour.Price);
+                    $('#tongcong').val(total);
+                    $('#showtongcong').html(total);
+
+                    for (var k = 1; k < result; k++) {
+                        $("#subjectInfo").append("<div class='row ab'>" +
+                            "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                            " <input type = 'hidden' name = 'result' value='" + result +"' class= 'ab'/>" +
+                            " <div class='form-group ab'>" +
+                            "<input type='text' name='customername" + k + "' placeholder='Nhập tên khách hàng'  class='form-control ab'>  </div> </div>"
+                            +
+                            "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                            " <div class='form-group ab'>"+
+                            "<input type='text' name='customeraddress" + k + "' placeholder='Nhập địa chỉ'  class='form-control ab'>  </div> </div>"
+                            +
+                            "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                            " <div class='form-group ab'>" +
+                            "<input type='text' name='customersdt" + k + "' placeholder='Nhập số điện thoại'  class='form-control ab'>  </div> </div>"
+                            +
+                            "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                            " <div class='form-group ab'>" +
+                            "<input type='checkbox' name='customerpd" + k + "' value='1' class='ab'> <label class='ab'>Phòng đơn</label> </div> </div>" +
+                            "</div>");
+                    }
+                }
+
+
+        });
+
+        $('#sltreem').change(function () {
+           
+            var slnguoilon = $('#slnguoilon').val();
+            var sltreem = $('#sltreem').val();
+            var result = parseInt(slnguoilon) + parseInt(sltreem);
+            if (result > @tour.Quantity)
+                {
+                    var value = parseInt(sltreem) - 1;
+                    $('#sltreem').val(value);
+                    alert("Số người tham gia tối đa là: "+ @tour.Quantity);
+            }
+
+            if (result <= @tour.Quantity) {
+                $('.ab').remove();
+                var sluongnguoilon = $('#slnguoilon').val();
+                sluongmoi = $(this).val();
+                var totalmoi = (sluongnguoilon * @tour.Price) + (sluongmoi * @tour.Price * 0.5);
+                $('#tongcong').val(totalmoi);
+                $('#showtongcong').html(totalmoi);
+
+                for (var k = 1; k < result; k++) {
+                    $("#subjectInfo").append("<div class='row ab'>" +
+                        "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                        " <input type = 'hidden' name = 'result' value='" + result +"' class= 'ab'/>"+
+                        " <div class='form-group ab'>" +
+                        "<input type='text' name='customername" + k + "' placeholder='Nhập tên khách hàng'  class='form-control ab'>  </div> </div>"
+                        +
+                        "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                        " <div class='form-group ab'>" +
+                        "<input type='text' name='customeraddress" + k + "' placeholder='Nhập địa chỉ'  class='form-control ab'>  </div> </div>"
+                        +
+                        "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                        " <div class='form-group ab'>" +
+                        "<input type='text' name='customersdt" + k + "' placeholder='Nhập số điện thoại'  class='form-control ab'>  </div> </div>"
+                        +
+                        "<div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 ab thongtinduoi'>" +
+                        " <div class='form-group ab'>" +
+                        "<input type='checkbox' name='customerpd" + k + "' value='1' class='ab'> <label class='ab'>Phòng đơn</label> </div> </div>" +
+                        "</div>");
+                }
+            }
+        });
+    </script>
+    <script>
+
+        @*$('#slnguoilon').change(function () {
+            var sluongtreem = $('#sltreem').val();
             var sluong = $(this).val();
-            console.log(sluong);
-            total = (sluong * @tour.Price) + (sluongmoi * @tour.Price * 0.1);
-            $('#tongcong').val(total);
+            var total = (sluong * @tour.Price) + (sluongtreem * @tour.Price);
+            $('#tongcong').val(total.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")));
             $('#showtongcong').html(total);
-        });
-        $('#don').change(function () {
-            var sluong = $('#sl').val();
-            console.log(sluong);
-            var totalmoi = 0;
+        });*@
+        @*$('#sltreem').change(function () {
+            var sluongnguoilon = $('#slnguoilon').val();;
             sluongmoi = $(this).val();
-            console.log(sluongmoi);
-            totalmoi = (sluong * @tour.Price) + (sluongmoi * @tour.Price * 0.1);
-            $('#tongcong').val(totalmoi);
+            var totalmoi = (sluongnguoilon * @tour.Price) + (sluongmoi * @tour.Price);
+            $('#tongcong').val(totalmoi.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")));
             $('#showtongcong').html(totalmoi);
-        });
+        });*@
        @* var total = 0;
         $('#sl').change(function (){
             var sluong = $(this).val();

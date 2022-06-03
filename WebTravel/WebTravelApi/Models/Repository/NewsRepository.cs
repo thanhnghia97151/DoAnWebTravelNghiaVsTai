@@ -20,7 +20,7 @@ namespace WebTravelApi.Models.Repository
         public IEnumerable<News> GetFourNewses()
         {
             return connection.
-                Query<News>("select TOP 4 n.NewsId, n.Name, n.Description, n.Image from [dbo].[News] as n  order by n.ModifiedDate DESC");
+                Query<News>("select TOP 4 n.NewsId, n.Name, n.Description, n.Image from [dbo].[News] as n  order by n.CreatedDate DESC");
         }
         public int Edit(News obj)
         {
@@ -87,19 +87,19 @@ namespace WebTravelApi.Models.Repository
 
         public News GetNewsHot() 
         {
-            string sql = "select TOP 1 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
+            string sql = "select TOP 1 n.NewsId, n.Name, n.Description, n.CreatedDate, n.ViewCount, n.Image from [dbo].[News] as n order by n.ViewCount DESC";
             return connection.QueryFirst<News>(sql);
         }
 
         public IEnumerable<News> GetNews10Host() 
         {
-            string sql = "select TOP 12 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
+            string sql = "select TOP 12 n.NewsId, n.Name, n.Description, n.CreatedDate, n.ViewCount, n.Image from [dbo].[News] as n where order by n.ViewCount DESC";
             return connection.Query<News>(sql);
         }
 
         public IEnumerable<News> GetNewsOutstanding()
         {
-            string sql = "select TOP 3 n.NewsId, n.Name, n.Description, n.ModifiedDate, n.ViewCount, n.Image from [dbo].[News] as n where n.Status = 1 order by n.ViewCount DESC";
+            string sql = "select TOP 3 n.NewsId, n.Name, n.Description, n.CreatedDate, n.ViewCount, n.Image from [dbo].[News] as n order by n.ViewCount DESC";
             return connection.Query<News>(sql);
         }
 
