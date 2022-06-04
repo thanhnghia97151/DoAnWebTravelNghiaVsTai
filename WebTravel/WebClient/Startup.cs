@@ -37,8 +37,8 @@ namespace WebClient
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddTransient<IForgetPasswordRepository,ForgetPasswordRepository>();
-            
+            services.AddTransient<IForgetPasswordRepository, ForgetPasswordRepository>();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(p =>
                     {
@@ -62,8 +62,11 @@ namespace WebClient
                         // Thiết lập đường dẫn Facebook chuyển hướng đến
                         facebookOptions.CallbackPath = "/dang-nhap-tu-facebook";
                     });
-          
 
+            services.AddControllers().AddJsonOptions(option => 
+            {
+                option.JsonSerializerOptions.Converters.Add(new DateConvertor());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

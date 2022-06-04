@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="thongtin">
-                    <small>Trang Chủ > Khách Sạn</small>
+                    <small>Trang Chủ > Du lịch trong nước</small>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 </div>
                 <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
                 <form action="/tour/search" method="post">
-                    <input type="hidden" asp-for="PriceStart"/>
+                    <input type="hidden" asp-for="PriceStart" />
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="form-group">
                             <select asp-for="Address" class="form-control chinhtimkiem" id="noidi">
@@ -37,16 +37,16 @@
                         </div>
                     </div>
                     @*<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="form-group">
-                            <select class="form-control chinhtimkiem" id="noiden">
-                                <option value="my"> Mỹ</option>
-                                <option value="anh"> Anh</option>
-                                <option value="phap"> Pháp</option>
-                                <option value="nhat"> Nhật</option>
-                                <option value="han"> Hàn</option>
-                            </select>
-                        </div>
-                    </div>*@
+            <div class="form-group">
+                <select class="form-control chinhtimkiem" id="noiden">
+                    <option value="my"> Mỹ</option>
+                    <option value="anh"> Anh</option>
+                    <option value="phap"> Pháp</option>
+                    <option value="nhat"> Nhật</option>
+                    <option value="han"> Hàn</option>
+                </select>
+            </div>
+        </div>*@
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="form-group">
                             <select asp-for="PriceEnd" class="form-control chinhtimkiem" id="gia">
@@ -59,6 +59,16 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <input asp-for="StartDate" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <input asp-for="EndDate" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                         <input type="submit" value="TÌM KIẾM" class="btn btn-dark timkiem">
                     </div>
                 </form>
@@ -72,7 +82,7 @@
 <div class="motakhachsan">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 @if (typeOfTour != null)
                 {
                     <h2>DU LỊCH @typeOfTour.Type.ToUpper()</h2>
