@@ -1,6 +1,12 @@
 ﻿@model List<InvoiceModel>
 
-
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-ms-12 col-md-12 col-lg-12 text-center">
+            <h2>THÔNG TIN HÓA ĐƠN</h2>
+        </div>
+    </div>
+</div><br />
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -22,12 +28,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @{
+                                        decimal totalMoney = 0;
+                                    }
                                     @foreach (var item in Model)
                                     {
                                         if (item.Tour != null)
                                         {
                                             <tr>
-                                                <td>@item.InvoiceId</td>
+                                                <td>@item.InvoiceId.Substring(0, 30)</td>
                                                 <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
                                                 <td>@item.Tour.Name</td>
                                                 <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
@@ -39,16 +48,39 @@
                                                 }
                                                 else
                                                 {
-                                                    <td><a class="btn btn-success" href="/payment/payment">Thanh toán</a></td>
+                                                    <td><small>Chưa thanh toán</small></td>
                                                     <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
+                                                    totalMoney = totalMoney + (item.Price * item.Quantity);
                                                 }
 
                                             </tr>
+
                                         }
                                     }
                                 </tbody>
                             </table>
                         </div>
+                        @* the begin*@
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                            <p style="font-size: 23px;">Tổng tiền thanh toán: <small>@totalMoney đ</small> </p>
+                        </div>
+                        <div></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+
+                            @{
+                                var result = @totalMoney / 23000;
+                                <p style="font-size: 23px;">Tổng tiền thanh toán($): <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
+                            }
+                        </div>
+                        <div></div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+                            <p style="font-size: 23px;">Thanh toán tại đây:</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+                            <div id="paypal-button"></div>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -56,3 +88,89 @@
         </div>
     </div>
 </div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    var result = document.getElementById("total").innerHTML;
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AQ0vdtbnYnilxGirwMwQ7nx3UuE-j5UCVhKz1dU8hm6apMn5QlJIYREUtRqpfBl_nrBiTvu7KaX8EI49',
+            production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function (data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: '0.1',
+                        currency: 'USD'
+                    }
+                }]
+            });
+        },
+        // Execute the payment
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute().then(function () {
+                // Show a confirmation message to the buyer
+                window.location.assign("/Invoice/Checkout?MemberId = " + "");
+            });
+        }
+    }, '#paypal-button');
+
+</script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        var result = document.getElementById("demo").innerHTML;
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AQ0vdtbnYnilxGirwMwQ7nx3UuE-j5UCVhKz1dU8hm6apMn5QlJIYREUtRqpfBl_nrBiTvu7KaX8EI49',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    // Show a confirmation message to the buyer
+                  window.location.assign("/Invoice/Checkout?MemberId = "+ "");
+                });
+            }
+        }, '#paypal-button');
+
+    </script>*@

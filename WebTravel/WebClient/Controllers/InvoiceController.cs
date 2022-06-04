@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebClient.Extentions;
@@ -50,11 +52,38 @@ namespace WebClient.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(InvoiceDetailModel obj)
+        public async Task<IActionResult> Create(InvoiceDetailModel obj, IFormCollection f)
         {
+            
             try
             {
                 obj.InvoiceId = Helper.RandomString(64);
+                int quantitys = int.Parse(f["quantitySmall"].ToString());
+                var quantityResult = ((int)obj.Quantity) + quantitys;
+                obj.Quantity = ((short)quantityResult);
+                List<Customer> listCustomers = new List<Customer>();
+                var result = 1;
+                try
+                {
+                    result = int.Parse(f["result"].ToString());
+                }
+                catch (System.Exception)
+                {
+                    result = 1;
+                }
+                for (int i = 0; i < result; i++)
+                {
+                    Customer customer = new Customer()
+                    {
+                        CustomerID = Helper.RandomString(64),
+                        UserName = f["customername" + i].ToString(),
+                        Phone = f["customersdt" + i].ToString(),
+                        Address = f["customeraddress" + i].ToString(),
+                        InvoiceId = obj.InvoiceId
+                    };
+                    listCustomers.Add(customer);
+                }
+
                 //Get Type of Tour
                 ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
@@ -79,8 +108,12 @@ namespace WebClient.Controllers
                                     if (await provider.Invoice.Add(obj) == 2)
                                     {
                                         await provider.Tour.Ticket(obj);
-                                        _forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
-                                        _forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        //_forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
+                                       // _forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        foreach (var item in listCustomers)
+                                        {
+                                            await provider.Customer.Add(item);
+                                        }
                                         return RedirectToAction("SuccessBook");
                                     }
                                 }
@@ -103,7 +136,6 @@ namespace WebClient.Controllers
             //return Redirect($"/invoice/create/{obj.TourId}");
             return View(obj);
         }
-
         public async Task<IActionResult> SuccessBook()
         {
             //Get Type of Tour
@@ -128,6 +160,7 @@ namespace WebClient.Controllers
             {
                 item.Tour = await provider.Tour.GetTourById(item.TourId);
             }
+
             return View(list);
         }
         public async Task<IActionResult> ConfirmDelete(string id)
@@ -151,6 +184,23 @@ namespace WebClient.Controllers
                 return Redirect("/invoice/history");
             }
             return View(obj);
+        }
+
+        [HttpGet]
+        public IActionResult Checkout(string MemberId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout()
+        {
+            var list = await provider.Invoice.GetInvoiceByMemberId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            foreach (var item in list)
+            {
+                await provider.Invoice.CheckOut(item);
+            }
+            return RedirectToAction("History");
         }
     }
 }

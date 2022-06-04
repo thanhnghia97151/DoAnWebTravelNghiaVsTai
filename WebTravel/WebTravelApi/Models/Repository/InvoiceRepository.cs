@@ -14,7 +14,7 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("AddInvoice", new
             {
-                InvoiceId = Helper.Helper.RandomString(64),
+                InvoiceId = obj.InvoiceId,
                 Address = obj.Address,
                 MemberId = obj.MemberId,
                 TourId = obj.TourId,
@@ -41,11 +41,11 @@ namespace WebTravelApi.Models.Repository
         
         public IEnumerable<InvoiceModel> GetInvoiceModel(string id)
         {
-            return connection.Query<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.MemberId = @Id", new {Id = id});
+            return connection.Query<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where  Invoice.MemberId = @Id", new {Id = id});
         }
         public InvoiceModel GetInvoiceModelById(string id)
         {
-            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
+            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, IncoiceDate, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
 
         }
         public int Delete(string id)

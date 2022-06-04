@@ -14,7 +14,6 @@
            </div>
          </div>
        </div>
-     </div>
    </div> <!-- the end goi nho -->
 
   <!-- Section -->
@@ -74,10 +73,79 @@
               </div>
               <!-- the end content lich trinh -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>&nbsp; &nbsp; Dịch vụ bao gồm và không bao gồm (Xem Thêm)</p>
-                <div class="vachkeduoilichtrinh">
-                  <hr>
-                </div>
+                  <p class="diemnhanhanhtrinh">
+                      <i class="fa fa-book">
+                      </i>&nbsp; &nbsp; Những thông tin cần lưu ý
+                  </p>
+                  <div class="total">
+                      <div class="col-xs-12 col-ms-12 col-md-6 col-lg-6">
+                          <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3%">
+                              <h3 onclick="databaogom()">Giá tour bao gồm</h3>
+                              <div id="datachuthich1" style="display: none; font-size: 15px;">
+                                  <p>
+                                      - Xe tham quan (7,16, 29, 35, 45 chỗ tùy theo số lượng khách) theo chương trình.
+                                  </p>
+                                  <p>
+                                      - Khách sạn theo tiêu chuẩn 2 khách/phòng hoặc 3 khách/phòng (phòng 3 kê giường phụ)
+                                  </p>
+                                  <p>- Vé tham quan theo chương trình.</p>
+                                  <p>
+                                      - Các bữa ăn chính theo chương trình từ 120.000 – 140.000 vnđ/bữa.
+                                  </p>
+                                  <p>- Hướng dẫn viên tiếng Việt suốt tuyến.</p>
+                                  <p>- Bảo hiểm du lịch với mức bồi thường cao nhất 120.000.000đ/vụ</p>
+                                  <p>- Nón Du Lịch Kỳ Thú + Nước suối + Khăn lạnh.</p>
+                                  <p>- Thuế VAT.</p>
+                              </div>
+                          </div>
+                          <!-- the end 1 -->
+                          <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                              <h3 onclick="datakhongbaogom()">Giá tour không bao gồm</h3>
+                              <div id="datachuthich2" style="display: none; font-size: 15px;">
+                                  <p>
+                                      - Chi phí cá nhân: ăn uống ngoài chương trình, giặt ủi, chi phí hủy đổi hành trình, phụ thu phòng đơn,…
+                                  </p>
+                                  <p>
+                                      - Chi phí tham quan ngoài chương trình.
+                                  </p>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="col-xs-12 col-ms-12 col-md-6 col-lg-6">
+                          <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                              <h3 onclick="datagiave()">Giá vé trẻ em</h3>
+                              <div id="datachuthich3" style="display: none; font-size:15px;">
+                                  <p>
+                                      - Trẻ em dưới 5 tuổi: không thu phí dịch vụ, gia đình tự lo cho bé. Hai người lớn chỉ được kèm 1 trẻ em dưới 5 tuổi, trẻ em thứ 2 phải đóng phí theo quy định dành cho độ tuổi từ 5 đến dưới 12 tuổi và phụ thu giường đơn.
+                                  </p>
+                                  <p>
+                                      - Trẻ em từ 5 - dưới 12 tuổi: mua 50% vé dịch vụ, bao gồm phương tiện xe vận chuyển, ăn uống, vé tham quan, ngủ chung với gia đình, không có giường riêng. Hai người lớn chỉ được kèm 1 trẻ em từ 5 - dưới 12 tuổi, em thứ hai trở lên phải mua 1 suất giường đơn.
+                                  </p>
+                                  <p>
+                                      - Trẻ em từ 12 tuổi trở lên: mua một vé như người lớn.
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                              <h3 onclick="datahuytour()">Các điều kiện hủy tour</h3>
+                              <div id="datachuthich4" style="display: none; font-size:15px;">
+                                  <p>
+                                      - Trong trường hợp khách hàng chưa thanh toán, có thể hủy tour trong vòng 24h, kể từ khi đặt tour.
+                                  </p>
+                                  <p>
+                                      - Trong trường hợp khách hàng đã thanh toán, có thể hủy tour trong vòng 24h, kể từ khi đặt tour nhưng chỉ nhận được 50% giá vé.
+                                  </p>
+                                  <p>
+                                      - Trong trường hợp khách hàng đã thanh toán, không thể hủy tour sau 24h, kể từ khi đặt tour.
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="vachkeduoilichtrinh">
+                      <hr>
+                  </div>
               </div>
               <!-- the end dich vu bao gom -->
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -541,3 +609,30 @@
               })
             })
       </script>
+       <script>
+           function databaogom(){
+               document.getElementById('datachuthich1').style.display = "block";
+               document.getElementById('datachuthich2').style.display = "none";
+               document.getElementById('datachuthich3').style.display = "none";
+               document.getElementById('datachuthich4').style.display = "none";
+           }
+           function datakhongbaogom() {
+               document.getElementById('datachuthich1').style.display = "none";
+               document.getElementById('datachuthich2').style.display = "block";
+               document.getElementById('datachuthich3').style.display = "none";
+               document.getElementById('datachuthich4').style.display = "none";
+           }
+           function datagiave() {
+               document.getElementById('datachuthich1').style.display = "none";
+               document.getElementById('datachuthich2').style.display = "none";
+               document.getElementById('datachuthich3').style.display = "block";
+               document.getElementById('datachuthich4').style.display = "none";
+           }
+           function datahuytour() {
+               document.getElementById('datachuthich4').style.display = "block";
+               document.getElementById('datachuthich1').style.display = "none";
+               document.getElementById('datachuthich2').style.display = "none";
+               document.getElementById('datachuthich3').style.display = "none";
+           }
+           
+       </script>

@@ -1069,24 +1069,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\VanTaiPC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
+      "projectUniqueName": "F:\\Khoa_Luan_Tot_Nghiep\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
       "projectName": "WebTravelApi",
-      "projectPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
-      "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-      "outputPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\obj\\",
+      "projectPath": "F:\\Khoa_Luan_Tot_Nghiep\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
+      "packagesPath": "C:\\Users\\VanTaiPC\\.nuget\\packages\\",
+      "outputPath": "F:\\Khoa_Luan_Tot_Nghiep\\DoANCodeSourse\\WebTravel\\WebTravelApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ThanhNghiaPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\VanTaiPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1143,6 +1138,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1151,7 +1160,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.210\\RuntimeIdentifierGraph.json"
       }
     }
   }
