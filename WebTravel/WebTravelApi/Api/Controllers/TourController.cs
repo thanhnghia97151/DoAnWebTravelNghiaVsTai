@@ -51,10 +51,16 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Tour.Ticket(id,quantity);
         }
-        [HttpGet("search/{address}/{priceStart}/{priceEnd}")]
-        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+
+        [HttpGet("search/{address}/{priceStart}/{priceEnd}/{startDate}/{endDate}")]
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd, string startDate, string endDate)
         {
-            return provider.Tour.Search(address, priceStart, priceEnd);
+            string[] dateStart = startDate.ToString().Split('.');
+            var resultStart = dateStart[0] + "/" + dateStart[1] + "/" + dateStart[2];
+
+            string[] dateEnd = endDate.ToString().Split('.');
+            var resultEnd = dateEnd[0] + "/" + dateEnd[1] + "/" + dateEnd[2];
+            return provider.Tour.Search(address, priceStart, priceEnd, resultStart, resultEnd);
         }
     }
 }

@@ -7,6 +7,7 @@
         </div>
     </div>
 </div><br />
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -35,25 +36,25 @@
                                     {
                                         if (item.Tour != null)
                                         {
-                                            <tr>
-                                                <td>@item.InvoiceId.Substring(0, 30)</td>
-                                                <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
-                                                <td>@item.Tour.Name</td>
-                                                <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
-                                                <td>@item.Quantity</td>
-                                                @if (item.Status)
-                                                {
-                                                    <td><small>Đã thanh toán</small></td>
-                                                    <td></td>
-                                                }
-                                                else
-                                                {
-                                                    <td><small>Chưa thanh toán</small></td>
-                                                    <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
-                                                    totalMoney = totalMoney + (item.Price * item.Quantity);
-                                                }
+                                    <tr>
+                                        <td>@item.InvoiceId.Substring(0, 30)</td>
+                                        <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
+                                        <td>@item.Tour.Name</td>
+                                        <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                        <td>@item.Quantity</td>
+                                        @if (item.Status)
+                                        {
+                                            <td><small>Đã thanh toán</small></td>
+                                            <td></td>
+                                        }
+                                        else
+                                        {
+                                            <td><small>Chưa thanh toán</small></td>
+                                            <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
+                                            totalMoney = totalMoney + (item.Price * item.Quantity);
+                                        }
 
-                                            </tr>
+                                    </tr>
 
                                         }
                                     }
@@ -62,21 +63,21 @@
                         </div>
                         @* the begin*@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                            <p style="font-size: 23px;">Tổng tiền thanh toán: <small>@totalMoney đ</small> </p>
+                            <p style="font-size: 20px;">Tổng tiền thanh toán:&nbsp;&nbsp;&nbsp; <small>@totalMoney đ</small> </p>
                         </div>
                         <div></div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
 
                             @{
                                 var result = @totalMoney / 23000;
-                                <p style="font-size: 23px;">Tổng tiền thanh toán($): <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
+                                                        <p style="font-size: 20px;">Tổng tiền thanh toán($):&nbsp;&nbsp;&nbsp; <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
                             }
                         </div>
                         <div></div>
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
-                            <p style="font-size: 23px;">Thanh toán tại đây:</p>
+                        <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 text-right">
+                            <p style="font-size: 20px;">Thanh toán tại đây:</p>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 text-right">
                             <div id="paypal-button"></div>
                         </div>
 

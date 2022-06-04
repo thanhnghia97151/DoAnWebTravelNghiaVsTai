@@ -128,6 +128,30 @@ namespace WebClient.Controllers
             //return View(await provider.Tour.GetTours());
             return View(list.ToPagedList(id,6));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            try
+            {
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+            }
+            catch (Exception)
+            {
+
+                ViewBag.ErrorSystem = "Lỗi hệ thống, vui lòng thử lại sau!";
+            }
+
+            //var t = list.ToPagedList(3, 6);            
+            //return View(await provider.Tour.GetTours());
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Search(TourModelSearch obj)
         {
