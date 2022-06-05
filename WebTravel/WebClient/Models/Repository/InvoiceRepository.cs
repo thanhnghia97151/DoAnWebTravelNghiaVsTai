@@ -21,10 +21,11 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<Invoice>>($"/api/invoice/member/{id}");
         }
-        //public async Task<int> CheckOut(Invoice obj)
-        //{
-        //    return await Post<Invoice>("/api/invoice/checkout",obj ); 
-        //}
+
+        public async Task<int> CheckOut(Invoice obj)
+        {
+            return await Post<Invoice>("/api/invoice/checkout",obj ); 
+        }
 
         public async Task<List<InvoiceModel>> GetInvoiceModelByMemberId(string id)
         {
@@ -53,5 +54,10 @@ namespace WebClient.Models.Repository
             return await Get<InvoiceModel>($"/api/invoice/invoicemodel/{id}");
         }
         #endregion
+
+        public async Task<List<InvoiceModel>> GetStatsDay(DateTime time)
+        {
+            return await Get<List<InvoiceModel>>($"/api/invoice/stastday/{time}");
+        }
     }
 }

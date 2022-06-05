@@ -1,1 +1,65 @@
-﻿<h2>Dashboard</h2>
+﻿@model Stats
+
+<h2>1. THỐNG KÊ DOANH THU</h2>
+<form>
+    <div class="row">
+    
+    <div class="col-lg-4">
+        <label>Chọn thời gian: </label>
+        <input class="form-control" id="time" asp-for="Time" />
+    </div>
+    <div class="col-lg-4">
+        <label>Chọn thống kê theo: </label>
+        <select class="form-control" asp-for="Type" id="type">
+            <option value ="0">Ngày</option>
+            <option value = "1">Tháng</option>
+            <option value = "2">Năm</option>
+            <option value = "3">Quý</option>
+        </select>
+    </div>
+    <div class="col-lg-4">
+        <div id="quy"></div>
+    </div>
+</div>
+</form>
+<script>
+    $('#type').change(function(){
+        
+        //check show Quater I , II, III, VI
+        var t = $(this).val();
+        //console.log(t);
+        if(t==3){
+            //console.log("if");
+            //$('#quy').remove();
+            var string = '<label id="lb">Chọn quý: </label>'
+            string += '<select id="quater" class="form-control" asp-for="Quater">';
+            string += '<option value="1">Quý I</option>';
+            string += '<option value="2">Quý II</option>';
+            string += '<option value="3">Quý III</option>';
+            string += '<option value="4">Quý IV</option>';
+            string += '</select>';
+            $('#quy').append(string);
+        }
+        else
+        {
+            $('#lb').remove();
+            $('#quater').remove();
+            //console.log("else");
+            //$('#quy').remove();
+        }
+
+        //Get Ngay
+        var time = $('#time').val();
+        console.log(time);
+        if(time==''){
+            alert("Hãy chọn thời gian!");
+        }
+        else{
+            $.get("/dashboard/home/getstatsday/"+time, function(data, status){
+                console.log(data);
+            });
+        }
+
+    });
+    
+</script>

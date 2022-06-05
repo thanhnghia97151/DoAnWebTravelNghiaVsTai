@@ -26,6 +26,19 @@ namespace WebClient.Models.Repository
         InvoiceRepository invoice;
         CommentRepository comment;
         ContactRepository contact;
+        CustomerRepository customer;
+
+        public CustomerRepository Customer
+        {
+            get
+            {
+                if (customer is null)
+                {
+                    customer = new CustomerRepository(configuration);
+                }
+                return customer;
+            }
+        }
 
         public ContactRepository Contact
         {

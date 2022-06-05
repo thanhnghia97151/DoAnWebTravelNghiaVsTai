@@ -86,9 +86,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("UpdateQuantity", new {Id = id, SoLuong = quantity}, commandType: CommandType.StoredProcedure);
         }
-        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd, string startDate, string endDate)
         {
-            return connection.Query<Tour>($"select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and t.StartPlace like N'%{address}%' and t.Price < {priceEnd} and t.Price >= {priceStart}");
+            return connection.Query<Tour>($"select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and t.StartPlace like N'%{address}%' and t.Price < {priceEnd} and t.Price >= {priceStart} and t.StartDate >= '{startDate}' and t.EndDate <= '{endDate}'");
         }
 
     }

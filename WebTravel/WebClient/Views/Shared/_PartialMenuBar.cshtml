@@ -17,88 +17,89 @@
    
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right">
-               <li class="dropdown">
-                <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
-                  role="button" aria-haspopup="true" aria-expanded="false">
-                DU LỊCH
-                </a>
-                <ul class="dropdown-menu">
-                    @*<li><a href="#">Du Lịch Trong Nước</a></li>
-        <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
-                    @{
-                        IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
-                        IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
-                    }
+             <ul class="nav navbar-nav navbar-right">
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                         DU LỊCH
+                     </a>
+                     <ul class="dropdown-menu">
+                         @*<li><a href="#">Du Lịch Trong Nước</a></li>
+                <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
+                         @{
+                             IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
+                             IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
+                         }
 
-                    @if (listTypeOfTour != null)
+                         @if (listTypeOfTour != null)
+                         {
+                             @foreach (TypeOfTour item in listTypeOfTour)
+                             {
+                                 <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
+                             }
+                         }
+
+
+                     </ul>
+                 </li>
+                 <li><a href="/tour/search">TÌM KIẾM</a></li>
+                 <li><a href="/contact/DisplayContact">LIÊN HỆ</a></li>
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
+                     <ul class="dropdown-menu">
+
+                         @if (listNewsCate != null)
+                         {
+                             @foreach (var item in listNewsCate)
+                             {
+                                 <li><a href="/news/newscategory/@item.NewsCategoryId">@item.Name</a></li>
+                             }
+                         }
+                     </ul>
+                 </li>
+                 <li class="dropdown">
+                     <a asp-controller="Introduce" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
+                     <ul class="dropdown-menu">
+                         @if (User.Identity.IsAuthenticated)
+                         {
+                             <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
+                             <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
+                             <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
+                             @*@if(User.FindFirstValue(ClaimTypes.Role) != null)
                     {
-                        @foreach (TypeOfTour item in listTypeOfTour)
+                            foreach (var item in User.FindFirstValue(ClaimTypes.Role))
                         {
-                            <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
+                             if (item.ToString() == "Admin")
+                             {
+                                 <li><a href="/dashboard">Dashboard</a></li>
+                             }
                         }
                     }
+                             *@
+                             <li><a href="/dashboard">Dashboard</a></li>
+                             <li><a href="/invoice/history">Hóa đơn</a></li>
+                         }
+                         else
+                         {
+                             <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
+                             <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
+                             <li><a href="/auth/register">Đăng Ký</a></li>
+                             <li><a href="/auth/login">Đăng Nhập</a></li>
 
+                         }
 
-                </ul>
-              </li>
-               <li><a href="/contact/DisplayContact">LIÊN HỆ</a></li>
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
-                  role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
-                  <ul class="dropdown-menu">
+                     </ul>
+                 </li>
 
-                      @if (listNewsCate != null)
-                      {
-                          @foreach (var item in listNewsCate)
-                          {
-                              <li><a href="/news/newscategory/@item.NewsCategoryId">@item.Name</a></li>
-                          }
-                      }
-                  </ul>
-               </li>
-               <li class="dropdown">
-                  <a asp-controller="Introduce" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
-                  <ul class="dropdown-menu">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
-                                <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
-                                @*@if(User.FindFirstValue(ClaimTypes.Role) != null)
-                                {
-                                        foreach (var item in User.FindFirstValue(ClaimTypes.Role))
-                                    {
-                                         if (item.ToString() == "Admin")
-                                         {
-                                             <li><a href="/dashboard">Dashboard</a></li>
-                                         }
-                                    }
-                                }
-                                *@
-                                <li><a href="/dashboard">Dashboard</a></li>
-                                <li><a href="/invoice/history">Hóa đơn</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
-                                <li><a href="/auth/register">Đăng Ký</a></li>
-                                <li><a href="/auth/login">Đăng Nhập</a></li>
-                                
-                            }
-                            
-                  </ul>
-               </li>
-
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">NGÔN NGỮ</a>
-                  <ul class="dropdown-menu">
-                     <li><a href="#">Vietnamese</a></li>
-                     <li><a href="#">English</a></li>
-                  </ul>
-               </li>
-            </ul>
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">NGÔN NGỮ</a>
+                     <ul class="dropdown-menu">
+                         <li><a href="#">Vietnamese</a></li>
+                         <li><a href="#">English</a></li>
+                     </ul>
+                 </li>
+             </ul>
             
          </div><!-- /.navbar-collapse -->
       </div>

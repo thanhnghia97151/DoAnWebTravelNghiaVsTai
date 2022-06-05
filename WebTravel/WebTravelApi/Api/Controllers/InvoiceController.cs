@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using WebTravelApi.Models;
 using WebTravelApi.Models.Repository;
@@ -64,5 +65,18 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Invoice.GetInvoiceModelById(id);
         }
+        [HttpGet("stastday/{time}")]
+        public IEnumerable<InvoiceModel> GetStatsDay(DateTime time)
+           
+        {
+            //var timeConvert = Convert.ToDateTime(time);
+            return provider.Invoice.GetStatsDay(time);
+        }
+        [HttpGet("statsmonth/{time}")]
+        public IEnumerable<InvoiceModel> GetStatsMonth(DateTime time)
+        {
+            return provider.Invoice.GetStatsMonth(time);
+        }
+
     }
 }
