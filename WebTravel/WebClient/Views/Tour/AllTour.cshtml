@@ -22,12 +22,16 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2> CÁC TOUR DU LICH</h2>
+                <h2> DANH SÁCH TOUR DU LICH</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="danhgia">Đánh giá:</p>
+                <p class="danhgia">Du lịch kỳ thú - Tour Du lịch hấp dẫn - Du lịch kỳ thú cung cấp những
+                tour du lịch có giá tốt - Du khách sẽ được khám phá những danh lam thắng 
+                cảnh thiên nhiên đẹp mê hồn cùng nhiều công trình kiến trúc ấn tượng được 
+                tạo nên bởi bàn tay khéo léo của con người. Cùng Du Lịch Kỳ Thú tìm hiểu 
+                những địa điểm du lịch để bắt đầu lên kế hoạch cho chuyến du lịch ngay nhé!</p>
             </div>
         </div>
         <div class="row">
@@ -47,8 +51,8 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                        <div class="thumbnail">
-                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
+                        <div class="thumbnail" style="height:400px;">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt="" style="height:200px;"></a>
                             <div class="captionbottomimage">
                                 @item.Name
                             </div>

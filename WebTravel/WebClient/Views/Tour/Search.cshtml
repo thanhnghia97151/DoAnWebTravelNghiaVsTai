@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <input asp-for="EndDate" class="form-control" />
                         </div>
-                    </div>
+                    </div><br />
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                         <input type="submit" value="TÌM KIẾM" class="btn btn-dark timkiem">
                     </div>
@@ -108,8 +108,8 @@
                 @foreach (var item in ViewBag.tour)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
-                        <div class="thumbnail">
-                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt=""></a>
+                        <div class="thumbnail" style="height:400px;">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt="" style="height:200px;"></a>
                             <div class="captionbottomimage">
                                 @item.Name
                             </div>

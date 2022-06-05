@@ -6,7 +6,7 @@ namespace WebClient.Models.ViewModels
     {
         public bool Status { get; set; }
         public string MemberId { get; set; }
-        public DateTime IncoiceDate { get; set; }
+        public DateTime InvoiceDate { get; set; }
         public Tour Tour { get; set; }
     }
 }
