@@ -80,5 +80,6 @@ namespace WebTravelApi.Models.Repository
             string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId and YEAR(@Date) = YEAR(i.IncoiceDate)";
             return connection.Query<InvoiceModel>(sql, new { Date = time });
         }
+       
     }
 }

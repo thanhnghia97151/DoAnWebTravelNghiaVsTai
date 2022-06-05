@@ -55,9 +55,18 @@ namespace WebClient.Models.Repository
         }
         #endregion
 
-        public async Task<List<InvoiceModel>> GetStatsDay(DateTime time)
+        public async Task<List<InvoiceModel>> GetStatsDay(string time)
         {
             return await Get<List<InvoiceModel>>($"/api/invoice/stastday/{time}");
         }
+        public async Task<List<InvoiceModel>> GetStatsMonth(string time)
+        {
+            return await Get<List<InvoiceModel>>($"/api/invoice/statsmonth/{time}");
+        }
+        public async Task<List<InvoiceModel>> GetStatsYear(string time)
+        {
+            return await Get<List<InvoiceModel>>($"/api/invoice/statsyear/{time}");
+        }
+
     }
 }

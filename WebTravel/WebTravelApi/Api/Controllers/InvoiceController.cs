@@ -65,17 +65,23 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Invoice.GetInvoiceModelById(id);
         }
-        [HttpGet("stastday/{time}")]
-        public IEnumerable<InvoiceModel> GetStatsDay(DateTime time)
-           
+        [HttpGet("stastday/{id}")]
+        public IEnumerable<InvoiceModel> GetStatsDay(string id)         
         {
-            //var timeConvert = Convert.ToDateTime(time);
-            return provider.Invoice.GetStatsDay(time);
+            var timeConvert = Convert.ToDateTime(id);
+            return provider.Invoice.GetStatsDay(timeConvert);
         }
-        [HttpGet("statsmonth/{time}")]
-        public IEnumerable<InvoiceModel> GetStatsMonth(DateTime time)
+        [HttpGet("statsmonth/{id}")]
+        public IEnumerable<InvoiceModel> GetStatsMonth(string id)
         {
-            return provider.Invoice.GetStatsMonth(time);
+            DateTime convert = Convert.ToDateTime(id);
+            return provider.Invoice.GetStatsMonth(convert);
+        }
+        [HttpGet("statsyear/{id}")]
+        public IEnumerable<InvoiceModel> GetStatsYear(string id)
+        {
+            DateTime convert = Convert.ToDateTime(id);
+            return provider.Invoice.GetStatsYear(convert);
         }
 
     }

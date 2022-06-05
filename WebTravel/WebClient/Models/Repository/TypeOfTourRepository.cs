@@ -9,7 +9,7 @@ namespace WebClient.Models.Repository
         public TypeOfTourRepository(IConfiguration configuration) : base(configuration)
         {
         }
-        public async Task<IEnumerable<TypeOfTour>> GetTypeOfTours()
+        public async Task<List<TypeOfTour>> GetTypeOfTours()
         {
             return await Get<List<TypeOfTour>>("/api/typeoftour");
         }
