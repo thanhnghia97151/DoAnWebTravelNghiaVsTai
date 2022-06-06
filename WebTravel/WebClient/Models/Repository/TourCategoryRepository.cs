@@ -44,5 +44,17 @@ namespace WebClient.Models.Repository
         {
             return await Get<TourCategoryModel>($"/api/tourcategory/categorymodelbyid/{id}");
         }
+        public async Task<List<AnalyticCounty>> GetCountByYear(string id)
+        {
+            return await Get<List<AnalyticCounty>>($"/api/tourcategory/countbyyear/{id}");
+        }
+        public async Task<List<AnalyticCounty>> GetCountByMonth(string id)
+        {
+            return await Get<List<AnalyticCounty>>($"/api/tourcategory/countbymonth/{id}");
+        }
+        public async Task<List<AnalyticCounty>> GetCountByDay(string id)
+        {
+            return await Get<List<AnalyticCounty>>($"/api/tourcategory/countbyday/{id}");
+        }
     }
 }

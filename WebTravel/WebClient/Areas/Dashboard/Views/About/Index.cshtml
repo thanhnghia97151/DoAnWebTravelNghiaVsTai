@@ -16,7 +16,7 @@
             <th>Modified By</th>
             <th> Policy Id</th>
             <th>Status </th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -36,10 +36,7 @@
                 <td>@item.ModifiedBy</td>
                 <td>@item.PolicyId</td>
                 <td>@item.Status</td>
-                <td>
-                      <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
-                   <a href="/dashboard/about/confirmdelete/@item.Id"><i class="fa fa-trash"></i></a>
-                </td>
+                
             </tr>
         }
     </tbody>

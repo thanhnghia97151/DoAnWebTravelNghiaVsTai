@@ -1,9 +1,11 @@
 ﻿@model List<Tour>
 <a class="btn btn-success" asp-action="Create">Create</a>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
-            <th>Tour ID</th>
+
             <th>Name</th>
             <th>Meta Title</th>
             <th>Code</th>
@@ -16,7 +18,7 @@
             <th>Start Place</th>
             <th>End Place</th>
             <th>Transport</th>
-            <th>Detail</th>
+
             <th>Note</th>
             <th>Category Id</th>
             <th>ScheduleId</th>
@@ -27,7 +29,8 @@
             <th>Status</th>
             <th>TopHot</th>
             <th>ViewCount</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
             
         </tr>
     </thead>
@@ -35,7 +38,7 @@
         @foreach (var item in Model)
        {
            <tr>
-                <td>@item.TourId</td>
+
                 <td>@item.Name</td>
                 <td>@item.MetaTitle</td>
                 <td>@item.Code</td>
@@ -48,7 +51,7 @@
                 <td>@item.StartPlace</td>
                 <td>@item.EndPlace</td>
                 <td>@item.Transport</td>
-                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Detail))</td>
+
                 <td>@item.Note</td>
                 <td>@item.CategoryId</td>
                 <td>@item.ScheduleId</td>
@@ -61,6 +64,8 @@
                 <td>@item.ViewCount</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.TourId"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.TourId"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
@@ -68,3 +73,7 @@
        }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>

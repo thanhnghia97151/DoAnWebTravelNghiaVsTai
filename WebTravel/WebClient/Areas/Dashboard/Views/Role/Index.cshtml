@@ -1,12 +1,15 @@
 ﻿@model List<Role>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <a class="btn btn-success" asp-action="Create">Create</a>
 <table class="table table-bordered" >
     <thead class="table-dark">
         <tr>
-            <th>Id</th>
+
             <th>Role Name</th>
             <th>Role Description</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         
     </thead>
@@ -14,14 +17,20 @@
         @foreach(var item in Model)
         {
             <tr>
-                <td>@item.RoleID</td>
+
                 <td>@item.RoleName</td>
                 <td>@item.RoleDesciption</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.RoleID"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.RoleID"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>

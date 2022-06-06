@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -25,12 +24,6 @@ namespace WebTravelApi.Models.Repository
                 Phone = obj.Phone,
                 InvoiceId = obj.InvoiceId
             });
-        }
-
-        public IEnumerable<CustomerExport> Get(string InvoiceId)
-        {
-            string sql = "select UserName, Address, Phone from [dbo].[Customer] where InvoiceId = @InvoiceId";
-            return connection.Query<CustomerExport>(sql, new { InvoiceId = InvoiceId });
         }
     }
 }

@@ -17,7 +17,7 @@ namespace WebTravelApi.Models.Repository
         public int Add(Contact contact)
         {
            
-            if (contact.MemberId == null) 
+            if (contact.CustomerID == null) 
             {
                 string sql = "Insert Into [dbo].[Contacts] (ContactId, CreatedAt,Title, Content, Name, Company, Phone, Email, Status) Values(@Id,GETDATE(),@Title,@Content,@Name,@Company,@Phone,@Email,@Status)";
                 return connection.Execute(sql, new
@@ -34,14 +34,14 @@ namespace WebTravelApi.Models.Repository
             }
             else 
             {
-                string sql = "Insert Into [dbo].[Contacts] (ContactId, CreatedAt, Title, Content, Company, MemberId,Status) Values(@Id,GETDATE(),@Title,@Content,@Company,@MemberId,@Status)";
+                string sql = "Insert Into [dbo].[Contacts] (ContactId, CreatedAt, Title, Content, Company, CustomerID,Status) Values(@Id,GETDATE(),@Title,@Content,@Company,@MemberId,@Status)";
                 return connection.Execute(sql, new
                 {
                     Id = Helper.Helper.RandomString(64),
                     Title = contact.Title,
                     Content = contact.Content,
                     Company = contact.Company,
-                    MemberId = contact.MemberId,
+                    MemberId = contact.CustomerID,
                     Status = true,
                 });
             }

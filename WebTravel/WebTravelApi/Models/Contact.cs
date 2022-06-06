@@ -7,7 +7,7 @@ namespace WebTravelApi.Models
 {
     public class Contact
     {
-        public string Id { get; set; }
+        public string ContactId { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
@@ -15,7 +15,7 @@ namespace WebTravelApi.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string MemberId { get; set; }
         public bool Status { get; set; }
+        public string CustomerID { get; set; }
     }
 }

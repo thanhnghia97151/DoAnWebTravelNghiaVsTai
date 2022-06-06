@@ -13,218 +13,218 @@
 <h4>Tour</h4>
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                @*<label asp-for="TourId" class="control-label"></label>*@
-                <input asp-for="TourId" class="form-control" value="" type="hidden" />
-                @*<span asp-validation-for="TourId" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaTitle" class="control-label"></label>
-                <input asp-for="MetaTitle" class="form-control" />
-                <span asp-validation-for="MetaTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code" class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" type="file" name="f" accept="image/*" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Schedule" class="control-label"></label>
-                
-                <input asp-for="Schedule" class="form-control" />
-                <span asp-validation-for="Schedule" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PromotionPrice" class="control-label"></label>
-                <input asp-for="PromotionPrice" class="form-control" />
-                <span asp-validation-for="PromotionPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepartureDat" class="control-label"></label>
-                <input asp-for="DepartureDat" class="form-control" />
-                <span asp-validation-for="DepartureDat" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StartPlace" class="control-label"></label>
-                <input asp-for="StartPlace" class="form-control" />
-                <span asp-validation-for="StartPlace" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndPlace" class="control-label"></label>
-                <input asp-for="EndPlace" class="form-control" />
-                <span asp-validation-for="EndPlace" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Transport" class="control-label"></label>
-                <input asp-for="Transport" class="form-control" />
-                <span asp-validation-for="Transport" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Detail" class="control-label"></label>
-                <textarea asp-for="Detail" class="form-control" id="editor" ></textarea>
-                <span asp-validation-for="Detail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note" class="control-label"></label>
-                <input asp-for="Note" class="form-control" />
-                <span asp-validation-for="Note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-control">
-                    <option value="">-- Choose Category ---</option>
-                </select>
-                @*<input asp-for="CategoryId" class="form-control" />*@
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ScheduleId" class="control-label"></label>
-                <select asp-for="ScheduleId" asp-items="@ViewBag.schedules" class="form-control">
-                    <option value="">-- Choose Schedule ---</option>
-                </select>
-                @*<input asp-for="ScheduleId" class="form-control" />*@
-                <span asp-validation-for="ScheduleId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="CreatedDate" class="control-label"></label>*@
-                <input asp-for="CreatedDate" value="@DateTime.Now" type="hidden" class="form-control" />
-                @*<span asp-validation-for="CreatedDate" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="ModifiedDate" class="control-label"></label>*@
-                <input asp-for="ModifiedDate" value="@DateTime.Now" type="hidden" class="form-control" />
-               @* <span asp-validation-for="ModifiedDate" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedBy" class="control-label"></label>
-                <input asp-for="ModifiedBy" class="form-control" />
-                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
-                    </label>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    @*<label asp-for="TourId" class="control-label"></label>*@
+                    <input asp-for="TourId" class="form-control" value="" type="hidden" />
+                    @*<span asp-validation-for="TourId" class="text-danger"></span>*@
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="TopHot" class="control-label"></label>
-                <input asp-for="TopHot" class="form-control" />
-                <span asp-validation-for="TopHot" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="ViewCount" class="control-label"></label>*@
-                <input asp-for="ViewCount" type="hidden" value="0" class="form-control" />
-                @*<span asp-validation-for="ViewCount" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MetaTitle" class="control-label"></label>
+                    <input asp-for="MetaTitle" class="form-control" />
+                    <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Code" class="control-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" type="file" name="f" accept="image/*" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Schedule" class="control-label"></label>
+
+                    <input asp-for="Schedule" class="form-control" />
+                    <span asp-validation-for="Schedule" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PromotionPrice" class="control-label"></label>
+                    <input asp-for="PromotionPrice" class="form-control" />
+                    <span asp-validation-for="PromotionPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartureDat" class="control-label"></label>
+                    <input asp-for="DepartureDat" class="form-control" />
+                    <span asp-validation-for="DepartureDat" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartPlace" class="control-label"></label>
+                    <input asp-for="StartPlace" class="form-control" />
+                    <span asp-validation-for="StartPlace" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndPlace" class="control-label"></label>
+                    <input asp-for="EndPlace" class="form-control" />
+                    <span asp-validation-for="EndPlace" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Transport" class="control-label"></label>
+                    <input asp-for="Transport" class="form-control" />
+                    <span asp-validation-for="Transport" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Detail" class="control-label"></label>
+                    <textarea asp-for="Detail" class="form-control" id="editor"></textarea>
+                    <span asp-validation-for="Detail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note" class="control-label"></label>
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-control">
+                        <option value="">-- Choose Category ---</option>
+                    </select>
+                    @*<input asp-for="CategoryId" class="form-control" />*@
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ScheduleId" class="control-label"></label>
+                    <select asp-for="ScheduleId" asp-items="@ViewBag.schedules" class="form-control">
+                        <option value="">-- Choose Schedule ---</option>
+                    </select>
+                    @*<input asp-for="ScheduleId" class="form-control" />*@
+                    <span asp-validation-for="ScheduleId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*<label asp-for="CreatedDate" class="control-label"></label>*@
+                    <input asp-for="CreatedDate" value="@DateTime.Now" type="hidden" class="form-control" />
+                    @*<span asp-validation-for="CreatedDate" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedBy" class="control-label"></label>
+                    <input asp-for="CreatedBy" class="form-control" />
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*<label asp-for="ModifiedDate" class="control-label"></label>*@
+                    <input asp-for="ModifiedDate" value="@DateTime.Now" type="hidden" class="form-control" />
+                    @* <span asp-validation-for="ModifiedDate" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifiedBy" class="control-label"></label>
+                    <input asp-for="ModifiedBy" class="form-control" />
+                    <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TopHot" class="control-label"></label>
+                    <input asp-for="TopHot" class="form-control" />
+                    <span asp-validation-for="TopHot" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*<label asp-for="ViewCount" class="control-label"></label>*@
+                    <input asp-for="ViewCount" type="hidden" value="0" class="form-control" />
+                    @*<span asp-validation-for="ViewCount" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 <script>
-            var editor = $("#editor").kendoEditor({
-                stylesheets: [
-                    "../content/shared/styles/editor.css",
-                ],
-                tools: [
-                    "bold",
-                    "italic",
-                    "underline",
-                    "undo",
-                    "redo",
-                    "justifyLeft",
-                    "justifyCenter",
-                    "justifyRight",
-                    "insertUnorderedList",
-                    "createLink",
-                    "unlink",
-                    "insertImage",
-                    "tableWizard",
-                    "createTable",
-                    "addRowAbove",
-                    "addRowBelow",
-                    "addColumnLeft",
-                    "addColumnRight",
-                    "deleteRow",
-                    "deleteColumn",
-                    "mergeCellsHorizontally",
-                    "mergeCellsVertically",
-                    "splitCellHorizontally",
-                    "splitCellVertically",
-                    "tableAlignLeft",
-                    "tableAlignCenter",
-                    "tableAlignRight",
-                    "formatting",
-                    {
-                        name: "fontName",
-                        items: [
-                            { text: "Andale Mono", value: "\"Andale Mono\"" }, // Font-family names composed of several words should be wrapped in \" \"
-                            { text: "Arial", value: "Arial" },
-                            { text: "Arial Black", value: "\"Arial Black\"" },
-                            { text: "Book Antiqua", value: "\"Book Antiqua\"" },
-                            { text: "Comic Sans MS", value: "\"Comic Sans MS\"" },
-                            { text: "Courier New", value: "\"Courier New\"" },
-                            { text: "Georgia", value: "Georgia" },
-                            { text: "Helvetica", value: "Helvetica" },
-                            { text: "Impact", value: "Impact" },
-                            { text: "Symbol", value: "Symbol" },
-                            { text: "Tahoma", value: "Tahoma" },
-                            { text: "Terminal", value: "Terminal" },
-                            { text: "Times New Roman", value: "\"Times New Roman\"" },
-                            { text: "Trebuchet MS", value: "\"Trebuchet MS\"" },
-                            { text: "Verdana", value: "Verdana" },
-                        ]
-                    },
-                    "fontSize",
-                    "foreColor",
-                    "backColor",
+    var editor = $("#editor").kendoEditor({
+        stylesheets: [
+            "../content/shared/styles/editor.css",
+        ],
+        tools: [
+            "bold",
+            "italic",
+            "underline",
+            "undo",
+            "redo",
+            "justifyLeft",
+            "justifyCenter",
+            "justifyRight",
+            "insertUnorderedList",
+            "createLink",
+            "unlink",
+            "insertImage",
+            "tableWizard",
+            "createTable",
+            "addRowAbove",
+            "addRowBelow",
+            "addColumnLeft",
+            "addColumnRight",
+            "deleteRow",
+            "deleteColumn",
+            "mergeCellsHorizontally",
+            "mergeCellsVertically",
+            "splitCellHorizontally",
+            "splitCellVertically",
+            "tableAlignLeft",
+            "tableAlignCenter",
+            "tableAlignRight",
+            "formatting",
+            {
+                name: "fontName",
+                items: [
+                    { text: "Andale Mono", value: "\"Andale Mono\"" }, // Font-family names composed of several words should be wrapped in \" \"
+                    { text: "Arial", value: "Arial" },
+                    { text: "Arial Black", value: "\"Arial Black\"" },
+                    { text: "Book Antiqua", value: "\"Book Antiqua\"" },
+                    { text: "Comic Sans MS", value: "\"Comic Sans MS\"" },
+                    { text: "Courier New", value: "\"Courier New\"" },
+                    { text: "Georgia", value: "Georgia" },
+                    { text: "Helvetica", value: "Helvetica" },
+                    { text: "Impact", value: "Impact" },
+                    { text: "Symbol", value: "Symbol" },
+                    { text: "Tahoma", value: "Tahoma" },
+                    { text: "Terminal", value: "Terminal" },
+                    { text: "Times New Roman", value: "\"Times New Roman\"" },
+                    { text: "Trebuchet MS", value: "\"Trebuchet MS\"" },
+                    { text: "Verdana", value: "Verdana" },
                 ]
-            });
-        </script>
+            },
+            "fontSize",
+            "foreColor",
+            "backColor",
+        ]
+    });
+</script>
 

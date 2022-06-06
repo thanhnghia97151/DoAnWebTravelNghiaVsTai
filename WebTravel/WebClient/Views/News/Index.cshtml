@@ -9,14 +9,18 @@
 <div class="motakhachsan">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>THÔNG TIN TIN TỨC</h2>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2>Tin Tức</h2>
             </div>
-        </div><br />
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="danhgia">Du lịch kỳ thú - Tour Du lịch hấp dẫn - Du lịch kỳ thú cung cấp những tour du lịch có giá tốt - Du khách sẽ được khám phá những danh lam thắng cảnh thiên nhiên đẹp mê hồn cùng nhiều công trình kiến trúc ấn tượng được tạo nên bởi bàn tay khéo léo của con người. Cùng Du Lịch Kỳ Thú tìm hiểu
-                những địa điểm du lịch để bắt đầu lên kế hoạch cho chuyến du lịch ngay nhé. Chúng tôi sẽ nỗ lực cập nhật tin tức mới nhất mỗi ngày</p>
+                <p class="danhgia">Đánh giá:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="tinkhachsan">Tin tức Du lịch - Tin tức Du lịch 2022 cung cấp các thông tin Du lịch Việt Nam, Thông tin Du lịch Thế Giới, các Sự kiện Du lịch diễn ra trong ngày. Thông qua các bài viết được cập nhật liên tục, du khách có thể nắm bắt thêm được nhiều thông tin hữu ích về du lịch.</p>
             </div>
         </div>
 
@@ -47,8 +51,8 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail" style="height: 480px;">
-                            <a href="/news/detail/@item.NewsId"><div><img src="https://localhost:44384/images/@item.Image" alt="" style="height:200px;"></div></a>
+                        <div class="thumbnail">
+                            <a href="/news/detail/@item.NewsId"><div><img src="https://localhost:44384/images/@item.Image" alt=""></div></a>
 
                             <div class="caption">
                                 <a href="/news/detail/@item.NewsId"><h4>@*Khám phá chợ hoa Hồ Thị Kỷ - Thiên đường ẩm thực và hoa tươi ở Sài Gòn*@ @item.Name</h4></a>
@@ -56,7 +60,7 @@
 
                                     <p>
                                         <span class="fa fa-calendar"></span>&nbsp; @*19/2/2021*@ @item.CreatedDate
-                                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;@item.ViewCount</small>
+                                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
                                     </p>
 
                                 </div>

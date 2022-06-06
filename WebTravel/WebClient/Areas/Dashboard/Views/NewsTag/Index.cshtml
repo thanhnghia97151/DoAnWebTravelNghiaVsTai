@@ -1,4 +1,6 @@
 ﻿@model List<NewsTag>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <a class="btn btn-success" asp-action="Create">Create</a>
 <table class="table table-bordered">
     <thead class="table-dark">
@@ -17,9 +19,15 @@
                 <td>@item.TagId</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.NewsId"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.NewsId/@item.TagId"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>

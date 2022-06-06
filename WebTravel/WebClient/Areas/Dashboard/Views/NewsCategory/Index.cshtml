@@ -1,9 +1,11 @@
 ﻿@model List<NewsCategory>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <a class="btn btn-success" asp-action="Create" >Create</a>
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
-            <th>Id</th>
+
             <th>Name</th>
             <th>Seo Title</th>
             <th>Meta Title</th>
@@ -14,14 +16,15 @@
             <th>Modified By</th>
             <th>Status</th>
             <th>Show On Home</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.NewsCategoryId</td>
+
                 <td>@item.Name</td>
                 <td>@item.SeoTitle</td>
                 <td>@item.MetaTitle</td>
@@ -34,9 +37,15 @@
                 <td>@item.ShowOnHome</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.NewsCategoryId"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.NewsCategoryId"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>

@@ -6,15 +6,13 @@
             <h2>THÔNG TIN HÓA ĐƠN</h2>
         </div>
     </div>
-</div>
-<br />
+</div><br />
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             @if (Model != null)
             {
-            <form asp-controller="Invoice" asp-action="CreatePDF" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -28,13 +26,11 @@
                                         <th>Quantity</th>
                                         <th>Thanh toán</th>
                                         <th>Hủy</th>
-                                        <th>Tích</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @{
                                         decimal totalMoney = 0;
-                                        int i = 0;
                                     }
                                     @foreach (var item in Model)
                                     {
@@ -42,66 +38,44 @@
                                         {
                                     <tr>
                                         <td>@item.InvoiceId.Substring(0, 30)</td>
-                                        
                                         <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
-                                        
                                         <td>@item.Tour.Name</td>
-                                       
                                         <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
-                                       
                                         <td>@item.Quantity</td>
-                                     
                                         @if (item.Status)
                                         {
                                             <td><small>Đã thanh toán</small></td>
-                                            
-                                            <td><input type="hidden" name="Status+@i" value="1" /></td>
+                                            <td></td>
                                         }
                                         else
                                         {
                                             <td><small>Chưa thanh toán</small></td>
                                             <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
                                             totalMoney = totalMoney + (item.Price * item.Quantity);
-                                           
                                         }
 
-                                        <td><input type="checkbox" name="Check+@i" value="1" /></td>
                                     </tr>
-                                    <tr>
-                                        <td><input type="hidden" name="InvoicedId+@i" value="@item.InvoiceId" /></td>
-                                        <td><input type="hidden" name="Name+@i" value="@item.Tour.Name" /></td>
-                                        <td><input type="hidden" name="Price+@i" value="@item.Price" /></td>
-                                        <td><input type="hidden" name="Quantity+@i" value="@item.Quantity" /></td>
-                                       
-                                    </tr>
-                                            i++;
+
                                         }
                                     }
-                                <tr><td> <input type="hidden" value="@i" name="Result" /></td></tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                            <input type="submit" class="btn btn-danger" value="Xuất dữ liệu" />
-                        </div><br /><br />
-                        <div class="row">
-
-                        </div>
                         @* the begin*@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                            <p style="font-size: 18px;">Tổng tiền thanh toán:&nbsp;&nbsp;&nbsp; <small>@totalMoney đ</small> </p>
+                            <p style="font-size: 20px;">Tổng tiền thanh toán:&nbsp;&nbsp;&nbsp; <small>@totalMoney đ</small> </p>
                         </div>
                         <div></div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
 
                             @{
                                 var result = @totalMoney / 23000;
-                                <p style="font-size: 18px;">Tổng tiền thanh toán($):&nbsp;&nbsp;&nbsp; <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
+                                                        <p style="font-size: 20px;">Tổng tiền thanh toán($):&nbsp;&nbsp;&nbsp; <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
                             }
                         </div>
                         <div></div>
                         <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 text-right">
-                            <p style="font-size: 18px;">Thanh toán tại đây:</p>
+                            <p style="font-size: 20px;">Thanh toán tại đây:</p>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 text-right">
                             <div id="paypal-button"></div>
@@ -110,7 +84,6 @@
 
                     </div>
                 </div>
-            </form>
 
             }
         </div>

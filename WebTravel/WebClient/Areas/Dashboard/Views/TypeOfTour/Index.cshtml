@@ -1,12 +1,12 @@
 ﻿@model List<TypeOfTour>
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
 <a class="btn btn-success" href="/dashboard/typeoftour/create">Create</a>
 <table class="table table-bordered">
     <thead class="table-dark">
         <tr>
-            <th>Id</th>
+
             <th>Type</th>
             <th>Edit</th>
-            <th>Detail</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -14,10 +14,12 @@
         @foreach(var item in Model )
         {
             <tr>
-                <td>@item.Id</td>
+
                 <td>@item.Type</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.Id"><i class="fa fa-trash"></i></a>
                 </td>
                     
@@ -28,3 +30,7 @@
         }
     </tbody>
 </table>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    $('.table').DataTable();
+</script>
