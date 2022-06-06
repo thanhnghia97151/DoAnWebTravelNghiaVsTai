@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using WebTravelApi.Models;
 using WebTravelApi.Models.ViewModels;
@@ -63,6 +64,24 @@ namespace WebTravelApi.Api.Controllers
         public TourCategoryModel GetTourCategoryModelById(string id)
         {
             return provider.TourCategory.GetTourCategoryModel(id);
+        }
+        [HttpGet("countbyyear/{id}")]
+        public IEnumerable<AnalyticCounty> GetCountByYear(string id)
+        {
+            DateTime time = Convert.ToDateTime(id);
+            return provider.TourCategory.GetCountByYear(time);
+        }
+        [HttpGet("countbymonth/{id}")]
+        public IEnumerable<AnalyticCounty> GetCountByMonth(string id)
+        {
+            DateTime time = Convert.ToDateTime(id);
+            return provider.TourCategory.GetCountByMonth(time);
+        }
+        [HttpGet("countbyday/{id}")]
+        public IEnumerable<AnalyticCounty> GetCountByDay(string id)
+        {
+            DateTime time = Convert.ToDateTime(id);
+            return provider.TourCategory.GetCountByDay(time);
         }
     }
 }

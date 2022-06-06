@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection.Metadata;
@@ -63,6 +64,19 @@ namespace WebTravelApi.Models.Repository
         public TourCategoryModel GetTourCategoryModel(string id)
         {
             return connection.QuerySingleOrDefault<TourCategoryModel>("select * from TourCategories where TourCategoriesId = @Id", new { Id = id });
+        }
+
+        public IEnumerable<AnalyticCounty> GetCountByYear(DateTime time)
+        {
+            return connection.Query<AnalyticCounty>("exec GetCountByYear @Date", new { Date = time });
+        }
+        public IEnumerable<AnalyticCounty> GetCountByMonth(DateTime time)
+        {
+            return connection.Query<AnalyticCounty>("exec GetCountByMonth @Date", new { Date = time });
+        }
+        public IEnumerable<AnalyticCounty> GetCountByDay(DateTime time)
+        {
+            return connection.Query<AnalyticCounty>("exec GetCountByDay @Date", new { Date = time });
         }
     }
 }
