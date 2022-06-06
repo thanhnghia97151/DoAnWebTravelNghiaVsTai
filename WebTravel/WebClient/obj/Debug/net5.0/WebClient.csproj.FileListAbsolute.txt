@@ -758,5 +758,9 @@ F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebC
 F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\ref\WebClient.dll
 F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.pdb
 F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.genruntimeconfig.cache
-F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache
 F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\Checkout.cshtml.g.cs
+F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\bin\Debug\net5.0\DinkToPdf.dll
+F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\bin\Debug\net5.0\libwkhtmltox.dll
+F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\bin\Debug\net5.0\libwkhtmltox.dylib
+F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\bin\Debug\net5.0\libwkhtmltox.so
+F:\Khoa_Luan_Tot_Nghiep\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache

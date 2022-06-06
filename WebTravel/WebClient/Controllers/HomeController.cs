@@ -58,6 +58,9 @@ namespace WebClient.Controllers
             //Get Type Tour
             Tour tour = await provider.Tour.GetTourById(id);
 
+            //Get 10 news hot.
+            ViewBag.news10hot = await provider.News.GetNews10Hot();
+
             //Get Schedule
             ViewBag.schedule = await provider.TourSchedule.GetTourScheduleById(tour.ScheduleId);
 
