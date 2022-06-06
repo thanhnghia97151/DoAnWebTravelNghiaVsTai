@@ -114,8 +114,8 @@ namespace WebClient.Controllers
                                     if (await provider.Invoice.Add(obj) == 2)
                                     {
                                         await provider.Tour.Ticket(obj);
-                                        //_forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
-                                       // _forgetPasswordRepository.SendInforBank(obj.Phone);
+                                        _forgetPasswordRepository.SendOrder(obj.Phone, obj.InvoiceId, obj.Price, obj.Quantity, tour.StartDate, tour.StartPlace);
+                                        _forgetPasswordRepository.SendInforBank(obj.Phone);
                                         foreach (var item in listCustomers)
                                         {
                                             await provider.Customer.Add(item);
