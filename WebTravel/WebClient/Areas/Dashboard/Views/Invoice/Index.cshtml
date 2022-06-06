@@ -24,7 +24,7 @@
                  @foreach (InvoiceModel item in Model)
             {
                 <tr>
-                    <td>@item.Tour.Name</td>
+                    <td>@if(item.Tour != null){ @item.Tour.Name }</td>
                     <td>@item.IncoiceDate</td>
                     <td>@item.Price</td>
                     <td>@item.Quantity</td>
@@ -75,7 +75,7 @@
 <script>
     $('.table').DataTable();
     function remove(id){
-        @*alert("Đúng!");*@
+        @*alert();*@
         
         $.post("/dashboard/invoice/delete/"+id,function(result){
             console.log(result);

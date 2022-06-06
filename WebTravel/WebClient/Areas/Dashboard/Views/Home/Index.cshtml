@@ -3,36 +3,275 @@
 <h2>1. THỐNG KÊ DOANH THU</h2>
 <form>
     <div class="row">
-    
-    <div class="col-lg-4">
-        <label>Chọn thời gian: </label>
-        <input class="form-control" id="time" asp-for="Time" onblur="loadTime()"/>
+
+        <div class="col-lg-4">
+            <label>Chọn thời gian: </label>
+            <input class="form-control" id="time" asp-for="Time" onblur="loadTime()" />
+        </div>
+        <div class="col-lg-4">
+            <label>Chọn thống kê theo: </label>
+            <select class="form-control" asp-for="Type" id="type">
+                <option value="0">Ngày</option>
+                <option value="1">Tháng</option>
+                <option value="2">Năm</option>
+                <option value="3">Quý</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <div id="quy"></div>
+        </div>
     </div>
-    <div class="col-lg-4">
-        <label>Chọn thống kê theo: </label>
-        <select class="form-control" asp-for="Type" id="type">
-            <option value ="0">Ngày</option>
-            <option value = "1">Tháng</option>
-            <option value = "2">Năm</option>
-            <option value = "3">Quý</option>
-        </select>
-    </div>
-    <div class="col-lg-4">
-        <div id="quy"></div>
-    </div>
-</div>
 </form>
 <div id="parent">
     <div id="chart">
 
     </div>
 </div>
+<hr />
+<br />
+<h2>2. THỐNG KÊ CÁC TOUR ĐÃ ĐẶT</h2>
 
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+<form id="frm">
+    <div class="row">
 
+        <div class="col-lg-4">
+            <label>Chọn thời gian: </label>
+            <input class="form-control" id="timeTour" type="date"  onblur="loadTimeTour()" />
+        </div>
+        <div class="col-lg-4">
+            <label>Chọn thống kê theo: </label>
+            <select class="form-control"  id="typeTour">
+                <option value="0">Ngày</option>
+                <option value="1">Tháng</option>
+                <option value="2">Năm</option>
+                <option value="3">Quý</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <div id="quyTour"></div>
+        </div>
+    </div>
+</form>
+<div id="parentTour">
+    <div id="chartTour">
+
+    </div>
+</div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
+    function loadTimeTour(){
+        //check show Quater I , II, III, VI
+        var t = $('#typeTour').val();
+        console.log(t);
+        if(t==3){
+
+            var string = '<label id="lbTour">Chọn quý: </label>'
+            string += '<select id="quaterTour" class="form-control">';
+            string += '<option value="1">Quý I</option>';
+            string += '<option value="2">Quý II</option>';
+            string += '<option value="3">Quý III</option>';
+            string += '<option value="4">Quý IV</option>';
+            string += '</select>';
+            $('#quyTour').append(string);
+            
+        }
+        else 
+        {
+            $('#lbTour').remove();
+            $('#quaterTour').remove();
+            
+        }
+
+        if(t == 0){
+            //Get Ngay
+            var time = $('#timeTour').val();
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbyday?id="+time, function(dulieu, status){
+                    console.log(dulieu);
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+            }
+        }
+
+        else if(t == 1){
+            var time = $('#timeTour').val();
+
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbymonth?id="+time, function(dulieu, status){
+                    console.log(dulieu);
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+
+                   
+            }
+        }
+
+        else if(t == 2){
+            var time = $('#timeTour').val();
+
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbyyear?id="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+
+                   
+            }
+        }
+    }
+     $('#typeTour').change(function(){
+         //check show Quater I , II, III, VI
+        var t = $('#typeTour').val();
+        //console.log(t);
+        if(t==3){
+
+            var string = '<label id="lbTour">Chọn quý: </label>'
+            string += '<select id="quaterTour" class="form-control">';
+            string += '<option value="1">Quý I</option>';
+            string += '<option value="2">Quý II</option>';
+            string += '<option value="3">Quý III</option>';
+            string += '<option value="4">Quý IV</option>';
+            string += '</select>';
+            $('#quyTour').append(string);
+            
+        }
+        else 
+        {
+            $('#lbTour').remove();
+            $('#quaterTour').remove();
+            
+        }
+
+        if(t == 0){
+            //Get Ngay
+            var time = $('#timeTour').val();
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbyday?id="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+            }
+        }
+        else if(t == 1){
+            var time = $('#timeTour').val();
+
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbymonth?id="+time, function(dulieu, status){
+                    console.log(dulieu);
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+
+                   
+            }
+        }
+
+        else if(t == 2){
+            var time = $('#timeTour').val();
+
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chartTour').remove();
+                $.get("/dashboard/home/getcountbyyear?id="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['name'].substring(0,3);
+                        console.log(id);
+                        
+                        var parent = '<div id="chartTour"></div>';
+                        $('#parentTour').append(parent);
+                        var name = dulieu[i]['name'].substring(0,3);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chartTour').append(htmlShow);
+                        chartTour(name,dulieu[i]['categories'],dulieu[i]['name']);
+
+                    }
+                });
+
+                   
+            }
+        }
+     });
     function loadTime(){
         //check show Quater I , II, III, VI
         var t = $('#type').val();
@@ -133,6 +372,7 @@
                 });
             }
         }
+
 
     };
     $('#type').change(function(){
@@ -243,25 +483,50 @@
     function chart(id, cate, titleType){
                          google.charts.load("current", {packages:["corechart"]});
                          google.charts.setOnLoadCallback(function (){
-                             
-                             
+
+
                                 var arr=[['Task', 'Hours per Day']];
-                        
+
                                 var chart = new google.visualization.PieChart(document.getElementById(id));
 
-                               
+
                                         var test = cate;
                                         for(var i in test){
                                             arr.push([test[i]['cateName'],test[i]['total']]);
-                                        } 
+                                        }
                                         var options = {
                                               title: titleType,
                                               pieHole: 0.4,
                                         };
                                         var data = google.visualization.arrayToDataTable(arr);
                                         chart.draw(data, options);
-                                
-                    
+
+
+                        });
+
+    }
+    function chartTour(id, cate, titleType){
+                         google.charts.load("current", {packages:["corechart"]});
+                         google.charts.setOnLoadCallback(function (){
+
+
+                                var arr=[['Task', 'Hours per Day']];
+
+                                var chart = new google.visualization.PieChart(document.getElementById(id));
+
+
+                                        var test = cate;
+                                        for(var i in test){
+                                            arr.push([test[i]['name'],test[i]['count']]);
+                                        }
+                                        var options = {
+                                              title: titleType,
+                                              pieHole: 0.4,
+                                        };
+                                        var data = google.visualization.arrayToDataTable(arr);
+                                        chart.draw(data, options);
+
+
                         });
 
     }

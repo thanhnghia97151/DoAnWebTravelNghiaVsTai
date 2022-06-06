@@ -291,7 +291,6 @@ D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dash
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\News\ConfirmDelete.cshtml.g.cs
 D:\DoAn_Tai_vs_Nghia\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\NewsTag\Create.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\NewsTag\Create.cshtml.g.cs
-D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\PolicyCategory\Index.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\PolicyCategory\Create.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Policy\Index.cshtml.g.cs
@@ -963,3 +962,4 @@ D:\DoAnNghiaTai\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\ref
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\Checkout.cshtml.g.cs
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Invoice\Index.cshtml.g.cs
 D:\DoAnNghiaTai\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Invoice\Index.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.csproj.AssemblyReference.cache

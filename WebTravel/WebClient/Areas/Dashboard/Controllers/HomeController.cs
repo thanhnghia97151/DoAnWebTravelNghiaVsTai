@@ -154,5 +154,89 @@ namespace WebClient.Areas.Dashboard.Controllers
 
             return Json(stats);
         }
+        public async Task<IActionResult> GetCountByYear([FromQuery]string id)
+        {
+            List<TypeOfTourCategoryModel> list = new List<TypeOfTourCategoryModel>();
+            List<TypeOfTour> type = await provider.TypeOfTour.GetTypeOfTours();
+            if (type != null)
+            {
+                
+                foreach (var item in type)
+                {
+                    List<AnalyticCounty> analyticsInfo = await provider.TourCategory.GetCountByYear(id);
+                    List<AnalyticCounty> analytics = new List<AnalyticCounty>();
+                    if (analyticsInfo != null)
+                    {
+                        foreach(var ana in analyticsInfo)
+                        {
+                            if (ana.TypeOfTourId == item.Id)
+                            {
+                                analytics.Add(ana);
+                            }
+                        }
+                    }
+                    list.Add(new TypeOfTourCategoryModel() { Name = item.Type, Categories = analytics });
+                }
+                
+            }
+            return Json(list);
+        }
+
+        public async Task<IActionResult> GetCountByMonth([FromQuery] string id)
+        {
+            List<TypeOfTourCategoryModel> list = new List<TypeOfTourCategoryModel>();
+            List<TypeOfTour> type = await provider.TypeOfTour.GetTypeOfTours();
+            if (type != null)
+            {
+
+                foreach (var item in type)
+                {
+                    List<AnalyticCounty> analyticsInfo = await provider.TourCategory.GetCountByMonth(id);
+                    List<AnalyticCounty> analytics = new List<AnalyticCounty>();
+                    if (analyticsInfo != null)
+                    {
+                        foreach (var ana in analyticsInfo)
+                        {
+                            if (ana.TypeOfTourId == item.Id)
+                            {
+                                analytics.Add(ana);
+                            }
+                        }
+                    }
+                    list.Add(new TypeOfTourCategoryModel() { Name = item.Type, Categories = analytics });
+                }
+
+            }
+            return Json(list);
+        }
+
+        public async Task<IActionResult> GetCountByDay([FromQuery] string id)
+        {
+            List<TypeOfTourCategoryModel> list = new List<TypeOfTourCategoryModel>();
+            List<TypeOfTour> type = await provider.TypeOfTour.GetTypeOfTours();
+            if (type != null)
+            {
+
+                foreach (var item in type)
+                {
+                    List<AnalyticCounty> analyticsInfo = await provider.TourCategory.GetCountByDay(id);
+                    List<AnalyticCounty> analytics = new List<AnalyticCounty>();
+                    if (analyticsInfo != null)
+                    {
+                        foreach (var ana in analyticsInfo)
+                        {
+                            if (ana.TypeOfTourId == item.Id)
+                            {
+                                analytics.Add(ana);
+                            }
+                        }
+                    }
+                    list.Add(new TypeOfTourCategoryModel() { Name = item.Type, Categories = analytics });
+                }
+
+            }
+            var t = 0;
+            return Json(list);
+        }
     }
 }

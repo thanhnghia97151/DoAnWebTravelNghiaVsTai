@@ -46,7 +46,7 @@ namespace WebTravelApi.Models.Repository
         }
         public InvoiceModel GetInvoiceModelById(string id)
         {
-            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, IncoiceDate, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
+            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, InvoiceDate, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
 
         }
         public int Delete(string id)
@@ -67,22 +67,22 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<InvoiceModel> GetStatsDay(DateTime time)
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and DAY(@Date) = DAY(i.IncoiceDate) and MONTH(@Date) = MONTH(i.IncoiceDate) and YEAR(@Date) = YEAR(i.IncoiceDate)";
+            string sql = "select i.Status, i.MemberId, i.InvoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and DAY(@Date) = DAY(i.InvoiceDate) and MONTH(@Date) = MONTH(i.InvoiceDate) and YEAR(@Date) = YEAR(i.InvoiceDate)";
             return connection.Query<InvoiceModel>(sql, new { Date = time });
         }
         public IEnumerable<InvoiceModel> GetStatsMonth(DateTime time)
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and MONTH(@Date) = MONTH(i.IncoiceDate) and YEAR(@Date) = YEAR(i.IncoiceDate)";
+            string sql = "select i.Status, i.MemberId, i.InvoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and MONTH(@Date) = MONTH(i.InvoiceDate) and YEAR(@Date) = YEAR(i.InvoiceDate)";
             return connection.Query<InvoiceModel>(sql,new { Date = time});
         }
         public IEnumerable<InvoiceModel> GetStatsYear(DateTime time)
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and YEAR(@Date) = YEAR(i.IncoiceDate)";
+            string sql = "select i.Status, i.MemberId, i.InvoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and YEAR(@Date) = YEAR(i.InvoiceDate)";
             return connection.Query<InvoiceModel>(sql, new { Date = time });
         }
         public IEnumerable<InvoiceModel> GetInvoiceModels()
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId";
+            string sql = "select i.Status, i.MemberId, i.InvoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId";
             return connection.Query<InvoiceModel>(sql);
         }
     }
