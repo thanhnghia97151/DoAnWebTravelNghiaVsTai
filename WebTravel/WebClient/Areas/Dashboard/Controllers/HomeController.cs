@@ -26,7 +26,7 @@ namespace WebClient.Areas.Dashboard.Controllers
         public async Task<IActionResult> GetStatsDay([FromQuery]string time)
         {
 
-            List<InvoiceModel> t = await provider.Invoice.GetStatsMonth(time);
+            List<InvoiceModel> t = await provider.Invoice.GetStatsDay(time);
 
             List<TypeOfTourModel> typeOfTourModels = new List<TypeOfTourModel>();
             List<TypeOfTour> listTypOfTour = await provider.TypeOfTour.GetTypeOfTours();
@@ -112,7 +112,7 @@ namespace WebClient.Areas.Dashboard.Controllers
         }
         public async Task<IActionResult> GetStatsYear([FromQuery] string time)
         {
-            List<InvoiceModel> t = await provider.Invoice.GetStatsMonth(time);
+            List<InvoiceModel> t = await provider.Invoice.GetStatsYear(time);
 
             List<TypeOfTourModel> typeOfTourModels = new List<TypeOfTourModel>();
             List<TypeOfTour> listTypOfTour = await provider.TypeOfTour.GetTypeOfTours();

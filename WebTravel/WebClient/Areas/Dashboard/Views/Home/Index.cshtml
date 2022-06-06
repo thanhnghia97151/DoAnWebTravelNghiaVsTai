@@ -6,7 +6,7 @@
     
     <div class="col-lg-4">
         <label>Chọn thời gian: </label>
-        <input class="form-control" id="time" asp-for="Time" value="@DateTime.Now"/>
+        <input class="form-control" id="time" asp-for="Time" onblur="loadTime()"/>
     </div>
     <div class="col-lg-4">
         <label>Chọn thống kê theo: </label>
@@ -22,13 +22,119 @@
     </div>
 </div>
 </form>
+<div id="parent">
+    <div id="chart">
+
+    </div>
+</div>
 
     <div id="piechart" style="width: 900px; height: 500px;"></div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
+    function loadTime(){
+        //check show Quater I , II, III, VI
+        var t = $('#type').val();
+        //console.log(t);
+        if(t==3){
 
+            var string = '<label id="lb">Chọn quý: </label>'
+            string += '<select id="quater" class="form-control" asp-for="Quater">';
+            string += '<option value="1">Quý I</option>';
+            string += '<option value="2">Quý II</option>';
+            string += '<option value="3">Quý III</option>';
+            string += '<option value="4">Quý IV</option>';
+            string += '</select>';
+            $('#quy').append(string);
+            
+        }
+        else 
+        {
+            $('#lb').remove();
+            $('#quater').remove();
+            
+        }
+
+        if(t == 0){
+            //Get Ngay
+            var time = $('#time').val();
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chart').remove();
+                $.get("/dashboard/home/getstatsday?time="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
+                        
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
+
+                    }
+                });
+            }
+        }
+        else if(t == 1){
+            var time = $('#time').val();
+
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chart').remove();
+                $.get("/dashboard/home/getstatsmonth?time="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
+                        
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
+
+                    }
+                });
+
+                   
+            }
+        }
+        else if(t == 2){
+            var time = $('#time').val();
+            console.log(t);
+            if(time==''){
+                alert("Hãy chọn thời gian!");
+            }
+            else{
+                $('#chart').remove();
+                $.get("/dashboard/home/getstatsyear?time="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
+                        
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
+
+                    }
+                    
+                });
+            }
+        }
+
+    };
     $('#type').change(function(){
         
         //check show Quater I , II, III, VI
@@ -61,40 +167,48 @@
                 alert("Hãy chọn thời gian!");
             }
             else{
+                $('#chart').remove();
                 $.get("/dashboard/home/getstatsday?time="+time, function(dulieu, status){
-                    console.log(dulieu);
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
+                        
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
+
+                    }
                 });
             }
         }
         else if(t == 1){
             var time = $('#time').val();
+
             console.log(t);
             if(time==''){
                 alert("Hãy chọn thời gian!");
             }
             else{
-                
-                    google.charts.load("current", {packages:["corechart"]});
-                    google.charts.setOnLoadCallback(function (){
-                        var arr=[['Task', 'Hours per Day']];
+                $('#chart').remove();
+                $.get("/dashboard/home/getstatsmonth?time="+time, function(dulieu, status){
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
                         
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
 
-                        $.get("/dashboard/home/getstatsmonth?time="+time, function(dulieu, status){
-                                console.log(dulieu);
-                                var test = dulieu[0]['categories'];
-                                for(var i in test){
-                                    arr.push([test[i]['cateName'],test[i]['total']]);
-                                } 
-                                var options = {
-                                      title: dulieu[0]['typeOfTour'],
-                                      pieHole: 0.4,
-                                };
-                                var data = google.visualization.arrayToDataTable(arr);
-                                chart.draw(data, options);
-                        });
-                    
+                    }
                 });
+
+                   
             }
         }
         else if(t == 2){
@@ -104,8 +218,20 @@
                 alert("Hãy chọn thời gian!");
             }
             else{
+                $('#chart').remove();
                 $.get("/dashboard/home/getstatsyear?time="+time, function(dulieu, status){
-                    console.log(dulieu);
+                    for(var i in dulieu){
+                        var id = '#'+ dulieu[i]['typeOfTour'].substring(0,2);
+                        console.log(id);
+                        
+                        var parent = '<div id="chart"></div>';
+                        $('#parent').append(parent);
+                        var name = dulieu[i]['typeOfTour'].substring(0,2);
+                        var htmlShow = '<div id="' + name + '" style="width: 900px; height: 500px;" ></div>';
+                        $('#chart').append(htmlShow);
+                        chart(name,dulieu[i]['categories'],dulieu[i]['typeOfTour']);
+
+                    }
                     
                 });
             }
@@ -113,5 +239,31 @@
 
 
     });
+
+    function chart(id, cate, titleType){
+                         google.charts.load("current", {packages:["corechart"]});
+                         google.charts.setOnLoadCallback(function (){
+                             
+                             
+                                var arr=[['Task', 'Hours per Day']];
+                        
+                                var chart = new google.visualization.PieChart(document.getElementById(id));
+
+                               
+                                        var test = cate;
+                                        for(var i in test){
+                                            arr.push([test[i]['cateName'],test[i]['total']]);
+                                        } 
+                                        var options = {
+                                              title: titleType,
+                                              pieHole: 0.4,
+                                        };
+                                        var data = google.visualization.arrayToDataTable(arr);
+                                        chart.draw(data, options);
+                                
+                    
+                        });
+
+    }
 
 </script>

@@ -72,12 +72,12 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<InvoiceModel> GetStatsMonth(DateTime time)
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId and MONTH(@Date) = MONTH(i.IncoiceDate) and YEAR(@Date) = YEAR(i.IncoiceDate)";
+            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and MONTH(@Date) = MONTH(i.IncoiceDate) and YEAR(@Date) = YEAR(i.IncoiceDate)";
             return connection.Query<InvoiceModel>(sql,new { Date = time});
         }
         public IEnumerable<InvoiceModel> GetStatsYear(DateTime time)
         {
-            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId and YEAR(@Date) = YEAR(i.IncoiceDate)";
+            string sql = "select i.Status, i.MemberId, i.IncoiceDate, id.* from Invoice as i join InvoiceDetail as id on i.InvoiceId = id.InvoiceId where Status = 1 and YEAR(@Date) = YEAR(i.IncoiceDate)";
             return connection.Query<InvoiceModel>(sql, new { Date = time });
         }
        
