@@ -67,6 +67,9 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<InvoiceModel>>($"/api/invoice/statsyear/{time}");
         }
-
+        public async Task<List<InvoiceModel>> GetInvoiceModels()
+        {
+            return await Get<List<InvoiceModel>>("/api/invoice/invoicemodels");
+        }
     }
 }

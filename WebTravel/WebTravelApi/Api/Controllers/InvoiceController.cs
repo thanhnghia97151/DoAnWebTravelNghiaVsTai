@@ -83,6 +83,10 @@ namespace WebTravelApi.Api.Controllers
             DateTime convert = Convert.ToDateTime(id);
             return provider.Invoice.GetStatsYear(convert);
         }
-
+        [HttpGet("invoicemodels")]
+        public IEnumerable<InvoiceModel> GetInvoiceModels()
+        {
+            return provider.Invoice.GetInvoiceModels();
+        }
     }
 }

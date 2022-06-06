@@ -25,7 +25,7 @@ namespace WebClient.Areas.Dashboard.Controllers
         }
         public async Task<IActionResult> AddRoles(MemberInRole obj)
         {
-            var t = await provider.MemberInRole.Add(obj);
+            //var t = await provider.MemberInRole.Add(obj);
             return Json(await provider.MemberInRole.Add(obj));
         }
     }

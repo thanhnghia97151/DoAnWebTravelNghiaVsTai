@@ -961,3 +961,4 @@ D:\DoAnNghiaTai\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Web
 D:\DoAnNghiaTai\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\WebClient.genruntimeconfig.cache
 D:\DoAnNghiaTai\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\ref\WebClient.dll
 D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Views\Invoice\Checkout.cshtml.g.cs
+D:\DoAnWebTravelNghiaVsTai\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Invoice\Index.cshtml.g.cs
