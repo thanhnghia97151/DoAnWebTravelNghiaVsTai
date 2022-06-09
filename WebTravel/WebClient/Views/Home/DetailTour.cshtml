@@ -291,295 +291,59 @@
     </div>
     <!-- the end Information Relation -->
 
-    <!-- content relation -->
-    <section>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="large-12 columns">
-          <div class="owl-carousel owl-theme">
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
+            <!-- content relation -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="large-12 columns">
+                                <div class="owl-carousel owl-theme">
+                                    @if (news10host != null)
+                                    {
+                                        @foreach (var news in news10host)
+                                        {
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="thumbnail" style="height:460px;">
+                                                            <img src="https://localhost:44384/images//@news.Image" alt=""  style="height:200px;">
+                                                            <div class="caption">
+                                                                @if (news.Name.Length > 65)
+                                                                {
+                                                                    <h4>@news.Name.Substring(0, 65);...</h4>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h4>@news.Name</h4>
+                                                                }
+                                                                <div class="eye">
+                                                                    <p>
+                                                                        <span class="fa fa-calendar"></span>&nbsp; @news.ModifiedDate
+                                                                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;@news.ViewCount</small>
+                                                                    </p>
+                                                                </div>
+                                                                @if (news.Description.Length > 145)
+                                                                {
+                                                                    <p>@news.Description.Substring(0, 145);...</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p>@news.Description</p>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @*the end 1 item*@
+                                </div>
+                            </div>
                         </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
                     </div>
                 </div>
-              </div>
-            </div>
-            <div class="item">
-             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-          
-          </div>                 
-        </div>
-        </div>
-      </div>
-    </div>
-    </section>
+            </section>
 
     <script type="~/text/javascript" src="vendor/bootstrap.js"></script>
     <script type="~/text/javascript" src="js/1.js"></script>

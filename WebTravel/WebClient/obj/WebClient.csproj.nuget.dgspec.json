@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {}
+    "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebClient\\WebClient.csproj": {}
   },
   "projects": {
-    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {
+    "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebClient\\WebClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectUniqueName": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebClient\\WebClient.csproj",
         "projectName": "WebClient",
-        "projectPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
-        "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-        "outputPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\obj\\",
+        "projectPath": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebClient\\WebClient.csproj",
+        "packagesPath": "C:\\Users\\VanTaiPC\\.nuget\\packages\\",
+        "outputPath": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
               "version": "[5.2.7, )"

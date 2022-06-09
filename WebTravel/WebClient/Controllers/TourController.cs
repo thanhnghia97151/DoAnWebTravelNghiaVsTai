@@ -76,34 +76,22 @@ namespace WebClient.Controllers
 
             return View();
         }
-        
-        public async Task<IActionResult> ToursByCategory(string id,[FromQuery] int page = 1)
+        public async Task<IActionResult> ToursByCategory(string id)
         {
-            List<Tour> litsTour = new List<Tour>();
-            try
-            {
-                //Get Type of Tour
-                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+            //Get Type of Tour
+            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
 
-                //Get type of News Category
-                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+            //Get type of News Category
+            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
 
-                //Get Tour Category by Id
-                ViewBag.tourcate = await provider.TourCategory.GetCategory(id);
+            //Get Tour Category by Id
+            ViewBag.tourcate = await provider.TourCategory.GetCategory(id);
 
 
-                //Get Tours by CategoryId
-                //ViewBag.toursbycategoryid = await provider.Tour.GetTourByCategoryId(id);
-                litsTour = await provider.Tour.GetTourByCategoryId(id);
-            }
-            catch (Exception)
-            {
+            //Get Tours by CategoryId
+            ViewBag.toursbycategoryid = await provider.Tour.GetTourByCategoryId(id);
 
-                ViewBag.ErrorSystem = "Lỗi hệ thống, vui lòng thử lại sau!";
-            }
-            //int pageNumber = page ?? 1;
-            ViewBag.page = page;
-            return View(litsTour.ToPagedList(page,6));
+            return View();
         }
         public async Task<IActionResult> AllTour(int id = 1)
         {
@@ -126,7 +114,7 @@ namespace WebClient.Controllers
 
             //var t = list.ToPagedList(3, 6);            
             //return View(await provider.Tour.GetTours());
-            return View(list.ToPagedList(id,6));
+            return View(list.ToPagedList(id, 6));
         }
 
         [HttpGet]
@@ -188,7 +176,6 @@ namespace WebClient.Controllers
 
             return View();
         }
-
         public async Task<IActionResult> TourModelByTourCategory(string id)
         {
             try
@@ -198,9 +185,6 @@ namespace WebClient.Controllers
 
                 //Get type of News Category
                 ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-                //Get Tour Cate parent
-                ViewBag.parent = await provider.TourCategory.GetCategory(id);
 
                 //Get tour cate
                 var listTourCate = await provider.TourCategory.GetTourCategroyChild(id);

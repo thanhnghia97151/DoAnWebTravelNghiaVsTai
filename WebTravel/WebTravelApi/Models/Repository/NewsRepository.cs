@@ -93,7 +93,7 @@ namespace WebTravelApi.Models.Repository
 
         public IEnumerable<News> GetNews10Host() 
         {
-            string sql = "select TOP 12 n.NewsId, n.Name, n.Description, n.CreatedDate, n.ViewCount, n.Image from [dbo].[News] as n where order by n.ViewCount DESC";
+            string sql = "select TOP 12 n.NewsId, n.Name, n.Description, n.CreatedDate, n.ViewCount, n.Image from [dbo].[News] as n order by n.ViewCount DESC";
             return connection.Query<News>(sql);
         }
 
