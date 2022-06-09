@@ -963,3 +963,4 @@ F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\Web
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\ref\WebClient.dll
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.pdb
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\WebClient.genruntimeconfig.cache
+F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebClient\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Invoice\Index.cshtml.g.cs

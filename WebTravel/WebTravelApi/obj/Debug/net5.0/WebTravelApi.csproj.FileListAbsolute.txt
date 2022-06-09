@@ -246,7 +246,6 @@ F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\Web
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.csproj.AssemblyReference.cache
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.GeneratedMSBuildEditorConfig.editorconfig
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.AssemblyInfoInputs.cache
 F:\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\DoANCodeSourse\WebTravel\WebTravelApi\obj\Debug\net5.0\WebTravelApi.AssemblyInfo.cs

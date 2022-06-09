@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj": {}
+    "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj": {}
   },
   "projects": {
-    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj": {
+    "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
+        "projectUniqueName": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
         "projectName": "WebTravelApi",
-        "projectPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
-        "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-        "outputPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebTravelApi\\obj\\",
+        "projectPath": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebTravelApi\\WebTravelApi.csproj",
+        "packagesPath": "C:\\Users\\VanTaiPC\\.nuget\\packages\\",
+        "outputPath": "F:\\BÁO_CAO_KHOA_LUẬN_TOT_NGHIÊP_LEVANTAI_NGUYENTHANHNGHIA\\DoANCodeSourse\\WebTravel\\WebTravelApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ThanhNghiaPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\VanTaiPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,6 +71,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -83,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.210\\RuntimeIdentifierGraph.json"
         }
       }
     }
