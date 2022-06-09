@@ -45,7 +45,7 @@ namespace WebTravelApi.Models.Repository
         }
         public InvoiceModel GetInvoiceModelById(string id)
         {
-            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, IncoiceDate, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
+            return connection.QuerySingleOrDefault<InvoiceModel>("select InvoiceDetail.*, MemberId, InvoiceDate, Status from Invoice join InvoiceDetail on Invoice.InvoiceId = InvoiceDetail.InvoiceId where Invoice.InvoiceId = @Id", new { Id = id });
 
         }
         public int Delete(string id)
