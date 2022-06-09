@@ -20,24 +20,59 @@ namespace WebClient.Controllers
         }
         public async Task<IActionResult> TypeOfTour(string id)
         {
-            //Get Type of Tour
-            ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
-
-            //Get type of News Category
-            ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
-
-            //Get Type Of Tour
-            ViewBag.typeoftour = await provider.TypeOfTour.GetTypeOfTour(id);
-
-            //Get Category By Type Of Tour
-            List<TourCategoryModel> tourCate = await provider.TourCategory.GetTourCategoryModelByTypeOfTour(id);
-
-            //Get Tour by Category
-            foreach (var item in tourCate)
+            try
             {
-                item.Tours = await provider.Tour.GetTourByCategoryId(item.TourCategoriesId);
+                //Get Type of Tour
+                ViewBag.typeoftours = await provider.TypeOfTour.GetTypeOfTours();
+
+                //Get type of News Category
+                ViewBag.newscategories = await provider.NewsCategory.GetNewsCategories();
+
+                //Get Type Of Tour
+                ViewBag.typeoftour = await provider.TypeOfTour.GetTypeOfTour(id);
+
+                //Get Category By Type Of Tour
+                List<TourCategoryModel> tourCate = await provider.TourCategory.GetTourCategoryModelByTypeOfTour(id);
+
+                //Get Tour by Category
+                foreach (var item in tourCate)
+                {
+                    item.Tours = await provider.Tour.GetTourByCategoryId(item.TourCategoriesId);
+                }
+                ViewBag.tourcategories = tourCate;
+
+
+                //Get tour category parent
+                List<TourCategoryModel> listparentCate = await provider.TourCategory.GetTourCategoryParent(id);
+                if (listparentCate != null)
+                {
+                    foreach (var item in listparentCate)
+                    {
+                        item.Childrens = await provider.TourCategory.GetTourCategroyChild(item.TourCategoriesId);
+                    }
+                }
+
+                if (listparentCate != null)
+                {
+                    foreach (var item in listparentCate)
+                    {
+                        if (item.Childrens != null)
+                        {
+                            foreach (var child in item.Childrens)
+                            {
+                                child.Tours = await provider.Tour.GetTourByCategoryId(child.TourCategoriesId);
+                            }
+                        }
+                    }
+                }
+
+                ViewBag.tourcateparent = listparentCate;
             }
-            ViewBag.tourcategories = tourCate;
+            catch (Exception)
+            {
+
+                ViewBag.ErrorSystem = "Lỗi hệ thống, vui lòng thử lại sau!";
+            }
 
             return View();
         }

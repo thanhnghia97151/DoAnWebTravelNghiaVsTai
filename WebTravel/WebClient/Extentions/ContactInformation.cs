@@ -67,7 +67,7 @@ namespace WebClient.Extentions
                 {
                     content = "Nội dung phải là chuỗi ký tự không bắt đầu bằng số";
                 }
-                if (contact.Company != "" || contact.Company != null)
+                if (contact.Company != null)
                 {
                     if (Regex.IsMatch(contact.Company, "^[0-9]+$"))
                     {
