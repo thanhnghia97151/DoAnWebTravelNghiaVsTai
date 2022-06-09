@@ -50,5 +50,11 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.Tour.Ticket(id, quantity);
         }
+
+        [HttpGet("search/{address}/{priceStart}/{priceEnd}")]
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+        {
+            return provider.Tour.Search(address, priceStart, priceEnd);
+        }
     }
 }

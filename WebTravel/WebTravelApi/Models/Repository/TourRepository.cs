@@ -85,5 +85,9 @@ namespace WebTravelApi.Models.Repository
         {
             return connection.Execute("UpdateQuantity", new { Id = id, SoLuong = quantity }, commandType: CommandType.StoredProcedure);
         }
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd)
+        {
+            return connection.Query<Tour>($"select * from Tours as t where t.Name like N'%{address}%' and t.Price < {priceEnd} and t.Price >={priceStart}");
+        }
     }
 }
