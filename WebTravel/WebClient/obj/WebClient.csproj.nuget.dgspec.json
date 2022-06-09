@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {}
+    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {}
   },
   "projects": {
-    "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {
+    "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectUniqueName": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
         "projectName": "WebClient",
-        "projectPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
+        "projectPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\WebClient.csproj",
         "packagesPath": "C:\\Users\\ThanhNghiaPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\obj\\",
+        "outputPath": "E:\\DoAnWebTravelNghiaVsTai\\WebTravel\\WebClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
