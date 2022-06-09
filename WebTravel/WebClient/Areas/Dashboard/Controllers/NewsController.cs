@@ -20,10 +20,31 @@ namespace WebClient.Areas.Dashboard.Controllers
         {
             return View(await provider.News.GetNews());
         }
+        
+        public async Task<IActionResult> Edit(string id)
+        {
+            return View(await provider.News.GetNewById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(News news, IFormFile f)
+        {
+            if (ModelState.IsValid)
+            {
+                if (f != null)
+                {
+                    Image image = await provider.Tour.AddImage(f);
+                    news.Image = image.Name;
+                }
+                var t = await provider.News.Edit(news);
+                return RedirectToAction("Index");
+            }
+            return View(news);
+        }
         public IActionResult Create()
         {
             return View();
         }
+        
         [HttpPost]
         public async Task<IActionResult> Create(News news, IFormFile f)
         {
@@ -35,7 +56,7 @@ namespace WebClient.Areas.Dashboard.Controllers
                     news.Image = image.Name;
                 }
                 await provider.News.Add(news);
-                return Redirect("Index");
+                return RedirectToAction("Index");
             }
             return View(news);
         }

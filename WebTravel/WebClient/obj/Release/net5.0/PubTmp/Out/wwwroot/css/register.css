@@ -1,0 +1,52 @@
+*{margin:0;padding:0}
+
+form.formwidth {
+    margin: 0px 13px;
+}
+
+input#username {}
+
+.form-group {}
+
+a.dangnhap {
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.vien {
+    border-radius: 23px;
+    background-color: white;
+    margin-top: 5%;
+}
+
+button.noderesgiter {
+    color: white;
+    background-color: #545499db;
+    padding: 8px 38px;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.titleregister {
+    font-weight: 600;
+    font-size: 21px;
+    text-align: center;
+    padding: 22px 0px;
+}
+
+ @font-face {
+    src: url(fonts/fontawesome-webfont.ttf);
+    font-family: Roboto;
+
+ }
+ body {
+    font-family: 'Roboto';
+    background-image: url('../images/login.png');
+}
+
+.khoangcach {
+    margin-bottom: 23px;
+    height: 30px;
+}

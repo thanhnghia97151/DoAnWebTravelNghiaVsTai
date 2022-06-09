@@ -1,15 +1,17 @@
-﻿
+﻿@model TourModelSearch
+
 @{
     TypeOfTour typeOfTour = ViewBag.typeoftour;
     List<TourCategoryModel> listTourCate = ViewBag.tourcategories;
+    List<TourCategoryModel> listFullTourCateVsTour = ViewBag.tourcateparent;
 }
- <!-- Thong tin goi nho -->
+<!-- Thong tin goi nho -->
 <div class="goinho">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="thongtin">
-                    <small>Trang Chủ > Khách Sạn</small>
+                    <small>Trang Chủ > Du lịch trong nước</small>
                 </div>
             </div>
         </div>
@@ -17,45 +19,56 @@
 </div> <!-- the end goi nho -->
 <!-- Tìm kiếm du lịch trong nước -->
 <div class="KhungTimKiem">
-
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
                 <div class="TitleTimKiem text-center">
-                    <p>TÌM TOUR TRONG NƯỚC</p>
+                    <p>TÌM TOUR </p>
                 </div>
-                <form action="">
+                <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
+                <form action="/tour/search" method="post">
+                    <input type="hidden" asp-for="PriceStart" />
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control chinhtimkiem" id="noidi">
-                                <option value="0"> Hà Nội</option>
-                                <option value="1"> Hồ Chí Minh</option>
+                            <select asp-for="Address" class="form-control chinhtimkiem" id="noidi">
+                                <option value="Hà Nội"> Hà Nội</option>
+                                <option value="Hồ Chí Minh"> Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="form-group">
+                <select class="form-control chinhtimkiem" id="noiden">
+                    <option value="my"> Mỹ</option>
+                    <option value="anh"> Anh</option>
+                    <option value="phap"> Pháp</option>
+                    <option value="nhat"> Nhật</option>
+                    <option value="han"> Hàn</option>
+                </select>
+            </div>
+        </div>*@
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <select asp-for="PriceEnd" class="form-control chinhtimkiem" id="gia">
+                                <option value="2000000"> Dưới 2 triệu</option>
+                                <option value="4000000"> Từ 2-4 triệu</option>
+                                <option value="6000000"> Từ 4-6 triệu</option>
+                                <option value="8000000"> Từ 6-8 triệu</option>
+                                <option value="8000001"> Trên 8 triệu</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control chinhtimkiem" id="noiden">
-                                <option value="my"> Mỹ</option>
-                                <option value="anh"> Anh</option>
-                                <option value="phap"> Pháp</option>
-                                <option value="nhat"> Nhật</option>
-                                <option value="han"> Hàn</option>
-                            </select>
+                            <input asp-for="StartDate" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control chinhtimkiem" id="gia">
-                                <option value="2"> Dưới 2 triệu</option>
-                                <option value="4"> Từ 2-4 triệu</option>
-                                <option value="6"> Từ 4-6 triệu</option>
-                                <option value="8"> Từ 6-8 triệu</option>
-                                <option value="9"> Trên 8 triệu</option>
-                            </select>
+                            <input asp-for="EndDate" class="form-control"/>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    </div><br />
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                         <input type="submit" value="TÌM KIẾM" class="btn btn-dark timkiem">
                     </div>
                 </form>
@@ -69,13 +82,19 @@
 <div class="motakhachsan">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2>DU LỊCH @typeOfTour.Type.ToUpper()</h2>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                @if (typeOfTour != null)
+                {
+                    <h2>DU LỊCH @typeOfTour.Type.ToUpper()</h2>
+	            } <br />
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="danhgia">Đánh giá:</p>
+                <p class="danhgia">Du lịch kỳ thú - Tour Du lịch hấp dẫn - Du lịch kỳ thú cung cấp những tour du lịch có giá tốt 
+                - Du khách sẽ được khám phá những danh lam thắng cảnh thiên nhiên đẹp mê hồn cùng nhiều công trình kiến trúc
+                ấn tượng được tạo nên bởi bàn tay khéo léo của con người. Cùng Du Lịch Kỳ Thú
+                tìm hiểu những địa điểm du lịch để bắt đầu lên kế hoạch cho chuyến du lịch ngay nhé!</p>
             </div>
         </div>
         <div class="row">
@@ -89,793 +108,91 @@
     </div>
 </div>
 
-<!-- begin hien thi loai khach hang -->
-
-@foreach(var item in listTourCate)
+<!-- begin hien thi loai tour -->
+@if (listFullTourCateVsTour != null)
 {
-<div class="loaikhachsan1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                <h2>@item.Name</h2>
-            </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                <div class="left">
-                    <a href="/tour/toursbycategory/@item.TourCategoriesId"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- the end loaikhachsan1 -->
-<!--  Demos -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="large-10 columns">
-                    <div class="owl-carousel owl-theme">
-                        @foreach (var tour in item.Tours)
-                       {
-                          <div class="item">
-                            <div class="thumbnail">
-                                <a href="/home/detailtour/@tour.TourId"><img src="https://localhost:44384/images/@tour.Image" alt=""></a>
-                                <div class="captionbottomimage">
-                                    @tour.MetaTitle
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: @tour.Schedule
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @tour.StartDate</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: @tour.Price đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: @tour.Quantity
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                       }
-                        @*<div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai1.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Hàn Quốc mùa hoa Anh Đào 2020 từ Sài Gòn giá tốt
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>*@
+    @foreach (var cate in listFullTourCateVsTour)
+    {
+        <hr />
+        <div class="loaikhachsan1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h1 style="text-align:center"> <a style="text-decoration: none;" href="/tour/tourmodelbytourcategory/@cate.TourCategoriesId">DU LỊCH @cate.Name.ToUpper()</a> </h1>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+        @foreach (var item in cate.Childrens)
+            {
+            @if(item.Tours.Count() > 0)
+                {
+                    <div class="loaikhachsan1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                    <h2>DU LỊCH @item.Name</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                    <div class="left">
+                                        <a href="/tour/toursbycategory/@item.TourCategoriesId"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- the end loaikhachsan1 -->
+                    <!--  Demos -->
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="large-10 columns">
+                                        <div class="owl-carousel owl-theme">
+                                            @foreach (var tour in item.Tours)
+                                            {
+                                                <div class="item">
+                                                    <div class="thumbnail" style="height: 400px;">
+                                                        <a href="/home/detailtour/@tour.TourId"><img src="https://localhost:44384/images/@tour.Image" alt="" style="height:200px;"></a>
+                                                        <div class="captionbottomimage">
+                                                            @tour.Name
+                                                        </div>
+                                                        <div class="caption">
+                                                            <div class="review">
+                                                                <p>
+                                                                    <span class="fa fa-history"></span>
+                                                                    &nbsp;Lịch trình: @tour.Schedule
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @tour.StartDate</p>
+                                                            </div>
+
+                                                            <div class="detailItem">
+                                                                <b class="pull-right price">Giá: @tour.Price đ</b>
+                                                                <p>
+                                                                    <span class="fa fa-user book"></span>
+                                                                    &nbsp;Vé còn: @tour.Quantity
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div> <!-- end slide left 2 item 1 -->
+                                        </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+            }
+            
+    }
 }
 
 
-@*<!--  loai khach san 2 -->
-<!-- begin hien thi loai khach hang -->
-<div class="loaikhachsan1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                <h2>DU LỊCH ĐÀ NẴNG</h2>
-            </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                <div class="left">
-                    <a href="£"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- the end loaikhachsan1 -->
-<!--  Demos -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="large-10 columns">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
 
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
 
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
 
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail">
-                                <img src="~/images/nuocngoai2.jpg" alt="">
-                                <div class="captionbottomimage">
-                                    Du lịch Mỹ Bờ Tây Hoa Kỳ Los Angeles - San Diego từ Sài Gòn 2022
-                                </div>
-                                <div class="caption">
-                                    <div class="review">
-                                        <p>
-                                            <span class="fa fa-history"></span>
-                                            &nbsp;Lịch trình: 3 ngày 2 đêm
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: 19/2/2021</p>
-                                    </div>
-
-                                    <div class="detailItem">
-                                        <b class="pull-right price">Giá: 3,333,000 đ</b>
-                                        <p>
-                                            <span class="fa fa-user book"></span>
-                                            &nbsp;Vé còn: 10
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end slide left 2 item 1 -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@

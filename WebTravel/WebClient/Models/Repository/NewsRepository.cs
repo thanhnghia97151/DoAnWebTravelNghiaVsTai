@@ -16,6 +16,32 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<News>>("/api/news");
         }
+
+        public async Task<List<News>> GetNews10Hot()
+        {
+            return await Get<List<News>>("/api/news/news10hot");
+        }
+
+        public async Task<int> Edit(News news)
+        {
+            return await Post<News>("/api/news/edit", news);
+        }
+
+        public async Task<News> GetNewsHot() 
+        {
+            return await Get<News>("/api/news/newshot"); 
+        }
+
+        public async Task<List<News>> GetNewsOutstanding() 
+        {
+            return await Get<List<News>>("/api/news/newsoutstanding");
+        }
+
+        public async Task<List<News>> GetFourNews()
+        {
+            return await Get<List<News>>("/api/news/fournews");
+        }
+
         public async Task<int> Add(News news)
         {
             return await Post<News>("/api/news", news);
@@ -45,5 +71,14 @@ namespace WebClient.Models.Repository
             return null;
 
         }
+        public async Task<List<News>> GetNewsPaging(int page, int size)
+        {
+            return await Get<List<News>>($"/api/news/newspaging/{page}/{size}");
+        }
+        public async Task<List<News>> GetNewsByCategoryId(string id)
+        {
+            return await Get<List<News>>($"/api/news/newscategory/{id}");
+        }
+
     }
 }

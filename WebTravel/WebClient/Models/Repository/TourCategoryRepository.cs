@@ -31,5 +31,18 @@ namespace WebClient.Models.Repository
         {
             return await Get<List<TourCategoryModel>>($"/api/tourcategory/categorymodel/{id}");
         }
+
+        public async Task<List<TourCategoryModel>> GetTourCategoryParent(string id)
+        {
+            return await Get<List<TourCategoryModel>>($"/api/tourcategory/categoryparent/{id}");
+        }
+        public async Task<IList<TourCategoryModel>> GetTourCategroyChild(string id)
+        {
+            return await Get<IList<TourCategoryModel>>($"/api/tourcategory/categorychild/{id}");
+        }
+        public async Task<TourCategoryModel> GetTourCategoryModelById(string id)
+        {
+            return await Get<TourCategoryModel>($"/api/tourcategory/categorymodelbyid/{id}");
+        }
     }
 }

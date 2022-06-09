@@ -1,53 +1,54 @@
 ﻿@model Member
-@*<form method="post" action="/auth/register">
-     <div>
-        <label>UserName</label>
-        <input type="text" asp-for ="UserName"/>
-    </div>
-     <div>
-        <label>Email</label>
-        <input type="email" asp-for ="Email"/>
-    </div>
-     <div>
-        <label>Phone</label>
-        <input type="text" asp-for ="Phone"/>
-    </div>
-     <div>
-        <label>Address</label>
-        <input type="text" asp-for ="Address"/>
-    </div>
-     <div>
-        <label>Passsword</label>
-        <input type="text" asp-for ="Password"/>
-    </div>
-     <div>
-        <button>Register</button>
-    </div>
-</form>*@
+
 @{
     Layout = "_LayoutRegister";
 }
 <div class="formregister">
+
     <form class="formwidth" action="/auth/register" method="post" accept-charset="utf-8">
+        <div style="color: red; font-size: 13px;" asp-validation-summary="ModelOnly"></div>
         <div class="form-group khoangcach">
-            <input type="text" name="username" id="username" asp-for="UserName" class="form-control" placeholder="Nhập Username">
+            <input type="text" id="username" asp-for="UserName" class="form-control" placeholder="Nhập Username">
+            <span style="color: red; font-size: 13px;" asp-validation-for="UserName"></span>
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorUserName</small>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="email" id="email" class="form-control" asp-for="Email" placeholder="Nhập Email">
+            <input type="text" id="brithday" class="form-control" asp-for="Birthday" placeholder="Nhập ngày sinh">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Birthday"></span>
+            @if (ViewBag.ErrorBrithday != "1")
+            {
+                <small style="color: red; font-size: 13px;">@ViewBag.ErrorBrithday</small>
+            }
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="phone" id="phone" class="form-control" asp-for="Phone" placeholder="Nhập Số điện thoại">
+            <input type="text" id="email" class="form-control" asp-for="Email" placeholder="Nhập Email">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Email"></span>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="address" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
+            <input type="text" id="phone" class="form-control" asp-for="Phone" placeholder="Nhập Số điện thoại">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Phone"></span>
         </div>
         <div class="form-group khoangcach">
-            <input type="text" name="password" id="password" class="form-control" asp-for="Password" placeholder="Nhập Password">
+            <input type="text" id="address" class="form-control" asp-for="Address" placeholder="Nhập địa chỉ">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Address"></span>
+            <small style="color: red; font-size: 13px;">@ViewBag.ErrorAddress</small>
         </div>
-        @*<div class="form-group khoangcach">
-            <input type="text" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
-            </div>*@
+        <div class="form-group khoangcach">
+            <input type="password" name="password" id="password" class="form-control" asp-for="Password" placeholder="Nhập Password">
+            <span style="color: red; font-size: 13px;" asp-validation-for="Password"></span>
+            @if (ViewBag.ErrorPassword != "1")
+            {
+                <small style="color: red; font-size: 13px;">@ViewBag.ErrorPassword</small>
+            }
+        </div>
+        <div class="form-group khoangcach">
+            <input type="password" name="confirmPassword" id="confirmpassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
+            @if (ViewBag.ErrorPassword != "1")
+	        {
+                <small style="color: red; font-size: 13px;">@ViewBag.ErrorPassword</small>
+	        }
+        </div>
         <p class="text-center"> <button type="submit" class="noderesgiter">ĐĂNG KÝ</button></p>
-        <p class="text-center">Bạn đã có tài khoản?&nbsp;&nbsp;<a href="" title="" class="dangnhap">ĐĂNG NHẬP</a></p>
+        <p class="text-center">Bạn đã có tài khoản?&nbsp;&nbsp;<a href="/auth/login" title="" class="dangnhap">ĐĂNG NHẬP</a></p>
     </form>
 </div>

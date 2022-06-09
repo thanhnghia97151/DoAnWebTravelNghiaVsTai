@@ -1,0 +1,123 @@
+﻿
+@{
+    List<TourCategoryModel> listTour = ViewBag.tour;
+}
+
+
+<!-- Thong tin goi nho -->
+<div class="goinho">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thongtin">
+                    <small>Trang chủ > </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- the end goi nho -->
+<!-- Thong tin khach san -->
+<div class="motakhachsanall">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                @if (ViewBag.parent != null)
+                {
+                    var parent = ViewBag.parent;
+                    <h2>DU LỊCH @parent.Name.ToUpper()</h2>
+                }
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="danhgia">
+                    Du lịch kỳ thú - Tour Du lịch hấp dẫn - Du lịch kỳ thú cung cấp những tour du lịch có giá tốt
+                    - Du khách sẽ được khám phá những danh lam thắng cảnh thiên nhiên đẹp mê hồn cùng nhiều công trình kiến trúc
+                    ấn tượng được tạo nên bởi bàn tay khéo léo của con người. Cùng Du Lịch Kỳ Thú
+                    tìm hiểu những địa điểm du lịch để bắt đầu lên kế hoạch cho chuyến du lịch ngay nhé
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @*<p class="tinkhachsan">Du lịch Đà Nẵng, tên đầy đủ là Đại công quốc Luxembourg, là một quốc gia nhỏ nằm trong lục địa ở Tây Âu, giáp với Bỉ, Pháp, và Đức. Luxembourg là một nước theo dân chủ đại nghị và quân chủ lập hiến, được cai trị bởi một đại công tước và là đại công quốc duy nhất còn tồn tại trên thế giơi. Du lịch đến Luxembourg, du khách sẽ được thưởng lãm những thắng cảnh cổ xưa vô cùng thú vị và đầy quyến rũ như: Những khu phố cổ có đường rải sỏi, những pháo đài thời trung cổ trên đỉnh đồi cùng khung cảnh đồi núi tự nhiên, đất nông nghiệp và lưu vực sông.</p>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr />
+<br />
+
+@if (listTour != null)
+{
+    @foreach (var item in listTour)
+    {
+        @if (item.Tours.Count() > 0)
+        {
+            <div class="loaikhachsan1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                            <h2>DU LỊCH @item.Name</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                            <div class="left">
+                                <a href="/tour/toursbycategory/@item.TourCategoriesId"><span class="fa fa-eye">&nbsp;&nbsp;</span>Xem tất cả</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- the end loaikhachsan1 -->
+            <!--  Demos -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="large-10 columns">
+                                <div class="owl-carousel owl-theme">
+                                    @foreach (var tour in item.Tours)
+                                    {
+                                        <div class="item">
+                                            <div class="thumbnail" style="height:400px;">
+                                                <a href="/home/detailtour/@tour.TourId"><img src="https://localhost:44384/images/@tour.Image" alt="" style="height:200px;"></a>
+                                                <div class="captionbottomimage">
+                                                    @tour.Name
+                                                </div>
+                                                <div class="caption">
+                                                    <div class="review">
+                                                        <p>
+                                                            <span class="fa fa-history"></span>
+                                                            &nbsp;Lịch trình: @tour.Schedule
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @tour.StartDate</p>
+                                                    </div>
+
+                                                    <div class="detailItem">
+                                                        <b class="pull-right price">Giá: @tour.Price đ</b>
+                                                        <p>
+                                                            <span class="fa fa-user book"></span>
+                                                            &nbsp;Vé còn: @tour.Quantity
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div> <!-- end slide left 2 item 1 -->
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+}
+else 
+{
+    <h5 style="color: red;">Tour không tồn tại, vui lòng thử lại sau</h5>
+}

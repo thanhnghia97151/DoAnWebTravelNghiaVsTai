@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using WebTravelApi.Models;
 using WebTravelApi.Models.Repository;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Api.Controllers
 {
@@ -20,5 +22,6 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.InvoiceDetail.GetInvoiceDetailByInvoiceId(id);
         }
+        
     }
 }

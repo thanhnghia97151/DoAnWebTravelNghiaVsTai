@@ -1,0 +1,148 @@
+﻿@model TourModelSearch
+<!-- Thong tin goi nho -->
+<div class="goinho">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thongtin">
+                    <small>Trang chủ > </small><small>Khách Sạn</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- the end goi nho -->
+<!-- Tìm kiếm du lịch trong nước -->
+<div class="KhungTimKiem">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg12">
+                <div class="TitleTimKiem text-center">
+                    <p>TÌM TOUR </p>
+                </div>
+                <h5 style="color: red;">@ViewBag.ErrorSystem</h5>
+                <form action="/tour/search" method="post">
+                    <input type="hidden" asp-for="PriceStart" />
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <select asp-for="Address" class="form-control chinhtimkiem" id="noidi">
+                                <option value="Hà Nội"> Hà Nội</option>
+                                <option value="Hồ Chí Minh"> Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <select class="form-control chinhtimkiem" id="noiden">
+                                    <option value="my"> Mỹ</option>
+                                    <option value="anh"> Anh</option>
+                                    <option value="phap"> Pháp</option>
+                                    <option value="nhat"> Nhật</option>
+                                    <option value="han"> Hàn</option>
+                                </select>
+                            </div>
+                        </div>*@
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <select asp-for="PriceEnd" class="form-control chinhtimkiem" id="gia">
+                                <option value="2000000"> Dưới 2 triệu</option>
+                                <option value="4000000"> Từ 2-4 triệu</option>
+                                <option value="6000000"> Từ 4-6 triệu</option>
+                                <option value="8000000"> Từ 6-8 triệu</option>
+                                <option value="8000001"> Trên 8 triệu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <input asp-for="StartDate" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <input asp-for="EndDate" class="form-control" />
+                        </div>
+                    </div><br />
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <input type="submit" value="TÌM KIẾM" class="btn btn-dark timkiem">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thong tin khach san -->
+<div class="motakhachsanall">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <h2> KẾT QUẢ TÌM KIẾM</h2>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="danhgia">
+                    Du lịch kỳ thú - Tour Du lịch hấp dẫn - Du lịch kỳ thú cung cấp những tour du lịch có giá tốt
+                    - Du khách sẽ được khám phá những danh lam thắng cảnh thiên nhiên đẹp mê hồn cùng nhiều công trình kiến trúc
+                    ấn tượng được tạo nên bởi bàn tay khéo léo của con người. Cùng Du Lịch Kỳ Thú
+                    tìm hiểu những địa điểm du lịch để bắt đầu lên kế hoạch cho chuyến du lịch ngay nhé!
+                </p>
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @*<p class="tinkhachsan">Du lịch Đà Nẵng, tên đầy đủ là Đại công quốc Luxembourg, là một quốc gia nhỏ nằm trong lục địa ở Tây Âu, giáp với Bỉ, Pháp, và Đức. Luxembourg là một nước theo dân chủ đại nghị và quân chủ lập hiến, được cai trị bởi một đại công tước và là đại công quốc duy nhất còn tồn tại trên thế giơi. Du lịch đến Luxembourg, du khách sẽ được thưởng lãm những thắng cảnh cổ xưa vô cùng thú vị và đầy quyến rũ như: Những khu phố cổ có đường rải sỏi, những pháo đài thời trung cổ trên đỉnh đồi cùng khung cảnh đồi núi tự nhiên, đất nông nghiệp và lưu vực sông.</p>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row1">
+    <div class="container">
+        <div class="row">
+            @if (ViewBag.tour != null)
+            {
+                @foreach (var item in ViewBag.tour)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item">
+                        <div class="thumbnail" style="height:400px;">
+                            <a href="/home/detailtour/@item.TourId"><img src="https://localhost:44384/images/@item.Image" alt="" style="height:200px;"></a>
+                            <div class="captionbottomimage">
+                                @item.Name
+                            </div>
+                            <div class="caption">
+                                <div class="review">
+                                    <p>
+                                        <span class="fa fa-history"></span>
+                                        &nbsp;Lịch trình: @item.Schedule
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p><span class="fa fa-calendar"></span>&nbsp; Khởi hành: @item.StartDate</p>
+                                </div>
+
+                                <div class="detailItem">
+                                    <b class="pull-right price">Giá: @item.Price đ</b>
+                                    <p>
+                                        <span class="fa fa-user book"></span>
+                                        &nbsp;Vé còn: @item.Quantity
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div> <!-- end slide left 2 item 1 -->
+                    </div> <!-- the end column1 row 1 -->
+                }
+            }
+        </div>
+
+
+    </div>
+    <!-- Thêm mã phân trang -->
+
+
+</div> <!-- the end row 1 -->

@@ -1,495 +1,404 @@
-﻿@model Tour
+﻿@using System.Security.Claims
+@model Tour
+
+@{
+    List<News> news10host = (List<News>)ViewBag.news10hot;
+}
+        <!-- Thong tin goi nho -->
+<div class="goinho">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="thongtin">
+                            <small>Trang chủ > </small>
+                            <small>@Model.Name</small>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- the end goi nho -->
+            <br />
+            <!-- Section -->
+            <div class="order">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p class="titleorder">
+                                @Model.Name
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p class="titleEvalued">
+                                @Model.MetaTitle
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <div class="row">
+                                <div class="imageorderchinhsua">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <img src="https://localhost:44384/images/@Model.Image" alt="order">
+                                    </div>
+                                </div>
+                                <!-- the end images -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class="diemnhanhanhtrinh">
+                                        <i class="fa fa-book"></i>
+                                        &nbsp; &nbsp; Điểm nhấn hành trình
+
+                                    </p>
+                                    <div class="vachkeduoilichtrinh">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <!-- the end dien nhan -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h3>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Detail))</h3>
+
+                                </div>
+                                <!-- the end content -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>&nbsp; &nbsp; Lịch trình</p>
+                                    <div class="vachkeduoilichtrinh">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <!-- the end lich trinh -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                    @{
+                                        TourSchedule tourSchedule = ViewBag.schedule;
+                                    }
+
+                                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(tourSchedule.Content))
+
+                                </div>
+                                <!-- the end content lich trinh -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class="diemnhanhanhtrinh">
+                                        <i class="fa fa-book">
+                                        </i>&nbsp; &nbsp; Những thông tin cần lưu ý
+                                    </p>
+                                    <div class="total">
+                                        <div class="col-xs-12 col-ms-12 col-md-6 col-lg-6">
+                                            <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3%">
+                                                <h3 onclick="databaogom()">Giá tour bao gồm</h3>
+                                                <div id="datachuthich1" style="display: none; font-size: 15px;">
+                                                    <p>
+                                                        - Xe tham quan (7,16, 29, 35, 45 chỗ tùy theo số lượng khách) theo chương trình.
+                                                    </p>
+                                                    <p>
+                                                        - Khách sạn theo tiêu chuẩn 2 khách/phòng hoặc 3 khách/phòng (phòng 3 kê giường phụ)
+                                                    </p>
+                                                    <p>- Vé tham quan theo chương trình.</p>
+                                                    <p>
+                                                        - Các bữa ăn chính theo chương trình từ 120.000 – 140.000 vnđ/bữa.
+                                                    </p>
+                                                    <p>- Hướng dẫn viên tiếng Việt suốt tuyến.</p>
+                                                    <p>- Bảo hiểm du lịch với mức bồi thường cao nhất 120.000.000đ/vụ</p>
+                                                    <p>- Nón Du Lịch Kỳ Thú + Nước suối + Khăn lạnh.</p>
+                                                    <p>- Thuế VAT.</p>
+                                                </div>
+                                            </div>
+                                            <!-- the end 1 -->
+                                            <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                                                <h3 onclick="datakhongbaogom()">Giá tour không bao gồm</h3>
+                                                <div id="datachuthich2" style="display: none; font-size: 15px;">
+                                                    <p>
+                                                        - Chi phí cá nhân: ăn uống ngoài chương trình, giặt ủi, chi phí hủy đổi hành trình, phụ thu phòng đơn,…
+                                                    </p>
+                                                    <p>
+                                                        - Chi phí tham quan ngoài chương trình.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xs-12 col-ms-12 col-md-6 col-lg-6">
+                                            <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                                                <h3 onclick="datagiave()">Giá vé trẻ em</h3>
+                                                <div id="datachuthich3" style="display: none; font-size:15px;">
+                                                    <p>
+                                                        - Trẻ em dưới 5 tuổi: không thu phí dịch vụ, gia đình tự lo cho bé. Hai người lớn chỉ được kèm 1 trẻ em dưới 5 tuổi, trẻ em thứ 2 phải đóng phí theo quy định dành cho độ tuổi từ 5 đến dưới 12 tuổi và phụ thu giường đơn.
+                                                    </p>
+                                                    <p>
+                                                        - Trẻ em từ 5 - dưới 12 tuổi: mua 50% vé dịch vụ, bao gồm phương tiện xe vận chuyển, ăn uống, vé tham quan, ngủ chung với gia đình, không có giường riêng. Hai người lớn chỉ được kèm 1 trẻ em từ 5 - dưới 12 tuổi, em thứ hai trở lên phải mua 1 suất giường đơn.
+                                                    </p>
+                                                    <p>
+                                                        - Trẻ em từ 12 tuổi trở lên: mua một vé như người lớn.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="chuthich" style="background-color: #f9f9f9; padding: 3% 0%; padding-left: 6%; margin-bottom: 3% ">
+                                                <h3 onclick="datahuytour()">Các điều kiện hủy tour</h3>
+                                                <div id="datachuthich4" style="display: none; font-size:15px;">
+                                                    <p>
+                                                        - Trong trường hợp khách hàng chưa thanh toán, có thể hủy tour trong vòng 24h, kể từ khi đặt tour.
+                                                    </p>
+                                                    <p>
+                                                        - Trong trường hợp khách hàng đã thanh toán, có thể hủy tour trong vòng 24h, kể từ khi đặt tour nhưng chỉ nhận được 50% giá vé.
+                                                    </p>
+                                                    <p>
+                                                        - Trong trường hợp khách hàng đã thanh toán, không thể hủy tour sau 24h, kể từ khi đặt tour.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vachkeduoilichtrinh">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <!-- the end dich vu bao gom -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p>
+                                        @*content dich vu bao gom use Ck finder*@
+                                    </p>
+                                </div>
+                                <!--  the end dich vu bao gom -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class="diemnhanhanhtrinh">
+                                        <i class="fa fa-book">
+                                        </i>&nbsp; &nbsp; Ghi chú (Xem Thêm)
+                                    </p>
+                                    <div class="vachkeduoilichtrinh">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <!-- the end ghi chu -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p>
+                                        @*content ghi chu o day use CK finder*@
+                                    </p>
+                                </div>
+                                <!-- the end content ghi chu -->
+                            </div>
+                        </div>
+                        <!-- the end row left -->
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="tableorder">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableborder">
+                                        <div class="table1">
+                                            <p class="titletable">
+                                                @Model.Name
+                                            </p>
+                                        </div>
+                                        <div class="table1">
+                                            <p class="gachduoitable">
+                                                <hr>
+                                            </p>
+                                            <p>
+                                                <small>Mã tour:</small> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;@Model.TourId.Substring(0, 30)
+                                            </p>
+                                        </div>
+                                        <div class="table1">
+                                            <p class="gachduoitable">
+                                                <hr>
+                                            </p>
+                                            <p>
+                                                <small>Thời gian:</small>
+                                                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; @Model.Schedule
+                                            </p>
+                                        </div>
+                                        <div class="table1">
+                                            <p class="gachduoitable">
+                                                <hr>
+                                            </p>
+                                            <p>
+                                                <small>Vận Chuyển:</small> &nbsp; &nbsp;@Model.Transport
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- the end table -->
+                                    <div class="pricetable">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pricetable1">
+                                            <p class="giatable">Giá từ: <small>@Model.Price đ</small></p>
+                                            <!-- the end price -->
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="date" />
+                                                </div>
+                                                <a href="/invoice/create/@Model.TourId" class="btn btn-success">
+                                                    ĐẶT TOUR
+                                                </a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @*comment*@
+                                    <div class="row">
+                                        @{
 
 
- <!-- Thong tin goi nho -->
-   <div class="goinho">
-     <div class="container-fluid">
-       <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-           <div class="thongtin">
-             <small>Trang chủ > </small>
-             <small>Cam nang du lich</small>
-             <small>Vietravel Airlines khai trương các đường bay mới kết nối nhiều tỉnh, thành phố trong cả nước</small>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div> <!-- the end goi nho -->
+                                            List<Comment> comments = ViewBag.comments;
 
-  <!-- Section -->
-    <div class="order">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p class="titleorder">
-              @Model.Name
-            </p>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p class="titleEvalued">
-              Đánh giá
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <div class="row">
-              <div class="imageorderchinhsua">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <img src="https://localhost:44384/images/@Model.Image" alt="order">
+
+                                        }
+                                        @if (comments != null)
+                                        {
+                                            foreach (var item in comments)
+                                            {
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <h4>Phản hồi</h4>
+                                                    <div class="well editcomment">
+                                                        <div class="row">
+                                                            <div class="col-xs-2 col-sm-4 col-md-2 col-lg-2">
+                                                                <img src="https://localhost:44384/images/person.jpg" class="img-responsive center-block">
+                                                            </div>
+                                                            <div class="col-xs-10 col-sm-8 col-md-10 col-lg-10">
+                                                                <p class="comment-info">
+                                                                    <strong>
+                                                                        @item.FullName
+                                                                    </strong>
+                                                                    <span>@item.CreatedAt.Date</span>
+                                                                </p>
+                                                                <p>
+                                                                    @item.Content
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+                                    </div>
+
+
+                                    @{
+                                        if (User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+                                        {
+                                            await Html.RenderPartialAsync("_PartialComment", new Comment() { MemberID = User.FindFirstValue(ClaimTypes.NameIdentifier), TourId = Model.TourId });
+                                        }
+                                    }
+                                    @*the end comment*@
+                                </div>
+                            </div>
+                        </div>
+                        <!-- the end row right -->
+
+                    </div>
                 </div>
-              </div>
-              <!-- the end images -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>
-                  &nbsp; &nbsp; Điểm nhấn hành trình
-                  
-                </p>
-                <div class="vachkeduoilichtrinh">
-                  <hr>
+            </div>
+
+            <!-- infor relation -->
+            <div class="thongtinlienquan">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h3>THÔNG TIN NỔI BẬT</h3>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <!-- the end dien nhan -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Detail))
-                
-              </div>
-              <!-- the end content -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>&nbsp; &nbsp; Lịch trình</p>
-                <div class="vachkeduoilichtrinh">
-                  <hr>
+            </div>
+
+            <!-- content relation -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="large-12 columns">
+                                <div class="owl-carousel owl-theme">
+                                    @if (news10host != null)
+                                    {
+                                        @foreach (var news in news10host)
+                                        {
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="thumbnail">
+                                                            <img src="https://localhost:44384/images//@news.Image" alt="">
+                                                            <div class="caption">
+                                                                @if (news.Name.Length > 65)
+                                                                {
+                                                                    <h4>@news.Name.Substring(0, 65);...</h4>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h4>@news.Name</h4>
+                                                                }
+                                                                <div class="eye">
+                                                                    <p>
+                                                                        <span class="fa fa-calendar"></span>&nbsp; @news.ModifiedDate
+                                                                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;@news.ViewCount</small>
+                                                                    </p>
+                                                                </div>
+                                                                @if (news.Description.Length > 145)
+                                                                {
+                                                                    <p>@news.Description.Substring(0, 145);...</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p>@news.Description</p>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @*the end 1 item*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <!-- the end lich trinh -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                
-                @{
-                            TourSchedule tourSchedule = ViewBag.schedule;
+            </section>
+
+            <script type="~/text/javascript" src="vendor/bootstrap.js"></script>
+            <script type="~/text/javascript" src="js/1.js"></script>
+            <script src="~/vendor/jquery.min.js"></script>
+            <script src="~/owlcarousel/owl.carousel.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var owl = $('.owl-carousel');
+                    owl.owlCarousel({
+                        margin: 11,
+                        nav: false,
+                        loop: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 2
+                            },
+                            1000: {
+                                items: 3
+                            },
+                            1000: {
+                                items: 4
+                            }
                         }
-
-                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(tourSchedule.Content))
-                        
-              </div>
-              <!-- the end content lich trinh -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="diemnhanhanhtrinh"><i class="fa fa-book"></i>&nbsp; &nbsp; Dịch vụ bao gồm và không bao gồm (Xem Thêm)</p>
-                <div class="vachkeduoilichtrinh">
-                  <hr>
-                </div>
-              </div>
-              <!-- the end dich vu bao gom -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p>
-                  content dich vu bao gom use Ck finder
-                </p>
-              </div>
-             <!--  the end dich vu bao gom -->
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <p class="diemnhanhanhtrinh"><i class="fa fa-book">
-                      </i>&nbsp; &nbsp; Ghi chú (Xem Thêm)
-                  </p>
-                  <div class="vachkeduoilichtrinh">
-                    <hr>
-                </div>
-              </div>
-              <!-- the end ghi chu -->
-               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <p>
-                    content ghi chu o day use CK finder
-                  </p>
-              </div>
-              <!-- the end content ghi chu -->
-            </div>
-          </div>
-            <!-- the end row left -->
-
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="row">
-                <div class="tableorder">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableborder">
-                    <div class="table1">
-                      <p class="titletable">
-                          @Model.Name
-                      </p>
-                    </div> 
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Mã tour:</small> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;@Model.TourId 
-                      </p>
-                    </div> 
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Thời gian:</small>
-                          &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; @Model.Schedule
-                      </p>
-                    </div>
-                    <div class="table1">
-                      <p class="gachduoitable">
-                          <hr>
-                      </p>
-                      <p>
-                          <small>Vận Chuyển:</small> &nbsp; &nbsp;@Model.Transport
-                      </p>
-                    </div>
-                  </div>
-                  <!-- the end table -->  
-                  <div class="pricetable">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pricetable1">
-                      <p class="giatable">Giá từ: <small>@Model.PromotionPrice đ</small></p>
-                      <!-- the end price -->
-                      <form  >
-                        <div class="form-group">
-                          <input type="text" class="form-control" name="date"/>
-                        </div>
-                          <a href="/invoice/create/@Model.TourId" class="btn btn-success">
-                              ĐẶT TOUR
-                          </a>
-                      </form>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-          </div>
-          <!-- the end row right -->
-
-        </div>
-      </div>
-    </div>
-   
-   <!-- Begin Information Relation -->
-     <div class="thongtinlienquan">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h3>THÔNG TIN LIÊN QUAN</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- the end Information Relation -->
-
-    <!-- content relation -->
-    <section>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="large-12 columns">
-          <div class="owl-carousel owl-theme">
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews4.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews3.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews2.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div class="thumbnail">
-                      <img src="~/images/catenews1.jpg" alt="">
-                      <div class="caption">
-                        <h4>HOLIDAY DEALs CÙNG PHILIPPINE AIRLINES</h4>
-
-                        <div class="eye">                       
-                        <p><span class="fa fa-calendar"></span>&nbsp; 19/2/2021
-                        &nbsp;&nbsp; &nbsp;<small><span class="fa fa-eye"></span>&nbsp;5000</small>
-                        </p>
-                        </div>
-
-                        <p>
-                          Cuối tuần hay ngày Lễ/Tết không có giá rẻ, vé rẻ chủ yếu sẽ chỉ khuyến mãi giờ bay ít người di chuyển (như buổi sáng sớm/ hay lúc khuya muộn) tùy ngày
-                        </p>
-                        
-                      </div>
-                    </div>
-                </div>
-              </div>
-          
-          </div>                 
-        </div>
-        </div>
-      </div>
-    </div>
-    </section>
-
-    <script type="~/text/javascript" src="vendor/bootstrap.js"></script>
-    <script type="~/text/javascript" src="js/1.js"></script>
-    <script src="~/vendor/jquery.min.js"></script>
-    <script src="~/owlcarousel/owl.carousel.js"></script>
-   <script>
-            $(document).ready(function() {
-              var owl = $('.owl-carousel');
-              owl.owlCarousel({
-                margin: 11,
-                nav: false,
-                loop: true,
-                responsive: {
-                  0: {
-                    items: 1
-                  },
-                  600: {
-                    items: 2
-                  },
-                  1000: {
-                    items: 3
-                  },
-                  1000: {
-                    items: 4
-                  }
+                    })
+                })
+            </script>
+            <script>
+                function databaogom() {
+                    document.getElementById('datachuthich1').style.display = "block";
+                    document.getElementById('datachuthich2').style.display = "none";
+                    document.getElementById('datachuthich3').style.display = "none";
+                    document.getElementById('datachuthich4').style.display = "none";
                 }
-              })
-            })
-      </script>
+                function datakhongbaogom() {
+                    document.getElementById('datachuthich1').style.display = "none";
+                    document.getElementById('datachuthich2').style.display = "block";
+                    document.getElementById('datachuthich3').style.display = "none";
+                    document.getElementById('datachuthich4').style.display = "none";
+                }
+                function datagiave() {
+                    document.getElementById('datachuthich1').style.display = "none";
+                    document.getElementById('datachuthich2').style.display = "none";
+                    document.getElementById('datachuthich3').style.display = "block";
+                    document.getElementById('datachuthich4').style.display = "none";
+                }
+                function datahuytour() {
+                    document.getElementById('datachuthich4').style.display = "block";
+                    document.getElementById('datachuthich1').style.display = "none";
+                    document.getElementById('datachuthich2').style.display = "none";
+                    document.getElementById('datachuthich3').style.display = "none";
+                }
+
+            </script>

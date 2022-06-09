@@ -1,15 +1,20 @@
+﻿using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebClient.Extentions;
 
 namespace WebClient
 {
@@ -26,7 +31,17 @@ namespace WebClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+
+            // Add sesion
+            services.AddDistributedMemoryCache();           // Register Cache Service
+            services.AddSession(cfg => {                    // Register Session Service        // Set Name Session - This name used at Browser (Cookie)
+                cfg.IdleTimeout = new TimeSpan(0, 5, 0);    // Expire Session
+            });
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddTransient<IForgetPasswordRepository, ForgetPasswordRepository>();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(p =>
                     {
@@ -41,10 +56,25 @@ namespace WebClient
                             Configuration.GetSection("Authentication:Google");
                         options.ClientId = googleAuthNSection["ClientId"];
                         options.ClientSecret = googleAuthNSection["ClientSecret"];
+                    })
+                    .AddFacebook(facebookOptions => {
+                        // Đọc cấu hình
+                        IConfigurationSection facebookAuthNSection = Configuration.GetSection("Authentication:Facebook");
+                        facebookOptions.AppId = facebookAuthNSection["AppId"];
+                        facebookOptions.AppSecret = facebookAuthNSection["AppSecret"];
+                        // Thiết lập đường dẫn Facebook chuyển hướng đến
+                        facebookOptions.CallbackPath = "/dang-nhap-tu-facebook";
                     });
 
+            var context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
 
+            services.AddControllers().AddJsonOptions(option => 
+            {
+                option.JsonSerializerOptions.Converters.Add(new DateConvertor());
+            });
 
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,13 +84,15 @@ namespace WebClient
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseStaticFiles();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();
+           
 
             app.UseDeveloperExceptionPage();
             app.UseEndpoints(endpoints =>

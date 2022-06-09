@@ -1,4 +1,5 @@
-﻿<div>
+﻿@using System.Security.Claims
+<div>
       <nav class="navbar navbar-default menutop" role="navigation">
       <div class="container">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,76 +17,89 @@
    
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right">
-               <li class="dropdown">
-                <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
-                  role="button" aria-haspopup="true" aria-expanded="false">
-                DU LỊCH
-                </a>
-                <ul class="dropdown-menu">
-                     @*<li><a href="#">Du Lịch Trong Nước</a></li>
-                     <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
-                     @{
-                                IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
-                                IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
-                            }
+             <ul class="nav navbar-nav navbar-right">
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                         DU LỊCH
+                     </a>
+                     <ul class="dropdown-menu">
+                         @*<li><a href="#">Du Lịch Trong Nước</a></li>
+                <li><a href="#">Du Lịch Nước Ngoài</a></li>*@
+                         @{
+                             IEnumerable<TypeOfTour> listTypeOfTour = ViewData["TypeTour"] as IEnumerable<TypeOfTour>;
+                             IEnumerable<NewsCategory> listNewsCate = ViewData["NewsCate"] as IEnumerable<NewsCategory>;
+                         }
 
-                                             @foreach (TypeOfTour item in listTypeOfTour)
-                                {
-                                    <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
-                                }
+                         @if (listTypeOfTour != null)
+                         {
+                             @foreach (TypeOfTour item in listTypeOfTour)
+                             {
+                                 <li><a href="/tour/typeoftour/@item.Id">@item.Type</a></li>
+                             }
+                         }
 
-                           
-                </ul>
-              </li>
-               <li><a href="/contact">LIÊN HỆ</a></li>
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
-                  role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
-                  <ul class="dropdown-menu">
 
-                    @* <li><a href="#">Tin Khuyến Mãi</a></li>
-                     <li><a href="#">Tin Tư Vấn</a></li>
-                     <li><a href="#">Tour Du Lịch Hot Nhất</a></li>
-                     <li><a href="#">Tour Du Mới Nhất</a></li>
-                     <li><a href="#">Nhật Ký Du Lịch</a></li>
-                     <li><a href="#">Cẩm Nang Du Lịch</a></li>*@
-                     @foreach (var item in listNewsCate)
+                     </ul>
+                 </li>
+                 <li><a href="/tour/search">TÌM KIẾM</a></li>
+                 <li><a href="/contact/DisplayContact">LIÊN HỆ</a></li>
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle downmenu" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
+                     <ul class="dropdown-menu">
+
+                         @if (listNewsCate != null)
+                         {
+                             @foreach (var item in listNewsCate)
+                             {
+                                 <li><a href="/news/newscategory/@item.NewsCategoryId">@item.Name</a></li>
+                             }
+                         }
+                     </ul>
+                 </li>
+                 <li class="dropdown">
+                     <a asp-controller="Introduce" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
+                     <ul class="dropdown-menu">
+                         @if (User.Identity.IsAuthenticated)
+                         {
+                             <li><a asp-controller="Introduce" asp-action="Index">Giới Thiệu Doanh Nghiệp</a></li>
+                             <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
+                             <li><a href="/auth/changepassword">Đổi Mật Khẩu</a></li>
+                             @*@if(User.FindFirstValue(ClaimTypes.Role) != null)
                     {
-                        <li><a href="#">@item.Name</a></li>
+                            foreach (var item in User.FindFirstValue(ClaimTypes.Role))
+                        {
+                             if (item.ToString() == "Admin")
+                             {
+                                 <li><a href="/dashboard">Dashboard</a></li>
+                             }
+                        }
                     }
-                  </ul>
-               </li>
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">GIỚI THIỆU</a>
-                  <ul class="dropdown-menu">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
-                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
-                                <li><a href="/auth/changepassword">Thay đổi mật khẩu</a></li>
-                                <li><a href="/dashboard"><small>Dashboard</small></a></li>
-                            }
-                            else
-                            {
-                                <li><a href="/introduce"><small>Giới Thiệu Doanh Nghiệp</small></a></li>
-                                <li><a href="/contact/contactwithme">Liên hệ với tôi</a></li>
-                    <li><a href="/auth/register"><small>Register</small></a></li>
-                        <li><a href="/auth/login"><small>Login</small></a></li>
-                                
-                            }
-                            
-                  </ul>
-               </li>
+                             *@
+                             <li><a href="/dashboard">Dashboard</a></li>
+                             <li><a href="/invoice/history">Hóa đơn</a></li>
+                         }
+                         else
+                         {
+                             <li><a href="/introduce">Giới Thiệu Doanh Nghiệp</a></li>
+                             <li><a href="/contact/ContactWithMe">Chúng Tôi</a></li>
+                             <li><a href="/auth/register">Đăng Ký</a></li>
+                             <li><a href="/auth/login">Đăng Nhập</a></li>
 
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">NGÔN NGỮ</a>
-                  <ul class="dropdown-menu">
-                     <li><a href="#">Vietnamese</a></li>
-                     <li><a href="#">English</a></li>
-                  </ul>
-               </li>
-            </ul>
+                         }
+
+                     </ul>
+                 </li>
+
+                 <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">NGÔN NGỮ</a>
+                     <ul class="dropdown-menu">
+                         <li><a href="#">Tiếng Việt</a></li>
+                         <li><a href="#">Tiếng Anh</a></li>
+                     </ul>
+                 </li>
+             </ul>
             
          </div><!-- /.navbar-collapse -->
       </div>

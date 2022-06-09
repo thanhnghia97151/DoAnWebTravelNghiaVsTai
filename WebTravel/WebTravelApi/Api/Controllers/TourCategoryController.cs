@@ -49,5 +49,20 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.TourCategory.GetCategoryModelsByTypeOfTour(id);
         }
+        [HttpGet("categoryparent/{id}")]
+        public IEnumerable<TourCategoryModel> GetCategoryParent(string id)
+        {
+            return provider.TourCategory.GetTourCategoriesParent(id);
+        }
+        [HttpGet("categorychild/{id}")]
+        public IEnumerable<TourCategoryModel> GetCategoryChildrent(string id)
+        {
+            return provider.TourCategory.GetTourCategoryChildrent(id);
+        }
+        [HttpGet("categorymodelbyid/{id}")]
+        public TourCategoryModel GetTourCategoryModelById(string id)
+        {
+            return provider.TourCategory.GetTourCategoryModel(id);
+        }
     }
 }

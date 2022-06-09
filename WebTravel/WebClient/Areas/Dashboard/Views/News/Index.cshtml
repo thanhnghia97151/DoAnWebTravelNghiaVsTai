@@ -19,7 +19,8 @@
             <th>Status</th>
             <th>Top hot</th>
             <th>View Count</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +33,7 @@
                 <td>@item.Description</td>
                 <td>@item.Code</td>
                 <td><img src="https://localhost:44384/images/@item.Image" width="70" /></td>
-                <td>@item.Detail</td>
+                <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Detail))</td>
                 <td>@item.Note</td>
                 <td>@item.NewCategoryId</td>
                 <td>@item.CreatedDate</td>
@@ -44,6 +45,8 @@
                 <td>@item.ViewCount</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.NewsId"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
                     <a href="/dashboard/news/confirmdelete/@item.NewsId"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>

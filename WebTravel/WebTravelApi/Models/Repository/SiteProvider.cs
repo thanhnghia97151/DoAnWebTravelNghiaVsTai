@@ -12,7 +12,7 @@ namespace WebTravelApi.Models.Repository
         {
             this.configuration = configuration;
             connection = new SqlConnection(configuration.GetConnectionString("TravelWeb"));
-            // Thiếu đóng kết nối
+           
         }
         MemberRepository member;
         RoleRepository role;
@@ -32,6 +32,44 @@ namespace WebTravelApi.Models.Repository
         ImageTourRepository imageTour;
         InvoiceRepository invoice;
         InvoiceDetailRepository invoiceDetail;
+        CommentRepository comment;
+        ContactRepository contact;
+        CustomerRepository customer;
+
+        public CustomerRepository Customer
+        {
+            get
+            {
+                if (customer is null)
+                {
+                    customer = new CustomerRepository(connection);
+                }
+                return customer;
+            }
+        }
+
+        public ContactRepository Contact
+        {
+            get
+            {
+                if (contact is null)
+                {
+                    contact = new ContactRepository(connection);
+                }
+                return contact;
+            }
+        }
+        public CommentRepository Comment
+        {
+            get
+            {
+                if (comment is null)
+                {
+                    comment = new CommentRepository(connection);
+                }
+                return comment;
+            }
+        }
 
         public InvoiceDetailRepository InvoiceDetail
         {

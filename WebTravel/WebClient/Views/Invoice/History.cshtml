@@ -1,0 +1,204 @@
+﻿@model List<InvoiceModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-ms-12 col-md-12 col-lg-12 text-center">
+            <h2>THÔNG TIN HÓA ĐƠN</h2>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            @if (Model != null)
+            {
+            <form asp-controller="Invoice" asp-action="CreatePDF" method="post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Image</th>
+                                        <th>Name Tour</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Thanh toán</th>
+                                        <th>Hủy</th>
+                                        <th>Tích</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        decimal totalMoney = 0;
+                                        int i = 0;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Tour != null)
+                                        {
+                                    <tr>
+                                        <td>@item.InvoiceId.Substring(0, 30)</td>
+                                        
+                                        <td><img src="https://localhost:44384/images/@item.Tour.Image" width="70" /> </td>
+                                        
+                                        <td>@item.Tour.Name</td>
+                                       
+                                        <td>@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</td>
+                                       
+                                        <td>@item.Quantity</td>
+                                     
+                                        @if (item.Status)
+                                        {
+                                            <td><small>Đã thanh toán</small></td>
+                                            
+                                            <td><input type="hidden" name="Status+@i" value="1" /></td>
+                                        }
+                                        else
+                                        {
+                                            <td><small>Chưa thanh toán</small></td>
+                                            <td><a class="btn btn-danger" href="/invoice/confirmdelete/@item.InvoiceId">Hủy</a></td>
+                                            totalMoney = totalMoney + (item.Price * item.Quantity);
+                                           
+                                        }
+
+                                        <td><input type="checkbox" name="Check+@i" value="1" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="hidden" name="InvoicedId+@i" value="@item.InvoiceId" /></td>
+                                        <td><input type="hidden" name="Name+@i" value="@item.Tour.Name" /></td>
+                                        <td><input type="hidden" name="Price+@i" value="@item.Price" /></td>
+                                        <td><input type="hidden" name="Quantity+@i" value="@item.Quantity" /></td>
+                                       
+                                    </tr>
+                                            i++;
+                                        }
+                                    }
+                                <tr><td> <input type="hidden" value="@i" name="Result" /></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                            <input type="submit" class="btn btn-danger" value="Xuất dữ liệu" />
+                        </div><br /><br />
+                        <div class="row">
+
+                        </div>
+                        @* the begin*@
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                            <p style="font-size: 18px;">Tổng tiền thanh toán:&nbsp;&nbsp;&nbsp; <small>@totalMoney đ</small> </p>
+                        </div>
+                        <div></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+
+                            @{
+                                var result = @totalMoney / 23000;
+                                <p style="font-size: 18px;">Tổng tiền thanh toán($):&nbsp;&nbsp;&nbsp; <small id="total">@result.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US")) $</small></p>
+                            }
+                        </div>
+                        <div></div>
+                        <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 text-right">
+                            <p style="font-size: 18px;">Thanh toán tại đây:</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 text-right">
+                            <div id="paypal-button"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+
+            }
+        </div>
+    </div>
+</div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    var result = document.getElementById("total").innerHTML;
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AQ0vdtbnYnilxGirwMwQ7nx3UuE-j5UCVhKz1dU8hm6apMn5QlJIYREUtRqpfBl_nrBiTvu7KaX8EI49',
+            production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function (data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: '0.1',
+                        currency: 'USD'
+                    }
+                }]
+            });
+        },
+        // Execute the payment
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute().then(function () {
+                // Show a confirmation message to the buyer
+                window.location.assign("/Invoice/Checkout?MemberId = " + "");
+            });
+        }
+    }, '#paypal-button');
+
+</script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        var result = document.getElementById("demo").innerHTML;
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AQ0vdtbnYnilxGirwMwQ7nx3UuE-j5UCVhKz1dU8hm6apMn5QlJIYREUtRqpfBl_nrBiTvu7KaX8EI49',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
+
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    // Show a confirmation message to the buyer
+                  window.location.assign("/Invoice/Checkout?MemberId = "+ "");
+                });
+            }
+        }, '#paypal-button');
+
+    </script>*@

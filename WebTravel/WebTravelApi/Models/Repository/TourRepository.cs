@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using WebTravelApi.Models.ViewModels;
 
 namespace WebTravelApi.Models.Repository
 {
@@ -12,7 +13,7 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<Tour> GetTours()
         {
-            return connection.Query<Tour>("select * from Tours");
+            return connection.Query<Tour>("select TOP 20 * from [dbo].[Tours] as t where t.Quantity > 0 and t.Quantity IS NOT NULL order by t.ModifiedDate DESC");
         }
         public int Add(Tour obj)
         {
@@ -51,11 +52,11 @@ namespace WebTravelApi.Models.Repository
         }
         public Tour GetTour(string id)
         {
-            return connection.QueryFirstOrDefault<Tour>("select * from Tours where TourId =@Id",new {Id = id});
+            return connection.QueryFirstOrDefault<Tour>("select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and TourId =@Id", new {Id = id});
         }
         public IEnumerable<Tour> GetToursPaging(int page, int size, out int total)
         {
-            List<Tour> list =(List<Tour>) connection.Query<Tour>("select * from Tour");
+            List<Tour> list =(List<Tour>) connection.Query<Tour>("select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL");
             total = list.Count;
             return connection.Query<Tour>("GetToursPaging",new { Page = page, Size = size},commandType: CommandType.StoredProcedure);
         }
@@ -70,7 +71,7 @@ namespace WebTravelApi.Models.Repository
             {
                 foreach (var item in tourCategories)
                 {
-                     tours.AddRange(connection.Query<Tour>($"select * from Tours where CategoryId = '{item.TourCategoriesId}'"));   
+                     tours.AddRange(connection.Query<Tour>($"select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and CategoryId = '{item.TourCategoriesId}'"));   
                 }
                 return tours;
             }
@@ -78,12 +79,17 @@ namespace WebTravelApi.Models.Repository
         }
         public IEnumerable<Tour> GetNewTourByCategoryId(string id)
         {
-            return connection.Query<Tour>("select * from Tours where CategoryId = @Id", new { Id = id });
+            return connection.Query<Tour>("select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and CategoryId = @Id", new { Id = id });
         } 
         
-        public int Ticket(string id)
+        public int Ticket(string id, int quantity)
         {
-            return connection.Execute("UpdateQuantity", new {Id = id}, commandType: CommandType.StoredProcedure);
+            return connection.Execute("UpdateQuantity", new {Id = id, SoLuong = quantity}, commandType: CommandType.StoredProcedure);
         }
+        public IEnumerable<Tour> Search(string address, decimal priceStart, decimal priceEnd, string startDate, string endDate)
+        {
+            return connection.Query<Tour>($"select * from Tours as t where t.Quantity > 0 and t.Quantity IS NOT NULL and t.StartPlace like N'%{address}%' and t.Price < {priceEnd} and t.Price >= {priceStart} and t.StartDate >= '{startDate}' and t.EndDate <= '{endDate}'");
+        }
+
     }
 }

@@ -14,8 +14,8 @@ namespace WebTravelApi.Api.Controllers
         public AuthController(IConfiguration configuration) : base(configuration)
         {
         }       
-        [HttpPost]
-        
+
+        [HttpPost]        
         public object Login(LoginModel obj)
         {
             Member member = provider.Member.Login(obj);
@@ -31,7 +31,9 @@ namespace WebTravelApi.Api.Controllers
                     Token = token,
                     MemberId = member.MemberID,
                     Email = member.Email,
-                    Roles = member.Roles
+                    Roles = member.Roles,
+                    Phone = member.Phone,
+                    UserName = member.UserName
                 };
             }
             return null;
@@ -68,6 +70,29 @@ namespace WebTravelApi.Api.Controllers
             }
             return 0;
         }
+
+        [HttpPost("check-phone/{phone}")]
+        public int MemberByPhone(string phone)
+        {
+            var obj = provider.Member.GetMemberByPhone(phone);
+            if (obj != null)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        [HttpPost("confirm-status-phone/{phone}")]
+        public int ConfirmStatusPhone(string phone)
+        {
+            var obj = provider.Member.GetMemberByPhone(phone);
+            if (obj != null)
+            {
+                return provider.Member.ConfirmStatusPhone(phone);
+            }
+            return 0;
+        }
+
         [HttpPost("confirm-number-phone/{id}")]
         public int ConfirmNumberPhone(string id)
         {
@@ -77,6 +102,12 @@ namespace WebTravelApi.Api.Controllers
                 return provider.Member.ConfirmNumberPhone(id);
             }
             return 0;
+        }
+
+        [HttpPost("ChangePassword")]
+        public int ChangePassword(PasswordNew passwordNew)
+        {
+            return provider.Member.ForgetPassword(passwordNew);
         }
     }
 }

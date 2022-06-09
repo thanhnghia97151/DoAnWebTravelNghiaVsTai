@@ -18,22 +18,67 @@ namespace WebTravelApi.Api.Controllers
         {
             return provider.News.GetNewses();
         }
+
+        [HttpGet("fournews")]
+        public IEnumerable<News> GetFourNewses()
+        {
+            return provider.News.GetFourNewses();
+        }
+
         [HttpPost]
         public int Add(News obj)
         {
-
             return provider.News.Add(obj);
-
         }
+
         [HttpGet("{id}")]
         public News GetNews(string id)
         {
+            var news = provider.News.GetNews(id);
+            var count = news.ViewCount + 1;
+            provider.News.UpdateCountViewer(count, id);
+
             return provider.News.GetNews(id);
         }
+
+        [HttpGet("newshot")]
+        public News GetNewsHot() 
+        {
+            return provider.News.GetNewsHot();
+        }
+
+        [HttpGet("news10hot")]
+        public IEnumerable<News> GetNews10Hot() 
+        {
+            return provider.News.GetNews10Host();
+        }
+
+        [HttpGet("newsoutstanding")]
+        public IEnumerable<News> GetNewsOutStanding()
+        {
+            return provider.News.GetNewsOutstanding();
+        }
+
         [HttpPost("delete/{id}")]
         public int Delete(string id)
         {
             return provider.News.Delete(id);
+        }
+        [HttpPost("edit")]
+        public int Edit(News obj)
+        {
+            return provider.News.Edit(obj);
+        }
+        [HttpGet("newspaging/{pid}/{sid}")]
+        public IEnumerable<News> GetNewsPaging(int pid , int sid)
+        {
+            return provider.News.GetNewsPaging(pid, sid);
+        }
+
+        [HttpGet("newscategory/{id}")]
+        public IEnumerable<News> GetNewsByCategoryId(string id)
+        {
+            return provider.News.GetNewsByCategoryId(id);
         }
 
     }
