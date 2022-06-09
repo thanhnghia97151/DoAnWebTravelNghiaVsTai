@@ -56,15 +56,5 @@ namespace WebClient.Models.Repository
         {
             return await Post<InvoiceDetailModel>($"/api/tour/ticket/{obj.TourId}/{obj.Quantity}", obj);
         }
-        public async Task<List<Tour>> Search(TourModelSearch obj)
-        {
-            string[] dateStart = obj.StartDate.ToString().Split(' ', '/');
-            var resultStart = dateStart[1] + "." + dateStart[0] + "." + dateStart[2];
-
-            string[] dateEnd = obj.EndDate.ToString().Split(' ', '/');
-            var resultEnd = dateEnd[1] + "." + dateEnd[0] + "." + dateEnd[2];
-
-            return await Get<List<Tour>>($"/api/tour/search/{obj.Address}/{obj.PriceStart}/{obj.PriceEnd}/{resultStart}/{resultEnd}");
-        }
     }
 }
